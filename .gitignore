@@ -1,0 +1,44 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IntelliJ / JetBrains
+.idea/
+*.iml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datasets (non versionnés)
+data/
+datasets/
+
+# Modèles et checkpoints
+checkpoints/
+artifacts/
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.safetensors
+
+# Experiment tracking
+mlruns/
+wandb/
+
+# Environment variables
+.env
+.env.*
+
+# Temporary files
+*.log
+.DS_Store
+Thumbs.db
