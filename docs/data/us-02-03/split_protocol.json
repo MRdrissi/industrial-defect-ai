@@ -1,0 +1,37 @@
+{
+  "dataset": "MVTec AD",
+  "dataset_source": "ipythonx/mvtec-ad",
+  "seed": 42,
+  "validation_ratio": 0.2,
+  "categories": [
+    "bottle",
+    "hazelnut",
+    "transistor"
+  ],
+  "split_method": "sort relative paths, random.Random(seed).shuffle, round(n * validation_ratio), validation first",
+  "train_validation_source": "train/good",
+  "test_source": "test",
+  "test_policy": "Reserved for final evaluation only",
+  "manifest_columns": [
+    "category",
+    "split",
+    "image_path",
+    "label",
+    "defect_type",
+    "mask_path"
+  ],
+  "manifests": {
+    "bottle": {
+      "filename": "bottle_manifest.csv",
+      "sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064"
+    },
+    "hazelnut": {
+      "filename": "hazelnut_manifest.csv",
+      "sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6"
+    },
+    "transistor": {
+      "filename": "transistor_manifest.csv",
+      "sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728"
+    }
+  }
+}
