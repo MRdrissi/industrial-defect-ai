@@ -1,0 +1,77 @@
+{
+  "project": "IndustrialDefect AI",
+  "jira": {
+    "us": "IDL-9 (US-02-01)",
+    "subtask": "IDL-10 (ST-02-01-01)"
+  },
+  "notebook": "02-mvtec-dataset-check",
+  "executed_at_utc": "2026-11-09T19:48:34+00:00",
+  "dataset": {
+    "name": "MVTec AD",
+    "kaggle_url": "https://www.kaggle.com/datasets/ipythonx/mvtec-ad",
+    "kaggle_owner": "ipythonx (Innat)",
+    "original_source": "https://www.mvtec.com/company/research/datasets/mvtec-ad",
+    "license": "CC BY-NC-SA 4.0",
+    "citation": "Bergmann et al., CVPR 2019",
+    "root_path": "/kaggle/input/datasets/ipythonx/mvtec-ad"
+  },
+  "categories": [
+    "bottle",
+    "hazelnut",
+    "transistor"
+  ],
+  "defect_types": {
+    "bottle": [
+      "broken_large",
+      "broken_small",
+      "contamination"
+    ],
+    "hazelnut": [
+      "crack",
+      "cut",
+      "hole",
+      "print"
+    ],
+    "transistor": [
+      "bent_lead",
+      "cut_lead",
+      "damaged_case",
+      "misplaced"
+    ]
+  },
+  "summary": {
+    "bottle": {
+      "normales": 229,
+      "anormales": 63,
+      "masques": 63
+    },
+    "hazelnut": {
+      "normales": 431,
+      "anormales": 70,
+      "masques": 70
+    },
+    "transistor": {
+      "normales": 273,
+      "anormales": 40,
+      "masques": 40
+    },
+    "TOTAL": {
+      "normales": 933,
+      "anormales": 173,
+      "masques": 173
+    }
+  },
+  "checks": {
+    "structure_ok": true,
+    "counts_match_official": true,
+    "integrity_ok": true,
+    "problems": []
+  },
+  "environment": {
+    "python": "3.13.18",
+    "pandas": "2.3.3",
+    "numpy": "2.1.3",
+    "pillow": "13.0.0",
+    "platform": "Linux-6.18.55+-x86_64-with-glibc2.39"
+  }
+}
