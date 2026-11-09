@@ -3,7 +3,7 @@
 **Projet :** IndustrialDefect AI  
 **Branche :** `epic/02-data-preparation`  
 **Jira :** Epic **IDL-2** — projet *IndustrialDefect Deep Learning* (IDL)  
-**État :** en cours — US-02-01 documentée ; US-02-02, US-02-03 et US-02-04 à venir  
+**État :** en cours — US-02-01 et US-02-02 documentées ; US-02-03 et US-02-04 à venir  
 **Public :** tous les membres de l'équipe et toute personne devant reproduire la préparation des données.
 
 > **Objectif de cet Epic :** valider MVTec AD sur trois catégories obligatoires (`bottle`, `transistor`, `hazelnut`), fixer les splits train/validation/test sans fuite d'information, et préparer images et masques avec un pipeline reproductible commun aux deux approches (Convolutional Autoencoder et PatchCore).
@@ -15,7 +15,7 @@
 | US | Jira | Titre | Responsable | Dépend de | Section |
 |---|---|---|---|---|---|
 | US-02-01 | IDL-9 | Acquérir, vérifier et documenter les trois catégories MVTec AD | Zakaria El Bergui (M1) | — | [§ 2](#2-us-02-01--acquérir-vérifier-et-documenter-les-trois-catégories-mvtec-ad) |
-| US-02-02 | IDL-12 | Explorer les images, anomalies et masques des trois catégories | Zakaria El Bergui (M1) | US-02-01 | § 3 (à venir) |
+| US-02-02 | IDL-12 | Explorer les images, anomalies et masques des trois catégories | Zakaria El Bergui (M1) | US-02-01 | [§ 3](#3-us-02-02--explorer-les-images-anomalies-et-masques) |
 | US-02-03 | IDL-15 | Définir et figer le protocole Train/Validation/Test | Mouad Fekkak (M2) | US-02-01 | § 4 (à venir) |
 | US-02-04 | IDL-18 | Développer et tester le pipeline commun de prétraitement | Marwane Drissi (M3) | US-02-02, US-02-03 | § 5 (à venir) |
 
@@ -174,7 +174,128 @@ Les fichiers de `docs/data/us-02-01/` sont les sorties exactes de la Version #1 
 
 ## 3. US-02-02 — Explorer les images, anomalies et masques
 
-*À compléter (IDL-12).*
+**Jira :** IDL-12 · sous-tâches **IDL-13** (ST-02-02-01, visualisation) et **IDL-14** (ST-02-02-02, documentation)
+
+### Critères d'acceptation et preuves
+
+| # | Critère | Preuve | État |
+|---|---|---|---|
+| 1 | Un notebook EDA exécuté présente des images normales, anormales et des superpositions de masques pour les trois catégories | `notebooks/03-mvtec-eda.ipynb`, étapes 3 et 4 ; figures `01_*` et `02_*` | ✅ |
+| 2 | Distribution des dimensions, sous-types de défauts et principales difficultés documentés | § 3.2 à § 3.5 ; statistiques sur les 173 masques | ✅ |
+| 3 | Observations utiles au prétraitement et à la localisation consignées | § 3.6 | ✅ |
+
+**Données utilisées :** même copie que US-02-01 (`ipythonx/mvtec-ad`, Version 2). Les exemples affichés sont tirés au hasard avec une **seed fixe** (42 pour les images normales, 43 pour les défauts) : tout le monde obtient les mêmes images.
+
+**Règle respectée :** les images de **test** (défauts et masques) servent uniquement à **décrire** les anomalies. Aucun modèle, seuil ni hyperparamètre n'est ajusté dans cette US.
+
+### 3.1. Images normales : ce que les modèles apprendront
+
+![Images normales](data/us-02-02/figures/01_normal_examples.png)
+
+| Catégorie | Position / orientation | Fond | Variabilité entre pièces normales |
+|---|---|---|---|
+| bottle | Vue de dessus, toujours centrée | Clair, uniforme | Très faible |
+| hazelnut | **Orientation et position aléatoires** | Noir, uniforme | Forte (forme, teinte, position de la base claire) |
+| transistor | **Toujours dans le même sens**, pattes vers le bas | Plaque perforée (texture répétitive) | Faible (courbure des pattes, léger décalage) |
+
+### 3.2. Dimensions des images
+
+Toutes les images d'une même catégorie ont la même taille, et chaque masque a la taille de son image (vérifié en US-02-01).
+
+| Catégorie | Taille | Mode | Images |
+|---|---|---|---:|
+| bottle | 900 × 900 | RGB | 292 |
+| hazelnut | 1024 × 1024 | RGB | 501 |
+| transistor | 1024 × 1024 | RGB | 313 |
+
+### 3.3. Types de défauts : exemples
+
+Un exemple par type de défaut : image, masque (blanc = défaut) et superposition en rouge.
+
+| bottle | hazelnut | transistor |
+|---|---|---|
+| ![bottle](data/us-02-02/figures/02_defects_bottle.png) | ![hazelnut](data/us-02-02/figures/02_defects_hazelnut.png) | ![transistor](data/us-02-02/figures/02_defects_transistor.png) |
+
+| Catégorie | Défaut | Nature observée |
+|---|---|---|
+| bottle | broken_large | Grande cassure du goulot, bien visible |
+| bottle | broken_small | Petit éclat sur le bord |
+| bottle | contamination | Trace à l'intérieur, **peu visible** à l'œil nu |
+| hazelnut | crack | Zone fissurée de la coque |
+| hazelnut | cut | Coupure **fine et linéaire** |
+| hazelnut | hole | Petit trou rond, bien contrasté |
+| hazelnut | print | Inscription imprimée sur la coque, en **plusieurs fragments** |
+| transistor | bent_lead | Patte tordue : seul le bout des pattes est marqué |
+| transistor | cut_lead | Patte coupée |
+| transistor | damaged_case | Boîtier abîmé |
+| transistor | misplaced | Composant mal placé ou absent : le masque couvre **toute la zone attendue** du composant (défaut **logique**, pas de texture) |
+
+### 3.4. Taille des défauts (173 masques)
+
+Mesures réalisées sur **toutes** les images défectueuses : surface (part de l'image), nombre de régions séparées (`scipy.ndimage.label`) et boîte englobante.
+
+| Catégorie | Défaut | Images | Surface min | Surface médiane | Surface max | Régions max | Plus petit côté de la boîte à 256 px (min) |
+|---|---|---:|---:|---:|---:|---:|---:|
+| bottle | broken_large | 20 | 4,09 % | 11,87 % | 27,42 % | 2 | 59,2 px |
+| bottle | broken_small | 22 | 0,88 % | 2,44 % | 8,06 % | 3 | 27,3 px |
+| bottle | contamination | 21 | 0,58 % | 7,25 % | 16,53 % | 2 | 10,5 px |
+| hazelnut | crack | 18 | 1,28 % | 4,70 % | 27,66 % | 4 | 40,0 px |
+| hazelnut | cut | 17 | 0,40 % | 0,79 % | 2,02 % | 4 | 10,5 px |
+| hazelnut | hole | 18 | 0,23 % | 1,24 % | 2,93 % | 3 | 13,5 px |
+| hazelnut | print | 17 | 1,52 % | 2,44 % | 4,83 % | 15 | 31,8 px |
+| transistor | bent_lead | 10 | 0,22 % | 1,03 % | 3,65 % | 2 | 11,2 px |
+| transistor | cut_lead | 10 | 1,02 % | 1,48 % | 3,58 % | 2 | 23,2 px |
+| transistor | damaged_case | 10 | 0,63 % | 2,31 % | 5,35 % | 2 | 22,0 px |
+| transistor | misplaced | 10 | 37,73 % | 40,45 % | 49,32 % | 1 | 138,8 px |
+
+| Catégorie | Défauts | Surface moyenne | Surface médiane | Min | Max |
+|---|---:|---:|---:|---:|---:|
+| bottle | 63 | 7,62 % | 5,72 % | 0,58 % | 27,42 % |
+| hazelnut | 70 | 3,35 % | 1,62 % | 0,23 % | 27,66 % |
+| transistor | 40 | 11,98 % | 2,03 % | 0,22 % | 49,32 % |
+
+![Distribution de la taille des défauts](data/us-02-02/figures/03_defect_area_distribution.png)
+
+**Chiffres clés :**
+- **27 défauts sur 173 (16 %)** couvrent **moins de 1 %** de l'image.
+- La surface varie de **0,22 %** (`bent_lead`) à **49,32 %** (`misplaced`), soit un rapport supérieur à 200.
+- À **256 × 256**, **aucun** défaut ne passe sous 4 px : le plus petit côté de boîte englobante reste d'au moins **10,5 px**.
+
+### 3.5. Principales difficultés
+
+1. **Petits défauts** : `hazelnut cut` (médiane 0,79 %), `hole`, `transistor bent_lead`. La **localisation** au pixel près sera difficile, et la **Pixel-AUROC** sera plus exigeante que l'Image-AUROC.
+2. **Défauts peu contrastés** : `bottle contamination` est à peine visible ; le modèle doit détecter des variations fines de texture.
+3. **Défauts fragmentés** : `print` (jusqu'à 15 régions), `crack` et `cut` (jusqu'à 4). La carte d'anomalies doit pouvoir signaler **plusieurs zones** dans une même image.
+4. **Défaut logique** : `misplaced` ne se voit pas comme une texture anormale mais comme une **position** anormale. Les méthodes à base de patches locaux (PatchCore) peuvent y être moins sensibles qu'aux défauts de texture : à surveiller en EPIC-03.
+5. **Variabilité normale de hazelnut** : l'orientation et l'aspect des noisettes normales varient beaucoup ; le modèle doit les accepter comme normaux sans masquer les vrais défauts.
+6. **Grande dispersion des tailles** dans un même type (`contamination`, `crack`, `bent_lead`) : un seuil unique devra fonctionner pour des défauts minuscules comme pour des défauts étendus.
+
+### 3.6. Observations pour le prétraitement et la localisation (entrée de US-02-04)
+
+| Sujet | Observation | Recommandation |
+|---|---|---|
+| Taille d'entrée | Tailles différentes (900 et 1024 px) ; à 256 px, le plus petit défaut garde ≥ 10,5 px de côté de boîte ; à 128 px, il tomberait vers 5 px | Redimensionner **toutes** les catégories à une taille commune ; **256 × 256** paraît suffisant, éviter 128 × 128 |
+| Masques | Binaires (0/255), même taille que l'image | Redimensionner avec une interpolation **plus proche voisin** puis re-binariser, pour garder des masques 0/1 exacts |
+| Rotation / retournement | bottle et hazelnut sont invariants à la rotation ; **transistor ne l'est pas** (une rotation ou un décalage imite `misplaced`) | Augmentations géométriques autorisées pour bottle et hazelnut uniquement ; **aucune** pour transistor |
+| Couleur / luminosité | Fonds et éclairages homogènes dans chaque catégorie ; `contamination` repose sur de faibles variations | Augmentations de couleur **légères** au plus, pour ne pas effacer les défauts peu contrastés |
+| Recadrage | Les défauts peuvent se situer au bord (goulot de bottle, pattes de transistor) | Éviter les recadrages aléatoires qui couperaient des zones utiles |
+| Métriques | Défauts petits, fragmentés, et un défaut logique étendu | Évaluer séparément **Image-AUROC** et **Pixel-AUROC**, et analyser les résultats **par type de défaut** |
+
+### 3.7. Environnement et artefacts
+
+| Élément | Valeur |
+|---|---|
+| Plateforme | Kaggle Notebook, sans accélérateur (CPU) |
+| Python / matplotlib / SciPy | 3.13.18 / 3.10.0 / version de l'image Kaggle |
+| Seeds | 42 (images normales), 43 (exemples de défauts) |
+| Notebook | [`notebooks/03-mvtec-eda.ipynb`](../notebooks/03-mvtec-eda.ipynb) |
+| Version Kaggle (visualisation) | Version #1 — https://www.kaggle.com/code/zakariaelbergui/03-mvtec-eda?scriptVersionId=367819083 |
+| Version Kaggle (statistiques) | Version #2 — https://www.kaggle.com/code/zakariaelbergui/03-mvtec-eda?scriptVersionId=367823089 |
+| Figures | [`docs/data/us-02-02/figures/`](data/us-02-02/figures/) — 5 PNG |
+| Mesures par image | [`docs/data/us-02-02/defect_stats_per_image.csv`](data/us-02-02/defect_stats_per_image.csv) |
+| Résumé par type de défaut | [`docs/data/us-02-02/defect_summary_per_type.csv`](data/us-02-02/defect_summary_per_type.csv) |
+
+**Limite :** le « plus petit côté de la boîte englobante » mesure le rectangle autour du défaut. Pour un défaut fin et oblique (`cut`), le trait lui-même est plus fin que la boîte : ces défauts restent les plus fragiles à la réduction de résolution.
 
 ## 4. US-02-03 — Protocole Train/Validation/Test
 
