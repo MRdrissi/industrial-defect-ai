@@ -3,7 +3,7 @@
 **Projet :** IndustrialDefect AI  
 **Branche :** `epic/02-data-preparation`  
 **Jira :** Epic **IDL-2** — projet *IndustrialDefect Deep Learning* (IDL)  
-**État :** en cours — US-02-01 et US-02-02 documentées ; US-02-03 et US-02-04 à venir  
+**État :** US-02-01 à US-02-04 documentées.
 **Public :** tous les membres de l'équipe et toute personne devant reproduire la préparation des données.
 
 > **Objectif de cet Epic :** valider MVTec AD sur trois catégories obligatoires (`bottle`, `transistor`, `hazelnut`), fixer les splits train/validation/test sans fuite d'information, et préparer images et masques avec un pipeline reproductible commun aux deux approches (Convolutional Autoencoder et PatchCore).
@@ -16,8 +16,8 @@
 |---|---|---|---|---|---|
 | US-02-01 | IDL-9 | Acquérir, vérifier et documenter les trois catégories MVTec AD | Zakaria El Bergui (M1) | — | [§ 2](#2-us-02-01--acquérir-vérifier-et-documenter-les-trois-catégories-mvtec-ad) |
 | US-02-02 | IDL-12 | Explorer les images, anomalies et masques des trois catégories | Zakaria El Bergui (M1) | US-02-01 | [§ 3](#3-us-02-02--explorer-les-images-anomalies-et-masques) |
-| US-02-03 | IDL-15 | Définir et figer le protocole Train/Validation/Test | Mouad Fekkak (M2) | US-02-01 | § 4 (à venir) |
-| US-02-04 | IDL-18 | Développer et tester le pipeline commun de prétraitement | Marwane Drissi (M3) | US-02-02, US-02-03 | § 5 (à venir) |
+| US-02-03 | IDL-15 | Définir et figer le protocole Train/Validation/Test | Mouad Fekkak (M2) | US-02-01 | [Protocole](epic-02/us-02-03.md) |
+| US-02-04 | IDL-18 | Développer et tester le pipeline commun de prétraitement | Marwane Drissi (M3) | US-02-02, US-02-03 | [Pipeline](epic-02/us-02-04.md) |
 
 **Règle commune :** chaque US ajoute sa propre section dans ce document. Les données de **test** ne doivent jamais servir à ajuster un modèle, un seuil ou un hyperparamètre.
 
@@ -299,11 +299,11 @@ Mesures réalisées sur **toutes** les images défectueuses : surface (part de l
 
 ## 4. US-02-03 — Protocole Train/Validation/Test
 
-*À compléter (IDL-15).*
+Les trois manifestes figent 650 images normales pour l’entraînement, 163 pour la validation et 293 images du test officiel. [Protocole, empreintes et contrôles de séparation](epic-02/us-02-03.md)
 
 ## 5. US-02-04 — Pipeline commun de prétraitement
 
-*À compléter (IDL-18).*
+Le pipeline commun lit les manifestes et fournit les images RGB, labels et masques aux profils CAE et PatchCore. Sur Kaggle, le contrôle du profil CAE à 256 × 256 couvre 1 106 images et 173 masques d’anomalies. Aucun masque n’a entièrement disparu. [API, réutilisation et preuves de validation](epic-02/us-02-04.md)
 
 ---
 
