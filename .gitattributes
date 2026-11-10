@@ -1,0 +1,2 @@
+# Preserve canonical LF endings for versioned MVTec manifests
+docs/data/us-02-03/*_manifest.csv text eol=lf
