@@ -167,10 +167,10 @@ Nous utilisons une **branche partagée par Epic**, comme dans notre projet SahlP
 - `main` : version intégrée, vérifiée et stable ;
 - `epic/01-infrastructure` : environnement de travail, GitHub/Kaggle, traçabilité ;
 - `epic/02-data-preparation` : analyse et préparation des données ;
-- `epic/03-deep-learning` : modèles et expérimentations ;
+- `epic/03-convolutional-autoencoder` : architecture et entraînements du CAE ;
 - `epic/04-application` : interface, intégration et validation.
 
-Les trois dernières branches sont **prévisionnelles** et seront créées lorsqu'elles seront nécessaires.
+La branche de l’application reste prévisionnelle.
 
 Workflow standard d'une **User Story** sur sa branche Epic :
 
@@ -207,7 +207,7 @@ Les informations attendues sont : architecture, paramètres, catégorie/découpa
 |---|---|---|---|
 | **EPIC-01 — Infrastructure & Collaboration** | IntelliJ, Git, GitHub, Kaggle, sauvegarde et traçabilité | [docs/EPIC-01-infrastructure.md](docs/EPIC-01-infrastructure.md) | Tests validés ; **PR vers `main` à réaliser** |
 | **EPIC-02 — Data Exploration & Preparation** | Comprendre MVTec AD, préparer les splits et le prétraitement | `docs/EPIC-02-data-preparation.md` | À venir |
-| **EPIC-03 — Deep Learning & Experimentation** | CAE, PatchCore, entraînement, évaluation et comparaison | `docs/EPIC-03-deep-learning.md` | À venir |
+| **EPIC-03 — Convolutional Autoencoder** | Architecture et entraînements CAE par catégorie | [Document EPIC-03](docs/EPIC-03-convolutional-autoencoder.md) | US-03-01 validée sur CPU |
 | **EPIC-04 — Application & Validation** | Inférence, interface Streamlit, tests et démonstration | `docs/EPIC-04-application.md` | À venir |
 
 ### Plan de travail indicatif (7 jours)
