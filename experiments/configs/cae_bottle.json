@@ -5,12 +5,19 @@
   "manifest": "docs/data/us-02-03/bottle_manifest.csv",
   "dataset_source": "ipythonx/mvtec-ad",
   "training": {
-    "epochs": 100,
+    "max_epochs": 100,
     "batch_size": 16,
     "learning_rate": 0.001,
     "seed": 42,
     "optimizer": "Adam",
-    "loss": "MSELoss"
+    "loss": "MSELoss",
+    "early_stopping": {
+      "monitor": "val_mse",
+      "mode": "min",
+      "patience": 10,
+      "min_delta": 0.0001,
+      "restore_best_weights": true
+    }
   },
   "expected_samples": {
     "train": 167,
