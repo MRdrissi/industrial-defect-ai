@@ -1,0 +1,43 @@
+{
+  "task": "ST-02-04-02",
+  "image_size": [
+    256,
+    256
+  ],
+  "profile": "cae",
+  "categories": {
+    "bottle": {
+      "splits": {
+        "train": 167,
+        "val": 42,
+        "test": 83
+      },
+      "images_checked": 292,
+      "anomalies_checked": 63,
+      "vanished_masks": []
+    },
+    "hazelnut": {
+      "splits": {
+        "train": 313,
+        "val": 78,
+        "test": 110
+      },
+      "images_checked": 501,
+      "anomalies_checked": 70,
+      "vanished_masks": []
+    },
+    "transistor": {
+      "splits": {
+        "train": 170,
+        "val": 43,
+        "test": 100
+      },
+      "images_checked": 313,
+      "anomalies_checked": 40,
+      "vanished_masks": []
+    }
+  },
+  "total_images": 1106,
+  "total_anomalies": 173,
+  "git_commit": "fc02ce8e7126be875761b2783b0818d21245ac97"
+}
