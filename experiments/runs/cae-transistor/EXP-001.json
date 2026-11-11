@@ -57,11 +57,11 @@
     "repo": "https://github.com/MRdrissi/industrial-defect-ai.git",
     "branch": "epic/03-convolutional-autoencoder",
     "model_and_data_code": "commit 6a353b3a3a3aa7a4adfa69a6db120d5bec95d73b (src/models, src/data, experiments/configs/cae_baseline.json)",
-    "training_loop": "notebooks/06-cae-train.ipynb — code exact exécuté conservé par la version Kaggle #1",
+    "training_loop": "notebooks/08-cae-transistors-train.ipynb (Kaggle : 06-cae-train) — code exact exécuté conservé par la version Kaggle #1",
     "torchvision_version": "0.26.0+cu130"
   },
   "restoration": {
-    "notebook": "notebooks/07-cae-restore-check.ipynb",
+    "notebook": "notebooks/09-cae-transistors-restore-check.ipynb",
     "kaggle_version_url": "https://www.kaggle.com/code/zakariaelbergui/07-cae-restore-check?scriptVersionId=368219576",
     "device": "cpu",
     "retrained": false,
