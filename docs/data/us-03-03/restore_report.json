@@ -1,0 +1,15 @@
+{
+  "category": "transistor",
+  "checked_at_utc": "2026-11-10T22:55:11+00:00",
+  "checkpoint": "cae/transistor/best_model.pt",
+  "git_commit": "6a353b3a3a3aa7a4adfa69a6db120d5bec95d73b",
+  "device": "cpu",
+  "retrained": false,
+  "trainable_parameters": 855619,
+  "val_images": 43,
+  "expected_val_loss": 0.0006124484934844077,
+  "restored_val_loss": 0.0006124485151430722,
+  "relative_gap": 3.536405882959066e-08,
+  "tolerance": 0.001,
+  "passed": true
+}
