@@ -1,5 +1,5 @@
 {
-  "experiment_id": "EXP-003",
+  "experiment_id": "EXP-001",
   "model": "cae_baseline_v1",
   "dataset": "MVTec AD",
   "category": "hazelnut",
