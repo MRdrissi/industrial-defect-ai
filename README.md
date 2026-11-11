@@ -193,7 +193,7 @@ Adapter **le nom de branche** et **l'identifiant de l'US**. Sur une branche part
 
 ## 10. Suivi scientifique des expériences
 
-Chaque expérience importante reçoit un identifiant unique (`EXP-001`, `EXP-002`, etc.) et, à terme, un fichier dans `experiments/runs/` issu du modèle `experiments/templates/experiment_template.json`.
+Chaque expérience importante possède une référence unique et une fiche issue de `experiments/templates/experiment_template.json`. Pour le CAE, la numérotation commence à `EXP-001` dans chaque dossier de catégorie, par exemple `experiments/runs/cae-hazelnut/EXP-001.json`.
 
 Les informations attendues sont : architecture, paramètres, catégorie/découpage des données, versions d'environnement, **commit réellement exécuté**, métriques, emplacement des poids et **URL de la version Kaggle**. Le protocole est décrit dans [experiments/README.md](experiments/README.md).
 

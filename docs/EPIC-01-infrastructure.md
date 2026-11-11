@@ -374,7 +374,7 @@ Le protocole se trouve dans [`experiments/README.md`](../experiments/README.md) 
 ### Convention des identifiants
 
 - `EXP-001`, `EXP-002`, etc. : **une expérience documentée**.
-- Un fichier par expérience : `experiments/runs/EXP-001.json`.
+- Pour le CAE, chaque catégorie possède sa propre série, par exemple `experiments/runs/cae-bottle/EXP-001.json`.
 - Le JSON doit renseigner **le vrai commit** du code exécuté, pas le commit créé après coup pour publier des résultats modifiés.
 
 ### Champs à compléter
