@@ -18,5 +18,5 @@
     "train": 170,
     "val": 43
   },
-  "note": "Configuration documentée après l'exécution : les mêmes valeurs sont définies dans la cellule de configuration de notebooks/06-cae-train.ipynb (Kaggle Version #1) et enregistrées dans run_info.json."
+  "note": "Configuration documentée après l'exécution : les mêmes valeurs sont définies dans la cellule de configuration de notebooks/08-cae-transistors-train.ipynb (notebook Kaggle 06-cae-train, Version #1) et enregistrées dans run_info.json."
 }
