@@ -1,0 +1,65 @@
+{
+  "run_id": "hazelnut-baseline-001",
+  "experiment": {
+    "experiment_name": "cae_hazelnut_baseline_v1",
+    "category": "hazelnut",
+    "architecture_config": "experiments/configs/cae_baseline.json",
+    "dataset": {
+      "manifest": "docs/data/us-02-03/hazelnut_manifest.csv",
+      "train_split": "train",
+      "validation_split": "val"
+    },
+    "training": {
+      "seed": 42,
+      "batch_size": 16,
+      "num_workers": 2,
+      "optimizer": "Adam",
+      "learning_rate": 0.001,
+      "loss": "MSELoss",
+      "max_epochs": 150,
+      "early_stopping": {
+        "enabled": true,
+        "patience": 20,
+        "min_delta": 1e-06
+      }
+    },
+    "checkpoint": {
+      "monitor": "val_mse",
+      "mode": "min",
+      "save_best_only": true
+    }
+  },
+  "architecture": {
+    "input_channels": 3,
+    "image_size": [
+      256,
+      256
+    ],
+    "encoder_channels": [
+      32,
+      64,
+      128
+    ],
+    "latent_channels": 128,
+    "seed": 42
+  },
+  "git_commit": "742b8346e664b4efc50410b3707bdb2db6908c1f",
+  "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+  "dataset": {
+    "category": "hazelnut",
+    "train_images": 313,
+    "validation_images": 78
+  },
+  "environment": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "pytorch": "2.11.0+cu130",
+    "gpu": "Tesla T4"
+  },
+  "status": "completed",
+  "epochs_completed": 150,
+  "best_epoch": 147,
+  "best_val_mse": 0.00020595180364743544,
+  "last_train_mse": 0.00020889489422961415,
+  "last_val_mse": 0.0002082412199039633,
+  "stop_reason": "max_epochs"
+}
