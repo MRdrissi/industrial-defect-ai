@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP-003",
+  "category": "bottle",
+  "model_config": "experiments/configs/cae_bottle_bottleneck32.json",
+  "manifest": "docs/data/us-02-03/bottle_manifest.csv",
+  "dataset_source": "ipythonx/mvtec-ad",
+  "training": {
+    "max_epochs": 500,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "seed": 42,
+    "optimizer": "Adam",
+    "loss": "MSELoss",
+    "early_stopping": {
+      "monitor": "val_mse",
+      "mode": "min",
+      "patience": 40,
+      "min_delta": 0.000001,
+      "restore_best_weights": true
+    }
+  },
+  "expected_samples": {
+    "train": 167,
+    "val": 42
+  }
+}
