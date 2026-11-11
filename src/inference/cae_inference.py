@@ -82,6 +82,27 @@ class CAEInferenceResult:
         }
 
 
+def extract_state_dict(checkpoint: dict) -> dict:
+    """
+    Renvoie les poids du modèle, quel que soit le format du checkpoint.
+
+    Deux formats coexistent dans le projet :
+      - poids seuls : torch.save(model.state_dict(), ...)            (transistor)
+      - dictionnaire complet : poids sous "model_state_dict" + métadonnées
+        (époque, val MSE, commit…)                                    (bottle, hazelnut)
+    """
+    if not isinstance(checkpoint, dict):
+        raise TypeError(f"Checkpoint inattendu : {type(checkpoint).__name__}")
+    if "model_state_dict" in checkpoint:
+        return checkpoint["model_state_dict"]
+    if checkpoint and all(isinstance(v, torch.Tensor) for v in checkpoint.values()):
+        return checkpoint
+    raise KeyError(
+        "Format de checkpoint non reconnu (ni poids seuls, ni clé 'model_state_dict'). "
+        f"Clés trouvées : {sorted(checkpoint)[:10]}"
+    )
+
+
 def load_cae(
     config_path: str | Path,
     checkpoint_path: str | Path,
@@ -90,6 +111,7 @@ def load_cae(
     """
     Recrée le CAE à partir du fichier de configuration et charge ses poids.
 
+    Accepte les deux formats de checkpoint du projet (voir extract_state_dict).
     Renvoie (modèle en mode eval, nom du modèle).
     Lève une erreur si le checkpoint ne correspond pas à l'architecture.
     """
@@ -105,8 +127,8 @@ def load_cae(
     params["encoder_channels"] = tuple(params["encoder_channels"])
 
     model = ConvolutionalAutoencoder(CAEConfig(**params))
-    state_dict = torch.load(checkpoint_path, map_location=device, weights_only=True)
-    model.load_state_dict(state_dict)  # strict : toutes les couches doivent correspondre
+    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=True)
+    model.load_state_dict(extract_state_dict(checkpoint))  # strict : toutes les couches doivent correspondre
     model.to(device).eval()
 
     return model, config_file.get("name", "cae")
