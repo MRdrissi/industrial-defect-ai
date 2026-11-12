@@ -1,0 +1,46 @@
+{
+  "run_id": "patchcore-bottle-smoke-001",
+  "git_commit": "0a6f5fac7b47fcaa797d65774e7442ed0201de1f",
+  "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+  "versions": {
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "anomalib": "2.7.0",
+    "timm": "1.0.30",
+    "lightning": "2.6.6"
+  },
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "seed": 42,
+  "train_images": [
+    "bottle/train/good/028.png",
+    "bottle/train/good/039.png",
+    "bottle/train/good/043.png",
+    "bottle/train/good/117.png",
+    "bottle/train/good/181.png",
+    "bottle/train/good/175.png",
+    "bottle/train/good/206.png",
+    "bottle/train/good/115.png"
+  ],
+  "coreset_ratio": 0.1,
+  "embedding_shape": [
+    8192,
+    1536
+  ],
+  "memory_bank_shape": [
+    819,
+    1536
+  ],
+  "validation_image": "bottle/train/good/002.png",
+  "anomaly_score": 30.64944839477539,
+  "anomaly_map_shape": [
+    1,
+    1,
+    256,
+    256
+  ],
+  "checkpoint_sha256": "37e3d731aca54d2f0272b79082d21eeafebc96faeda91d19a72a84353451a9fa"
+}
