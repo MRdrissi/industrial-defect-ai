@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP-001",
+  "category": "transistor",
+  "model_config": "experiments/configs/cae_baseline.json",
+  "manifest": "docs/data/us-02-03/transistor_manifest.csv",
+  "dataset_source": "ipythonx/mvtec-ad",
+  "training": {
+    "max_epochs": 100,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "seed": 42,
+    "optimizer": "Adam",
+    "loss": "MSELoss",
+    "early_stopping": null,
+    "checkpoint_selection": "lowest val_mse over all epochs"
+  },
+  "expected_samples": {
+    "train": 170,
+    "val": 43
+  },
+  "note": "Configuration documentée après l'exécution : les mêmes valeurs sont définies dans la cellule de configuration de notebooks/08-cae-transistors-train.ipynb (notebook Kaggle 06-cae-train, Version #1) et enregistrées dans run_info.json."
+}

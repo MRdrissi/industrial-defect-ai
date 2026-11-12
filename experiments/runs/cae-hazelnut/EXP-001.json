@@ -1,0 +1,90 @@
+{
+  "experiment_id": "EXP-001",
+  "model": "cae_baseline_v1",
+  "dataset": "MVTec AD",
+  "category": "hazelnut",
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13.16",
+    "torch_version": "2.11.0+cu130",
+    "gpu": "Tesla T4"
+  },
+  "training": {
+    "epochs": 150,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "image_size": [
+      256,
+      256
+    ],
+    "seed": 42,
+    "num_workers": 2,
+    "optimizer": "Adam",
+    "loss": "MSELoss",
+    "max_epochs": 150,
+    "early_stopping": {
+      "enabled": true,
+      "patience": 20,
+      "min_delta": 1e-06
+    },
+    "scheduler": null,
+    "stop_reason": "max_epochs",
+    "train_images": 313,
+    "val_images": 78,
+    "test_used": false
+  },
+  "reproducibility": {
+    "git_commit": "742b8346e664b4efc50410b3707bdb2db6908c1f",
+    "dataset_version": null,
+    "split_manifest": "docs/data/us-02-03/hazelnut_manifest.csv",
+    "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+    "dataset_source": "ipythonx/mvtec-ad",
+    "kaggle_dataset_version_id": 3209332,
+    "architecture_config": "experiments/configs/cae_baseline.json",
+    "training_config": "experiments/configs/cae_hazelnut.json",
+    "notebook_archive_commit": "96649ad7ad571537a2afee5690dd3b00a08ab479"
+  },
+  "metrics": {
+    "image_auroc": null,
+    "precision": null,
+    "recall": null,
+    "f1_score": null,
+    "pixel_auroc": null,
+    "best_epoch": 147,
+    "best_val_mse": 0.00020595180364743544,
+    "last_train_mse": 0.00020889489422961415,
+    "last_val_mse": 0.0002082412199039633
+  },
+  "artifacts": {
+    "model_path": "cae/hazelnut/hazelnut-baseline-001/best_model.pt",
+    "kaggle_version_url": null,
+    "model_sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+    "training_notebook_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-cae-hazelnut-training",
+    "restoration_notebook_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-cae-hazelnut-restore-check",
+    "restoration_kaggle_version_url": null,
+    "training_notebook": "notebooks/06-cae-hazelnut-training.ipynb",
+    "restoration_notebook": "notebooks/07-cae-hazelnut-restore.ipynb",
+    "history": "docs/data/us-03-04/history.csv",
+    "loss_curves": "docs/data/us-03-04/loss_curves.png",
+    "run_info": "docs/data/us-03-04/run_info.json",
+    "restore_report": "docs/data/us-03-04/restore_report.json"
+  },
+  "notes": "Le commit Git enregistré dans le checkpoint identifie la version clonée du modèle et du pipeline. Les notebooks complets exécutés sur Kaggle sont archivés au commit notebook_archive_commit. Les deux pages Kaggle sont référencées ; les URL des versions exécutées restent à renseigner avec leurs scriptVersionId.",
+  "run_id": "hazelnut-baseline-001",
+  "name": "cae_hazelnut_baseline_v1",
+  "restoration": {
+    "device": "cpu",
+    "retrained": false,
+    "environment": {
+      "python": "3.13.18",
+      "pytorch": "2.11.0+cpu"
+    },
+    "images": 78,
+    "original_mse": 0.00020595180364743544,
+    "restored_mse": 0.00020595182242811235,
+    "absolute_difference": 1.8780676910553143e-11,
+    "relative_difference": 9.118966951463746e-08,
+    "tolerance": 2.0595180364743545e-07,
+    "passed": true
+  }
+}
