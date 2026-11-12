@@ -1,0 +1,27 @@
+{
+  "run_id": "patchcore-bottle-restore-001",
+  "source_run_id": "patchcore-bottle-smoke-001",
+  "restoration_device": "cpu",
+  "checkpoint_sha256": "37e3d731aca54d2f0272b79082d21eeafebc96faeda91d19a72a84353451a9fa",
+  "memory_bank_shape": [
+    819,
+    1536
+  ],
+  "validation_image": "bottle/train/good/002.png",
+  "torch_version": "2.11.0+cpu",
+  "anomalib_version": "2.7.0",
+  "reference_score": 30.64944839477539,
+  "restored_score": 30.64940071105957,
+  "score_absolute_difference": 4.76837158203125e-05,
+  "map_max_absolute_difference": 0.00045299530029296875,
+  "map_mean_absolute_difference": 3.481773819657974e-05,
+  "map_max_error_relative_to_range": 1.644988830698996e-05,
+  "tolerances": {
+    "score_absolute": 0.001,
+    "map_absolute": 0.001,
+    "map_relative_to_range": 0.0001
+  },
+  "memory_bank_recomputed": false,
+  "strict_state_dict_loading": true,
+  "restoration_status": "PASS"
+}
