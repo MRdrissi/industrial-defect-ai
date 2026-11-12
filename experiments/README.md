@@ -2,12 +2,7 @@
 
 ## IndustrialDefect AI
 
-Every Deep Learning experiment must have a unique ID.
-
-Examples:
-- EXP-001
-- EXP-002
-- EXP-003
+Every experiment must have a unique reference. CAE runs are numbered separately for each category, starting at `EXP-001`. Store each record in `experiments/runs/cae-<category>/EXP-NNN.json` and set its `experiment_id` to the filename without the extension. Use the folder and ID together when citing a run, for example `cae-bottle/EXP-001` or `cae-hazelnut/EXP-001`.
 
 ## Rules
 

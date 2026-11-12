@@ -1,0 +1,75 @@
+{
+  "experiment_id": "EXP-001",
+  "model": "cae_baseline_v1",
+  "dataset": "MVTec AD",
+  "category": "transistor",
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13.16",
+    "torch_version": "2.11.0+cu130",
+    "gpu": "Tesla T4 (x2)"
+  },
+  "training": {
+    "epochs": 100,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "image_size": [
+      256,
+      256
+    ],
+    "seed": 42
+  },
+  "reproducibility": {
+    "git_commit": "6a353b3a3a3aa7a4adfa69a6db120d5bec95d73b",
+    "dataset_version": "ipythonx/mvtec-ad, Version 2",
+    "split_manifest": "docs/data/us-02-03/transistor_manifest.csv"
+  },
+  "metrics": {
+    "image_auroc": null,
+    "precision": null,
+    "recall": null,
+    "f1_score": null,
+    "pixel_auroc": null
+  },
+  "artifacts": {
+    "model_path": "Kaggle Output 06-cae-train (Version #1) : cae/transistor/best_model.pt",
+    "kaggle_version_url": "https://www.kaggle.com/code/zakariaelbergui/06-cae-train?scriptVersionId=368211534"
+  },
+  "notes": "US-03-03 (IDL-23). Entraînement sur les 170 images normales du split train, sélection sur les 43 images de val ; le split test n'est jamais chargé, d'où les métriques de détection à null (évaluation en US-03-05 / EPIC-05). Le modèle apprenait encore à la fin (perte val encore en baisse vers les époques 90-100). Erreur de reconstruction résiduelle visible sur les pattes du transistor (zones fines et brillantes) : les défauts bent_lead et cut_lead, situés à cet endroit et parmi les plus petits du dataset, risquent d'être plus difficiles à détecter.",
+  "training_results": {
+    "train_images": 170,
+    "val_images": 43,
+    "test_used": false,
+    "optimizer": "Adam",
+    "loss": "MSELoss",
+    "num_workers": 2,
+    "trainable_parameters": 855619,
+    "best_epoch": 98,
+    "best_val_loss": 0.0006124484934844077,
+    "final_train_loss": 0.0006062185877988882,
+    "final_val_loss": 0.0006462368981501218,
+    "training_time_min": 12.0,
+    "executed_at_utc": "2026-11-10T22:24:55+00:00",
+    "history": "Kaggle Output 06-cae-train (Version #1) : cae/transistor/history.csv",
+    "loss_curves": "Kaggle Output 06-cae-train (Version #1) : cae/transistor/loss_curves.png"
+  },
+  "code_traceability": {
+    "repo": "https://github.com/MRdrissi/industrial-defect-ai.git",
+    "branch": "epic/03-convolutional-autoencoder",
+    "model_and_data_code": "commit 6a353b3a3a3aa7a4adfa69a6db120d5bec95d73b (src/models, src/data, experiments/configs/cae_baseline.json)",
+    "training_loop": "notebooks/08-cae-transistors-train.ipynb (Kaggle : 06-cae-train) — code exact exécuté conservé par la version Kaggle #1",
+    "torchvision_version": "0.26.0+cu130"
+  },
+  "restoration": {
+    "notebook": "notebooks/09-cae-transistors-restore-check.ipynb",
+    "kaggle_version_url": "https://www.kaggle.com/code/zakariaelbergui/07-cae-restore-check?scriptVersionId=368219576",
+    "device": "cpu",
+    "retrained": false,
+    "expected_val_loss": 0.0006124484934844077,
+    "restored_val_loss": 0.00061244852,
+    "relative_gap": 3.54e-08,
+    "tolerance": 0.001,
+    "passed": true,
+    "report": "Kaggle Output 07-cae-restore-check : restore/transistor/restore_report.json (valeurs complètes)"
+  }
+}

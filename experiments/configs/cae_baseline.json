@@ -1,0 +1,20 @@
+{
+  "name": "cae_baseline_v1",
+  "description": "Baseline CAE for MVTec AD normal-image reconstruction",
+  "config": {
+    "input_channels": 3,
+    "image_size": [256, 256],
+    "encoder_channels": [32, 64, 128],
+    "latent_channels": 128,
+    "seed": 42
+  },
+  "fixed_architecture": {
+    "kernel_size": 4,
+    "stride": 2,
+    "padding": 1,
+    "hidden_activation": "ReLU",
+    "output_activation": "Sigmoid",
+    "loss": "MSELoss",
+    "skip_connections": false
+  }
+}
