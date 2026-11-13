@@ -1,0 +1,45 @@
+{
+  "run_id": "patchcore-bottle-restore-exp002",
+  "source_run_id": "patchcore-bottle-exp002",
+  "experiment_id": "EXP-002",
+  "source_kaggle_version_url": "https://www.kaggle.com/code/mouadfekkak/14-patchcore-bottle-memory-bank?scriptVersionId=369295449",
+  "git_commit": "4664a8e8c016ea864c65b94f959456a50afbb7a4",
+  "git_tag": "exp/patchcore-bottle-exp002",
+  "restoration_device": "cpu",
+  "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+  "config_sha256": "087e3f727adc3c629b5167e19669fa71b3bc1fff8f9fef1b3d948b707d1b7d5d",
+  "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+  "memory_bank_shape": [
+    1710,
+    1536
+  ],
+  "validation_image": "bottle/train/good/002.png",
+  "python_version": "3.13.18",
+  "versions": {
+    "torch": "2.11.0+cpu",
+    "torchvision": "0.26.0+cpu",
+    "anomalib": "2.7.0",
+    "timm": "1.0.30",
+    "lightning": "2.6.6"
+  },
+  "gpu_reference_score": 29.36626434326172,
+  "cpu_restored_score": 29.366289138793945,
+  "anomaly_map_shape": [
+    1,
+    1,
+    256,
+    256
+  ],
+  "score_absolute_difference": 2.47955322265625e-05,
+  "map_max_absolute_difference": 0.00028705596923828125,
+  "map_mean_absolute_difference": 3.1211697205435485e-05,
+  "map_max_error_relative_to_range": 1.1817550216343618e-05,
+  "tolerances": {
+    "score_absolute": 0.001,
+    "map_absolute": 0.001,
+    "map_relative_to_range": 0.0001
+  },
+  "strict_state_dict_loading": true,
+  "memory_bank_recomputed": false,
+  "restoration_status": "PASS"
+}
