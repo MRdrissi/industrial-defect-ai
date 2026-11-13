@@ -7,3 +7,4 @@ PatchCore exploite les images normales des [splits EPIC-02](epic-02/us-02-03.md)
 | User Story | Livrable | Validation |
 |---|---|---|
 | [US-04-01 — Intégration Kaggle](epic-04/us-04-01.md) | Smoke test Bottle et restauration du checkpoint | 819 patches mémorisés, inférence sur une normale de validation, comparaison GPU/CPU dans les tolérances |
+| [US-04-02 — Memory Bank Bottle](epic-04/us-04-02.md) | Memory Bank complète sur 167 images normales | 1 710 patches conservés, checkpoint sauvegardé et restauration CPU validée |
