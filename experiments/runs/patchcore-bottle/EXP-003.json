@@ -1,0 +1,47 @@
+{
+  "experiment_id": "EXP-003",
+  "run_id": "patchcore-bottle-exp003",
+  "user_story": "US-04-05",
+  "experiment_type": "inference_api_validation",
+  "model": "PatchCore",
+  "category": "bottle",
+  "source_experiment": "patchcore-bottle/EXP-002",
+  "environment": {
+    "platform": "Kaggle",
+    "device": "cpu"
+  },
+  "reproducibility": {
+    "git_commit": "f219b11de498f1a8cf4b1c272cf018184002012b",
+    "git_tag": "exp/patchcore-bottle-exp003",
+    "notebook": "notebooks/16-patchcore-inference-api-check.ipynb",
+    "kaggle_version_url": "https://www.kaggle.com/code/mouadfekkak/16-patchcore-inference-api-check?scriptVersionId=369564577",
+    "dataset_version": "ipythonx/mvtec-ad v2",
+    "validation_image": "bottle/train/good/002.png"
+  },
+  "artifacts": {
+    "source_checkpoint": "patchcore/bottle/EXP-002/patchcore_model.pt",
+    "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+    "memory_bank_shape": [1710, 1536],
+    "memory_bank_recomputed": false
+  },
+  "metrics": {
+    "reference_score": 29.36626434326172,
+    "api_score": 29.366289138793945,
+    "score_absolute_difference": 2.47955322265625e-05,
+    "map_max_absolute_difference": 0.00028705596923828125,
+    "map_relative_difference": 1.1817550216343618e-05,
+    "anomaly_map_shape": [256, 256]
+  },
+  "tolerances": {
+    "score_absolute": 0.001,
+    "map_absolute": 0.001,
+    "map_relative": 0.0001
+  },
+  "validation": {
+    "local_unit_tests_passed": 11,
+    "kaggle_version": 1,
+    "status": "PASS",
+    "validated_categories": ["bottle"],
+    "pending_categories": ["hazelnut", "transistor"]
+  }
+}
