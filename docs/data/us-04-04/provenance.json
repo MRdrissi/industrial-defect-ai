@@ -1,0 +1,76 @@
+{
+  "status": "archived_with_protocol_limitation",
+  "source": "User-supplied local Kaggle exports; no live Kaggle access.",
+  "source_archive_sha256": "1865de3942b13e74445a18b9142d02b01ea8854f1535d5c6b8b4bb754e5ec790",
+  "exports": {
+    "gpu": {
+      "original_filename": "industrialdefect-ai-patchcore-hazelnut-memory-bank.ipynb",
+      "original_file_sha256": "8fded1759f0910e47f30c58d12c745b983de386351c7481b6b8aaaa0fe3ecd31",
+      "repository_notebook": "notebooks/14-patchcore-hazelnut-memory-bank.ipynb",
+      "code_cells_sha256": "105acdc71f3874dc74ff992cfb3771dd94dbceefba4b37011cb3cd1252d4cbad",
+      "code_cell_count": 13,
+      "output_count": 20,
+      "export_modifications": "One Markdown warning prepended; original cells, code, outputs and metadata preserved.",
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-patchcore-hazelnut-memory-bank",
+      "kaggle_version_url": null,
+      "execution_evidence": "GPU code cells contain execution counters and outputs."
+    },
+    "cpu": {
+      "original_filename": "industrialdefect-ai-patchcore-hazelnut-restore-che.ipynb",
+      "original_file_sha256": "c6d269dfd8b5b2e3b7aafec5f8eebab90ada5185676057a0dcc48e3a7330d86e",
+      "repository_notebook": "notebooks/15-patchcore-hazelnut-restore-check.ipynb",
+      "code_cells_sha256": "c41a270e974767eb22c4e568debdf940afa361eb334f45be07aae4ec28481948",
+      "code_cell_count": 6,
+      "output_count": 2,
+      "export_modifications": "One Markdown warning prepended; original cells, code, outputs and metadata preserved.",
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-patchcore-hazelnut-restore-che",
+      "kaggle_version_url": null,
+      "execution_evidence": "Restoration cells 1-5 have no outputs/counters; only packaging cell 6 has output. PASS comes from supplied restore_report.json."
+    }
+  },
+  "evidence_sha256": {
+    "coreset_report.json": "e7515282beddec234c536654f6be1b95cc1bfec716b8d9fd262e737c22e82acb",
+    "inference_report.json": "1c09b6e970d9c658883c54acdcd078e75752c7b8c6b729c284f435a1a2c49315",
+    "restore_report.json": "28c0ec85d39c85f508f97c23a6f953326a19b65acdb8fcff7918211d02c86bf3",
+    "reference_prediction.npz": "4fba549c507b301eca6c14ddd520640d90ac44707a5d80555145e40fe7e40587"
+  },
+  "pipeline_source_commit": "9c932580cbbe27c61d92905e344c8c7e86457381",
+  "source_commit_scope": "Existing src/data pipeline and manifests only; notebook experiment code was not in this commit.",
+  "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+  "checks": {
+    "manifest_counts": {
+      "train": 313,
+      "val": 78,
+      "test": 110
+    },
+    "manifest_paths_unique": true,
+    "splits_disjoint": true,
+    "reference_is_normal_validation": true,
+    "reported_processed_paths": 313,
+    "processed_path_list_available": false,
+    "processed_paths_evidence": "GPU original cell 8 asserts set(seen_paths)==train_paths and outputs 313 unique paths; list itself was not exported.",
+    "checkpoint_downloaded_or_rehashed_locally": false,
+    "memory_bank_or_indices_rehashed_locally": false,
+    "cpu_restoration_rerun_locally": false,
+    "cpu_prediction_array_available": false
+  },
+  "findings": [
+    {
+      "severity": "scientific_blocker",
+      "finding": "Feature pooling absent during bank extraction (GPU cells 7-8) but applied by Anomalib forward during GPU/CPU inference.",
+      "resolution": "Archive original EXP-001 with explicit limitation, as requested; no scientific correction or rerun."
+    },
+    {
+      "severity": "traceability",
+      "finding": "CPU restoration cells have no saved outputs; only report JSON supports PASS."
+    },
+    {
+      "severity": "traceability",
+      "finding": "No scriptVersionId provided or embedded in exports; URLs are unversioned."
+    },
+    {
+      "severity": "metadata",
+      "finding": "GPU export says isGpuEnabled=false despite CUDA outputs; CPU metadata lists Internet disabled and no inputs despite required installation/cloning/attached artifacts."
+    }
+  ]
+}

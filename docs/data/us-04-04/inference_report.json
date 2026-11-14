@@ -1,0 +1,19 @@
+{
+  "category": "hazelnut",
+  "experiment_id": "EXP-001",
+  "reference_image": "hazelnut/train/good/002.png",
+  "reference_split": "val",
+  "reference_label": 0,
+  "pred_score": 65.37274932861328,
+  "anomaly_map_shape": [
+    1,
+    1,
+    256,
+    256
+  ],
+  "anomaly_map_min": 31.18499755859375,
+  "anomaly_map_max": 64.66737365722656,
+  "checkpoint_sha256": "d8e6928416eee8172ae19d35630be99935ade2af7ae978ded50cbff2801faeec",
+  "reference_npz_sha256": "4fba549c507b301eca6c14ddd520640d90ac44707a5d80555145e40fe7e40587",
+  "memory_bank_sha256": "75d88da63a2a6181ef18f9e0ae6a969a59e226eda895bedfb67b9ab21befd93d"
+}
