@@ -1,0 +1,33 @@
+{
+  "experiment_id": "EXP-001",
+  "category": "transistor",
+  "dataset": "ipythonx/mvtec-ad",
+  "manifest": "docs/data/us-02-03/transistor_manifest.csv",
+  "transform": {
+    "profile": "patchcore",
+    "size": [256, 256]
+  },
+  "model": {
+    "backbone": "wide_resnet50_2",
+    "pre_trained": true,
+    "frozen": true,
+    "layers": ["layer2", "layer3"],
+    "num_neighbors": 1
+  },
+  "memory_bank": {
+    "split": "train",
+    "sample_count": 170,
+    "sampling": "all",
+    "seed": 42,
+    "batch_size": 2,
+    "num_workers": 0,
+    "coreset": "KCenterGreedy",
+    "sampling_ratio": 0.01
+  },
+  "inference": {
+    "split": "val",
+    "expected_samples": 43,
+    "image_path": "transistor/train/good/002.png",
+    "dtype": "float32"
+  }
+}
