@@ -1,0 +1,178 @@
+{
+  "experiment_id": "EXP-001",
+  "run_id": "patchcore-hazelnut-exp001",
+  "user_story": "US-04-04",
+  "model": "PatchCore",
+  "dataset": "MVTec AD",
+  "category": "hazelnut",
+  "status": "archived_with_protocol_limitation",
+  "scientific_acceptance": "not_validated",
+  "environment": {
+    "platform": "Kaggle",
+    "gpu": "Tesla T4",
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "anomalib": "2.7.0",
+    "timm": "1.0.30",
+    "lightning": "2.6.6"
+  },
+  "training": {
+    "epochs": null,
+    "learning_rate": null,
+    "split": "train",
+    "sample_count": 313,
+    "sampling": "all",
+    "seed": 42,
+    "projection_seed": 42,
+    "batch_size": 2,
+    "num_workers": 0,
+    "coreset": "KCenterGreedy",
+    "sampling_ratio": 0.01,
+    "projection_epsilon": 0.9,
+    "feature_pooling_applied": false,
+    "image_size": [
+      256,
+      256
+    ],
+    "backbone": "wide_resnet50_2",
+    "pre_trained": true,
+    "frozen": true,
+    "layers": [
+      "layer2",
+      "layer3"
+    ],
+    "num_neighbors": 1
+  },
+  "reproducibility": {
+    "git_commit": "9c932580cbbe27c61d92905e344c8c7e86457381",
+    "git_commit_scope": "Existing src/data pipeline and manifests only; notebook experiment code was not in this commit.",
+    "dataset_version": "v2 (3209332)",
+    "split_manifest": "docs/data/us-02-03/hazelnut_manifest.csv",
+    "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+    "config": "experiments/configs/patchcore_hazelnut.json",
+    "notebook": "notebooks/14-patchcore-hazelnut-memory-bank.ipynb",
+    "restore_notebook": "notebooks/15-patchcore-hazelnut-restore-check.ipynb",
+    "provenance": "docs/data/us-04-04/provenance.json"
+  },
+  "measured": {
+    "extraction": {
+      "images_processed": 313,
+      "unique_paths": 313,
+      "embedding_shape": [
+        320512,
+        1536
+      ],
+      "duration_seconds_rounded": 36.86,
+      "peak_gpu_allocated_mib": 130.52,
+      "embedding_store_length": 0,
+      "source": "GPU original cell 8 output"
+    },
+    "coreset": {
+      "category": "hazelnut",
+      "experiment_id": "EXP-001",
+      "seed": 42,
+      "sampling_ratio": 0.01,
+      "input_shape": [
+        320512,
+        1536
+      ],
+      "memory_bank_shape": [
+        3205,
+        1536
+      ],
+      "selection_duration_seconds": 16.672654830000056,
+      "peak_gpu_allocated_mib": 2756.54,
+      "indices_sha256": "bc4a7b5bc67c95558e233329803d316c94b6bee1445223069d4c26f99064f07e",
+      "memory_bank_sha256": "75d88da63a2a6181ef18f9e0ae6a969a59e226eda895bedfb67b9ab21befd93d"
+    },
+    "gpu_inference": {
+      "category": "hazelnut",
+      "experiment_id": "EXP-001",
+      "reference_image": "hazelnut/train/good/002.png",
+      "reference_split": "val",
+      "reference_label": 0,
+      "pred_score": 65.37274932861328,
+      "anomaly_map_shape": [
+        1,
+        1,
+        256,
+        256
+      ],
+      "anomaly_map_min": 31.18499755859375,
+      "anomaly_map_max": 64.66737365722656,
+      "checkpoint_sha256": "d8e6928416eee8172ae19d35630be99935ade2af7ae978ded50cbff2801faeec",
+      "reference_npz_sha256": "4fba549c507b301eca6c14ddd520640d90ac44707a5d80555145e40fe7e40587",
+      "memory_bank_sha256": "75d88da63a2a6181ef18f9e0ae6a969a59e226eda895bedfb67b9ab21befd93d"
+    },
+    "cpu_restoration_report": {
+      "category": "hazelnut",
+      "experiment_id": "EXP-001",
+      "device": "cpu",
+      "reference_image": "hazelnut/train/good/002.png",
+      "checkpoint_sha256": "d8e6928416eee8172ae19d35630be99935ade2af7ae978ded50cbff2801faeec",
+      "memory_bank_sha256": "75d88da63a2a6181ef18f9e0ae6a969a59e226eda895bedfb67b9ab21befd93d",
+      "gpu_score": 65.37274932861328,
+      "cpu_score": 65.372802734375,
+      "score_abs_diff": 5.340576171875e-05,
+      "map_max_abs_diff": 0.00016021728515625,
+      "map_mean_abs_diff": 2.2741849534213543e-05,
+      "map_relative_max_diff": 4.785122916135936e-06,
+      "cpu_inference_seconds": 0.5472397959999853,
+      "tolerances": {
+        "score_absolute": 0.001,
+        "map_max_absolute": 0.001,
+        "map_relative_max": 0.0001
+      },
+      "strict_load": true,
+      "coreset_recomputed": false,
+      "status": "PASS"
+    }
+  },
+  "derived": {
+    "patches_per_image": 1024,
+    "embedding_matrix_mib": 1878,
+    "expected_coreset_size": 3205,
+    "estimated_projection_dimension": 313,
+    "memory_bank_tensor_mib": 18.779296875
+  },
+  "verified_properties": {
+    "manifest_counts": {
+      "train": 313,
+      "val": 78,
+      "test": 110
+    },
+    "manifest_paths_unique": true,
+    "splits_disjoint": true,
+    "reference_is_normal_validation": true,
+    "reported_processed_paths": 313,
+    "processed_path_list_available": false,
+    "processed_paths_evidence": "GPU original cell 8 asserts set(seen_paths)==train_paths and outputs 313 unique paths; list itself was not exported.",
+    "checkpoint_downloaded_or_rehashed_locally": false,
+    "memory_bank_or_indices_rehashed_locally": false,
+    "cpu_restoration_rerun_locally": false,
+    "cpu_prediction_array_available": false
+  },
+  "metrics": {
+    "image_auroc": null,
+    "pixel_auroc": null,
+    "precision": null,
+    "recall": null,
+    "f1_score": null
+  },
+  "artifacts": {
+    "kaggle_gpu_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-patchcore-hazelnut-memory-bank",
+    "kaggle_cpu_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-patchcore-hazelnut-restore-che",
+    "kaggle_gpu_version_url": null,
+    "kaggle_cpu_version_url": null,
+    "model_path": "/kaggle/working/patchcore/hazelnut/EXP-001/patchcore_model.pt",
+    "checkpoint_size_mib_rounded": 113.86,
+    "checkpoint_sha256": "d8e6928416eee8172ae19d35630be99935ade2af7ae978ded50cbff2801faeec",
+    "coreset_path": "/kaggle/working/patchcore/hazelnut/EXP-001/hazelnut_coreset.pt",
+    "coreset_file_sha256": null,
+    "indices_sha256": "bc4a7b5bc67c95558e233329803d316c94b6bee1445223069d4c26f99064f07e",
+    "memory_bank_sha256": "75d88da63a2a6181ef18f9e0ae6a969a59e226eda895bedfb67b9ab21befd93d",
+    "evidence_directory": "docs/data/us-04-04/"
+  },
+  "notes": "Bank features omit Anomalib feature_pooler; inference applies it. Do not use EXP-001 for US-05-02 calibration or comparative detection claims. GPU/CPU agreement demonstrates restoration, not feature-pipeline consistency. Tensor hashes are not checkpoint-file hashes. Local audit did not access the large artifacts."
+}

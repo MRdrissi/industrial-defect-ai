@@ -1,0 +1,47 @@
+{
+  "scope": "Local archive integrity and existing CPU regression tests; no Kaggle experiment or checkpoint restoration rerun.",
+  "environment": {
+    "python": "3.12.6",
+    "torch": "2.15.0+cpu",
+    "numpy": "2.5.4"
+  },
+  "suites": [
+    {
+      "directory": "tests/experiments",
+      "tests": 4,
+      "status": "PASS"
+    },
+    {
+      "directory": "tests/data",
+      "tests": 18,
+      "status": "PASS"
+    },
+    {
+      "directory": "tests/models",
+      "tests": 7,
+      "status": "PASS"
+    },
+    {
+      "directory": "tests/inference",
+      "tests": 16,
+      "status": "PASS"
+    }
+  ],
+  "total_tests": 45,
+  "scientific_acceptance": "not_validated",
+  "checks": {
+    "original_notebook_code_outputs_metadata_preserved": true,
+    "all_supplied_evidence_bytes_preserved": true,
+    "json_valid": true,
+    "notebook_code_ast_valid": true,
+    "relative_document_links_valid": true,
+    "secret_pattern_scan": "No matches in delivered text artifacts",
+    "eda_sha256": "4af5f92be60ccf2065dbed0f338c35ac455910833cb47f7eb09fa2016414618f"
+  },
+  "limits": [
+    "No large checkpoint, coreset tensor or selected indices supplied.",
+    "CPU report numerical consistency checked, but CPU output map unavailable.",
+    "Kaggle version IDs unavailable.",
+    "Feature pooling differs between bank construction and inference; archive only."
+  ]
+}

@@ -1,0 +1,78 @@
+﻿{
+  "experiment_id": "EXP-002",
+  "run_id": "patchcore-bottle-exp002",
+  "user_story": "US-04-02",
+  "model": "PatchCore",
+  "dataset": "MVTec AD",
+  "category": "bottle",
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "anomalib": "2.7.0",
+    "timm": "1.0.30",
+    "lightning": "2.6.6",
+    "gpu": "Tesla T4",
+    "cuda_runtime": "13.0"
+  },
+  "training": {
+    "epochs": null,
+    "learning_rate": null,
+    "batch_size": 2,
+    "image_size": [256, 256],
+    "seed": 42,
+    "train_images": 167,
+    "validation_images": 42,
+    "backbone": "wide_resnet50_2",
+    "pre_trained": true,
+    "frozen": true,
+    "layers": ["layer2", "layer3"],
+    "num_neighbors": 1,
+    "coreset": "KCenterGreedy",
+    "coreset_ratio": 0.01
+  },
+  "reproducibility": {
+    "git_commit": "4664a8e8c016ea864c65b94f959456a50afbb7a4",
+    "git_tag": "exp/patchcore-bottle-exp002",
+    "dataset_version": "ipythonx/mvtec-ad v2 (3209332)",
+    "split_manifest": "docs/data/us-02-03/bottle_manifest.csv",
+    "config": "experiments/configs/patchcore_bottle.json",
+    "notebook": "notebooks/14-patchcore-bottle-memory-bank.ipynb",
+    "restore_notebook": "notebooks/15-patchcore-bottle-restore-check.ipynb",
+    "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+    "config_sha256": "087e3f727adc3c629b5167e19669fa71b3bc1fff8f9fef1b3d948b707d1b7d5d"
+  },
+  "metrics": {
+    "embedding_shape": [171008, 1536],
+    "memory_bank_shape": [1710, 1536],
+    "validation_image": "bottle/train/good/002.png",
+    "raw_score": 29.36626434326172,
+    "anomaly_map_shape": [1, 1, 256, 256],
+    "image_auroc": null,
+    "pixel_auroc": null,
+    "precision": null,
+    "recall": null,
+    "f1_score": null
+  },
+  "artifacts": {
+    "model_path": "patchcore/bottle/EXP-002/patchcore_model.pt",
+    "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+    "kaggle_version_url": "https://www.kaggle.com/code/mouadfekkak/14-patchcore-bottle-memory-bank?scriptVersionId=369295449",
+    "memory_bank_report": "docs/data/us-04-02/memory_bank_report.json",
+    "restore_report": "docs/data/us-04-02/restore_report.json",
+    "reference_prediction": "docs/data/us-04-02/reference_prediction.npz",
+    "anomaly_visualization": "docs/data/us-04-02/anomaly_visualization.png"
+  },
+  "restoration":  {
+    "restoration_device":  "cpu",
+    "restoration_status":  "PASS",
+    "cpu_restored_score":  29.366289138793945,
+    "score_absolute_difference":  2.47955322265625E-05,
+    "map_max_absolute_difference":  0.00028705596923828125,
+    "map_max_error_relative_to_range":  1.1817550216343618E-05,
+    "memory_bank_recomputed":  false,
+    "strict_state_dict_loading":  true
+  },
+  "notes": "Memory Bank construite sur les 167 images normales Bottle. Score brut non calibre. Le split Test reste reserve a l'evaluation finale."
+}
