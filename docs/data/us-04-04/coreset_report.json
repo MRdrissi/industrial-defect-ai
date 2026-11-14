@@ -1,0 +1,18 @@
+{
+  "category": "hazelnut",
+  "experiment_id": "EXP-001",
+  "seed": 42,
+  "sampling_ratio": 0.01,
+  "input_shape": [
+    320512,
+    1536
+  ],
+  "memory_bank_shape": [
+    3205,
+    1536
+  ],
+  "selection_duration_seconds": 16.672654830000056,
+  "peak_gpu_allocated_mib": 2756.54,
+  "indices_sha256": "bc4a7b5bc67c95558e233329803d316c94b6bee1445223069d4c26f99064f07e",
+  "memory_bank_sha256": "75d88da63a2a6181ef18f9e0ae6a969a59e226eda895bedfb67b9ab21befd93d"
+}

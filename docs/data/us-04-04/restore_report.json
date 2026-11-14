@@ -1,0 +1,23 @@
+{
+  "category": "hazelnut",
+  "experiment_id": "EXP-001",
+  "device": "cpu",
+  "reference_image": "hazelnut/train/good/002.png",
+  "checkpoint_sha256": "d8e6928416eee8172ae19d35630be99935ade2af7ae978ded50cbff2801faeec",
+  "memory_bank_sha256": "75d88da63a2a6181ef18f9e0ae6a969a59e226eda895bedfb67b9ab21befd93d",
+  "gpu_score": 65.37274932861328,
+  "cpu_score": 65.372802734375,
+  "score_abs_diff": 5.340576171875e-05,
+  "map_max_abs_diff": 0.00016021728515625,
+  "map_mean_abs_diff": 2.2741849534213543e-05,
+  "map_relative_max_diff": 4.785122916135936e-06,
+  "cpu_inference_seconds": 0.5472397959999853,
+  "tolerances": {
+    "score_absolute": 0.001,
+    "map_max_absolute": 0.001,
+    "map_relative_max": 0.0001
+  },
+  "strict_load": true,
+  "coreset_recomputed": false,
+  "status": "PASS"
+}
