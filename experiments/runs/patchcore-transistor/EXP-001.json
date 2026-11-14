@@ -20,7 +20,10 @@
     "epochs": null,
     "learning_rate": null,
     "batch_size": 2,
-    "image_size": [256, 256],
+    "image_size": [
+      256,
+      256
+    ],
     "seed": 42,
     "train_images": 170,
     "validation_images": 43,
@@ -28,7 +31,10 @@
     "pre_trained": true,
     "frozen": true,
     "trainable_parameters": 0,
-    "layers": ["layer2", "layer3"],
+    "layers": [
+      "layer2",
+      "layer3"
+    ],
     "num_neighbors": 1,
     "coreset": "KCenterGreedy",
     "coreset_ratio": 0.01
@@ -45,11 +51,22 @@
     "config_sha256": "76880ff8ae69b874540a16ccbf93320c9d313e0e6e3b8c9013aee1b0a7a14c81"
   },
   "metrics": {
-    "embedding_shape": [174080, 1536],
-    "memory_bank_shape": [1740, 1536],
+    "embedding_shape": [
+      174080,
+      1536
+    ],
+    "memory_bank_shape": [
+      1740,
+      1536
+    ],
     "validation_image": "transistor/train/good/002.png",
     "raw_score": 40.13337707519531,
-    "anomaly_map_shape": [1, 1, 256, 256],
+    "anomaly_map_shape": [
+      1,
+      1,
+      256,
+      256
+    ],
     "image_auroc": null,
     "pixel_auroc": null,
     "precision": null,
@@ -63,15 +80,18 @@
     "memory_bank_report": "docs/data/us-04-03/memory_bank_report.json",
     "restore_report": "docs/data/us-04-03/restore_report.json",
     "reference_prediction": "docs/data/us-04-03/reference_prediction.npz",
-    "anomaly_visualization": "docs/data/us-04-03/anomaly_visualization.png"
+    "anomaly_visualization": "docs/data/us-04-03/anomaly_visualization.png",
+    "restore_kaggle_version_url": "https://www.kaggle.com/code/zakariaelbergui/15-patchcore-transistor-restore-check?scriptVersionId=369649621"
   },
   "restoration": {
     "restoration_device": "cpu",
-    "restoration_status": "PENDING (ST-04-03-02 / IDL-49)",
-    "cpu_restored_score": null,
-    "score_absolute_difference": null,
-    "map_max_absolute_difference": null,
-    "map_max_error_relative_to_range": null,
+    "restoration_status": "PASS",
+    "python_version": "3.13.18",
+    "torch": "2.11.0+cpu",
+    "cpu_restored_score": 40.13338851928711,
+    "score_absolute_difference": 1.1444091796875e-05,
+    "map_max_absolute_difference": 0.0001506805419921875,
+    "map_max_error_relative_to_range": 6.788357571493435e-06,
     "memory_bank_recomputed": false,
     "strict_state_dict_loading": true
   },
