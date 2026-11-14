@@ -12,14 +12,17 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 | US | Objectif | Documentation |
 |---|---|---|
 | US-06-01 | Contrat commun, registre et simulation CPU | [US-06-01](epic-06/us-06-01.md) |
-| US-06-02 | Interface Streamlit et importation d'image | À venir |
+| US-06-02 | Interface Streamlit et importation d'image | [US-06-02](epic-06/us-06-02.md) |
 | US-06-03 | Intégration des six modèles réels | À venir |
 
 ## Architecture
 
 - `src/inference/` : contrat et moteurs d'inférence.
 - `configs/model_registry.json` : registre.
-- `app/` : future application Streamlit.
+- `app/streamlit_app.py` : interface Streamlit et orchestration de l'inférence.
+- `app/image_utils.py` : validation, chargement et conversion des images.
+- `app/result_view.py` : affichage des résultats, scores et cartes d'anomalie.
+- `app/requirements.txt` : dépendances de l'application web.
 - `tests/inference/` : tests automatisés.
 
 ## Principes
