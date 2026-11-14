@@ -1,0 +1,21 @@
+{
+  "category": "hazelnut",
+  "experiment_id": "EXP-002",
+  "protocol": "PatchCore with local pooling",
+  "pooling_corrected": true,
+  "reference_image": "hazelnut/train/good/002.png",
+  "reference_split": "val",
+  "reference_label": 0,
+  "pred_score": 47.80107116699219,
+  "anomaly_map_shape": [
+    1,
+    1,
+    256,
+    256
+  ],
+  "anomaly_map_min": 17.329195022583008,
+  "anomaly_map_max": 46.45573806762695,
+  "checkpoint_sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+  "reference_npz_sha256": "d7ccc63aea96b6c2cec99b62e5572c9c3fca428c0a68bf7a82e1b125e8357688",
+  "memory_bank_sha256": "2b7cc437fbff34fe137be8b5c19836ae93b92615108d38f7daaa9022e63d9bec"
+}

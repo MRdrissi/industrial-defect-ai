@@ -1,0 +1,70 @@
+{
+  "experiment_id": "EXP-002",
+  "source": "Local exports provided by the author; no live Kaggle access.",
+  "source_archive_sha256": "41008b23214f66b38a68f87b828bcea8c5fd3c0d83c5a0e55577c5f6a428b1be",
+  "exports": {
+    "gpu": {
+      "original_filename": "patchcore-hazelnut-memory-bank-exp002.ipynb",
+      "original_file_sha256": "935cda76475df3f9cc78c3e152be1060f339e0747bedcaad9686c54ae45028f4",
+      "repository_notebook": "notebooks/14-patchcore-hazelnut-memory-bank-exp002.ipynb",
+      "code_cells_sha256": "74ad4a22b40d46dc7bca0926195047ec8534f91ca29bf0dae2cbb34d5ac8e657",
+      "original_cells_sha256": "c5b566047dbbf4b28b32f1b74045317cc0781ddcf2ada6a59b73c822fa372ce8",
+      "code_cell_count": 14,
+      "output_count": 21,
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/patchcore-hazelnut-memory-bank-exp002",
+      "kaggle_version_url": null,
+      "script_version_id": null,
+      "modifications": "One introductory Markdown cell added; original code, cells, outputs and metadata preserved."
+    },
+    "cpu": {
+      "original_filename": "patchcore-hazelnut-restore-exp002.ipynb",
+      "original_file_sha256": "e9916ca8b59eed02fc043e43a7fccfaba41680f2a80d62ff374c768faa3d5e12",
+      "repository_notebook": "notebooks/15-patchcore-hazelnut-restore-check-exp002.ipynb",
+      "code_cells_sha256": "2918fcde69f8ce316b606b28035dc9d81d5e5ed9f15a2860239844a6d0afd304",
+      "original_cells_sha256": "34c3da3649c7efa393958dfa492ce10f164d1229a5309f741bd25ab7e7b1a51b",
+      "code_cell_count": 6,
+      "output_count": 9,
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/patchcore-hazelnut-restore-exp002",
+      "kaggle_version_url": null,
+      "script_version_id": null,
+      "modifications": "One introductory Markdown cell added; original code, cells, outputs and metadata preserved."
+    }
+  },
+  "evidence_sha256": {
+    "coreset_report.json": "6ab1c9a01a2942954a8450573ca5842c52e571dfa1553374599d6bd916226922",
+    "inference_report.json": "734f90dad7b96888e3eadfa09eb315be8758680a11ce29101f49055a837901e8",
+    "restore_report.json": "15c1d5ebe0652d0f29ad586788cfc4b983c58b0891e88f4e426d518210d9970e",
+    "reference_prediction.npz": "d7ccc63aea96b6c2cec99b62e5572c9c3fca428c0a68bf7a82e1b125e8357688"
+  },
+  "pipeline_source_commit": "9c932580cbbe27c61d92905e344c8c7e86457381",
+  "pipeline_commit_scope": "Shared src/data and manifest only; notebook implementation identified by export hashes.",
+  "delivery_base_commit": "cc285c4b6ecb17fe471343ca62ea35ae24ff5dbc",
+  "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+  "verification_scope": {
+    "original_scientific_code_and_outputs_preserved": true,
+    "all_313_processed_paths_match_normal_train": true,
+    "manual_pooling_in_smoke_and_full_extraction_verified": true,
+    "kaggle_parity_cell": 8,
+    "kaggle_parity_batch_size": 2,
+    "kaggle_parity_max_difference": 0.0,
+    "full_extraction_cell": 9,
+    "coreset_cell": 11,
+    "checkpoint_cell": 12,
+    "gpu_inference_cell": 13,
+    "cpu_execution_outputs_available": true,
+    "gpu_reference_uses_in_memory_model_just_saved": true,
+    "gpu_reference_uses_reloaded_model": false,
+    "checkpoint_and_bank_hashes_verified_in_saved_cpu_execution": true,
+    "large_artifacts_rehashed_locally": false,
+    "cpu_prediction_array_available_locally": false,
+    "independent_cpu_restoration_rerun_locally": false
+  },
+  "limitations": [
+    "Kaggle scriptVersionId unavailable (confirmed by author); unversioned URLs are not immutable execution identifiers.",
+    "Quick Save metadata lists no accelerator/inputs and Internet disabled; configure sessions explicitly using documented requirements.",
+    "No checkpoint or coreset tensors supplied: their hashes are attested by saved outputs/reports, not recalculated locally.",
+    "One reference validation image; no detection performance or threshold calibration.",
+    "US-04-05 load_patchcore expects model_state_dict/backbone/layers/num_neighbors at root; EXP-002 uses state_dict/config. Dedicated restore notebook works; shared-loader compatibility remains separate work.",
+    "Exact dataset version not embedded in EXP-002 export metadata; v2 is the project reproduction reference, not independently verified here."
+  ]
+}

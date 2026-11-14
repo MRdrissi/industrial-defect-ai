@@ -3,3 +3,7 @@ docs/data/us-02-03/*_manifest.csv text eol=lf
 # Preserve original Kaggle evidence hashes on Windows
 docs/data/us-04-04/*.json text eol=lf
 docs/data/us-04-04/*.npz binary
+
+# Preserve original EXP-002 evidence bytes across platforms
+docs/data/us-04-04/EXP-002/*.json text eol=lf
+docs/data/us-04-04/EXP-002/*.npz binary
