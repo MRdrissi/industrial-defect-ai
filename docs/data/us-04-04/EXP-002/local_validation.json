@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP-002",
+  "scope": "Local evidence integrity, exported extraction logic on synthetic tensors and repository regression tests. No full Kaggle experiment or checkpoint restoration rerun.",
+  "environment": {
+    "python": "3.12.6",
+    "torch": "2.15.0+cpu",
+    "numpy": "2.5.4",
+    "pytest": "8.3.5",
+    "anomalib_installed": false
+  },
+  "command": "python -m pytest tests/data tests/models tests/inference tests/experiments -q -p no:cacheprovider",
+  "tests": {
+    "data": 18,
+    "models": 7,
+    "inference_cae": 16,
+    "inference_patchcore": 11,
+    "exp001_archive": 4,
+    "exp002": 6,
+    "total": 62,
+    "status": "PASS"
+  },
+  "synthetic_check_scope": "Executes inspected extraction assignments and parity control from the export using small Torch feature tensors and a model double; mutation omitting pooling must change output. Actual Anomalib parity is evidenced by saved Kaggle outputs.",
+  "checks": {
+    "original_export_cells_outputs_metadata_preserved": true,
+    "all_supplied_evidence_hashes_verified": true,
+    "all_313_processed_paths_match_train": true,
+    "relative_document_links_valid": true,
+    "exp001_documentation_archived_without_content_change": true,
+    "eda_sha256": "4af5f92be60ccf2065dbed0f338c35ac455910833cb47f7eb09fa2016414618f"
+  },
+  "limits": [
+    "Large artifacts not supplied or rehashed locally.",
+    "Kaggle version IDs unavailable.",
+    "No local rerun of Anomalib pretrained backbone or full CPU restoration.",
+    "US-04-05 checkpoint loader does not directly accept state_dict/config.",
+    "No detection metrics or threshold calibration."
+  ]
+}
