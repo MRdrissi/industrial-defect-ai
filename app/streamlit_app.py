@@ -53,6 +53,32 @@ def main():
             .st-key-app_title [data-testid="stCaptionContainer"] p {{
                 font-size: {APP_TAGLINE_SIZE_PX}px;
             }}
+            .st-key-compare_controls [data-testid="stCheckbox"] label > div:first-of-type {{
+                position: relative;
+                border-radius: 50%;
+                box-sizing: border-box;
+                padding: 0;
+                background-color: transparent;
+            }}
+            .st-key-compare_controls [data-testid="stCheckbox"] label[data-selected] > div:first-of-type::after {{
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 8px;
+                height: 8px;
+                box-sizing: border-box;
+                border: 4px solid;
+                border-color: inherit;
+                border-radius: 50%;
+            }}
+            .st-key-compare_controls [data-testid="stCheckbox"] label > div:first-of-type svg {{
+                display: none;
+            }}
+            .st-key-method_selector [data-testid="stWidgetLabel"] {{
+                color: inherit;
+            }}
         </style>
         """
     )
@@ -78,11 +104,32 @@ def main():
     ))
 
     # 3. Mode comparaison CAE / PatchCore (US-06-05)
-    compare_mode = st.checkbox(
-        "Comparer CAE et PatchCore sur la même image",
-        value=False,
-        key="compare_mode",
-    )
+    with st.container(
+        key="compare_controls",
+        horizontal=True,
+        horizontal_alignment="right",
+    ):
+        compare_mode = st.checkbox(
+            "Comparer CAE et PatchCore sur la même image",
+            value=False,
+            key="compare_mode",
+        )
+
+    methods = sorted({
+        key[1] for key in registry
+        if key[0] == category
+    })
+    method = cast(str, method_column.selectbox(
+        "Méthode",
+        ["both"] if compare_mode else methods,
+        format_func=lambda value: {
+            "cae": "Convolutional AutoEncoder",
+            "patchcore": "PatchCore",
+            "both": "Les deux méthodes",
+        }.get(value, value),
+        disabled=compare_mode,
+        key="method_selector",
+    ))
 
     if compare_mode:
         # 4 bis. Une version par méthode
@@ -100,21 +147,6 @@ def main():
         }
 
     else:
-        # 3. Sélectionner la méthode
-        methods = sorted({
-            key[1] for key in registry
-            if key[0] == category
-        })
-
-        method = cast(str, method_column.selectbox(
-            "Méthode",
-            methods,
-            format_func=lambda value: {
-                "cae": "Convolutional AutoEncoder",
-                "patchcore": "PatchCore",
-            }.get(value, value),
-        ))
-
         # 4. Utiliser l'unique version disponible
         versions = sorted({
             key[2] for key in registry
