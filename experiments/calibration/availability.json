@@ -1,12 +1,12 @@
 {
   "audit_date_utc": "2026-11-15",
-  "status": "software_ready_real_calibrations_pending",
-  "calibrated_instances": 0,
+  "status": "partial_4_of_6_calibrations_archived",
+  "calibrated_instances": 4,
   "dataset_source": "ipythonx/mvtec-ad",
   "dataset_root_kaggle": "/kaggle/input/datasets/ipythonx/mvtec-ad",
   "dataset_local_status": "No confirmed local dataset; user confirms primary use on Kaggle.",
-  "kaggle_access": "No configured Kaggle API credentials or CLI; two anonymous legacy output API probes returned HTTP 404. No outputs retrieved in this audit.",
-  "local_checkpoint": "CAE Hazelnut EXP-001 found in Downloads/results; original file unchanged.",
+  "kaggle_access": "Authenticated session used for four calibrations saved as version 369724364. Two source checkpoints remained inaccessible at the last access check.",
+  "local_checkpoint": "CAE Hazelnut EXP-001 confirmed in Downloads/results with the expected SHA-256. Other local checkpoint/restoration checks are not asserted by this integration; four real Kaggle calibrations are independently archived. No weights stored in Git.",
   "dependencies": {
     "anomalib_installed_locally": false
   },
@@ -19,11 +19,16 @@
       "checkpoint_local_sha256_verified": false,
       "strict_local_restoration_verified": false,
       "validation_images_available_locally": false,
-      "status": "blocked_missing_checkpoint_and_validation_images",
-      "real_scores_collected": 0,
-      "threshold": null,
+      "status": "calibrated_archived",
+      "real_scores_collected": 42,
+      "threshold": 0.01955269752070307,
       "checkpoint_reference": "https://www.kaggle.com/code/mouadfekkak/06-cae-bottle-training/output?scriptVersionId=368423258",
-      "restoration_code_status": "existing CAE API"
+      "restoration_code_status": "Real strict restoration and Validation inference completed on Kaggle; original checkpoint unchanged.",
+      "threshold_hex": "0x1.4059f51999997p-6",
+      "kaggle_restoration_verified": true,
+      "validation_images_available_on_kaggle": true,
+      "evidence_directory": "experiments/calibration/kaggle-001/cae-bottle",
+      "integrity_sha256": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459"
     },
     {
       "instance": "cae-hazelnut",
@@ -33,11 +38,16 @@
       "checkpoint_local_sha256_verified": true,
       "strict_local_restoration_verified": true,
       "validation_images_available_locally": false,
-      "status": "blocked_missing_validation_images",
-      "real_scores_collected": 0,
-      "threshold": null,
+      "status": "calibrated_archived",
+      "real_scores_collected": 78,
+      "threshold": 0.008434063522145145,
       "checkpoint_reference": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-cae-hazelnut-training",
-      "restoration_code_status": "existing CAE API"
+      "restoration_code_status": "Real strict restoration and Validation inference completed on Kaggle; original checkpoint unchanged.",
+      "threshold_hex": "0x1.145e0d7fffffcp-7",
+      "kaggle_restoration_verified": true,
+      "validation_images_available_on_kaggle": true,
+      "evidence_directory": "experiments/calibration/kaggle-001/cae-hazelnut",
+      "integrity_sha256": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a"
     },
     {
       "instance": "cae-transistor",
@@ -47,11 +57,13 @@
       "checkpoint_local_sha256_verified": false,
       "strict_local_restoration_verified": false,
       "validation_images_available_locally": false,
-      "status": "blocked_missing_checkpoint_and_validation_images",
+      "status": "blocked_checkpoint_access",
       "real_scores_collected": 0,
       "threshold": null,
       "checkpoint_reference": "https://www.kaggle.com/code/zakariaelbergui/06-cae-train?scriptVersionId=368211534",
-      "restoration_code_status": "existing CAE API"
+      "restoration_code_status": "existing CAE API",
+      "validation_images_available_on_kaggle": true,
+      "blocker": "Source was shown as Private Datasource in the historical inference notebook; access/share required."
     },
     {
       "instance": "patchcore-bottle",
@@ -61,11 +73,13 @@
       "checkpoint_local_sha256_verified": false,
       "strict_local_restoration_verified": false,
       "validation_images_available_locally": false,
-      "status": "blocked_missing_checkpoint_and_validation_images",
+      "status": "blocked_checkpoint_access",
       "real_scores_collected": 0,
       "threshold": null,
       "checkpoint_reference": "https://www.kaggle.com/code/mouadfekkak/14-patchcore-bottle-memory-bank?scriptVersionId=369295449",
-      "restoration_code_status": "existing PatchCore API; Anomalib absent locally"
+      "restoration_code_status": "existing PatchCore API; Anomalib absent locally",
+      "validation_images_available_on_kaggle": true,
+      "blocker": "Source page not found in the authenticated session; visibility or current source URL must be confirmed by its owner."
     },
     {
       "instance": "patchcore-hazelnut",
@@ -75,11 +89,16 @@
       "checkpoint_local_sha256_verified": false,
       "strict_local_restoration_verified": false,
       "validation_images_available_locally": false,
-      "status": "blocked_missing_checkpoint_and_validation_images",
-      "real_scores_collected": 0,
-      "threshold": null,
+      "status": "calibrated_archived",
+      "real_scores_collected": 78,
+      "threshold": 48.83736801147461,
       "checkpoint_reference": "https://www.kaggle.com/code/marwanedrissi/patchcore-hazelnut-memory-bank-exp002",
-      "restoration_code_status": "dedicated EXP-002 schema adapter; synthetic strict-load tests"
+      "restoration_code_status": "Real strict restoration and Validation inference completed on Kaggle; original checkpoint unchanged.",
+      "threshold_hex": "0x1.86b2ee0000000p+5",
+      "kaggle_restoration_verified": true,
+      "validation_images_available_on_kaggle": true,
+      "evidence_directory": "experiments/calibration/kaggle-001/patchcore-hazelnut",
+      "integrity_sha256": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76"
     },
     {
       "instance": "patchcore-transistor",
@@ -89,11 +108,18 @@
       "checkpoint_local_sha256_verified": false,
       "strict_local_restoration_verified": false,
       "validation_images_available_locally": false,
-      "status": "blocked_missing_checkpoint_and_validation_images",
-      "real_scores_collected": 0,
-      "threshold": null,
+      "status": "calibrated_archived",
+      "real_scores_collected": 43,
+      "threshold": 40.95855598449707,
       "checkpoint_reference": "https://www.kaggle.com/code/zakariaelbergui/14-patchcore-transistor-memory-bank?scriptVersionId=369642459",
-      "restoration_code_status": "existing PatchCore API; Anomalib absent locally"
+      "restoration_code_status": "Real strict restoration and Validation inference completed on Kaggle; original checkpoint unchanged.",
+      "threshold_hex": "0x1.47ab1f6666666p+5",
+      "kaggle_restoration_verified": true,
+      "validation_images_available_on_kaggle": true,
+      "evidence_directory": "experiments/calibration/kaggle-001/patchcore-transistor",
+      "integrity_sha256": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e"
     }
-  ]
+  ],
+  "evidence_provenance": "experiments/calibration/kaggle-001-provenance.json",
+  "kaggle_script_version_id": 369724364
 }

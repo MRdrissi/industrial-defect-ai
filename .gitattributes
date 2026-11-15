@@ -15,3 +15,6 @@ docs/data/us-04-03/*.npz binary
 # Freeze calibration protocol/catalog bytes across platforms
 experiments/configs/evaluation_protocol.json text eol=lf
 experiments/configs/calibration_instances.json text eol=lf
+
+# Preserve original US-05-02 calibration evidence bytes on every platform
+experiments/calibration/kaggle-001/** -text
