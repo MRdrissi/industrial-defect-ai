@@ -27,7 +27,7 @@ def result(method, score, threshold):
         score=score,
         threshold=threshold,
         anomaly_map=torch.zeros(16, 16),
-        decision="suspect" if score >= threshold else "normal",
+        decision="suspect" if score > threshold else "normal",
         latency_ms=1.0,
         simulated=False,
     )
@@ -51,7 +51,7 @@ def test_each_decision_uses_its_own_threshold():
     )
 
     assert comparison["cae"].score == pytest.approx(comparison["patchcore"].score)
-    assert comparison["cae"].decision == "suspect"       # 0,2 >= 0,1
+    assert comparison["cae"].decision == "suspect"       # 0,2 > 0,1
     assert comparison["patchcore"].decision == "normal"  # 0,2 <  0,3
     assert "CAE → SUSPECT, PatchCore → NORMAL" in decisions_summary(comparison)
 

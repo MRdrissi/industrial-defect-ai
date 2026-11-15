@@ -51,7 +51,9 @@ def test_real_model_configuration():
 
     for model in registry.values():
         assert model["backend"] == model["method"]
-        assert model["threshold"] is None
+        # Seuils calibrés en US-05-02, intégrés par IDL-96
+        assert isinstance(model["threshold"], float) and model["threshold"] > 0
+        assert model["threshold_source"]["decision_rule"] == "score > threshold"
         assert model["artifact_path"].startswith("artifacts/")
         assert len(model["sha256"]) == 64
 
