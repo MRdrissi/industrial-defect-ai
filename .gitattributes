@@ -23,3 +23,7 @@ experiments/calibration/six-thresholds/** -text
 
 # Preserve original US-05-03 Kaggle CSV/JSON bytes across platforms
 experiments/benchmark/kaggle-001/** -text
+
+experiments/benchmark/kaggle-002/** -text
+experiments/benchmark/comparison.csv text eol=lf
+experiments/benchmark/summary.json text eol=lf
