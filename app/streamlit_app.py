@@ -5,7 +5,7 @@ from typing import cast
 
 import streamlit as st
 
-from app.comparison import METHOD_LABELS, METHODS, available_versions, run_comparison
+from app.comparison import METHODS, available_versions, run_comparison
 from app.comparison_view import display_comparison
 from app.image_utils import decode_image, image_to_tensor
 from app.report import build_report
@@ -68,9 +68,14 @@ def main():
         st.error(f"Impossible de charger le registre : {exc}")
         st.stop()
 
-    # 2. Sélectionner la catégorie
+    # 2. Sélectionner la catégorie et la méthode sur la même ligne
+    category_column, method_column = st.columns(2)
     categories = sorted({key[0] for key in registry})
-    category = cast(str, st.selectbox("Catégorie", categories))
+    category = cast(str, category_column.selectbox(
+        "Catégorie",
+        categories,
+        format_func=str.capitalize,
+    ))
 
     # 3. Mode comparaison CAE / PatchCore (US-06-05)
     compare_mode = st.checkbox(
@@ -83,15 +88,14 @@ def main():
         # 4 bis. Une version par méthode
         try:
             available = available_versions(registry, category)
+            if any(len(versions) != 1 for versions in available.values()):
+                raise ValueError("Une seule version par catégorie et méthode est attendue.")
         except ValueError as exc:
             st.error(str(exc))
             st.stop()
 
         compare_versions = {
-            name: cast(str, st.selectbox(
-                f"Version {METHOD_LABELS[name]}",
-                available[name],
-            ))
+            name: available[name][0]
             for name in METHODS
         }
 
@@ -102,22 +106,25 @@ def main():
             if key[0] == category
         })
 
-        method = cast(str, st.selectbox(
+        method = cast(str, method_column.selectbox(
             "Méthode",
             methods,
             format_func=lambda value: {
-                "cae": "CAE",
+                "cae": "Convolutional AutoEncoder",
                 "patchcore": "PatchCore",
             }.get(value, value),
         ))
 
-        # 4. Sélectionner la version
+        # 4. Utiliser l'unique version disponible
         versions = sorted({
             key[2] for key in registry
             if key[0] == category and key[1] == method
         })
 
-        version = cast(str, st.selectbox("Version", versions))
+        if len(versions) != 1:
+            st.error("Une seule version par catégorie et méthode est attendue.")
+            st.stop()
+        version = versions[0]
 
     # 5. Importer l'image
     uploaded = st.file_uploader(
