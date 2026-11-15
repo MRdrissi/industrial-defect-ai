@@ -7,6 +7,7 @@ import streamlit as st
 
 from app.comparison import METHODS, available_versions, run_comparison
 from app.comparison_view import display_comparison
+from app.image_preview import image_preview_button
 from app.image_utils import MAX_FILE_SIZE, decode_image, image_to_tensor
 from app.report import build_report
 from app.result_view import display_result
@@ -198,20 +199,30 @@ def main():
     st.markdown("Importer votre image")
     with st.container(key="upload_panel"):
         upload_column, analyze_column = st.columns([4, 1], vertical_alignment="center")
-        uploaded = upload_column.file_uploader(
-            "Importer une image",
-            type=["png", "jpg", "jpeg"],
-            accept_multiple_files=False,
-            max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
-            key="inspection_image",
-            label_visibility="collapsed",
-        )
+        with upload_column.container(
+            key="upload_controls",
+            horizontal=True,
+            horizontal_alignment="left",
+            vertical_alignment="center",
+        ):
+            uploaded = st.file_uploader(
+                "Importer une image",
+                type=["png", "jpg", "jpeg"],
+                accept_multiple_files=False,
+                max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
+                key="inspection_image",
+                label_visibility="collapsed",
+            )
 
-        if uploaded is not None:
-            try:
-                image = decode_image(uploaded.getvalue())
-            except ValueError as exc:
-                image_error = str(exc)
+            if uploaded is not None:
+                try:
+                    image = decode_image(uploaded.getvalue())
+                except ValueError as exc:
+                    image_error = str(exc)
+
+                if image is not None:
+                    with st.container(key="preview_control", width="content"):
+                        image_preview_button(image, uploaded.name)
 
         analyze_clicked = analyze_column.button(
             "Analyser l'image",
@@ -223,13 +234,6 @@ def main():
 
     if image_error is not None:
         st.error(image_error)
-
-    if image is not None:
-        st.image(
-            image,
-            caption="Image importée",
-            width="stretch",
-        )
 
     # 6. Lancer l'analyse
     if analyze_clicked and image is not None:
