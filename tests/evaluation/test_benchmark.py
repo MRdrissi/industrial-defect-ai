@@ -299,7 +299,7 @@ def test_evaluation_protocol_valid_json():
 
     config = json.loads(raw.decode("utf-8"))
 
-    assert config["protocol_version"] == "1.0.0"
+    assert config["protocol_version"] == "1.1.0"
     assert config["instances"]["expected_count"] == 6
     assert config["dataset"]["test_used_for_calibration"] is False
 

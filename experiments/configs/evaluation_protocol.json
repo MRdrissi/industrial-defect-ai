@@ -1,6 +1,6 @@
 {
   "protocol_id": "industrial-defect-ai-epic05-v1",
-  "protocol_version": "1.0.0",
+  "protocol_version": "1.1.0",
   "dataset": {
     "name": "MVTec AD",
     "training_split": "train",
@@ -26,9 +26,19 @@
     "anomaly_label": 1,
     "higher_score_means_more_anomalous": true,
     "decision_rule": "score > threshold",
-    "cae_image_score": "define_and_freeze_in_adapter_before_calibration",
+    "cae_image_score": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
     "patchcore_image_score": "native_pred_score",
-    "score_normalization_on_test": false
+    "score_normalization_on_test": false,
+    "score_definitions": {
+      "cae": {
+        "method": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
+        "smoothing_sigma": 4.0,
+        "kernel_size": 33
+      },
+      "patchcore": {
+        "method": "native_pred_score"
+      }
+    }
   },
   "spatial_evaluation": {
     "target_size_hw": [

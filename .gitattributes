@@ -11,3 +11,7 @@ docs/data/us-04-04/EXP-002/*.npz binary
 # Preserve PatchCore Transistor EXP-001 evidence bytes across platforms
 docs/data/us-04-03/*.json text eol=lf
 docs/data/us-04-03/*.npz binary
+
+# Freeze calibration protocol/catalog bytes across platforms
+experiments/configs/evaluation_protocol.json text eol=lf
+experiments/configs/calibration_instances.json text eol=lf
