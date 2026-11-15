@@ -9,6 +9,7 @@ US-06-04 (IDL-78)   : téléchargement du rapport d'inspection JSON.
 import numpy as np
 import streamlit as st
 from PIL import Image
+from datetime import datetime
 
 from app.overlay import make_overlay
 from app.report import report_filename, report_to_json
@@ -64,14 +65,9 @@ def display_result(
     st.subheader("Résultat de l'inspection")
 
     # 1. Décision
-    if result.decision == "non_calibree":
-        st.info(
-            "Inférence réelle effectuée. "
-            "Décision indisponible : seuil non calibré."
-        )
-    elif result.decision == "normal":
+    if result.decision == "normal":
         st.success("Décision : NORMAL")
-    else:
+    elif result.decision == "suspect":
         st.warning("Décision : SUSPECT")
 
     # 2. Indicateurs et identification du modèle
@@ -91,8 +87,6 @@ def display_result(
     with col3:
         st.metric("Latence", f"{result.latency_ms:.1f} ms")
 
-    st.caption(f"{model_label(result)} · décision : {decision_label(result)}")
-
     # 3. Heatmap superposée à l'image (taille d'origine)
     if image is not None:
         _, overlay, scale = make_overlay(image, result.anomaly_map, result.threshold)
@@ -103,8 +97,6 @@ def display_result(
         with right:
             st.image(overlay, caption="Heatmap superposée", width="stretch")
 
-        st.caption(SCALE_CAPTIONS[scale])
-
     # 4. Rapport d'inspection téléchargeable
     if report is not None:
         st.download_button(
@@ -114,10 +106,10 @@ def display_result(
             mime="application/json",
             on_click="ignore",  # garder le résultat affiché après le clic
         )
-        st.caption(
-            f"Rapport du {report['generated_at_utc']} · image SHA-256 "
-            f"{report['image']['sha256'][:12]}… · modèle {result.version}"
-        )
+        report_date = datetime.fromisoformat(
+            report["generated_at_utc"].replace("Z", "+00:00")
+        ).strftime("%d/%m/%Y à %H:%M")
+        st.caption(f"Rapport du {report_date} (UTC)")
 
     # 5. Carte brute et métadonnées
     with st.expander("Détails techniques"):
@@ -137,9 +129,4 @@ def display_result(
         st.info(
             "Simulation uniquement : aucune véritable "
             "détection de défaut n'a été effectuée."
-        )
-    elif result.threshold is None:
-        st.caption(
-            "Score brut non calibré : aucune classification "
-            "NORMAL/SUSPECT n'est établie."
         )
