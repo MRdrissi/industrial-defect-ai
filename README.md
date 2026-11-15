@@ -205,7 +205,11 @@ Les informations attendues sont : architecture, paramètres, catégorie/découpa
 dispose des six calibrations normales Validation (CAE/PatchCore × Bottle/Hazelnut/Transistor).
 Les deux sessions Kaggle sont archivées avec leurs empreintes ; le
 [registre des six seuils](experiments/calibration/six-thresholds/thresholds.json) a été exporté et
-rechargé sans nouvelle inférence. Le benchmark Test US-05-03 reste à réaliser.
+rechargé sans nouvelle inférence. Le benchmark Test [US-05-03](docs/epic-05/us-05-03.md) est livré
+techniquement : **6/6 instances**, 586 prédictions sur 293 images distinctes, sorties sauvegardées
+auditées et macro-moyennes non pondérées sur les trois catégories. F1 macro : **0,6178 CAE /
+0,9699 PatchCore** ; latence moyenne macro : **19,57 / 28,16 ms** sur Tesla T4.
+Ces mesures proviennent d’une exécution par instance ; revue collaborative et intégration restent distinctes.
 Voir l'[index EPIC-05](docs/EPIC-05-evaluation-benchmark.md) pour l'état de cette branche.
 
 **Chaque Epic possède ou possédera son propre fichier Markdown dans `docs/`** : ce document décrit son objectif, ses choix, ses User Stories, son environnement, ses validations, ses risques et les procédures pour reprendre le travail.

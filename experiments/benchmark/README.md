@@ -1,33 +1,63 @@
 # Benchmarks Test — US-05-03
 
-**Intégration partielle 2/6 ; Story ouverte.** Seuls CAE Transistor EXP-001 et PatchCore Bottle
-EXP-002 sont archivés. [Résultats, protocole et validation](../../docs/epic-05/us-05-03.md).
+**Livraison technique complète 6/6**, sans relancer les modèles ni modifier les seuils.
+[Rapport comparatif, audit et DoD](../../docs/epic-05/us-05-03.md) ·
+[Table des six instances](comparison.csv) · [Synthèse et macros](summary.json).
 
-Les six originaux de [kaggle-001/](kaggle-001/) sont extraits sans réécriture de la version
-Kaggle **370020172**, commit scientifique `0acbf26880b755373f2e61236d009ed16f04658c`.
-La [provenance](kaggle-001-provenance.json) est séparée des fichiers scientifiques.
+| Lot | Instances | Version Kaggle | Prédictions / NPZ audités | Petits originaux |
+|---|---|---:|---:|---:|
+| [kaggle-001](kaggle-001/) | CAE Transistor EXP-001, PatchCore Bottle EXP-002 | 370020172 | 183 / 183 | 6 |
+| [kaggle-002](kaggle-002/) | CAE Bottle EXP-002, CAE Hazelnut EXP-001, PatchCore Hazelnut EXP-002 corrigée, PatchCore Transistor EXP-001 | 370053025 | 403 / 403 | 12 |
 
-| Fichier original | Octets | SHA-256 |
-|---|---:|---|
-| `cae-transistor/manifest.json` | 19016 | `b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19` |
-| `cae-transistor/metrics.json` | 2983 | `c6b8a9ff01f98783ce70857e01d9420660a0da31a0dc7b4ae77f61ba6f9b44b7` |
-| `cae-transistor/predictions.csv` | 16205 | `7323d82cc76eec12b3e4b49361b3136555300b09fadc1ad418252d6a8522bdbd` |
-| `patchcore-bottle/manifest.json` | 15845 | `009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e` |
-| `patchcore-bottle/metrics.json` | 3091 | `2b6f198c1de9420d76a9ed58fcf9fff81ba492523bedd1599037f8ac242ccab6` |
-| `patchcore-bottle/predictions.csv` | 13256 | `e994eb753c7e9fe0d81cfe2b3f52e3f1b4b0a2b0286199ff5d8e426264de9c10` |
+Les **18 CSV/JSON originaux** sont conservés octet pour octet, protégés par `.gitattributes -text`.
+Le premier lot et sa [provenance historique](kaggle-001-provenance.json) restent inchangés depuis `5038988` ;
+son statut `partial_2_of_6` décrit cette livraison historique. La [provenance du deuxième lot](kaggle-002-provenance.json)
+référence les douze fichiers, les quatre manifestes et le ZIP original. Les six rapports déclarent
+le commit scientifique `0acbf26880b755373f2e61236d009ed16f04658c` et les seuils US-05-02 figés.
 
-Les manifestes et CSV conservent les 183 chemins et empreintes NPZ. Vérification complète du
-snapshot téléchargé : **100 NPZ CAE (26 985 219 octets) + 83 NPZ PatchCore (21 224 541 octets)**,
-sans fichiers manquants. L’affichage historique « empty » est levé par le contrôle des octets.
-Les tableaux `mask` et `anomaly_map` sont vérifiés sans recalculer les métriques.
+Les NPZ restent dans les Outputs Kaggle versionnés et les archives locales hors Git :
 
-Les NPZ restent hébergés dans les [Outputs Kaggle versionnés](https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-test-benchmark-001/output?scriptVersionId=370020172)
-et dans `us0503-kaggle-370020172.zip`, téléchargé hors dépôt (93 019 917 octets ; SHA-256
-`3f847e7bcbda2816ebb5ef4f41cd52a6720bd758b877a4a8f6f753d9ff7fcd45`).
-La totalité du ZIP n'est pas une livraison Git : son clone Kaggle et les autres fichiers
-ne sont pas intégrés. Aucun dataset, checkpoint, cache, ZIP ou NPZ n'est versionné ici.
+| Archive originale | Octets | SHA-256 | Source |
+|---|---:|---|---|
+| `us0503-kaggle-370020172.zip` | 93019917 | `3f847e7bcbda2816ebb5ef4f41cd52a6720bd758b877a4a8f6f753d9ff7fcd45` | [Outputs 370020172](https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-test-benchmark-001/output?scriptVersionId=370020172) |
+| `results_remainig.zip` | 153887769 | `85d9ff82c22126c181431dda845efeea56578ca66809d53e60b5ed61da4fe879` | [Outputs 370053025](https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-test-benchmark-002-v1/output?scriptVersionId=370053025) |
 
-Pour répéter le contrôle spatial, fournir le ZIP via `US0503_ARCHIVE` puis lancer uniquement
-`tests/evaluation/test_benchmark_artifacts.py`. Sans archive, le test externe est ignoré
-explicitement ; les sept tests des petits artefacts restent disponibles. Aucun calcul
-de métriques, aucune inférence ni recalibration. Aucune préparation des quatre autres instances.
+Les deux archives sont conservées sans modification. Les contrôles démontrent la présence des
+fichiers sauvegardés dans les téléchargements ; la correspondance de la deuxième archive à la version
+est fournie par l'utilisateur et recoupée avec les quatre ancres. Pas de nouvelle inspection distante
+authentifiée lors de cette intégration. L'ancien affichage « empty » du premier lot est résolu par
+les fichiers réellement présents dans son ZIP. L'accès futur dépend de Kaggle ou de la conservation
+locale des archives. Aucun NPZ de benchmark, ZIP, dataset, checkpoint, cache ou clone Kaggle n'est ajouté à Git.
+
+Les audits vérifient SHA/CRC, structure sûre, couverture Test, indices, liens CSV/manifeste/NPZ,
+seuils hex, métadonnées scientifiques, masques binaires et cartes finies. Les **293 masques** sont
+identiques entre familles. Image-AUROC, décisions et latences sont recoupées avec les CSV ;
+les Pixel-AUROC restent les valeurs originales sous empreinte, sans recalcul.
+
+## Synthèses dérivées
+
+`comparison.csv` contient les six résultats à pleine précision et leurs sources.
+`summary.json` contient les macro-moyennes, **(Bottle + Hazelnut + Transistor) / 3**, et les décomptes
+des métriques définies/indéfinies (3/0 partout). Le F1 est moyenné directement ; la latence macro
+est la moyenne des trois latences moyennes. Aucune micro-moyenne, aucun score inter-instance regroupé,
+aucun percentile global reconstitué. Mesures à une exécution par instance sur Tesla T4, sans
+intervalle de confiance entre exécutions ; périmètre d'inférence uniquement.
+
+```powershell
+.\.venv\Scripts\python.exe -B scripts/summarize_benchmark.py --check
+# Régénération explicite des deux seuls dérivés, si nécessaire :
+.\.venv\Scripts\python.exe -B scripts/summarize_benchmark.py --write
+```
+
+## Répéter les contrôles
+
+```powershell
+$env:US0503_ARCHIVE = 'C:\Users\marwa\Documents\ChatGPT\Projet DeepLearning\us0503-kaggle-370020172.zip'
+$env:US0503_ARCHIVE_002 = 'C:\Users\marwa\Downloads\results_remainig.zip'
+.\.venv\Scripts\python.exe -B -m pytest tests/evaluation/test_benchmark_artifacts.py tests/evaluation/test_benchmark_summary.py -q -p no:cacheprovider
+```
+
+Résultat : **39 tests réussis**, aucun ignoré avec les deux archives. Sans archives, trois tests
+spatiaux sont explicitement ignorés ; les contrôles des petits fichiers seuls ne prouvent pas
+une nouvelle disponibilité des NPZ. Le rapport détaille aussi la validation élargie :
+**296 tests et 2 sous-tests réussis**. Aucun calcul de modèle ou ajustement de seuil n'est exécuté.

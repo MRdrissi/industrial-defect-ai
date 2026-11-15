@@ -8,20 +8,26 @@ L'Epic compare CAE et PatchCore sur Bottle, Hazelnut et Transistor avec les spli
 |---|---|---|
 | [US-05-01 — Pipeline commun](epic-05/us-05-01.md) | Métriques image/pixel, masques, latence, exports et protocole | Tests synthétiques validés ; revue collaborative restante |
 | [US-05-02](epic-05/us-05-02.md) | Calibration des six seuils sur Validation normale | 6/6 calibrations réelles archivées ; registre strict exporté, rechargé et validé sans nouvelle inférence |
-| [US-05-03](epic-05/us-05-03.md) | Benchmark Test et macro-moyennes | Phase 1 livrée ; phase 2 partielle **2/6** : CAE Transistor et PatchCore Bottle archivés, 183 NPZ sauvegardés vérifiés ; Story ouverte, aucune macro-moyenne |
+| [US-05-03](epic-05/us-05-03.md) | Benchmark Test et macro-moyennes | Livraison technique complète **6/6** ; 586 prédictions/NPZ audités, comparaison et macros sur trois catégories ; revue collaborative distincte |
 | US-05-04 | Faux positifs, faux négatifs et limites scientifiques | Hors de la présente livraison |
 
 Le [protocole commun](../experiments/configs/evaluation_protocol.json) distingue calibration sur Validation
-et évaluation sur Test. Aucun résultat de détection réel n'est produit par US-05-01.
-
-US-05-02 fournit le [registre des six seuils](../experiments/calibration/six-thresholds/thresholds.json),
+et évaluation sur Test. US-05-02 fournit le [registre des six seuils](../experiments/calibration/six-thresholds/thresholds.json),
 avec son ancre d'intégrité dans [availability.json](../experiments/calibration/availability.json).
-Les sessions Kaggle 369724364 et 369945024 sont archivées séparément et conservées octet pour octet.
-US-05-03 doit charger ces seuils figés, sans les ajuster sur Test.
+Les sessions de calibration Kaggle 369724364 et 369945024 restent inchangées.
 
-US-05-03 archive uniquement les résultats réels CAE Transistor EXP-001 (100 Test) et PatchCore Bottle
-EXP-002 (83 Test) de la version Kaggle 370020172. Les six CSV/JSON originaux sont conservés
-octet pour octet avec [provenance et inventaire](../experiments/benchmark/kaggle-001-provenance.json).
-Les 100 + 83 NPZ ont été contrôlés dans l’archive téléchargée de cette version et restent hors Git.
-Les catégories diffèrent : aucune conclusion globale CAE/PatchCore ni macro-moyenne sur 2/6.
-Les quatre instances restantes ne sont ni exécutées ni préparées dans cette livraison.
+US-05-03 réutilise ces seuils sans ajustement sur Test. Les sorties réelles des versions Kaggle
+**370020172** (2 instances) et **370053025** (4 instances) sont archivées séparément,
+octet pour octet, avec [provenance et politique de conservation](../experiments/benchmark/README.md).
+Les 586 NPZ restent hors Git, vérifiés dans les deux ZIP originaux. Les deux familles sont comparées
+sur les mêmes **293 images Test distinctes**, sans nouvelle exécution des modèles.
+
+Les [macro-moyennes](../experiments/benchmark/summary.json) donnent un poids de 1/3 à chaque catégorie :
+F1 **0,617776 CAE / 0,969924 PatchCore**, Image-AUROC **0,807553 / 0,996944**,
+Pixel-AUROC **0,810604 / 0,976739**, latence moyenne **19,569520 / 28,159651 ms**.
+Ce sont des résultats descriptifs à une exécution par instance sur Tesla T4, issus de deux sessions,
+sans mesure de variance entre exécutions ni garantie hors de ce périmètre.
+
+Validation : **296 tests et 2 sous-tests réussis**, dont 39 contrôles d'artefacts/synthèse.
+La [fiche US-05-03](epic-05/us-05-03.md) fournit les six résultats, seuils, latences,
+formules, limites et bilan DoD. Aucun statut Jira, aucune PR ni aucun merge n'est réalisé ici.
