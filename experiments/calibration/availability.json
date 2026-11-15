@@ -1,12 +1,12 @@
 {
   "audit_date_utc": "2026-11-15",
-  "status": "partial_4_of_6_calibrations_archived",
-  "calibrated_instances": 4,
+  "status": "complete_6_of_6_calibrations_archived",
+  "calibrated_instances": 6,
   "dataset_source": "ipythonx/mvtec-ad",
   "dataset_root_kaggle": "/kaggle/input/datasets/ipythonx/mvtec-ad",
   "dataset_local_status": "No confirmed local dataset; user confirms primary use on Kaggle.",
-  "kaggle_access": "Authenticated session used for four calibrations saved as version 369724364. Two source checkpoints remained inaccessible at the last access check.",
-  "local_checkpoint": "CAE Hazelnut EXP-001 confirmed in Downloads/results with the expected SHA-256. Other local checkpoint/restoration checks are not asserted by this integration; four real Kaggle calibrations are independently archived. No weights stored in Git.",
+  "kaggle_access": "Four calibrations archived from version 369724364; final two from user-downloaded version 369945024. Checkpoint access blockers resolved for the recorded runs.",
+  "local_checkpoint": "CAE Hazelnut previously verified. CAE Transistor and PatchCore Bottle SHA-256 verified locally during final integration; no new model restoration or inference. No weights stored in Git.",
   "dependencies": {
     "anomalib_installed_locally": false
   },
@@ -28,7 +28,9 @@
       "kaggle_restoration_verified": true,
       "validation_images_available_on_kaggle": true,
       "evidence_directory": "experiments/calibration/kaggle-001/cae-bottle",
-      "integrity_sha256": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459"
+      "integrity_sha256": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459",
+      "evidence_provenance": "experiments/calibration/kaggle-001-provenance.json",
+      "kaggle_script_version_id": 369724364
     },
     {
       "instance": "cae-hazelnut",
@@ -47,39 +49,51 @@
       "kaggle_restoration_verified": true,
       "validation_images_available_on_kaggle": true,
       "evidence_directory": "experiments/calibration/kaggle-001/cae-hazelnut",
-      "integrity_sha256": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a"
+      "integrity_sha256": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a",
+      "evidence_provenance": "experiments/calibration/kaggle-001-provenance.json",
+      "kaggle_script_version_id": 369724364
     },
     {
       "instance": "cae-transistor",
       "source_experiment": "cae-transistor/EXP-001",
       "expected_validation_images": 43,
       "checkpoint_sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
-      "checkpoint_local_sha256_verified": false,
+      "checkpoint_local_sha256_verified": true,
       "strict_local_restoration_verified": false,
       "validation_images_available_locally": false,
-      "status": "blocked_checkpoint_access",
-      "real_scores_collected": 0,
-      "threshold": null,
+      "status": "calibrated_archived",
+      "real_scores_collected": 43,
+      "threshold": 0.027364758774638176,
       "checkpoint_reference": "https://www.kaggle.com/code/zakariaelbergui/06-cae-train?scriptVersionId=368211534",
-      "restoration_code_status": "existing CAE API",
+      "restoration_code_status": "Strict restoration and Validation inference recorded on Kaggle; local integration verifies checkpoint bytes and reloads the threshold only.",
       "validation_images_available_on_kaggle": true,
-      "blocker": "Source was shown as Private Datasource in the historical inference notebook; access/share required."
+      "evidence_directory": "experiments/calibration/kaggle-002/cae-transistor",
+      "evidence_provenance": "experiments/calibration/kaggle-002-provenance.json",
+      "integrity_sha256": "2c2f141fa59427dbaba280cd953e5eb139bfd687e5cc02e33aa8029a9f7820b4",
+      "kaggle_restoration_verified": true,
+      "kaggle_script_version_id": 369945024,
+      "threshold_hex": "0x1.c0581e0000000p-6"
     },
     {
       "instance": "patchcore-bottle",
       "source_experiment": "patchcore-bottle/EXP-002",
       "expected_validation_images": 42,
       "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
-      "checkpoint_local_sha256_verified": false,
+      "checkpoint_local_sha256_verified": true,
       "strict_local_restoration_verified": false,
       "validation_images_available_locally": false,
-      "status": "blocked_checkpoint_access",
-      "real_scores_collected": 0,
-      "threshold": null,
+      "status": "calibrated_archived",
+      "real_scores_collected": 42,
+      "threshold": 31.620044136047362,
       "checkpoint_reference": "https://www.kaggle.com/code/mouadfekkak/14-patchcore-bottle-memory-bank?scriptVersionId=369295449",
-      "restoration_code_status": "existing PatchCore API; Anomalib absent locally",
+      "restoration_code_status": "Strict restoration and Validation inference recorded on Kaggle; local integration verifies checkpoint bytes and reloads the threshold only.",
       "validation_images_available_on_kaggle": true,
-      "blocker": "Source page not found in the authenticated session; visibility or current source URL must be confirmed by its owner."
+      "evidence_directory": "experiments/calibration/kaggle-002/patchcore-bottle",
+      "evidence_provenance": "experiments/calibration/kaggle-002-provenance.json",
+      "integrity_sha256": "1c39c5452c294170ec9020138c0bf79a70c4b971f7fb0153cf2ef1d2e36f7596",
+      "kaggle_restoration_verified": true,
+      "kaggle_script_version_id": 369945024,
+      "threshold_hex": "0x1.f9ebb36666666p+4"
     },
     {
       "instance": "patchcore-hazelnut",
@@ -98,7 +112,9 @@
       "kaggle_restoration_verified": true,
       "validation_images_available_on_kaggle": true,
       "evidence_directory": "experiments/calibration/kaggle-001/patchcore-hazelnut",
-      "integrity_sha256": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76"
+      "integrity_sha256": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76",
+      "evidence_provenance": "experiments/calibration/kaggle-001-provenance.json",
+      "kaggle_script_version_id": 369724364
     },
     {
       "instance": "patchcore-transistor",
@@ -117,9 +133,25 @@
       "kaggle_restoration_verified": true,
       "validation_images_available_on_kaggle": true,
       "evidence_directory": "experiments/calibration/kaggle-001/patchcore-transistor",
-      "integrity_sha256": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e"
+      "integrity_sha256": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e",
+      "evidence_provenance": "experiments/calibration/kaggle-001-provenance.json",
+      "kaggle_script_version_id": 369724364
     }
   ],
-  "evidence_provenance": "experiments/calibration/kaggle-001-provenance.json",
-  "kaggle_script_version_id": 369724364
+  "evidence_provenance": [
+    "experiments/calibration/kaggle-001-provenance.json",
+    "experiments/calibration/kaggle-002-provenance.json"
+  ],
+  "kaggle_script_version_ids": [
+    369724364,
+    369945024
+  ],
+  "threshold_registry": {
+    "directory": "experiments/calibration/six-thresholds",
+    "exact_roundtrip_verified": true,
+    "integrity_sha256": "41dd9d26e68840ca5d104062605d967e72a2d3907937e8ed6745743034c96b6a",
+    "new_inference": false,
+    "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+    "thresholds": 6
+  }
 }

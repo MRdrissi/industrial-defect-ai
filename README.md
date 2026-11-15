@@ -201,6 +201,13 @@ Les informations attendues sont : architecture, paramètres, catégorie/découpa
 
 ## 11. Roadmap : Epics et documentation associée
 
+**Mise à jour du 15 novembre 2026 — EPIC-05 :** [US-05-02](docs/epic-05/us-05-02.md)
+dispose des six calibrations normales Validation (CAE/PatchCore × Bottle/Hazelnut/Transistor).
+Les deux sessions Kaggle sont archivées avec leurs empreintes ; le
+[registre des six seuils](experiments/calibration/six-thresholds/thresholds.json) a été exporté et
+rechargé sans nouvelle inférence. Le benchmark Test US-05-03 reste à réaliser.
+Voir l'[index EPIC-05](docs/EPIC-05-evaluation-benchmark.md) pour l'état de cette branche.
+
 **Chaque Epic possède ou possédera son propre fichier Markdown dans `docs/`** : ce document décrit son objectif, ses choix, ses User Stories, son environnement, ses validations, ses risques et les procédures pour reprendre le travail.
 
 | Epic | Objectif | Document | État |
@@ -259,4 +266,4 @@ Limites connues : premier périmètre restreint à une catégorie ; performances
 
 ---
 
-**État documentaire au 7 novembre 2026 :** l'Epic 01 est testé et publié sur sa branche ; sa documentation est préparée **avant** la Pull Request vers `main`. Les modèles industriels, les mesures d'évaluation et l'application constituent les étapes suivantes.
+**État historique au 7 novembre 2026 :** l'Epic 01 est testé et publié sur sa branche ; sa documentation est préparée **avant** la Pull Request vers `main`. Les mises à jour ultérieures de l'EPIC-05 sont indiquées dans la section 11 et son index.

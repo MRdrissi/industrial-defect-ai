@@ -18,3 +18,5 @@ experiments/configs/calibration_instances.json text eol=lf
 
 # Preserve original US-05-02 calibration evidence bytes on every platform
 experiments/calibration/kaggle-001/** -text
+experiments/calibration/kaggle-002/** -text
+experiments/calibration/six-thresholds/** -text

@@ -1,0 +1,23 @@
+{
+  "executed_at_utc": "2026-11-15T15:46:48.337004+00:00",
+  "code_commit": "c708de9ce2b682ab8cea00eabd5d3e8c7b2a0ae6",
+  "scope": "final_two_only",
+  "results": [
+    {
+      "instance": "cae-transistor",
+      "threshold": 0.027364758774638176,
+      "threshold_hex": "0x1.c0581e0000000p-6",
+      "integrity_sha256": "2c2f141fa59427dbaba280cd953e5eb139bfd687e5cc02e33aa8029a9f7820b4",
+      "validation_images": 43,
+      "status": "calibrated"
+    },
+    {
+      "instance": "patchcore-bottle",
+      "threshold": 31.620044136047362,
+      "threshold_hex": "0x1.f9ebb36666666p+4",
+      "integrity_sha256": "1c39c5452c294170ec9020138c0bf79a70c4b971f7fb0153cf2ef1d2e36f7596",
+      "validation_images": 42,
+      "status": "calibrated"
+    }
+  ]
+}
