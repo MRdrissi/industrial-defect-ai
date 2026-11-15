@@ -22,6 +22,9 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "configs/model_registry.json"
 REAL_REGISTRY_PATH = ROOT / "configs/real_model_registry.json"
 
+# Taille du titre principal, en pixels.
+APP_TITLE_SIZE_PX = 32
+
 INFERENCE_ERRORS = (
     ValueError,
     TypeError,
@@ -35,11 +38,25 @@ INFERENCE_ERRORS = (
 
 def main():
     st.set_page_config(
-        page_title="IndustrialDefect AI",
-        layout="centered",
+        page_title="DefectVision",
+        layout="wide",
     )
 
-    st.title("IndustrialDefect AI")
+    st.html(
+        f"""
+        <style>
+            [data-testid="stMainBlockContainer"] {{
+                padding-top: 2rem;
+            }}
+            .st-key-app_title h1 {{
+                font-size: {APP_TITLE_SIZE_PX}px;
+            }}
+        </style>
+        """
+    )
+
+    with st.container(key="app_title"):
+        st.title("DefectVision", anchor=False, text_alignment="left")
 
     real_mode = st.checkbox(
         "Utiliser les modèles réels (CPU)",
