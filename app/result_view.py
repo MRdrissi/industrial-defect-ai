@@ -6,7 +6,8 @@ US-06-04 (IDL-77)   : heatmap superposée à l'image, alignée sur sa taille
 US-06-04 (IDL-78)   : téléchargement du rapport d'inspection JSON.
 """
 
-import numpy as np
+from base64 import b64encode
+from pathlib import Path
 import streamlit as st
 from PIL import Image
 
@@ -15,6 +16,24 @@ from app.report import report_filename, report_to_json
 from src.inference.inference_contract import InferenceResult
 
 METHOD_LABELS = {"cae": "Convolutional AutoEncoder", "patchcore": "PatchCore"}
+
+DETAILS_TITLE_SIZE_PX = 30
+
+_BACK_SVG = (
+        Path(__file__).parent / "assets/icons/chevron-left.svg"
+).read_text(encoding="utf-8")
+
+_BACK_ICON_DATA = b64encode(
+    _BACK_SVG.replace(
+        'stroke="currentColor"',
+        'stroke="#262626"',
+    ).encode("utf-8")
+).decode("ascii")
+
+_BACK_LABEL = (
+    f"![Retour à l'analyse]"
+    f"(data:image/svg+xml;base64,{_BACK_ICON_DATA})"
+)
 
 
 def model_label(result: InferenceResult) -> str:
@@ -32,20 +51,6 @@ def decision_label(result: InferenceResult) -> str:
         "suspect": "SUSPECT",
         "non_calibree": "NON CALIBRÉE",
     }.get(result.decision, result.decision.upper())
-
-
-def _normalized_raw_map(result: InferenceResult) -> np.ndarray:
-    """Carte brute seule (comportement US-06-02 / US-06-03), pour le détail technique."""
-    raw_map = result.anomaly_map.detach().cpu().numpy()
-
-    if result.simulated:
-        return np.asarray(np.clip(raw_map * 2, 0.0, 1.0), dtype=np.float32)
-
-    minimum, maximum = float(raw_map.min()), float(raw_map.max())
-    if maximum > minimum:
-        return np.asarray((raw_map - minimum) / (maximum - minimum), dtype=np.float32)
-    return np.zeros_like(raw_map, dtype=np.float32)
-
 
 
 def display_result(
@@ -111,13 +116,97 @@ def display_result(
                 st.switch_page(details_page)
 
 
+@st.dialog("Heatmap superposée", width="medium", dismissible=True)
+def show_anomaly_map(overlay: Image.Image) -> None:
+    """Affiche la heatmap superposée dans une fenêtre modale."""
+
+    st.html(
+        """
+        <style>
+            .st-key-anomaly_modal [data-testid="stImage"] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .st-key-anomaly_modal img {
+                width: auto;
+                max-width: 100%;
+                max-height: min(520px, 60dvh);
+                object-fit: contain;
+            }
+        </style>
+        """
+    )
+
+    with st.container(key="anomaly_modal"):
+        st.image(overlay, width="stretch")
+
 
 def display_inspection_details(home_page) -> None:
-    """Page dédiée à la visualisation et aux détails techniques."""
+    """Page dédiée aux détails d'une inspection."""
 
-    if st.button("Retour à l'analyse"):
-        st.switch_page(home_page)
+    st.html(
+        f"""
+        <style>
+            [data-testid="stMainBlockContainer"] {{
+                padding-top: 2rem;
+            }}
+            
+            .st-key-details_header {{
+                padding-top: 2rem;
+                padding-bottom: 0.5rem;
+                gap: 0rem !important;
+                align-items: center !important;
+            }}
 
+            .st-key-details_header h1 {{
+                font-size: {DETAILS_TITLE_SIZE_PX}px !important;
+                line-height: 1.2;
+                padding: 0.25rem 0;
+                margin: 0;
+            }}
+
+            .st-key-details_back button {{
+                border: none;
+                background: transparent;
+                padding: 0 !important;
+                width: 32px;
+                height: 32px;
+                min-height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }}
+
+            .st-key-details_back button img {{
+                width: 26px;
+                height: 26px;
+                max-height: 26px;
+            }}
+        </style>
+        """
+    )
+
+    # 1. En-tête : chevron de retour + titre
+    with st.container(
+            key="details_header",
+            horizontal=True,
+            horizontal_alignment="left",
+            vertical_alignment="center",
+            gap="small",
+    ):
+        if st.button(
+                _BACK_LABEL,
+                key="details_back",
+                type="tertiary",
+                width="content",
+        ):
+            st.switch_page(home_page)
+
+        st.title("Détails de l'inspection", anchor=False)
+
+    # 2. Récupérer l'inspection
     inspection = st.session_state.get("last_inspection")
 
     if inspection is None:
@@ -127,37 +216,29 @@ def display_inspection_details(home_page) -> None:
     result = inspection["result"]
     image = inspection["image"]
 
-    st.title("Détails de l'inspection")
-
     st.caption(model_label(result))
 
-    _, overlay, _ = make_overlay(
-        image,
-        result.anomaly_map,
-        result.threshold,
+    # 3. Bouton heatmap et détails techniques sur une ligne
+    heatmap_col, technical_col = st.columns(
+        2,
+        vertical_alignment="center",
+        gap="medium",
     )
 
-    left, right = st.columns(2)
+    with heatmap_col:
+        if st.button(
+                "Voir carte d'anomalie",
+                key="view_anomaly_map",
+                width="stretch",
+        ):
+            _, overlay, _ = make_overlay(
+                image,
+                result.anomaly_map,
+                result.threshold,
+            )
+            show_anomaly_map(overlay)
 
-    with left:
-        st.image(
-            image,
-            caption="Image analysée",
-            width="stretch",
-        )
+    with technical_col:
+        with st.expander("Détails techniques"):
+            st.json(result.to_dict())
 
-    with right:
-        st.image(
-            overlay,
-            caption="Heatmap superposée",
-            width="stretch",
-        )
-
-    with st.expander("Détails techniques"):
-        st.image(
-            _normalized_raw_map(result),
-            caption="Carte d'anomalie brute normalisée",
-            width="stretch",
-        )
-
-        st.json(result.to_dict())
