@@ -1,0 +1,99 @@
+{
+  "audit_date_utc": "2026-11-15",
+  "status": "software_ready_real_calibrations_pending",
+  "calibrated_instances": 0,
+  "dataset_source": "ipythonx/mvtec-ad",
+  "dataset_root_kaggle": "/kaggle/input/datasets/ipythonx/mvtec-ad",
+  "dataset_local_status": "No confirmed local dataset; user confirms primary use on Kaggle.",
+  "kaggle_access": "No configured Kaggle API credentials or CLI; two anonymous legacy output API probes returned HTTP 404. No outputs retrieved in this audit.",
+  "local_checkpoint": "CAE Hazelnut EXP-001 found in Downloads/results; original file unchanged.",
+  "dependencies": {
+    "anomalib_installed_locally": false
+  },
+  "instances": [
+    {
+      "instance": "cae-bottle",
+      "source_experiment": "cae-bottle/EXP-002",
+      "expected_validation_images": 42,
+      "checkpoint_sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+      "checkpoint_local_sha256_verified": false,
+      "strict_local_restoration_verified": false,
+      "validation_images_available_locally": false,
+      "status": "blocked_missing_checkpoint_and_validation_images",
+      "real_scores_collected": 0,
+      "threshold": null,
+      "checkpoint_reference": "https://www.kaggle.com/code/mouadfekkak/06-cae-bottle-training/output?scriptVersionId=368423258",
+      "restoration_code_status": "existing CAE API"
+    },
+    {
+      "instance": "cae-hazelnut",
+      "source_experiment": "cae-hazelnut/EXP-001",
+      "expected_validation_images": 78,
+      "checkpoint_sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+      "checkpoint_local_sha256_verified": true,
+      "strict_local_restoration_verified": true,
+      "validation_images_available_locally": false,
+      "status": "blocked_missing_validation_images",
+      "real_scores_collected": 0,
+      "threshold": null,
+      "checkpoint_reference": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-cae-hazelnut-training",
+      "restoration_code_status": "existing CAE API"
+    },
+    {
+      "instance": "cae-transistor",
+      "source_experiment": "cae-transistor/EXP-001",
+      "expected_validation_images": 43,
+      "checkpoint_sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+      "checkpoint_local_sha256_verified": false,
+      "strict_local_restoration_verified": false,
+      "validation_images_available_locally": false,
+      "status": "blocked_missing_checkpoint_and_validation_images",
+      "real_scores_collected": 0,
+      "threshold": null,
+      "checkpoint_reference": "https://www.kaggle.com/code/zakariaelbergui/06-cae-train?scriptVersionId=368211534",
+      "restoration_code_status": "existing CAE API"
+    },
+    {
+      "instance": "patchcore-bottle",
+      "source_experiment": "patchcore-bottle/EXP-002",
+      "expected_validation_images": 42,
+      "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+      "checkpoint_local_sha256_verified": false,
+      "strict_local_restoration_verified": false,
+      "validation_images_available_locally": false,
+      "status": "blocked_missing_checkpoint_and_validation_images",
+      "real_scores_collected": 0,
+      "threshold": null,
+      "checkpoint_reference": "https://www.kaggle.com/code/mouadfekkak/14-patchcore-bottle-memory-bank?scriptVersionId=369295449",
+      "restoration_code_status": "existing PatchCore API; Anomalib absent locally"
+    },
+    {
+      "instance": "patchcore-hazelnut",
+      "source_experiment": "patchcore-hazelnut/EXP-002",
+      "expected_validation_images": 78,
+      "checkpoint_sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+      "checkpoint_local_sha256_verified": false,
+      "strict_local_restoration_verified": false,
+      "validation_images_available_locally": false,
+      "status": "blocked_missing_checkpoint_and_validation_images",
+      "real_scores_collected": 0,
+      "threshold": null,
+      "checkpoint_reference": "https://www.kaggle.com/code/marwanedrissi/patchcore-hazelnut-memory-bank-exp002",
+      "restoration_code_status": "dedicated EXP-002 schema adapter; synthetic strict-load tests"
+    },
+    {
+      "instance": "patchcore-transistor",
+      "source_experiment": "patchcore-transistor/EXP-001",
+      "expected_validation_images": 43,
+      "checkpoint_sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+      "checkpoint_local_sha256_verified": false,
+      "strict_local_restoration_verified": false,
+      "validation_images_available_locally": false,
+      "status": "blocked_missing_checkpoint_and_validation_images",
+      "real_scores_collected": 0,
+      "threshold": null,
+      "checkpoint_reference": "https://www.kaggle.com/code/zakariaelbergui/14-patchcore-transistor-memory-bank?scriptVersionId=369642459",
+      "restoration_code_status": "existing PatchCore API; Anomalib absent locally"
+    }
+  ]
+}
