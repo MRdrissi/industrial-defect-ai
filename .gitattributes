@@ -20,3 +20,6 @@ experiments/configs/calibration_instances.json text eol=lf
 experiments/calibration/kaggle-001/** -text
 experiments/calibration/kaggle-002/** -text
 experiments/calibration/six-thresholds/** -text
+
+# Preserve original US-05-03 Kaggle CSV/JSON bytes across platforms
+experiments/benchmark/kaggle-001/** -text
