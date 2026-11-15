@@ -82,6 +82,36 @@ def main():
             .st-key-inspection_image button[aria-label="Add files"] {{
                 display: none;
             }}
+            .st-key-upload_panel {{
+                background-color: color-mix(in srgb, currentColor 5%, transparent);
+                border-radius: 0.5rem;
+                padding: 1rem;
+            }}
+            .st-key-inspection_image [data-testid="stFileUploaderDropzone"] {{
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                min-height: 2.5rem;
+                align-items: center;
+                pointer-events: none;
+            }}
+            .st-key-inspection_image [data-testid="stFileUploaderDropzone"] button {{
+                pointer-events: auto;
+            }}
+            .st-key-inspection_image [data-testid="stFileUploaderDropzone"] > span button p {{
+                font-size: 0;
+            }}
+            .st-key-inspection_image [data-testid="stFileUploaderDropzone"] > span button p::after {{
+                content: "Import";
+                font-size: 0.875rem;
+            }}
+            .st-key-analyze_image button:disabled,
+            .st-key-analyze_image button:disabled:hover {{
+                background-color: #f8c7ca;
+                border-color: #f8c7ca;
+                color: #8b343a;
+                opacity: 1;
+            }}
         </style>
         """
     )
@@ -161,36 +191,48 @@ def main():
             st.stop()
         version = versions[0]
 
-    # 5. Importer l'image
-    uploaded = st.file_uploader(
-        "Importer une image",
-        type=["png", "jpg", "jpeg"],
-        accept_multiple_files=False,
-        max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
-        key="inspection_image",
-    )
-
+    # 5. Importer et valider l'image avant d'autoriser l'analyse
     image = None
+    image_error = None
 
-    if uploaded is not None:
-        try:
-            image = decode_image(uploaded.getvalue())
-            st.image(
-                image,
-                caption="Image importée",
-                width="stretch",
-            )
-        except ValueError as exc:
-            st.error(str(exc))
-            st.stop()
+    st.markdown("Importer votre image")
+    with st.container(key="upload_panel"):
+        upload_column, analyze_column = st.columns([4, 1], vertical_alignment="center")
+        uploaded = upload_column.file_uploader(
+            "Importer une image",
+            type=["png", "jpg", "jpeg"],
+            accept_multiple_files=False,
+            max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
+            key="inspection_image",
+            label_visibility="collapsed",
+        )
+
+        if uploaded is not None:
+            try:
+                image = decode_image(uploaded.getvalue())
+            except ValueError as exc:
+                image_error = str(exc)
+
+        analyze_clicked = analyze_column.button(
+            "Analyser l'image",
+            type="primary",
+            disabled=image is None,
+            width="stretch",
+            key="analyze_image",
+        )
+
+    if image_error is not None:
+        st.error(image_error)
+
+    if image is not None:
+        st.image(
+            image,
+            caption="Image importée",
+            width="stretch",
+        )
 
     # 6. Lancer l'analyse
-    if st.button("Analyser l'image", type="primary"):
-
-        if image is None:
-            st.warning("Importe d'abord une image.")
-            return
-
+    if analyze_clicked and image is not None:
         if compare_mode:
             try:
                 comparison = run_comparison(
