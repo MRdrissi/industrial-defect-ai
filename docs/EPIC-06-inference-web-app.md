@@ -15,6 +15,7 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 | US-06-02 | Interface Streamlit et importation d'image | [US-06-02](epic-06/us-06-02.md) |
 | US-06-03 | Intégration des six modèles réels | [US-06-03](epic-06/us-06-03.md) |
 | US-06-04 | Heatmap superposée, décision, version et rapport JSON | [US-06-04](epic-06/us-06-04.md) |
+| US-06-05 | Comparaison CAE / PatchCore sur une même image | [US-06-05](epic-06/us-06-05.md) |
 
 ## Architecture
 
@@ -31,6 +32,7 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 - `src/inference/patchcore_inference.py` : inférence PatchCore.
 - `app/overlay.py` : superposition de la carte d'anomalie sur l'image (US-06-04).
 - `app/report.py` : rapport d'inspection JSON traçable (US-06-04).
+- `app/comparison.py`, `app/comparison_view.py` : comparaison CAE / PatchCore côte à côte (US-06-05).
 
 ## Principes
 
