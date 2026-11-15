@@ -5,6 +5,8 @@ from typing import cast
 
 import streamlit as st
 
+from app.comparison import METHOD_LABELS, METHODS, available_versions, run_comparison
+from app.comparison_view import display_comparison
 from app.image_utils import decode_image, image_to_tensor
 from app.report import build_report
 from app.result_view import display_result
@@ -19,6 +21,16 @@ from src.inference.inference_contract import (
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "configs/model_registry.json"
 REAL_REGISTRY_PATH = ROOT / "configs/real_model_registry.json"
+
+INFERENCE_ERRORS = (
+    ValueError,
+    TypeError,
+    KeyError,
+    NotImplementedError,
+    OSError,
+    ImportError,
+    RuntimeError,
+)
 
 
 def main():
@@ -55,28 +67,52 @@ def main():
     categories = sorted({key[0] for key in registry})
     category = cast(str, st.selectbox("Catégorie", categories))
 
-    # 3. Sélectionner la méthode
-    methods = sorted({
-        key[1] for key in registry
-        if key[0] == category
-    })
+    # 3. Mode comparaison CAE / PatchCore (US-06-05)
+    compare_mode = st.checkbox(
+        "Comparer CAE et PatchCore sur la même image",
+        value=False,
+        key="compare_mode",
+    )
 
-    method = cast(str, st.selectbox(
-        "Méthode",
-        methods,
-        format_func=lambda value: {
-            "cae": "CAE",
-            "patchcore": "PatchCore",
-        }.get(value, value),
-    ))
+    if compare_mode:
+        # 4 bis. Une version par méthode
+        try:
+            available = available_versions(registry, category)
+        except ValueError as exc:
+            st.error(str(exc))
+            st.stop()
 
-    # 4. Sélectionner la version
-    versions = sorted({
-        key[2] for key in registry
-        if key[0] == category and key[1] == method
-    })
+        compare_versions = {
+            name: cast(str, st.selectbox(
+                f"Version {METHOD_LABELS[name]}",
+                available[name],
+            ))
+            for name in METHODS
+        }
 
-    version = cast(str, st.selectbox("Version", versions))
+    else:
+        # 3. Sélectionner la méthode
+        methods = sorted({
+            key[1] for key in registry
+            if key[0] == category
+        })
+
+        method = cast(str, st.selectbox(
+            "Méthode",
+            methods,
+            format_func=lambda value: {
+                "cae": "CAE",
+                "patchcore": "PatchCore",
+            }.get(value, value),
+        ))
+
+        # 4. Sélectionner la version
+        versions = sorted({
+            key[2] for key in registry
+            if key[0] == category and key[1] == method
+        })
+
+        version = cast(str, st.selectbox("Version", versions))
 
     # 5. Importer l'image
     uploaded = st.file_uploader(
@@ -106,6 +142,21 @@ def main():
             st.warning("Importe d'abord une image.")
             return
 
+        if compare_mode:
+            try:
+                comparison = run_comparison(
+                    image_to_tensor(image),
+                    category,
+                    compare_versions,
+                    registry,
+                )
+            except INFERENCE_ERRORS as exc:
+                st.error(f"Erreur d'inférence : {exc}")
+                return
+
+            display_comparison(comparison, image)
+            return
+
         try:
             request = InferenceRequest(
                 category=category,
@@ -116,15 +167,7 @@ def main():
 
             result = run_inference(request, registry)
 
-        except (
-                ValueError,
-                TypeError,
-                KeyError,
-                NotImplementedError,
-                OSError,
-                ImportError,
-                RuntimeError,
-        ) as exc:
+        except INFERENCE_ERRORS as exc:
             st.error(f"Erreur d'inférence : {exc}")
             return
 
