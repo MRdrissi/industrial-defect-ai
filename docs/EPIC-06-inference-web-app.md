@@ -13,7 +13,7 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 |---|---|---|
 | US-06-01 | Contrat commun, registre et simulation CPU | [US-06-01](epic-06/us-06-01.md) |
 | US-06-02 | Interface Streamlit et importation d'image | [US-06-02](epic-06/us-06-02.md) |
-| US-06-03 | Intégration des six modèles réels | À venir |
+| US-06-03 | Intégration des six modèles réels | [US-06-03](epic-06/us-06-03.md) |
 
 ## Architecture
 
@@ -24,6 +24,10 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 - `app/result_view.py` : affichage des résultats, scores et cartes d'anomalie.
 - `app/requirements.txt` : dépendances de l'application web.
 - `tests/inference/` : tests automatisés.
+- `configs/real_model_registry.json` : registre des six modèles réels.
+- `src/inference/model_loader.py` : restauration CPU, vérification SHA-256 et cache.
+- `src/inference/cae_inference.py` : inférence CAE.
+- `src/inference/patchcore_inference.py` : inférence PatchCore.
 
 ## Principes
 
@@ -31,4 +35,17 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 - Le contrat commun contient score, seuil, carte, décision et latence.
 - La simulation est explicitement distinguée de l'inférence réelle.
 - Les seuils scientifiques seront intégrés après calibration EPIC-05.
-- Les checkpoints réels seront connectés dans US-06-03.
+
+## Intégration réelle
+
+Les six modèles CAE/PatchCore des catégories Bottle, Hazelnut
+et Transistor sont intégrés et exécutables sur CPU (US-06-03).
+
+L'application Streamlit propose désormais deux modes :
+simulation et inférence réelle.
+
+Les checkpoints sont restaurés à la demande, avec vérification
+SHA-256 et cache limité à une instance.
+
+La décision reste non calibrée tant que les seuils de
+l'EPIC-05 ne sont pas intégrés.

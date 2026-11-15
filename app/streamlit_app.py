@@ -17,6 +17,7 @@ from src.inference.inference_contract import (
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "configs/model_registry.json"
+REAL_REGISTRY_PATH = ROOT / "configs/real_model_registry.json"
 
 
 def main():
@@ -26,11 +27,25 @@ def main():
     )
 
     st.title("IndustrialDefect AI")
-    st.caption("Inspection visuelle — démonstration simulée")
+
+    real_mode = st.checkbox(
+        "Utiliser les modèles réels (CPU)",
+        value=False,
+    )
+
+    if real_mode:
+        st.caption("Inspection réelle — seuils non calibrés")
+    else:
+        st.caption("Inspection visuelle — démonstration simulée")
 
     # 1. Charger le registre
     try:
-        registry = load_registry(REGISTRY_PATH)
+        registry_path = (
+            REAL_REGISTRY_PATH
+            if real_mode
+            else REGISTRY_PATH
+        )
+        registry = load_registry(registry_path)
     except (OSError, ValueError) as exc:
         st.error(f"Impossible de charger le registre : {exc}")
         st.stop()
@@ -105,6 +120,9 @@ def main():
                 TypeError,
                 KeyError,
                 NotImplementedError,
+                OSError,
+                ImportError,
+                RuntimeError,
         ) as exc:
             st.error(f"Erreur d'inférence : {exc}")
             return

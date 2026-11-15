@@ -1,0 +1,61 @@
+{
+  "models": [
+    {
+      "category": "bottle",
+      "method": "cae",
+      "version": "exp-002",
+      "backend": "cae",
+      "threshold": null,
+      "artifact_path": "artifacts/cae/bottle/EXP-002/cae_model.pt",
+      "config_path": "experiments/configs/cae_baseline.json",
+      "sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8"
+    },
+    {
+      "category": "hazelnut",
+      "method": "cae",
+      "version": "exp-001",
+      "backend": "cae",
+      "threshold": null,
+      "artifact_path": "artifacts/cae/hazelnut/EXP-001/cae_model.pt",
+      "config_path": "experiments/configs/cae_baseline.json",
+      "sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811"
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "exp-001",
+      "backend": "cae",
+      "threshold": null,
+      "artifact_path": "artifacts/cae/transistor/EXP-001/cae_model.pt",
+      "config_path": "experiments/configs/cae_baseline.json",
+      "sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d"
+    },
+    {
+      "category": "bottle",
+      "method": "patchcore",
+      "version": "exp-002",
+      "backend": "patchcore",
+      "threshold": null,
+      "artifact_path": "artifacts/patchcore/bottle/EXP-002/patchcore_model.pt",
+      "sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde"
+    },
+    {
+      "category": "hazelnut",
+      "method": "patchcore",
+      "version": "exp-002",
+      "backend": "patchcore",
+      "threshold": null,
+      "artifact_path": "artifacts/patchcore/hazelnut/EXP-002/patchcore_model.pt",
+      "sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93"
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "exp-001",
+      "backend": "patchcore",
+      "threshold": null,
+      "artifact_path": "artifacts/patchcore/transistor/EXP-001/patchcore_model.pt",
+      "sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191"
+    }
+  ]
+}

@@ -13,6 +13,42 @@ if TYPE_CHECKING:
     from anomalib.models.image.patchcore.torch_model import PatchcoreModel
 
 
+def extract_patchcore_checkpoint(saved: dict) -> tuple[dict, dict]:
+    """Extrait les poids et la configuration des deux formats PatchCore."""
+
+    if not isinstance(saved, dict):
+        raise ValueError("Checkpoint PatchCore invalide.")
+
+    # Format A : Bottle et Transistor.
+    if "model_state_dict" in saved:
+        weights = saved["model_state_dict"]
+        config = saved
+
+    # Format B : Hazelnut EXP-002.
+    elif "state_dict" in saved and isinstance(saved.get("config"), dict):
+        weights = saved["state_dict"]
+        config = saved["config"]
+
+        if (
+                config.get("category") == "hazelnut"
+                and config.get("pooling_corrected") is not True
+        ):
+            raise ValueError("Pooling Hazelnut non corrigé.")
+
+    else:
+        raise ValueError("Format de checkpoint PatchCore inconnu.")
+
+    required = ("backbone", "layers", "num_neighbors")
+
+    if not all(key in config for key in required):
+        raise ValueError("Configuration PatchCore incomplète.")
+
+    if not isinstance(weights, dict):
+        raise ValueError("Poids PatchCore invalides.")
+
+    return weights, config
+
+
 def load_patchcore(
         checkpoint_path: str | Path,
         device: str | torch.device = "cpu",
@@ -45,29 +81,21 @@ def load_patchcore(
         weights_only=True,
     )
 
-    required = {
-        "model_state_dict",
-        "backbone",
-        "layers",
-        "num_neighbors",
-    }
-
-    if not isinstance(saved, dict) or not required.issubset(saved):
-        raise ValueError("Format de checkpoint PatchCore invalide")
+    weights, config = extract_patchcore_checkpoint(saved)
 
     # 3. Reconstruire l'architecture sans télécharger de poids.
     from anomalib.models.image.patchcore.torch_model import PatchcoreModel
 
     model = PatchcoreModel(
-        backbone=saved["backbone"],
-        layers=saved["layers"],
+        backbone=config["backbone"],
+        layers=config["layers"],
         pre_trained=False,
-        num_neighbors=saved["num_neighbors"],
+        num_neighbors=config["num_neighbors"],
     )
 
     # 4. Restaurer exactement les poids et la Memory Bank.
     model.load_state_dict(
-        saved["model_state_dict"],
+        weights,
         strict=True,
     )
 

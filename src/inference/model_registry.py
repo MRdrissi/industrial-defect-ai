@@ -41,8 +41,20 @@ def load_registry(path: str | Path) -> dict:
         ):
             raise ValueError("Identifiant ou backend de modèle invalide.")
 
+        backend = model["backend"]
+
+        if backend not in ("fake", "cae", "patchcore"):
+            raise ValueError(f"Backend inconnu : {backend}")
+
+        if backend != "fake" and backend != model["method"]:
+            raise ValueError("Backend incompatible avec la méthode.")
+
         threshold = model["threshold"]
-        if (
+
+        if threshold is None:
+            if backend == "fake":
+                raise ValueError("Le modèle fictif nécessite un seuil.")
+        elif (
                 type(threshold) not in (int, float)
                 or not math.isfinite(threshold)
                 or threshold < 0
@@ -50,10 +62,31 @@ def load_registry(path: str | Path) -> dict:
             raise ValueError("Seuil de modèle invalide.")
 
         artifact = model["artifact_path"]
-        if artifact is not None and (
-                not isinstance(artifact, str) or not artifact.strip()
-        ):
-            raise ValueError("Chemin d'artefact invalide.")
+
+        if backend == "fake":
+            if artifact is not None and (
+                    not isinstance(artifact, str) or not artifact.strip()
+            ):
+                raise ValueError("Chemin d'artefact invalide.")
+
+        else:
+            if not isinstance(artifact, str) or not artifact.strip():
+                raise ValueError("Checkpoint manquant ou invalide.")
+
+            if backend == "cae":
+                config_path = model.get("config_path")
+
+                if not isinstance(config_path, str) or not config_path.strip():
+                    raise ValueError("Configuration CAE manquante.")
+
+            sha256 = model.get("sha256")
+
+            if (
+                    not isinstance(sha256, str)
+                    or len(sha256) != 64
+                    or any(c not in "0123456789abcdef" for c in sha256.lower())
+            ):
+                raise ValueError("SHA-256 invalide.")
 
         key = (
             model["category"],
