@@ -3,6 +3,7 @@
 US-06-02 / US-06-03 : décision, indicateurs, carte d'anomalie et détails.
 US-06-04 (IDL-77)   : heatmap superposée à l'image, alignée sur sa taille
                       d'origine, et identification du modèle (version).
+US-06-04 (IDL-78)   : téléchargement du rapport d'inspection JSON.
 """
 
 import numpy as np
@@ -10,6 +11,7 @@ import streamlit as st
 from PIL import Image
 
 from app.overlay import make_overlay
+from app.report import report_filename, report_to_json
 from src.inference.inference_contract import InferenceResult
 
 METHOD_LABELS = {"cae": "CAE", "patchcore": "PatchCore"}
@@ -52,7 +54,11 @@ def _normalized_raw_map(result: InferenceResult) -> np.ndarray:
     return np.zeros_like(raw_map, dtype=np.float32)
 
 
-def display_result(result: InferenceResult, image: Image.Image | None = None) -> None:
+def display_result(
+    result: InferenceResult,
+    image: Image.Image | None = None,
+    report: dict | None = None,
+) -> None:
     """Affiche le résultat d'une inspection (simulée ou réelle)."""
 
     st.subheader("Résultat de l'inspection")
@@ -99,7 +105,21 @@ def display_result(result: InferenceResult, image: Image.Image | None = None) ->
 
         st.caption(SCALE_CAPTIONS[scale])
 
-    # 4. Carte brute et métadonnées
+    # 4. Rapport d'inspection téléchargeable
+    if report is not None:
+        st.download_button(
+            "Télécharger le rapport JSON",
+            data=report_to_json(report),
+            file_name=report_filename(report),
+            mime="application/json",
+            on_click="ignore",  # garder le résultat affiché après le clic
+        )
+        st.caption(
+            f"Rapport du {report['generated_at_utc']} · image SHA-256 "
+            f"{report['image']['sha256'][:12]}… · modèle {result.version}"
+        )
+
+    # 5. Carte brute et métadonnées
     with st.expander("Détails techniques"):
         st.image(
             _normalized_raw_map(result),
@@ -112,7 +132,7 @@ def display_result(result: InferenceResult, image: Image.Image | None = None) ->
         )
         st.json(result.to_dict())
 
-    # 5. Avertissement
+    # 6. Avertissement
     if result.simulated:
         st.info(
             "Simulation uniquement : aucune véritable "

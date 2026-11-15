@@ -14,6 +14,7 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 | US-06-01 | Contrat commun, registre et simulation CPU | [US-06-01](epic-06/us-06-01.md) |
 | US-06-02 | Interface Streamlit et importation d'image | [US-06-02](epic-06/us-06-02.md) |
 | US-06-03 | Intégration des six modèles réels | [US-06-03](epic-06/us-06-03.md) |
+| US-06-04 | Heatmap superposée, décision, version et rapport JSON | [US-06-04](epic-06/us-06-04.md) |
 
 ## Architecture
 
@@ -28,6 +29,8 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 - `src/inference/model_loader.py` : restauration CPU, vérification SHA-256 et cache.
 - `src/inference/cae_inference.py` : inférence CAE.
 - `src/inference/patchcore_inference.py` : inférence PatchCore.
+- `app/overlay.py` : superposition de la carte d'anomalie sur l'image (US-06-04).
+- `app/report.py` : rapport d'inspection JSON traçable (US-06-04).
 
 ## Principes
 

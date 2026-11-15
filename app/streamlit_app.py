@@ -6,9 +6,10 @@ from typing import cast
 import streamlit as st
 
 from app.image_utils import decode_image, image_to_tensor
+from app.report import build_report
 from app.result_view import display_result
 
-from src.inference.model_registry import load_registry
+from src.inference.model_registry import get_model, load_registry
 from src.inference.inference_contract import (
     InferenceRequest,
     run_inference,
@@ -127,8 +128,17 @@ def main():
             st.error(f"Erreur d'inférence : {exc}")
             return
 
-        # 7. Afficher les résultats
-        display_result(result, image)
+        # 7. Préparer le rapport d'inspection (US-06-04)
+        report = build_report(
+            result,
+            get_model(registry, category, method, version),
+            image_bytes=uploaded.getvalue(),
+            image_name=uploaded.name,
+            image_size=image.size,
+        )
+
+        # 8. Afficher les résultats
+        display_result(result, image, report)
 
 
 if __name__ == "__main__":
