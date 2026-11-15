@@ -128,7 +128,7 @@ def main():
             return
 
         # 7. Afficher les résultats
-        display_result(result)
+        display_result(result, image)
 
 
 if __name__ == "__main__":
