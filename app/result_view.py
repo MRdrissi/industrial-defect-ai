@@ -11,11 +11,18 @@ def display_result(result: InferenceResult) -> None:
 
     st.subheader("Résultat de l'inspection")
 
+
     # 1. Décision
-    if result.decision == "normal":
-        st.success("Décision simulée : NORMAL")
+    if result.decision == "non_calibree":
+        st.info(
+            "Inférence réelle effectuée. "
+            "Décision indisponible : seuil non calibré."
+        )
+    elif result.decision == "normal":
+        st.success("Décision : NORMAL")
     else:
-        st.warning("Décision simulée : SUSPECT")
+        st.warning("Décision : SUSPECT")
+
 
     # 2. Indicateurs
     col1, col2, col3 = st.columns(3)
@@ -24,30 +31,66 @@ def display_result(result: InferenceResult) -> None:
         st.metric("Score brut", f"{result.score:.4f}")
 
     with col2:
-        st.metric("Seuil démo", f"{result.threshold:.2f}")
+        st.metric(
+            "Seuil",
+            "Non calibré"
+            if result.threshold is None
+            else f"{result.threshold:.4f}",
+        )
 
     with col3:
         st.metric("Latence", f"{result.latency_ms:.1f} ms")
 
-    # 3. Carte d'anomalie simulée
-    visual_map = np.clip(
-        result.anomaly_map.numpy() * 2,
-        0,
-        1,
+
+    # 3. Carte d'anomalie
+    raw_map = result.anomaly_map.detach().cpu().numpy()
+
+    visual_map: np.ndarray
+
+    if result.simulated:
+        visual_map = np.asarray(
+            np.clip(raw_map * 2, 0.0, 1.0),
+            dtype=np.float32,
         )
+    else:
+        minimum = float(raw_map.min())
+        maximum = float(raw_map.max())
+
+        if maximum > minimum:
+            visual_map = np.asarray(
+                (raw_map - minimum) / (maximum - minimum),
+                dtype=np.float32,
+                )
+        else:
+            visual_map = np.zeros_like(
+                raw_map,
+                dtype=np.float32,
+            )
 
     st.image(
         visual_map,
-        caption="Carte d'écarts simulée (non validée)",
+        caption=(
+            "Carte d'écarts simulée"
+            if result.simulated
+            else "Carte d'anomalie réelle (échelle visuelle normalisée)"
+        ),
         width="stretch",
     )
+
 
     # 4. Métadonnées
     with st.expander("Détails techniques"):
         st.json(result.to_dict())
 
+
     # 5. Avertissement
-    st.info(
-        "Simulation uniquement : aucune véritable "
-        "détection de défaut n'a été effectuée."
-    )
+    if result.simulated:
+        st.info(
+            "Simulation uniquement : aucune véritable "
+            "détection de défaut n'a été effectuée."
+        )
+    else:
+        st.caption(
+            "Score brut non calibré : aucune classification "
+            "NORMAL/SUSPECT n'est établie."
+        )
