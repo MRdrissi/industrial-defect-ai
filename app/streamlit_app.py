@@ -22,8 +22,8 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "configs/model_registry.json"
 REAL_REGISTRY_PATH = ROOT / "configs/real_model_registry.json"
 
-# Taille du titre principal, en pixels.
 APP_TITLE_SIZE_PX = 32
+APP_TAGLINE_SIZE_PX = 20
 
 INFERENCE_ERRORS = (
     ValueError,
@@ -51,12 +51,16 @@ def main():
             .st-key-app_title h1 {{
                 font-size: {APP_TITLE_SIZE_PX}px;
             }}
+            .st-key-app_title [data-testid="stCaptionContainer"] p {{
+                font-size: {APP_TAGLINE_SIZE_PX}px;
+            }}
         </style>
         """
     )
 
     with st.container(key="app_title"):
         st.title("DefectVision", anchor=False, text_alignment="left")
+        st.caption("Analysez vos pièces, détectez leurs défauts.")
 
     real_mode = st.checkbox(
         "Utiliser les modèles réels (CPU)",
