@@ -8,7 +8,7 @@ L'Epic compare CAE et PatchCore sur Bottle, Hazelnut et Transistor avec les spli
 |---|---|---|
 | [US-05-01 — Pipeline commun](epic-05/us-05-01.md) | Métriques image/pixel, masques, latence, exports et protocole | Tests synthétiques validés ; revue collaborative restante |
 | [US-05-02](epic-05/us-05-02.md) | Calibration des six seuils sur Validation normale | 6/6 calibrations réelles archivées ; registre strict exporté, rechargé et validé sans nouvelle inférence |
-| US-05-03 | Benchmark Test et macro-moyennes | Hors de la présente livraison |
+| [US-05-03](epic-05/us-05-03.md) | Benchmark Test et macro-moyennes | Phase 1 : orchestrateur et tests synthétiques livrés ; exécution réelle et macro-moyennes non réalisées |
 | US-05-04 | Faux positifs, faux négatifs et limites scientifiques | Hors de la présente livraison |
 
 Le [protocole commun](../experiments/configs/evaluation_protocol.json) distingue calibration sur Validation
