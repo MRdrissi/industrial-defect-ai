@@ -39,7 +39,7 @@ en séparant l'interface utilisateur des moteurs d'inférence.
 - Les modèles sont identifiés par catégorie, méthode et version.
 - Le contrat commun contient score, seuil, carte, décision et latence.
 - La simulation est explicitement distinguée de l'inférence réelle.
-- Les seuils scientifiques seront intégrés après calibration EPIC-05.
+- Les seuils scientifiques proviennent de la calibration EPIC-05 (IDL-96).
 
 ## Intégration réelle
 
@@ -52,5 +52,22 @@ simulation et inférence réelle.
 Les checkpoints sont restaurés à la demande, avec vérification
 SHA-256 et cache limité à une instance.
 
-La décision reste non calibrée tant que les seuils de
-l'EPIC-05 ne sont pas intégrés.
+## Seuils calibrés (IDL-96)
+
+Les six seuils calibrés sur Validation en US-05-02
+(`experiments/calibration/six-thresholds/thresholds.json`, branche `epic/05`)
+sont intégrés dans `configs/real_model_registry.json`, sans arrondi, pour les
+mêmes checkpoints (SHA-256). Chaque entrée indique sa provenance
+(`threshold_source`).
+
+| Modèle | Seuil |
+|---|---:|
+| CAE Bottle (exp-002) | 0,01955269752070307 |
+| CAE Hazelnut (exp-001) | 0,008434063522145145 |
+| CAE Transistor (exp-001) | 0,027364758774638176 |
+| PatchCore Bottle (exp-002) | 31,620044136047362 |
+| PatchCore Hazelnut (exp-002) | 48,83736801147461 |
+| PatchCore Transistor (exp-001) | 40,95855598449707 |
+
+La règle de décision est alignée sur US-05-02 : **anomalie si score > seuil**,
+l'égalité reste normale.

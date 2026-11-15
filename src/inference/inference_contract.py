@@ -216,8 +216,9 @@ def run_inference(
     if threshold is None:
         decision = "non_calibree"
     else:
+        # Règle figée en US-05-02 : anomalie si score > seuil (égalité = normal).
         decision = (
-            "suspect" if score >= threshold else "normal"
+            "suspect" if score > threshold else "normal"
         )
 
     latency_ms = (perf_counter() - start) * 1000

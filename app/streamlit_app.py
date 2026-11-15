@@ -47,7 +47,7 @@ def main():
     )
 
     if real_mode:
-        st.caption("Inspection réelle — seuils non calibrés")
+        st.caption("Inspection réelle — seuils calibrés sur Validation (US-05-02)")
     else:
         st.caption("Inspection visuelle — démonstration simulée")
 
