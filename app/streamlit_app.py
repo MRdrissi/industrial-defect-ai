@@ -19,7 +19,6 @@ from src.inference.inference_contract import (
 
 
 ROOT = Path(__file__).resolve().parents[1]
-REGISTRY_PATH = ROOT / "configs/model_registry.json"
 REAL_REGISTRY_PATH = ROOT / "configs/real_model_registry.json"
 
 APP_TITLE_SIZE_PX = 32
@@ -62,24 +61,9 @@ def main():
         st.title("DefectVision", anchor=False, text_alignment="left")
         st.caption("Analysez vos pièces, détectez leurs défauts.")
 
-    real_mode = st.checkbox(
-        "Utiliser les modèles réels (CPU)",
-        value=False,
-    )
-
-    if real_mode:
-        st.caption("Inspection réelle — seuils non calibrés")
-    else:
-        st.caption("Inspection visuelle — démonstration simulée")
-
-    # 1. Charger le registre
+    # 1. Charger le registre des modèles réels
     try:
-        registry_path = (
-            REAL_REGISTRY_PATH
-            if real_mode
-            else REGISTRY_PATH
-        )
-        registry = load_registry(registry_path)
+        registry = load_registry(REAL_REGISTRY_PATH)
     except (OSError, ValueError) as exc:
         st.error(f"Impossible de charger le registre : {exc}")
         st.stop()
