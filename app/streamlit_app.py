@@ -7,7 +7,7 @@ import streamlit as st
 
 from app.comparison import METHODS, available_versions, run_comparison
 from app.comparison_view import display_comparison
-from app.image_utils import decode_image, image_to_tensor
+from app.image_utils import MAX_FILE_SIZE, decode_image, image_to_tensor
 from app.report import build_report
 from app.result_view import display_result
 
@@ -78,6 +78,9 @@ def main():
             }}
             .st-key-method_selector [data-testid="stWidgetLabel"] {{
                 color: inherit;
+            }}
+            .st-key-inspection_image button[aria-label="Add files"] {{
+                display: none;
             }}
         </style>
         """
@@ -163,6 +166,8 @@ def main():
         "Importer une image",
         type=["png", "jpg", "jpeg"],
         accept_multiple_files=False,
+        max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
+        key="inspection_image",
     )
 
     image = None
