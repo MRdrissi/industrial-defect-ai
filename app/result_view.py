@@ -184,29 +184,31 @@ def display_inspection_details(home_page) -> None:
                 height: 26px;
                 max-height: 26px;
             }}
+            
+            .st-key-details_heading {{
+                gap: 0.2rem !important;
+                align-items: center !important;
+            }}
+            
+            .st-key-view_anomaly_map button {{
+                background-color: #2563eb !important;
+                border-color: #2563eb !important;
+                color: white !important;
+                padding: 0.35rem 0.75rem !important;
+                min-height: 2.25rem;
+                white-space: nowrap;
+            }}
+            
+            .st-key-view_anomaly_map button:hover {{
+                background-color: #1d4ed8 !important;
+                border-color: #1d4ed8 !important;
+                color: white !important;
+            }}
         </style>
         """
     )
 
-    # 1. En-tête : chevron de retour + titre
-    with st.container(
-            key="details_header",
-            horizontal=True,
-            horizontal_alignment="left",
-            vertical_alignment="center",
-            gap="small",
-    ):
-        if st.button(
-                _BACK_LABEL,
-                key="details_back",
-                type="tertiary",
-                width="content",
-        ):
-            st.switch_page(home_page)
-
-        st.title("Détails de l'inspection", anchor=False)
-
-    # 2. Récupérer l'inspection
+    # 1. Récupérer l'inspection
     inspection = st.session_state.get("last_inspection")
 
     if inspection is None:
@@ -216,29 +218,86 @@ def display_inspection_details(home_page) -> None:
     result = inspection["result"]
     image = inspection["image"]
 
+    # 2. En-tête : retour + titre à gauche, heatmap à droite
+    with st.container(key="details_header"):
+        title_col, action_col = st.columns(
+            [4, 2],
+            vertical_alignment="center",
+            gap="small",
+        )
+
+        with title_col:
+            with st.container(
+                    key="details_heading",
+                    horizontal=True,
+                    horizontal_alignment="left",
+                    vertical_alignment="center",
+                    gap="small",
+            ):
+                if st.button(
+                        _BACK_LABEL,
+                        key="details_back",
+                        type="tertiary",
+                        width="content",
+                ):
+                    st.switch_page(home_page)
+
+                st.title("Détails de l'inspection", anchor=False)
+
+        with action_col:
+            with st.container(
+                    horizontal=True,
+                    horizontal_alignment="right",
+            ):
+                if st.button(
+                        "Voir carte d'anomalie",
+                        key="view_anomaly_map",
+                        type="secondary",
+                        width="content",
+                ):
+                    _, overlay, _ = make_overlay(
+                        image,
+                        result.anomaly_map,
+                        result.threshold,
+                    )
+                    show_anomaly_map(overlay)
+
     st.caption(model_label(result))
 
-    # 3. Bouton heatmap et détails techniques sur une ligne
-    heatmap_col, technical_col = st.columns(
-        2,
+
+    # 3. Détails techniques avec verdict à droite
+    heading_col, verdict_col = st.columns(
+        [4, 1],
         vertical_alignment="center",
-        gap="medium",
     )
 
-    with heatmap_col:
-        if st.button(
-                "Voir carte d'anomalie",
-                key="view_anomaly_map",
-                width="stretch",
-        ):
-            _, overlay, _ = make_overlay(
-                image,
-                result.anomaly_map,
-                result.threshold,
-            )
-            show_anomaly_map(overlay)
+    with heading_col:
+        st.subheader("Détails techniques")
 
-    with technical_col:
-        with st.expander("Détails techniques"):
-            st.json(result.to_dict())
+    with verdict_col:
+        with st.container(
+                horizontal=True,
+                horizontal_alignment="right",
+                vertical_alignment="center",
+        ):
+            if result.threshold is None or result.decision == "non_calibree":
+                st.badge("NON CALIBRÉ", color="gray")
+            elif result.decision == "normal":
+                st.badge("NORMAL", color="green")
+            elif result.decision == "suspect":
+                st.badge("SUSPECT", color="red")
+
+    # 4. Informations techniques sur une seule colonne
+    technical_fields = [
+        ("Catégorie", result.category.capitalize()),
+        ("Méthode", METHOD_LABELS.get(result.method, result.method)),
+        ("Version", result.version),
+        ("Score brut", f"{result.score:.4f}"),
+        ("Seuil", "Non calibré" if result.threshold is None
+        else f"{result.threshold:.4f}"),
+        ("Latence", f"{result.latency_ms:.1f} ms"),
+    ]
+
+    for label, value in technical_fields:
+        st.markdown(f"**{label} :** {value}")
 
