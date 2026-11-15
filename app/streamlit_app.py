@@ -10,7 +10,10 @@ from app.comparison_view import display_comparison
 from app.image_preview import image_preview_button
 from app.image_utils import MAX_FILE_SIZE, decode_image, image_to_tensor
 from app.report import build_report
-from app.result_view import display_result
+from app.result_view import (
+    display_result,
+    display_inspection_details,
+)
 
 from src.inference.model_registry import get_model, load_registry
 from src.inference.inference_contract import (
@@ -36,12 +39,11 @@ INFERENCE_ERRORS = (
 )
 
 
-def main():
-    st.set_page_config(
-        page_title="DefectVision",
-        layout="wide",
-    )
+def clear_last_inspection():
+    st.session_state.pop("last_inspection", None)
 
+
+def main():
     st.html(
         f"""
         <style>
@@ -112,6 +114,16 @@ def main():
                 border-color: #f8c7ca;
                 color: #8b343a;
                 opacity: 1;
+            }}
+            .st-key-view_details button {{
+                background-color: #2563eb !important;
+                border-color: #2563eb !important;
+                color: white !important;
+            }}
+            .st-key-view_details button:hover {{
+                background-color: #1d4ed8 !important;
+                border-color: #1d4ed8 !important;
+                color: white !important;
             }}
         </style>
         """
@@ -212,6 +224,7 @@ def main():
                 max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
                 key="inspection_image",
                 label_visibility="collapsed",
+                on_change=clear_last_inspection,
             )
 
             if uploaded is not None:
@@ -275,9 +288,51 @@ def main():
             image_size=image.size,
         )
 
-        # 8. Afficher les résultats
-        display_result(result, image, report)
+
+        # 8. Mémoriser le résultat pour les deux pages
+        st.session_state["last_inspection"] = {
+            "result": result,
+            "image": image.copy(),
+            "report": report,
+            "selection": (category, method, version),
+        }
+
+    # 9. Afficher la synthèse sans relancer l'inférence
+    if not compare_mode:
+        inspection = st.session_state.get("last_inspection")
+
+        if (
+                inspection is not None
+                and inspection["selection"] == (category, method, version)
+        ):
+            display_result(
+                inspection["result"],
+                inspection["image"],
+                inspection["report"],
+                details_page,
+            )
 
 
 if __name__ == "__main__":
-    main()
+    st.set_page_config(
+        page_title="DefectVision",
+        layout="wide",
+        initial_sidebar_state="collapsed",
+    )
+
+    home_page = st.Page(
+        main,
+        title="Analyse",
+        default=True,
+    )
+
+    details_page = st.Page(
+        lambda: display_inspection_details(home_page),
+        title="Détails de l'inspection",
+        url_path="details",
+    )
+
+    st.navigation(
+        [home_page, details_page],
+        position="hidden",
+    ).run()

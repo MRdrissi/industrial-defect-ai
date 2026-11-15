@@ -9,27 +9,19 @@ US-06-04 (IDL-78)   : téléchargement du rapport d'inspection JSON.
 import numpy as np
 import streamlit as st
 from PIL import Image
-from datetime import datetime
 
 from app.overlay import make_overlay
 from app.report import report_filename, report_to_json
 from src.inference.inference_contract import InferenceResult
 
-METHOD_LABELS = {"cae": "CAE", "patchcore": "PatchCore"}
-
-SCALE_CAPTIONS = {
-    "threshold": "Couleurs relatives au seuil : vert = niveau du seuil, rouge = au-dessus.",
-    "relative": "Seuil non calibré : couleurs relatives à cette image (zone la plus forte en rouge).",
-}
+METHOD_LABELS = {"cae": "Convolutional AutoEncoder", "patchcore": "PatchCore"}
 
 
 def model_label(result: InferenceResult) -> str:
     """Identification lisible du modèle utilisé."""
     method = METHOD_LABELS.get(result.method, result.method)
-    mode = "simulation" if result.simulated else "modèle réel"
     return (
-        f"Modèle : {result.category.capitalize()} · {method} · "
-        f"version {result.version} ({mode})"
+        f"Modèle : {result.category.capitalize()} · {method}"
     )
 
 
@@ -55,28 +47,23 @@ def _normalized_raw_map(result: InferenceResult) -> np.ndarray:
     return np.zeros_like(raw_map, dtype=np.float32)
 
 
+
 def display_result(
-    result: InferenceResult,
-    image: Image.Image | None = None,
-    report: dict | None = None,
+        result: InferenceResult,
+        image: Image.Image | None = None,
+        report: dict | None = None,
+        details_page=None,
 ) -> None:
-    """Affiche le résultat d'une inspection (simulée ou réelle)."""
+    """Affiche uniquement la synthèse de l'inspection."""
 
     st.subheader("Résultat de l'inspection")
 
-    # 1. Décision
-    if result.decision == "normal":
-        st.success("Décision : NORMAL")
-    elif result.decision == "suspect":
-        st.warning("Décision : SUSPECT")
+    score_col, threshold_col, latency_col, verdict_col = st.columns(4)
 
-    # 2. Indicateurs et identification du modèle
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
+    with score_col:
         st.metric("Score brut", f"{result.score:.4f}")
 
-    with col2:
+    with threshold_col:
         st.metric(
             "Seuil",
             "Non calibré"
@@ -84,49 +71,93 @@ def display_result(
             else f"{result.threshold:.4f}",
         )
 
-    with col3:
+    with latency_col:
         st.metric("Latence", f"{result.latency_ms:.1f} ms")
 
-    # 3. Heatmap superposée à l'image (taille d'origine)
-    if image is not None:
-        _, overlay, scale = make_overlay(image, result.anomaly_map, result.threshold)
+    with verdict_col:
+        st.caption("Verdict")
 
-        left, right = st.columns(2)
-        with left:
-            st.image(image, caption="Image analysée", width="stretch")
-        with right:
-            st.image(overlay, caption="Heatmap superposée", width="stretch")
+        if result.threshold is None or result.decision == "non_calibree":
+            st.badge("NON CALIBRÉ", color="gray")
+        elif result.decision == "normal":
+            st.badge("NORMAL", color="green")
+        elif result.decision == "suspect":
+            st.badge("SUSPECT", color="red")
 
-    # 4. Rapport d'inspection téléchargeable
     if report is not None:
-        st.download_button(
-            "Télécharger le rapport JSON",
-            data=report_to_json(report),
-            file_name=report_filename(report),
-            mime="application/json",
-            on_click="ignore",  # garder le résultat affiché après le clic
+        _, download_col, details_col = st.columns(
+            [5, 2.4, 1.6],
+            vertical_alignment="center",
         )
-        report_date = datetime.fromisoformat(
-            report["generated_at_utc"].replace("Z", "+00:00")
-        ).strftime("%d/%m/%Y à %H:%M")
-        st.caption(f"Rapport du {report_date} (UTC)")
 
-    # 5. Carte brute et métadonnées
+        with download_col:
+            st.download_button(
+                "Télécharger le rapport",
+                data=report_to_json(report),
+                file_name=report_filename(report),
+                mime="application/json",
+                on_click="ignore",
+                width="stretch",
+            )
+
+        with details_col:
+            if st.button(
+                    "Voir détails",
+                    key="view_details",
+                    type="secondary",
+                    width="stretch",
+                    disabled=details_page is None,
+            ):
+                st.switch_page(details_page)
+
+
+
+def display_inspection_details(home_page) -> None:
+    """Page dédiée à la visualisation et aux détails techniques."""
+
+    if st.button("Retour à l'analyse"):
+        st.switch_page(home_page)
+
+    inspection = st.session_state.get("last_inspection")
+
+    if inspection is None:
+        st.info("Aucune inspection disponible.")
+        return
+
+    result = inspection["result"]
+    image = inspection["image"]
+
+    st.title("Détails de l'inspection")
+
+    st.caption(model_label(result))
+
+    _, overlay, _ = make_overlay(
+        image,
+        result.anomaly_map,
+        result.threshold,
+    )
+
+    left, right = st.columns(2)
+
+    with left:
+        st.image(
+            image,
+            caption="Image analysée",
+            width="stretch",
+        )
+
+    with right:
+        st.image(
+            overlay,
+            caption="Heatmap superposée",
+            width="stretch",
+        )
+
     with st.expander("Détails techniques"):
         st.image(
             _normalized_raw_map(result),
-            caption=(
-                "Carte d'écarts simulée"
-                if result.simulated
-                else "Carte d'anomalie réelle (échelle visuelle normalisée)"
-            ),
+            caption="Carte d'anomalie brute normalisée",
             width="stretch",
         )
-        st.json(result.to_dict())
 
-    # 6. Avertissement
-    if result.simulated:
-        st.info(
-            "Simulation uniquement : aucune véritable "
-            "détection de défaut n'a été effectuée."
-        )
+        st.json(result.to_dict())
