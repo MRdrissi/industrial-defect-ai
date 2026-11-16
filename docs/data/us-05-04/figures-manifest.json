@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "renderer": {
+    "python": "3.12.6",
+    "numpy": "2.5.5",
+    "Pillow": "13.0.0",
+    "matplotlib": "3.11.2",
+    "font": "DejaVu Sans bundled with matplotlib",
+    "backend": "Agg",
+    "dpi": 140
+  },
+  "inputs": {
+    "selection.json": "f016f981e219b692781b1306b6b0e6eeaa986d1365fab3b4b4c64b2e0640edd5",
+    "source-images.json": "046ed8988881a6acb3c483c8be72f99f0514d2d7b33295fdfd9db7572b9a3142"
+  },
+  "files": {
+    "spatial-diagnostics.json": {
+      "sha256": "1a431efb8360f0e4ed2f9a8f467fdc164645bfcb703fc34bfffb8ea886d09378",
+      "size_bytes": 15820
+    },
+    "figures/case-01.png": {
+      "sha256": "94add905b6f91f77d154a369ca0419f7a9597f4e6b104808dccf4597fb5531aa",
+      "size_bytes": 621644
+    },
+    "figures/case-02.png": {
+      "sha256": "0e07c7209fbe588ed9e96af93c73471d11ab7044efeba2c7ce6449538e0554be",
+      "size_bytes": 620041
+    },
+    "figures/case-03.png": {
+      "sha256": "4f77a1cabb5e7edc6136c65f5e5a7fc2417ad8c1ef25fe2dd38e0b8e93ce1295",
+      "size_bytes": 656249
+    },
+    "figures/case-04.png": {
+      "sha256": "3baa2f8ce57a700449761d4e83052399864dfbba4ab13d09be901f00779bca5f",
+      "size_bytes": 642738
+    },
+    "figures/case-05.png": {
+      "sha256": "688bef3b31d6bed2990fac6f8a20619b34af21599d3025952d024a7a13d72107",
+      "size_bytes": 632747
+    },
+    "figures/case-06.png": {
+      "sha256": "42b66e28c8416032d3f943a6db077f0cd12038b09c403d75ee8f63657dc5988c",
+      "size_bytes": 639389
+    },
+    "figures/case-07.png": {
+      "sha256": "c51d4c6f2c81bfeabc7b325565b95728d01140d01cc71b93a109bfd929ce3c68",
+      "size_bytes": 590802
+    },
+    "figures/case-08.png": {
+      "sha256": "b3e7aa6b3ee88556e2085a436f02cc9ce886a866c63baed2625c41c3459a93a9",
+      "size_bytes": 659228
+    },
+    "figures/case-09.png": {
+      "sha256": "d9aa0b2f8fae6fec6bef7c08e4f5eb3678ff677699f6688e11b2d431a81774ab",
+      "size_bytes": 627105
+    },
+    "figures/case-10.png": {
+      "sha256": "96fb1914ae0d38deef7200a573298434de3e92a5ca5d3788907a51a4f6e1ea0a",
+      "size_bytes": 643422
+    },
+    "figures/case-11.png": {
+      "sha256": "3dc0d67fa7074f7eb941502f69d8b604e08755ba0af2d39745bc1af03c498f12",
+      "size_bytes": 664582
+    },
+    "figures/case-12.png": {
+      "sha256": "1fdbae319da3f24810cba5a5ba8727da75720a776b7c1fffa47587e031071be5",
+      "size_bytes": 663556
+    },
+    "figures/case-13.png": {
+      "sha256": "8568bd6c553f3edfd1d61aea4fe436c17ef84ca1d643d25cf869b440a6d6c430",
+      "size_bytes": 712870
+    }
+  }
+}

@@ -27,3 +27,8 @@ experiments/benchmark/kaggle-001/** -text
 experiments/benchmark/kaggle-002/** -text
 experiments/benchmark/comparison.csv text eol=lf
 experiments/benchmark/summary.json text eol=lf
+
+# Preserve reproducible US-05-04 evidence and generated figures
+docs/data/us-05-04/*.json text eol=lf
+docs/data/us-05-04/*.csv text eol=lf
+docs/data/us-05-04/figures/*.png binary

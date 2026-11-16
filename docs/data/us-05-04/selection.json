@@ -1,0 +1,711 @@
+{
+  "schema_version": "1.0",
+  "policy": "lower_median_absolute_threshold_distance_per_instance_error_defect",
+  "tie_break": "lexicographic image_path",
+  "rank": "floor((stratum_count - 1) / 2), zero-based",
+  "selection_uses_images_or_maps": false,
+  "cases": [
+    {
+      "case_id": "case-01",
+      "image_path": "bottle/test/broken_large/002.png",
+      "mask_path": "bottle/ground_truth/broken_large/002_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-bottle",
+          "error": "FN",
+          "defect_type": "broken_large",
+          "stratum_count": 7,
+          "selected_rank_1based": 4
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-bottle",
+          "model_family": "cae",
+          "category": "bottle",
+          "defect_type": "broken_large",
+          "image_path": "bottle/test/broken_large/002.png",
+          "mask_path": "bottle/ground_truth/broken_large/002_mask.png",
+          "label": 1,
+          "score": 0.013612207025289536,
+          "threshold": 0.01955269752070307,
+          "threshold_hex": "0x1.4059f51999997p-6",
+          "classification": "FN",
+          "signed_margin": -0.005940490495413533,
+          "prediction_index": 2,
+          "artifact_file": "artifacts/00002.npz",
+          "artifact_sha256": "ae492cf0714d4d442d4dfd47bb0edd1f5db512e7e887a640148b5b8bc86e56bb",
+          "source_metrics": "experiments/benchmark/kaggle-002/cae-bottle/metrics.json",
+          "source_manifest_sha256": "9393551e7c116dabcdaa539b669bb15debbd2e05529b1169bedf92d3c9b104ef"
+        },
+        {
+          "instance": "patchcore-bottle",
+          "model_family": "patchcore",
+          "category": "bottle",
+          "defect_type": "broken_large",
+          "image_path": "bottle/test/broken_large/002.png",
+          "mask_path": "bottle/ground_truth/broken_large/002_mask.png",
+          "label": 1,
+          "score": 61.95682144165039,
+          "threshold": 31.620044136047362,
+          "threshold_hex": "0x1.f9ebb36666666p+4",
+          "classification": "TP",
+          "signed_margin": 30.33677730560303,
+          "prediction_index": 2,
+          "artifact_file": "artifacts/00002.npz",
+          "artifact_sha256": "790614ae5cdefcdc74d0c817f70891970224e0ac40805038b6ebad63ce98b49c",
+          "source_metrics": "experiments/benchmark/kaggle-001/patchcore-bottle/metrics.json",
+          "source_manifest_sha256": "009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e"
+        }
+      ]
+    },
+    {
+      "case_id": "case-02",
+      "image_path": "bottle/test/broken_small/015.png",
+      "mask_path": "bottle/ground_truth/broken_small/015_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-bottle",
+          "error": "FN",
+          "defect_type": "broken_small",
+          "stratum_count": 4,
+          "selected_rank_1based": 2
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-bottle",
+          "model_family": "cae",
+          "category": "bottle",
+          "defect_type": "broken_small",
+          "image_path": "bottle/test/broken_small/015.png",
+          "mask_path": "bottle/ground_truth/broken_small/015_mask.png",
+          "label": 1,
+          "score": 0.013488664291799068,
+          "threshold": 0.01955269752070307,
+          "threshold_hex": "0x1.4059f51999997p-6",
+          "classification": "FN",
+          "signed_margin": -0.006064033228904,
+          "prediction_index": 35,
+          "artifact_file": "artifacts/00035.npz",
+          "artifact_sha256": "b9db571ccfe2478d5d5da4391884137989f5028811e5d7a0ed04238c0a68f5c0",
+          "source_metrics": "experiments/benchmark/kaggle-002/cae-bottle/metrics.json",
+          "source_manifest_sha256": "9393551e7c116dabcdaa539b669bb15debbd2e05529b1169bedf92d3c9b104ef"
+        },
+        {
+          "instance": "patchcore-bottle",
+          "model_family": "patchcore",
+          "category": "bottle",
+          "defect_type": "broken_small",
+          "image_path": "bottle/test/broken_small/015.png",
+          "mask_path": "bottle/ground_truth/broken_small/015_mask.png",
+          "label": 1,
+          "score": 58.33750915527344,
+          "threshold": 31.620044136047362,
+          "threshold_hex": "0x1.f9ebb36666666p+4",
+          "classification": "TP",
+          "signed_margin": 26.717465019226076,
+          "prediction_index": 35,
+          "artifact_file": "artifacts/00035.npz",
+          "artifact_sha256": "8057f2b19085919f756c88553a468ba9efe0d478e5a419603af301db76ef66bc",
+          "source_metrics": "experiments/benchmark/kaggle-001/patchcore-bottle/metrics.json",
+          "source_manifest_sha256": "009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e"
+        }
+      ]
+    },
+    {
+      "case_id": "case-03",
+      "image_path": "bottle/test/contamination/016.png",
+      "mask_path": "bottle/ground_truth/contamination/016_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-bottle",
+          "error": "FN",
+          "defect_type": "contamination",
+          "stratum_count": 15,
+          "selected_rank_1based": 8
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-bottle",
+          "model_family": "cae",
+          "category": "bottle",
+          "defect_type": "contamination",
+          "image_path": "bottle/test/contamination/016.png",
+          "mask_path": "bottle/ground_truth/contamination/016_mask.png",
+          "label": 1,
+          "score": 0.010389972478151321,
+          "threshold": 0.01955269752070307,
+          "threshold_hex": "0x1.4059f51999997p-6",
+          "classification": "FN",
+          "signed_margin": -0.009162725042551747,
+          "prediction_index": 58,
+          "artifact_file": "artifacts/00058.npz",
+          "artifact_sha256": "1f85363b8fd112668d2b13a2d28b8c3e8a2810e8111372e76fb447788caf8909",
+          "source_metrics": "experiments/benchmark/kaggle-002/cae-bottle/metrics.json",
+          "source_manifest_sha256": "9393551e7c116dabcdaa539b669bb15debbd2e05529b1169bedf92d3c9b104ef"
+        },
+        {
+          "instance": "patchcore-bottle",
+          "model_family": "patchcore",
+          "category": "bottle",
+          "defect_type": "contamination",
+          "image_path": "bottle/test/contamination/016.png",
+          "mask_path": "bottle/ground_truth/contamination/016_mask.png",
+          "label": 1,
+          "score": 43.81656265258789,
+          "threshold": 31.620044136047362,
+          "threshold_hex": "0x1.f9ebb36666666p+4",
+          "classification": "TP",
+          "signed_margin": 12.196518516540529,
+          "prediction_index": 58,
+          "artifact_file": "artifacts/00058.npz",
+          "artifact_sha256": "6ffd45c192197476d2925ddca04e064c54ef4a9d9ac82e25bc27bf0fdd855ca8",
+          "source_metrics": "experiments/benchmark/kaggle-001/patchcore-bottle/metrics.json",
+          "source_manifest_sha256": "009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e"
+        }
+      ]
+    },
+    {
+      "case_id": "case-04",
+      "image_path": "bottle/test/good/001.png",
+      "mask_path": "",
+      "selection_reasons": [
+        {
+          "instance": "patchcore-bottle",
+          "error": "FP",
+          "defect_type": "good",
+          "stratum_count": 1,
+          "selected_rank_1based": 1
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-bottle",
+          "model_family": "cae",
+          "category": "bottle",
+          "defect_type": "good",
+          "image_path": "bottle/test/good/001.png",
+          "mask_path": "",
+          "label": 0,
+          "score": 0.008587692864239216,
+          "threshold": 0.01955269752070307,
+          "threshold_hex": "0x1.4059f51999997p-6",
+          "classification": "TN",
+          "signed_margin": -0.010965004656463852,
+          "prediction_index": 64,
+          "artifact_file": "artifacts/00064.npz",
+          "artifact_sha256": "62ba15be66ebb6cc72556a10f7053a1159c59922b35c9ccf1862986b4f824115",
+          "source_metrics": "experiments/benchmark/kaggle-002/cae-bottle/metrics.json",
+          "source_manifest_sha256": "9393551e7c116dabcdaa539b669bb15debbd2e05529b1169bedf92d3c9b104ef"
+        },
+        {
+          "instance": "patchcore-bottle",
+          "model_family": "patchcore",
+          "category": "bottle",
+          "defect_type": "good",
+          "image_path": "bottle/test/good/001.png",
+          "mask_path": "",
+          "label": 0,
+          "score": 32.88839340209961,
+          "threshold": 31.620044136047362,
+          "threshold_hex": "0x1.f9ebb36666666p+4",
+          "classification": "FP",
+          "signed_margin": 1.2683492660522475,
+          "prediction_index": 64,
+          "artifact_file": "artifacts/00064.npz",
+          "artifact_sha256": "fb41a4b63410ba581d8393531f78e9d51a403f82f1e4bd514687f06f2aef9f57",
+          "source_metrics": "experiments/benchmark/kaggle-001/patchcore-bottle/metrics.json",
+          "source_manifest_sha256": "009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e"
+        }
+      ]
+    },
+    {
+      "case_id": "case-05",
+      "image_path": "hazelnut/test/crack/002.png",
+      "mask_path": "hazelnut/ground_truth/crack/002_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-hazelnut",
+          "error": "FN",
+          "defect_type": "crack",
+          "stratum_count": 6,
+          "selected_rank_1based": 3
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-hazelnut",
+          "model_family": "cae",
+          "category": "hazelnut",
+          "defect_type": "crack",
+          "image_path": "hazelnut/test/crack/002.png",
+          "mask_path": "hazelnut/ground_truth/crack/002_mask.png",
+          "label": 1,
+          "score": 0.005071320105344057,
+          "threshold": 0.008434063522145145,
+          "threshold_hex": "0x1.145e0d7fffffcp-7",
+          "classification": "FN",
+          "signed_margin": -0.003362743416801088,
+          "prediction_index": 2,
+          "artifact_file": "artifacts/00002.npz",
+          "artifact_sha256": "e718b317d22a4e8f004b8b7e170499fd080cd944cd289d0dfcee9608beabf001",
+          "source_metrics": "experiments/benchmark/kaggle-002/cae-hazelnut/metrics.json",
+          "source_manifest_sha256": "3cb839efbd128a0881a394f60b277c0662c7b8b8815b67f15d723b1bbca1d5d5"
+        },
+        {
+          "instance": "patchcore-hazelnut",
+          "model_family": "patchcore",
+          "category": "hazelnut",
+          "defect_type": "crack",
+          "image_path": "hazelnut/test/crack/002.png",
+          "mask_path": "hazelnut/ground_truth/crack/002_mask.png",
+          "label": 1,
+          "score": 55.078956604003906,
+          "threshold": 48.83736801147461,
+          "threshold_hex": "0x1.86b2ee0000000p+5",
+          "classification": "TP",
+          "signed_margin": 6.241588592529297,
+          "prediction_index": 2,
+          "artifact_file": "artifacts/00002.npz",
+          "artifact_sha256": "9142c5497bd448018c6f65cc0e20e86cba7feea4b7a0553579099f5d1f057409",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-hazelnut/metrics.json",
+          "source_manifest_sha256": "575384adb3edb7b8bd40156c951625ed0c67c9a0474e2bc91367b6b3637af56a"
+        }
+      ]
+    },
+    {
+      "case_id": "case-06",
+      "image_path": "hazelnut/test/cut/001.png",
+      "mask_path": "hazelnut/ground_truth/cut/001_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-hazelnut",
+          "error": "FN",
+          "defect_type": "cut",
+          "stratum_count": 9,
+          "selected_rank_1based": 5
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-hazelnut",
+          "model_family": "cae",
+          "category": "hazelnut",
+          "defect_type": "cut",
+          "image_path": "hazelnut/test/cut/001.png",
+          "mask_path": "hazelnut/ground_truth/cut/001_mask.png",
+          "label": 1,
+          "score": 0.005549188237637281,
+          "threshold": 0.008434063522145145,
+          "threshold_hex": "0x1.145e0d7fffffcp-7",
+          "classification": "FN",
+          "signed_margin": -0.0028848752845078637,
+          "prediction_index": 19,
+          "artifact_file": "artifacts/00019.npz",
+          "artifact_sha256": "a495eed75f045bcb3cde58937175eebac2181d54abdcc9c21ca351b34de34394",
+          "source_metrics": "experiments/benchmark/kaggle-002/cae-hazelnut/metrics.json",
+          "source_manifest_sha256": "3cb839efbd128a0881a394f60b277c0662c7b8b8815b67f15d723b1bbca1d5d5"
+        },
+        {
+          "instance": "patchcore-hazelnut",
+          "model_family": "patchcore",
+          "category": "hazelnut",
+          "defect_type": "cut",
+          "image_path": "hazelnut/test/cut/001.png",
+          "mask_path": "hazelnut/ground_truth/cut/001_mask.png",
+          "label": 1,
+          "score": 54.287757873535156,
+          "threshold": 48.83736801147461,
+          "threshold_hex": "0x1.86b2ee0000000p+5",
+          "classification": "TP",
+          "signed_margin": 5.450389862060547,
+          "prediction_index": 19,
+          "artifact_file": "artifacts/00019.npz",
+          "artifact_sha256": "dab71f0c6f181387551b6fc57419ffc9adcbee41b5663a0751c9af6f6d95b1c7",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-hazelnut/metrics.json",
+          "source_manifest_sha256": "575384adb3edb7b8bd40156c951625ed0c67c9a0474e2bc91367b6b3637af56a"
+        }
+      ]
+    },
+    {
+      "case_id": "case-07",
+      "image_path": "hazelnut/test/hole/001.png",
+      "mask_path": "hazelnut/ground_truth/hole/001_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-hazelnut",
+          "error": "FN",
+          "defect_type": "hole",
+          "stratum_count": 3,
+          "selected_rank_1based": 2
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-hazelnut",
+          "model_family": "cae",
+          "category": "hazelnut",
+          "defect_type": "hole",
+          "image_path": "hazelnut/test/hole/001.png",
+          "mask_path": "hazelnut/ground_truth/hole/001_mask.png",
+          "label": 1,
+          "score": 0.00574300205335021,
+          "threshold": 0.008434063522145145,
+          "threshold_hex": "0x1.145e0d7fffffcp-7",
+          "classification": "FN",
+          "signed_margin": -0.002691061468794935,
+          "prediction_index": 76,
+          "artifact_file": "artifacts/00076.npz",
+          "artifact_sha256": "1f177f6ed37d3b4bd0e734f9f543a3a2521eb2d6c3100d93055f4823e7736d2e",
+          "source_metrics": "experiments/benchmark/kaggle-002/cae-hazelnut/metrics.json",
+          "source_manifest_sha256": "3cb839efbd128a0881a394f60b277c0662c7b8b8815b67f15d723b1bbca1d5d5"
+        },
+        {
+          "instance": "patchcore-hazelnut",
+          "model_family": "patchcore",
+          "category": "hazelnut",
+          "defect_type": "hole",
+          "image_path": "hazelnut/test/hole/001.png",
+          "mask_path": "hazelnut/ground_truth/hole/001_mask.png",
+          "label": 1,
+          "score": 69.46898651123047,
+          "threshold": 48.83736801147461,
+          "threshold_hex": "0x1.86b2ee0000000p+5",
+          "classification": "TP",
+          "signed_margin": 20.63161849975586,
+          "prediction_index": 76,
+          "artifact_file": "artifacts/00076.npz",
+          "artifact_sha256": "3cccdfdf7b7665c80ef470ac4d1e56dadb82f0cc608463e4a7f1913767eed498",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-hazelnut/metrics.json",
+          "source_manifest_sha256": "575384adb3edb7b8bd40156c951625ed0c67c9a0474e2bc91367b6b3637af56a"
+        }
+      ]
+    },
+    {
+      "case_id": "case-08",
+      "image_path": "transistor/test/bent_lead/008.png",
+      "mask_path": "transistor/ground_truth/bent_lead/008_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-transistor",
+          "error": "FN",
+          "defect_type": "bent_lead",
+          "stratum_count": 7,
+          "selected_rank_1based": 4
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-transistor",
+          "model_family": "cae",
+          "category": "transistor",
+          "defect_type": "bent_lead",
+          "image_path": "transistor/test/bent_lead/008.png",
+          "mask_path": "transistor/ground_truth/bent_lead/008_mask.png",
+          "label": 1,
+          "score": 0.020198862999677658,
+          "threshold": 0.027364758774638176,
+          "threshold_hex": "0x1.c0581e0000000p-6",
+          "classification": "FN",
+          "signed_margin": -0.007165895774960518,
+          "prediction_index": 8,
+          "artifact_file": "artifacts/00008.npz",
+          "artifact_sha256": "c3db12a342f83f6fba7b15ef89a692242cd7bcd7e81a272781acd67f5fb4f8e3",
+          "source_metrics": "experiments/benchmark/kaggle-001/cae-transistor/metrics.json",
+          "source_manifest_sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+        },
+        {
+          "instance": "patchcore-transistor",
+          "model_family": "patchcore",
+          "category": "transistor",
+          "defect_type": "bent_lead",
+          "image_path": "transistor/test/bent_lead/008.png",
+          "mask_path": "transistor/ground_truth/bent_lead/008_mask.png",
+          "label": 1,
+          "score": 49.99467849731445,
+          "threshold": 40.95855598449707,
+          "threshold_hex": "0x1.47ab1f6666666p+5",
+          "classification": "TP",
+          "signed_margin": 9.036122512817386,
+          "prediction_index": 8,
+          "artifact_file": "artifacts/00008.npz",
+          "artifact_sha256": "0b9fd392cee624c417666bc67ef8ce03c11bcbdfd488914f7edb63958d64bc38",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-transistor/metrics.json",
+          "source_manifest_sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+        }
+      ]
+    },
+    {
+      "case_id": "case-09",
+      "image_path": "transistor/test/cut_lead/005.png",
+      "mask_path": "transistor/ground_truth/cut_lead/005_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-transistor",
+          "error": "FN",
+          "defect_type": "cut_lead",
+          "stratum_count": 9,
+          "selected_rank_1based": 5
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-transistor",
+          "model_family": "cae",
+          "category": "transistor",
+          "defect_type": "cut_lead",
+          "image_path": "transistor/test/cut_lead/005.png",
+          "mask_path": "transistor/ground_truth/cut_lead/005_mask.png",
+          "label": 1,
+          "score": 0.015413018874824047,
+          "threshold": 0.027364758774638176,
+          "threshold_hex": "0x1.c0581e0000000p-6",
+          "classification": "FN",
+          "signed_margin": -0.011951739899814129,
+          "prediction_index": 15,
+          "artifact_file": "artifacts/00015.npz",
+          "artifact_sha256": "579999a3f49bffc046551f615e5ed0c357bd258cf813ae48f74aa0df990fdacb",
+          "source_metrics": "experiments/benchmark/kaggle-001/cae-transistor/metrics.json",
+          "source_manifest_sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+        },
+        {
+          "instance": "patchcore-transistor",
+          "model_family": "patchcore",
+          "category": "transistor",
+          "defect_type": "cut_lead",
+          "image_path": "transistor/test/cut_lead/005.png",
+          "mask_path": "transistor/ground_truth/cut_lead/005_mask.png",
+          "label": 1,
+          "score": 55.37349319458008,
+          "threshold": 40.95855598449707,
+          "threshold_hex": "0x1.47ab1f6666666p+5",
+          "classification": "TP",
+          "signed_margin": 14.41493721008301,
+          "prediction_index": 15,
+          "artifact_file": "artifacts/00015.npz",
+          "artifact_sha256": "cc9c6792303aca2c98ee0166eee8f30071a3b5078de67d06a20aa0e53efb1575",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-transistor/metrics.json",
+          "source_manifest_sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+        }
+      ]
+    },
+    {
+      "case_id": "case-10",
+      "image_path": "transistor/test/damaged_case/007.png",
+      "mask_path": "transistor/ground_truth/damaged_case/007_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-transistor",
+          "error": "FN",
+          "defect_type": "damaged_case",
+          "stratum_count": 10,
+          "selected_rank_1based": 5
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-transistor",
+          "model_family": "cae",
+          "category": "transistor",
+          "defect_type": "damaged_case",
+          "image_path": "transistor/test/damaged_case/007.png",
+          "mask_path": "transistor/ground_truth/damaged_case/007_mask.png",
+          "label": 1,
+          "score": 0.017898226156830788,
+          "threshold": 0.027364758774638176,
+          "threshold_hex": "0x1.c0581e0000000p-6",
+          "classification": "FN",
+          "signed_margin": -0.009466532617807388,
+          "prediction_index": 27,
+          "artifact_file": "artifacts/00027.npz",
+          "artifact_sha256": "8fe039a9a878770e7e687bff068dfeb2a4aa349ba921c9c2ce5ac460bd8d2aac",
+          "source_metrics": "experiments/benchmark/kaggle-001/cae-transistor/metrics.json",
+          "source_manifest_sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+        },
+        {
+          "instance": "patchcore-transistor",
+          "model_family": "patchcore",
+          "category": "transistor",
+          "defect_type": "damaged_case",
+          "image_path": "transistor/test/damaged_case/007.png",
+          "mask_path": "transistor/ground_truth/damaged_case/007_mask.png",
+          "label": 1,
+          "score": 49.65786361694336,
+          "threshold": 40.95855598449707,
+          "threshold_hex": "0x1.47ab1f6666666p+5",
+          "classification": "TP",
+          "signed_margin": 8.699307632446292,
+          "prediction_index": 27,
+          "artifact_file": "artifacts/00027.npz",
+          "artifact_sha256": "a530f55801735fe696b6c4970d876fd15ca81e57350cb9c5371e691f7013d3b9",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-transistor/metrics.json",
+          "source_manifest_sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+        }
+      ]
+    },
+    {
+      "case_id": "case-11",
+      "image_path": "transistor/test/good/037.png",
+      "mask_path": "",
+      "selection_reasons": [
+        {
+          "instance": "patchcore-transistor",
+          "error": "FP",
+          "defect_type": "good",
+          "stratum_count": 6,
+          "selected_rank_1based": 3
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-transistor",
+          "model_family": "cae",
+          "category": "transistor",
+          "defect_type": "good",
+          "image_path": "transistor/test/good/037.png",
+          "mask_path": "",
+          "label": 0,
+          "score": 0.01793922483921051,
+          "threshold": 0.027364758774638176,
+          "threshold_hex": "0x1.c0581e0000000p-6",
+          "classification": "TN",
+          "signed_margin": -0.009425533935427666,
+          "prediction_index": 67,
+          "artifact_file": "artifacts/00067.npz",
+          "artifact_sha256": "24f7bae02fc522819ef4af5252d657ead0397af086fc87a118a1040b299f1ce9",
+          "source_metrics": "experiments/benchmark/kaggle-001/cae-transistor/metrics.json",
+          "source_manifest_sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+        },
+        {
+          "instance": "patchcore-transistor",
+          "model_family": "patchcore",
+          "category": "transistor",
+          "defect_type": "good",
+          "image_path": "transistor/test/good/037.png",
+          "mask_path": "",
+          "label": 0,
+          "score": 41.95735168457031,
+          "threshold": 40.95855598449707,
+          "threshold_hex": "0x1.47ab1f6666666p+5",
+          "classification": "FP",
+          "signed_margin": 0.998795700073245,
+          "prediction_index": 67,
+          "artifact_file": "artifacts/00067.npz",
+          "artifact_sha256": "b86bf50c84954478c1b8f1a831274f361211321e4492a66d3dfc46516de65bee",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-transistor/metrics.json",
+          "source_manifest_sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+        }
+      ]
+    },
+    {
+      "case_id": "case-12",
+      "image_path": "transistor/test/misplaced/000.png",
+      "mask_path": "transistor/ground_truth/misplaced/000_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "cae-transistor",
+          "error": "FN",
+          "defect_type": "misplaced",
+          "stratum_count": 8,
+          "selected_rank_1based": 4
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-transistor",
+          "model_family": "cae",
+          "category": "transistor",
+          "defect_type": "misplaced",
+          "image_path": "transistor/test/misplaced/000.png",
+          "mask_path": "transistor/ground_truth/misplaced/000_mask.png",
+          "label": 1,
+          "score": 0.02009531669318676,
+          "threshold": 0.027364758774638176,
+          "threshold_hex": "0x1.c0581e0000000p-6",
+          "classification": "FN",
+          "signed_margin": -0.007269442081451416,
+          "prediction_index": 90,
+          "artifact_file": "artifacts/00090.npz",
+          "artifact_sha256": "0dac6222c19a9f3040688ed267cc14e258a7f685de10b13bfb5bf27a0d40a80c",
+          "source_metrics": "experiments/benchmark/kaggle-001/cae-transistor/metrics.json",
+          "source_manifest_sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+        },
+        {
+          "instance": "patchcore-transistor",
+          "model_family": "patchcore",
+          "category": "transistor",
+          "defect_type": "misplaced",
+          "image_path": "transistor/test/misplaced/000.png",
+          "mask_path": "transistor/ground_truth/misplaced/000_mask.png",
+          "label": 1,
+          "score": 44.22036361694336,
+          "threshold": 40.95855598449707,
+          "threshold_hex": "0x1.47ab1f6666666p+5",
+          "classification": "TP",
+          "signed_margin": 3.261807632446292,
+          "prediction_index": 90,
+          "artifact_file": "artifacts/00090.npz",
+          "artifact_sha256": "457a199b6cfbc0c063d59fbe265af4e1db914ff171e65d463429195312003324",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-transistor/metrics.json",
+          "source_manifest_sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+        }
+      ]
+    },
+    {
+      "case_id": "case-13",
+      "image_path": "transistor/test/misplaced/002.png",
+      "mask_path": "transistor/ground_truth/misplaced/002_mask.png",
+      "selection_reasons": [
+        {
+          "instance": "patchcore-transistor",
+          "error": "FN",
+          "defect_type": "misplaced",
+          "stratum_count": 1,
+          "selected_rank_1based": 1
+        }
+      ],
+      "predictions": [
+        {
+          "instance": "cae-transistor",
+          "model_family": "cae",
+          "category": "transistor",
+          "defect_type": "misplaced",
+          "image_path": "transistor/test/misplaced/002.png",
+          "mask_path": "transistor/ground_truth/misplaced/002_mask.png",
+          "label": 1,
+          "score": 0.0034424730110913515,
+          "threshold": 0.027364758774638176,
+          "threshold_hex": "0x1.c0581e0000000p-6",
+          "classification": "FN",
+          "signed_margin": -0.023922285763546824,
+          "prediction_index": 92,
+          "artifact_file": "artifacts/00092.npz",
+          "artifact_sha256": "2b726d0f62c5ad9a74e154ad67fd3b43b66e3b23a165bd5ee52538adca425610",
+          "source_metrics": "experiments/benchmark/kaggle-001/cae-transistor/metrics.json",
+          "source_manifest_sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+        },
+        {
+          "instance": "patchcore-transistor",
+          "model_family": "patchcore",
+          "category": "transistor",
+          "defect_type": "misplaced",
+          "image_path": "transistor/test/misplaced/002.png",
+          "mask_path": "transistor/ground_truth/misplaced/002_mask.png",
+          "label": 1,
+          "score": 39.88422393798828,
+          "threshold": 40.95855598449707,
+          "threshold_hex": "0x1.47ab1f6666666p+5",
+          "classification": "FN",
+          "signed_margin": -1.0743320465087862,
+          "prediction_index": 92,
+          "artifact_file": "artifacts/00092.npz",
+          "artifact_sha256": "fea1cc0f1cad2f695b284fe83dfff7af4a2d40737748d76fef37288fd8a84bba",
+          "source_metrics": "experiments/benchmark/kaggle-002/patchcore-transistor/metrics.json",
+          "source_manifest_sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+        }
+      ]
+    }
+  ]
+}
