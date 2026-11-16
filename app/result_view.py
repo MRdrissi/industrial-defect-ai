@@ -18,7 +18,7 @@ from src.inference.inference_contract import InferenceResult
 METHOD_LABELS = {"cae": "Convolutional AutoEncoder", "patchcore": "PatchCore"}
 
 DETAILS_TITLE_SIZE_PX = 30
-RESULT_TITLE_SIZE_PX = 28
+RESULT_TITLE_SIZE_PX = 24
 
 _BACK_SVG = (
         Path(__file__).parent / "assets/icons/chevron-left.svg"
@@ -71,7 +71,7 @@ def display_result(
             .st-key-download_report button,
             .st-key-view_details button,
             .st-key-view_details a {{
-                padding-inline: 0.5rem !important;
+                padding-inline: 1rem !important;
             }}
             .st-key-view_details a {{
                 min-height: 2.5rem;

@@ -134,13 +134,17 @@ def main():
                 opacity: 1;
             }}
             .st-key-analyze_image button {{
-                padding-inline: 0.5rem !important;
+                padding-inline: 1rem !important;
             }}
             .st-key-view_details button,
             .st-key-view_details a {{
                 background-color: #2563eb !important;
                 border-color: #2563eb !important;
                 color: white !important;
+            }}
+            .st-key-view_details a,
+            .st-key-view_details a * {{
+                color: #ffffff !important;
             }}
             .st-key-view_details button:hover,
             .st-key-view_details a:hover {{
