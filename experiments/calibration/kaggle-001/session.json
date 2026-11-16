@@ -1,0 +1,46 @@
+{
+  "executed_at_utc": "2026-11-15T01:56:02.198593+00:00",
+  "code_commit": "c708de9ce2b682ab8cea00eabd5d3e8c7b2a0ae6",
+  "results": [
+    {
+      "instance": "cae-bottle",
+      "threshold": 0.01955269752070307,
+      "threshold_hex": "0x1.4059f51999997p-6",
+      "integrity_sha256": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459",
+      "validation_images": 42,
+      "status": "calibrated"
+    },
+    {
+      "instance": "cae-hazelnut",
+      "threshold": 0.008434063522145145,
+      "threshold_hex": "0x1.145e0d7fffffcp-7",
+      "integrity_sha256": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a",
+      "validation_images": 78,
+      "status": "calibrated"
+    },
+    {
+      "instance": "cae-transistor",
+      "status": "missing_checkpoint"
+    },
+    {
+      "instance": "patchcore-bottle",
+      "status": "missing_checkpoint"
+    },
+    {
+      "instance": "patchcore-hazelnut",
+      "threshold": 48.83736801147461,
+      "threshold_hex": "0x1.86b2ee0000000p+5",
+      "integrity_sha256": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76",
+      "validation_images": 78,
+      "status": "calibrated"
+    },
+    {
+      "instance": "patchcore-transistor",
+      "threshold": 40.95855598449707,
+      "threshold_hex": "0x1.47ab1f6666666p+5",
+      "integrity_sha256": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e",
+      "validation_images": 43,
+      "status": "calibrated"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "run_id": "kaggle-001",
+  "status": "partial_4_of_6",
+  "scientific_code_commit": "c708de9ce2b682ab8cea00eabd5d3e8c7b2a0ae6",
+  "executed_at_utc": "2026-11-15T01:56:02.198593+00:00",
+  "kaggle": {
+    "script_version_id": 369724364,
+    "notebook_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-validation-calibration?scriptVersionId=369724364",
+    "outputs_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-validation-calibration/output?scriptVersionId=369724364",
+    "save_type": "Quick Save with Outputs",
+    "visibility_when_observed": "private",
+    "output_directory": "/kaggle/working/calibration-us0502",
+    "archive_path": "/kaggle/working/us-05-02-calibration-001.zip"
+  },
+  "archive": {
+    "filename": "us-05-02-calibration-001.zip",
+    "sha256": "da303b28d40f3605c2f32660afbf1b52e660aba7cef6ebbc432b7a7f139c11a9",
+    "size_bytes": 10743,
+    "retrieval": "Downloaded by the user after automated browser transfer was blocked."
+  },
+  "evidence_directory": "experiments/calibration/kaggle-001",
+  "files_sha256": {
+    "cae-bottle/calibration.json": "685fac615ebeda1a56a35fef09f114ac43b02e92f117a0c3a57fae198414c3a6",
+    "cae-bottle/integrity.json": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459",
+    "cae-bottle/validation_scores.csv": "3ddce37dda962e28f061bbca3c130b7b331ca4df80e4af7c701e48950bafab8c",
+    "cae-hazelnut/calibration.json": "629420cf51ddc0cdef7aea3d27ea5845405eea0398760cbe2c21a4fa808807db",
+    "cae-hazelnut/integrity.json": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a",
+    "cae-hazelnut/validation_scores.csv": "53fc1b443dbdd57f095b564d6b76070395bddbc9a170890eaef6d97fde16d0f9",
+    "patchcore-hazelnut/calibration.json": "2d4a16beb582809379a78c8d5e5984f1caadb328d201999758922cba83c29936",
+    "patchcore-hazelnut/integrity.json": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76",
+    "patchcore-hazelnut/validation_scores.csv": "787ba8eb16c9109c6559875ae40c6fe622e43211adcf852cf6a1a81fb949369c",
+    "patchcore-transistor/calibration.json": "aeb320297a7497301d8ac0c508535718a263b61533ce40e1b33e0f8f26809cf7",
+    "patchcore-transistor/integrity.json": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e",
+    "patchcore-transistor/validation_scores.csv": "532070d71711791dd45a567e40dab13da7f19f9216216444f284b521b15023f9",
+    "session.json": "d2f24b18beb1befcab8a585181bfdf308bcd73aeb8163e70f249315d377b35c8"
+  },
+  "bundle_integrity_sha256": {
+    "cae-bottle": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459",
+    "cae-hazelnut": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a",
+    "patchcore-hazelnut": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76",
+    "patchcore-transistor": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e"
+  },
+  "calibrated_instances": [
+    "cae-bottle",
+    "cae-hazelnut",
+    "patchcore-hazelnut",
+    "patchcore-transistor"
+  ],
+  "uncalibrated_instances": [
+    "cae-transistor",
+    "patchcore-bottle"
+  ],
+  "checkpoint_sources": [
+    {
+      "instance": "cae-bottle",
+      "source_experiment": "cae-bottle/EXP-002",
+      "checkpoint_sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+      "kaggle_url": "https://www.kaggle.com/code/mouadfekkak/06-cae-bottle-training/output?scriptVersionId=368423258",
+      "source_script_version_id": 368423258,
+      "version_note": "Version observed in Kaggle UI before calibration."
+    },
+    {
+      "instance": "cae-hazelnut",
+      "source_experiment": "cae-hazelnut/EXP-001",
+      "checkpoint_sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-cae-hazelnut-training",
+      "source_script_version_id": null,
+      "version_note": "Source version ID not independently confirmed; checkpoint identified by SHA-256."
+    },
+    {
+      "instance": "patchcore-hazelnut",
+      "source_experiment": "patchcore-hazelnut/EXP-002",
+      "checkpoint_sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/patchcore-hazelnut-memory-bank-exp002?scriptVersionId=369634880",
+      "source_script_version_id": 369634880,
+      "version_note": "Version observed in Kaggle UI before calibration."
+    },
+    {
+      "instance": "patchcore-transistor",
+      "source_experiment": "patchcore-transistor/EXP-001",
+      "checkpoint_sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+      "kaggle_url": "https://www.kaggle.com/code/zakariaelbergui/14-patchcore-transistor-memory-bank?scriptVersionId=369642459",
+      "source_script_version_id": 369642459,
+      "version_note": "Version observed in Kaggle UI before calibration."
+    }
+  ],
+  "verification": {
+    "archive_and_internal_hashes": "verified against execution-time anchors",
+    "archived_bytes": "identical to ZIP members",
+    "threshold_consumption": "load_threshold with quantile/calibrate disabled in regression tests",
+    "new_inference": false,
+    "threshold_recalculation": false,
+    "notes": [
+      "Original 13 evidence files preserved unchanged.",
+      "This provenance file was created during integration, not by the Kaggle experiment.",
+      "Executed notebook export is not included; local notebook 17 remains an unexecuted template.",
+      "Hashes provide integrity relative to reviewed anchors, not a cryptographic execution signature."
+    ]
+  }
+}

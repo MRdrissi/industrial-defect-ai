@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "n_predictions": 586,
+  "n_errors": 86,
+  "n_selected_paths": 13,
+  "decision_rule": "score > threshold",
+  "threshold_registry_integrity_sha256": "41dd9d26e68840ca5d104062605d967e72a2d3907937e8ed6745743034c96b6a",
+  "instances": [
+    {
+      "instance": "cae-bottle",
+      "n_images": 83,
+      "TP": 37,
+      "TN": 20,
+      "FP": 0,
+      "FN": 26,
+      "by_defect_type": [
+        {
+          "defect_type": "broken_large",
+          "n_images": 20,
+          "TP": 13,
+          "TN": 0,
+          "FP": 0,
+          "FN": 7
+        },
+        {
+          "defect_type": "broken_small",
+          "n_images": 22,
+          "TP": 18,
+          "TN": 0,
+          "FP": 0,
+          "FN": 4
+        },
+        {
+          "defect_type": "contamination",
+          "n_images": 21,
+          "TP": 6,
+          "TN": 0,
+          "FP": 0,
+          "FN": 15
+        },
+        {
+          "defect_type": "good",
+          "n_images": 20,
+          "TP": 0,
+          "TN": 20,
+          "FP": 0,
+          "FN": 0
+        }
+      ]
+    },
+    {
+      "instance": "cae-hazelnut",
+      "n_images": 110,
+      "TP": 52,
+      "TN": 40,
+      "FP": 0,
+      "FN": 18,
+      "by_defect_type": [
+        {
+          "defect_type": "crack",
+          "n_images": 18,
+          "TP": 12,
+          "TN": 0,
+          "FP": 0,
+          "FN": 6
+        },
+        {
+          "defect_type": "cut",
+          "n_images": 17,
+          "TP": 8,
+          "TN": 0,
+          "FP": 0,
+          "FN": 9
+        },
+        {
+          "defect_type": "good",
+          "n_images": 40,
+          "TP": 0,
+          "TN": 40,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "hole",
+          "n_images": 18,
+          "TP": 15,
+          "TN": 0,
+          "FP": 0,
+          "FN": 3
+        },
+        {
+          "defect_type": "print",
+          "n_images": 17,
+          "TP": 17,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        }
+      ]
+    },
+    {
+      "instance": "cae-transistor",
+      "n_images": 100,
+      "TP": 6,
+      "TN": 60,
+      "FP": 0,
+      "FN": 34,
+      "by_defect_type": [
+        {
+          "defect_type": "bent_lead",
+          "n_images": 10,
+          "TP": 3,
+          "TN": 0,
+          "FP": 0,
+          "FN": 7
+        },
+        {
+          "defect_type": "cut_lead",
+          "n_images": 10,
+          "TP": 1,
+          "TN": 0,
+          "FP": 0,
+          "FN": 9
+        },
+        {
+          "defect_type": "damaged_case",
+          "n_images": 10,
+          "TP": 0,
+          "TN": 0,
+          "FP": 0,
+          "FN": 10
+        },
+        {
+          "defect_type": "good",
+          "n_images": 60,
+          "TP": 0,
+          "TN": 60,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "misplaced",
+          "n_images": 10,
+          "TP": 2,
+          "TN": 0,
+          "FP": 0,
+          "FN": 8
+        }
+      ]
+    },
+    {
+      "instance": "patchcore-bottle",
+      "n_images": 83,
+      "TP": 63,
+      "TN": 19,
+      "FP": 1,
+      "FN": 0,
+      "by_defect_type": [
+        {
+          "defect_type": "broken_large",
+          "n_images": 20,
+          "TP": 20,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "broken_small",
+          "n_images": 22,
+          "TP": 22,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "contamination",
+          "n_images": 21,
+          "TP": 21,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "good",
+          "n_images": 20,
+          "TP": 0,
+          "TN": 19,
+          "FP": 1,
+          "FN": 0
+        }
+      ]
+    },
+    {
+      "instance": "patchcore-hazelnut",
+      "n_images": 110,
+      "TP": 70,
+      "TN": 40,
+      "FP": 0,
+      "FN": 0,
+      "by_defect_type": [
+        {
+          "defect_type": "crack",
+          "n_images": 18,
+          "TP": 18,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "cut",
+          "n_images": 17,
+          "TP": 17,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "good",
+          "n_images": 40,
+          "TP": 0,
+          "TN": 40,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "hole",
+          "n_images": 18,
+          "TP": 18,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "print",
+          "n_images": 17,
+          "TP": 17,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        }
+      ]
+    },
+    {
+      "instance": "patchcore-transistor",
+      "n_images": 100,
+      "TP": 39,
+      "TN": 54,
+      "FP": 6,
+      "FN": 1,
+      "by_defect_type": [
+        {
+          "defect_type": "bent_lead",
+          "n_images": 10,
+          "TP": 10,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "cut_lead",
+          "n_images": 10,
+          "TP": 10,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "damaged_case",
+          "n_images": 10,
+          "TP": 10,
+          "TN": 0,
+          "FP": 0,
+          "FN": 0
+        },
+        {
+          "defect_type": "good",
+          "n_images": 60,
+          "TP": 0,
+          "TN": 54,
+          "FP": 6,
+          "FN": 0
+        },
+        {
+          "defect_type": "misplaced",
+          "n_images": 10,
+          "TP": 9,
+          "TN": 0,
+          "FP": 0,
+          "FN": 1
+        }
+      ]
+    }
+  ],
+  "pixel_classification": "No calibrated pixel threshold; no pixel FP/FN, IoU or Dice inferred from image thresholds"
+}
