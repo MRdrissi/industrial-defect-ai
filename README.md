@@ -210,6 +210,10 @@ techniquement : **6/6 instances**, 586 prédictions sur 293 images distinctes, s
 auditées et macro-moyennes non pondérées sur les trois catégories. F1 macro : **0,6178 CAE /
 0,9699 PatchCore** ; latence moyenne macro : **19,57 / 28,16 ms** sur Tesla T4.
 Ces mesures proviennent d’une exécution par instance ; revue collaborative et intégration restent distinctes.
+[US-05-04](docs/epic-05/us-05-04.md) complète cette comparaison : **86 erreurs image/modèle**,
+13 exemples comparatifs sur les trois catégories, RGB/masques vérifiés, interprétation et limites
+scientifiques documentées. Les trois critères IDL sont satisfaits techniquement ; **323 tests et
+2 sous-tests** passent, sans nouvelle inférence ni recalibration.
 Voir l'[index EPIC-05](docs/EPIC-05-evaluation-benchmark.md) pour l'état de cette branche.
 
 **Chaque Epic possède ou possédera son propre fichier Markdown dans `docs/`** : ce document décrit son objectif, ses choix, ses User Stories, son environnement, ses validations, ses risques et les procédures pour reprendre le travail.

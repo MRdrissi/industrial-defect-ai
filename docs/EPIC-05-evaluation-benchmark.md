@@ -9,7 +9,7 @@ L'Epic compare CAE et PatchCore sur Bottle, Hazelnut et Transistor avec les spli
 | [US-05-01 — Pipeline commun](epic-05/us-05-01.md) | Métriques image/pixel, masques, latence, exports et protocole | Tests synthétiques validés ; revue collaborative restante |
 | [US-05-02](epic-05/us-05-02.md) | Calibration des six seuils sur Validation normale | 6/6 calibrations réelles archivées ; registre strict exporté, rechargé et validé sans nouvelle inférence |
 | [US-05-03](epic-05/us-05-03.md) | Benchmark Test et macro-moyennes | Livraison technique complète **6/6** ; 586 prédictions/NPZ audités, comparaison et macros sur trois catégories ; revue collaborative distincte |
-| US-05-04 | Faux positifs, faux négatifs et limites scientifiques | Hors de la présente livraison |
+| [US-05-04](epic-05/us-05-04.md) | Faux positifs, faux négatifs et limites scientifiques | Clôturable techniquement : 86 erreurs inventoriées, 13 figures comparatives et trois critères IDL satisfaits ; revue humaine distincte |
 
 Le [protocole commun](../experiments/configs/evaluation_protocol.json) distingue calibration sur Validation
 et évaluation sur Test. US-05-02 fournit le [registre des six seuils](../experiments/calibration/six-thresholds/thresholds.json),
@@ -31,3 +31,12 @@ sans mesure de variance entre exécutions ni garantie hors de ce périmètre.
 Validation : **296 tests et 2 sous-tests réussis**, dont 39 contrôles d'artefacts/synthèse.
 La [fiche US-05-03](epic-05/us-05-03.md) fournit les six résultats, seuils, latences,
 formules, limites et bilan DoD. Aucun statut Jira, aucune PR ni aucun merge n'est réalisé ici.
+
+US-05-04 complète l'évaluation par une [analyse des erreurs](epic-05/us-05-04.md) et une
+[galerie de 13 exemples](epic-05/us-05-04-gallery.md) couvrant les trois catégories et toutes les
+strates d'erreurs observées. Les deux modèles sont affichés sur les mêmes RGB et GT ; 24 fichiers
+sources Kaggle v2 ont été récupérés et vérifiés. Aucun cas d'erreur n'est inventé pour PatchCore
+Hazelnut. L'analyse distingue classification image et localisation, documente les limites des seuils
+et propose PatchCore pour le prototype lorsque le rappel prime, avec son surcoût de latence et ses FP.
+Validation étendue US-05-04 : **323 tests et 2 sous-tests**, dont 27 nouveaux ; figures reproduites
+octet pour octet. Les six benchmarks, seuils et notebook EDA restent inchangés.
