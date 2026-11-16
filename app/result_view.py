@@ -18,6 +18,7 @@ from src.inference.inference_contract import InferenceResult
 METHOD_LABELS = {"cae": "Convolutional AutoEncoder", "patchcore": "PatchCore"}
 
 DETAILS_TITLE_SIZE_PX = 30
+RESULT_TITLE_SIZE_PX = 28
 
 _BACK_SVG = (
         Path(__file__).parent / "assets/icons/chevron-left.svg"
@@ -61,7 +62,28 @@ def display_result(
 ) -> None:
     """Affiche uniquement la synthèse de l'inspection."""
 
-    st.subheader("Résultat de l'inspection")
+    st.html(
+        f"""
+        <style>
+            .st-key-inspection_result_title h3 {{
+                font-size: {RESULT_TITLE_SIZE_PX}px;
+            }}
+            .st-key-download_report button,
+            .st-key-view_details button,
+            .st-key-view_details a {{
+                padding-inline: 0.5rem !important;
+            }}
+            .st-key-view_details a {{
+                min-height: 2.5rem;
+                margin-block: 0;
+                justify-content: center;
+                border: 1px solid;
+            }}
+        </style>
+        """
+    )
+    with st.container(key="inspection_result_title"):
+        st.subheader("Résultat de l'inspection", anchor=False)
 
     score_col, threshold_col, latency_col, verdict_col = st.columns(4)
 
@@ -80,40 +102,33 @@ def display_result(
         st.metric("Latence", f"{result.latency_ms:.1f} ms")
 
     with verdict_col:
-        st.caption("Verdict")
-
         if result.threshold is None or result.decision == "non_calibree":
-            st.badge("NON CALIBRÉ", color="gray")
+            verdict = ":gray-badge[NON CALIBRÉ]"
         elif result.decision == "normal":
-            st.badge("NORMAL", color="green")
+            verdict = ":green-badge[NORMAL]"
         elif result.decision == "suspect":
-            st.badge("SUSPECT", color="red")
+            verdict = ":red-badge[SUSPECT]"
+        else:
+            verdict = decision_label(result)
+        st.metric("Verdict", verdict)
 
     if report is not None:
-        _, download_col, details_col = st.columns(
-            [5, 2.4, 1.6],
-            vertical_alignment="center",
-        )
-
-        with download_col:
+        with st.container(horizontal=True, horizontal_alignment="right", vertical_alignment="center"):
             st.download_button(
                 "Télécharger le rapport",
                 data=report_to_json(report),
                 file_name=report_filename(report),
                 mime="application/json",
                 on_click="ignore",
-                width="stretch",
+                key="download_report",
+                width="content",
             )
 
-        with details_col:
-            if st.button(
-                    "Voir détails",
-                    key="view_details",
-                    type="secondary",
-                    width="stretch",
-                    disabled=details_page is None,
-            ):
-                st.switch_page(details_page)
+            with st.container(key="view_details", width="content"):
+                if details_page is not None:
+                    st.page_link(details_page, label="Voir détails", width="content")
+                else:
+                    st.button("Voir détails", disabled=True, width="content")
 
 
 @st.dialog("Heatmap superposée", width="medium", dismissible=True)
@@ -167,7 +182,8 @@ def display_inspection_details(home_page) -> None:
                 margin: 0;
             }}
 
-            .st-key-details_back button {{
+            .st-key-details_back button,
+            .st-key-details_back a {{
                 border: none;
                 background: transparent;
                 padding: 0 !important;
@@ -179,7 +195,8 @@ def display_inspection_details(home_page) -> None:
                 justify-content: center;
             }}
 
-            .st-key-details_back button img {{
+            .st-key-details_back button img,
+            .st-key-details_back a img {{
                 width: 26px;
                 height: 26px;
                 max-height: 26px;
@@ -234,13 +251,8 @@ def display_inspection_details(home_page) -> None:
                     vertical_alignment="center",
                     gap="small",
             ):
-                if st.button(
-                        _BACK_LABEL,
-                        key="details_back",
-                        type="tertiary",
-                        width="content",
-                ):
-                    st.switch_page(home_page)
+                with st.container(key="details_back", width="content"):
+                    st.page_link(home_page, label=_BACK_LABEL, width="content")
 
                 st.title("Détails de l'inspection", anchor=False)
 

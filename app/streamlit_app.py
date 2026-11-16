@@ -1,5 +1,6 @@
 """Application web IndustrialDefect AI — US-06-02."""
 
+from hashlib import sha256
 from pathlib import Path
 from typing import cast
 
@@ -40,7 +41,24 @@ INFERENCE_ERRORS = (
 
 
 def clear_last_inspection():
-    st.session_state.pop("last_inspection", None)
+    uploaded = st.session_state.get("inspection_image")
+    inspection = st.session_state.get("last_inspection")
+    image_digest = sha256(uploaded.getvalue()).hexdigest() if uploaded else None
+    if inspection is not None and inspection.get("image_digest") != image_digest:
+        st.session_state.pop("last_inspection", None)
+
+
+def render_image_uploader():
+    """Garde l'importeur natif associé au point d'entrée, indépendamment de la page."""
+    return st.file_uploader(
+        "Importer une image",
+        type=["png", "jpg", "jpeg"],
+        accept_multiple_files=False,
+        max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
+        key="inspection_image",
+        label_visibility="collapsed",
+        on_change=clear_last_inspection,
+    )
 
 
 def main():
@@ -115,12 +133,17 @@ def main():
                 color: #8b343a;
                 opacity: 1;
             }}
-            .st-key-view_details button {{
+            .st-key-analyze_image button {{
+                padding-inline: 0.5rem !important;
+            }}
+            .st-key-view_details button,
+            .st-key-view_details a {{
                 background-color: #2563eb !important;
                 border-color: #2563eb !important;
                 color: white !important;
             }}
-            .st-key-view_details button:hover {{
+            .st-key-view_details button:hover,
+            .st-key-view_details a:hover {{
                 background-color: #1d4ed8 !important;
                 border-color: #1d4ed8 !important;
                 color: white !important;
@@ -147,6 +170,8 @@ def main():
         "Catégorie",
         categories,
         format_func=str.capitalize,
+        key="category_selector",
+        persist_state="session",
     ))
 
     # 3. Mode comparaison CAE / PatchCore (US-06-05)
@@ -159,6 +184,7 @@ def main():
             "Comparer CAE et PatchCore sur la même image",
             value=False,
             key="compare_mode",
+            persist_state="session",
         )
 
     methods = sorted({
@@ -175,6 +201,7 @@ def main():
         }.get(value, value),
         disabled=compare_mode,
         key="method_selector",
+        persist_state="session",
     ))
 
     if compare_mode:
@@ -217,15 +244,8 @@ def main():
             horizontal_alignment="left",
             vertical_alignment="center",
         ):
-            uploaded = st.file_uploader(
-                "Importer une image",
-                type=["png", "jpg", "jpeg"],
-                accept_multiple_files=False,
-                max_upload_size=MAX_FILE_SIZE // (1024 * 1024),
-                key="inspection_image",
-                label_visibility="collapsed",
-                on_change=clear_last_inspection,
-            )
+            uploaded = render_image_uploader()
+            image_digest = sha256(uploaded.getvalue()).hexdigest() if uploaded else None
 
             if uploaded is not None:
                 try:
@@ -237,13 +257,21 @@ def main():
                     with st.container(key="preview_control", width="content"):
                         image_preview_button(image, uploaded.name)
 
-        analyze_clicked = analyze_column.button(
-            "Analyser l'image",
-            type="primary",
-            disabled=image is None,
-            width="stretch",
-            key="analyze_image",
+        inspection = st.session_state.get("last_inspection")
+        already_analyzed = (
+            not compare_mode
+            and inspection is not None
+            and inspection.get("image_digest") == image_digest
+            and inspection["selection"] == (category, method, version)
         )
+        with analyze_column.container(horizontal=True, horizontal_alignment="right"):
+            analyze_clicked = st.button(
+                "Analyser l'image",
+                type="primary",
+                disabled=image is None or already_analyzed,
+                width="content",
+                key="analyze_image",
+            )
 
     if image_error is not None:
         st.error(image_error)
@@ -295,22 +323,33 @@ def main():
             "image": image.copy(),
             "report": report,
             "selection": (category, method, version),
+            "image_digest": image_digest,
         }
+        st.rerun()
 
-    # 9. Afficher la synthèse sans relancer l'inférence
-    if not compare_mode:
-        inspection = st.session_state.get("last_inspection")
+    return {
+        "compare_mode": compare_mode,
+        "selection": None if compare_mode else (category, method, version),
+        "image_digest": image_digest,
+    }
 
-        if (
-                inspection is not None
-                and inspection["selection"] == (category, method, version)
-        ):
-            display_result(
-                inspection["result"],
-                inspection["image"],
-                inspection["report"],
-                details_page,
-            )
+
+def show_inspection_summary():
+    """Affiche la synthèse de la page Analyse sans relancer l'inférence."""
+    if inspection_context is None or inspection_context["compare_mode"]:
+        return
+    inspection = st.session_state.get("last_inspection")
+    if (
+        inspection is not None
+        and inspection.get("image_digest") == inspection_context["image_digest"]
+        and inspection["selection"] == inspection_context["selection"]
+    ):
+        display_result(
+            inspection["result"],
+            inspection["image"],
+            inspection["report"],
+            details_page,
+        )
 
 
 if __name__ == "__main__":
@@ -321,7 +360,7 @@ if __name__ == "__main__":
     )
 
     home_page = st.Page(
-        main,
+        show_inspection_summary,
         title="Analyse",
         default=True,
     )
@@ -332,7 +371,16 @@ if __name__ == "__main__":
         url_path="details",
     )
 
-    st.navigation(
+    selected_page = st.navigation(
         [home_page, details_page],
         position="hidden",
-    ).run()
+    )
+    # Les contrôles restent dans le cadre commun, au même emplacement DOM.
+    # Sur Détails, ils sont masqués sans démonter l'importeur natif.
+    controls_display = "flex" if selected_page.url_path == home_page.url_path else "none"
+    st.html(
+        f"<style>.st-key-inspection_controls {{ display: {controls_display}; }}</style>"
+    )
+    with st.container(key="inspection_controls"):
+        inspection_context = main()
+    selected_page.run()
