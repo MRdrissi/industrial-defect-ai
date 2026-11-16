@@ -153,9 +153,18 @@ def display_report_actions(data: bytes, filename: str, details_page=None) -> Non
                 st.button("Voir détails", disabled=True, width="content")
 
 
-@st.dialog("Heatmap superposée", width="medium", dismissible=True)
-def show_anomaly_map(overlay: Image.Image) -> None:
-    """Affiche la heatmap superposée dans une fenêtre modale."""
+def show_anomaly_maps(overlays) -> None:
+    """Largeur normale pour une carte, grande largeur pour la comparaison."""
+    dialog = st.dialog(
+        "Cartes d'anomalie superposées",
+        width="medium" if len(overlays) == 1 else "large",
+        dismissible=True,
+    )(_display_anomaly_maps)
+    dialog(overlays)
+
+
+def _display_anomaly_maps(overlays) -> None:
+    """Contenu commun aux inspections individuelles et aux comparaisons."""
 
     st.html(
         """
@@ -169,7 +178,7 @@ def show_anomaly_map(overlay: Image.Image) -> None:
             .st-key-anomaly_modal img {
                 width: auto;
                 max-width: 100%;
-                max-height: min(520px, 60dvh);
+                max-height: min(520px, 55dvh);
                 object-fit: contain;
             }
         </style>
@@ -177,7 +186,11 @@ def show_anomaly_map(overlay: Image.Image) -> None:
     )
 
     with st.container(key="anomaly_modal"):
-        st.image(overlay, width="stretch")
+        for column, (label, overlay) in zip(st.columns(len(overlays)), overlays):
+            with column:
+                st.markdown(f"**{label}**")
+                st.image(overlay, width="stretch")
+                st.caption("Couleurs relatives à chaque image, indépendamment du seuil.")
 
 
 def display_details_header(home_page, title: str, size_px: int, action_label: str) -> bool:
@@ -295,12 +308,14 @@ def display_inspection_details(home_page) -> None:
         _, overlay, _ = make_overlay(
             inspection["image"], result.anomaly_map, result.threshold,
         )
-        show_anomaly_map(overlay)
+        label = "CAE" if result.method == "cae" else METHOD_LABELS.get(result.method, result.method)
+        show_anomaly_maps([(label, overlay)])
 
     st.caption(model_label(result))
 
 
-    display_technical_details(result)
+    with st.container(border=True, key="inspection_details"):
+        display_technical_details(result)
 
 
 def display_technical_details(

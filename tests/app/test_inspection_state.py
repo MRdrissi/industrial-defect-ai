@@ -105,6 +105,16 @@ def test_image_selection_and_result_survive_details_round_trip(inspection_app):
     assert len(app.metric) == 4
     assert len(calls) == 1
 
+    follow_page_link(app)
+    app.button(key="view_anomaly_map").click().run()
+    assert not app.exception
+    assert len(app.get("image")) == 1
+    assert app.session_state["last_inspection"]["report"] == original_report
+    assert len(calls) == 1
+    follow_page_link(app)
+    assert not app.exception
+    assert len(app.metric) == 4
+
     app.button(key="preview_image").click().run()
     assert not app.exception
     assert len(calls) == 1

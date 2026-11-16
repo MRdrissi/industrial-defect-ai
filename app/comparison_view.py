@@ -12,6 +12,7 @@ from app.result_view import (
     display_report_actions,
     display_summary_title,
     display_technical_details,
+    show_anomaly_maps,
 )
 
 COMPARISON_RESULT_TITLE_SIZE_PX = 24
@@ -36,33 +37,13 @@ def display_comparison(
         )
 
 
-@st.dialog("Cartes d'anomalie superposées", width="large", dismissible=True)
 def show_comparison_anomaly_maps(comparison: ComparisonResult, image: Image.Image) -> None:
-    st.html("""
-        <style>
-            .st-key-comparison_anomaly_modal [data-testid="stImage"] {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .st-key-comparison_anomaly_modal img {
-                width: auto;
-                max-width: 100%;
-                max-height: min(520px, 55dvh);
-                object-fit: contain;
-            }
-        </style>
-    """)
-    with st.container(key="comparison_anomaly_modal"):
-        for column, method in zip(st.columns(2), METHODS):
-            with column:
-                st.markdown(f"**{METHOD_LABELS[method]}**")
-                result = comparison[method]
-                _, overlay, _ = make_overlay(image, result.anomaly_map, result.threshold)
-                st.image(overlay, width="stretch")
-                st.caption(
-                    "Couleurs relatives à chaque image, indépendamment du seuil."
-                )
+    overlays = []
+    for method in METHODS:
+        result = comparison[method]
+        _, overlay, _ = make_overlay(image, result.anomaly_map, result.threshold)
+        overlays.append((METHOD_LABELS[method], overlay))
+    show_anomaly_maps(overlays)
 
 
 def display_comparison_details(home_page) -> None:
