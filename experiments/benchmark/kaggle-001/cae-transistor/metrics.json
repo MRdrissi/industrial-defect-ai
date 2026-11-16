@@ -1,0 +1,90 @@
+{
+  "latency_summary": {
+    "max_ms": 19.735506000017722,
+    "mean_ms": 19.517059250003967,
+    "median_ms": 19.508428999984062,
+    "min_ms": 19.419652999999926,
+    "p95_ms": 19.60183719999975,
+    "unit": "ms"
+  },
+  "metrics": {
+    "image": {
+      "f1": 0.2608695652173913,
+      "fn": 34,
+      "fp": 0,
+      "image_auroc": 0.5858333333333333,
+      "n_anomalous": 40,
+      "n_images": 100,
+      "n_normal": 60,
+      "precision": 1.0,
+      "recall": 0.15,
+      "threshold": 0.027364758774638176,
+      "tn": 60,
+      "tp": 6
+    },
+    "latency": {
+      "max_ms": 19.735506000017722,
+      "mean_ms": 19.517059250003967,
+      "median_ms": 19.508428999984062,
+      "min_ms": 19.419652999999926,
+      "p95_ms": 19.60183719999975,
+      "unit": "ms"
+    },
+    "n_images": 100,
+    "pixel": {
+      "pixel_auroc": 0.6360072524763124
+    }
+  },
+  "n_images": 100,
+  "run": {
+    "batch_size": 1,
+    "calibration_integrity_sha256": "2c2f141fa59427dbaba280cd953e5eb139bfd687e5cc02e33aa8029a9f7820b4",
+    "catalog_sha256": "b3aa8340bf0e5f07009a48562393aaf708ac49fc8edabd630bd820448a6239dc",
+    "category": "transistor",
+    "checkpoint_sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+    "dataset_manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+    "dependencies": {
+      "Pillow": "13.0.0",
+      "torchvision": "0.26.0+cu130"
+    },
+    "device": "cuda:0",
+    "git_commit": "0acbf26880b755373f2e61236d009ed16f04658c",
+    "hardware": "Tesla T4",
+    "latency_detail": "Device forward and raw score/map calculation; excludes IO, preprocessing, input/output transfers and evaluation resizing.",
+    "latency_scope": "model_inference_only",
+    "model_config_canonical_sha256": "27a64f2268ee7b2592f5ffa75d71cb9f06313efafaa7e9efee86aefb63226217",
+    "model_family": "cae",
+    "numpy_version": "2.1.3",
+    "preprocessing": {
+      "profile": "cae",
+      "size": [
+        256,
+        256
+      ]
+    },
+    "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+    "python_version": "3.13.16",
+    "run_id": "cae-transistor",
+    "score_definition": {
+      "kernel_size": 33,
+      "method": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
+      "smoothing_sigma": 4.0
+    },
+    "seed": 42,
+    "source_experiment": "cae-transistor/EXP-001",
+    "source_registry_canonical_sha256": "041d896b072bdaa3f20ad8bf9d3158c90c40dce802e918602a4540b5ad7e3d14",
+    "split": "test",
+    "synchronize_cuda": true,
+    "target_size_hw": [
+      256,
+      256
+    ],
+    "test_paths_sha256": "68285aeb0cca1fa4d5cef1045c794709ff7fd096c2af69d5857bcf11f3e2404e",
+    "threshold": 0.027364758774638176,
+    "threshold_hex": "0x1.c0581e0000000p-6",
+    "threshold_registry_integrity_sha256": "41dd9d26e68840ca5d104062605d967e72a2d3907937e8ed6745743034c96b6a",
+    "torch_version": "2.11.0+cu130",
+    "warmup_runs_per_model": 3
+  },
+  "schema_version": "1.0"
+}

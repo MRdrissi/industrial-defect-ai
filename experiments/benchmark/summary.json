@@ -1,0 +1,269 @@
+{
+  "schema_version": "1.0",
+  "status": "complete_6_of_6",
+  "scientific_code_commit": "0acbf26880b755373f2e61236d009ed16f04658c",
+  "threshold_registry_integrity_sha256": "41dd9d26e68840ca5d104062605d967e72a2d3907937e8ed6745743034c96b6a",
+  "aggregation": "unweighted_per_category",
+  "formula": "(metric_bottle + metric_hazelnut + metric_transistor) / 3",
+  "undefined_policy": "Report counts; macro is null unless all three category metrics are defined",
+  "latency_aggregation": "Arithmetic mean of the three per-category mean_ms; not a pooled image mean or pooled percentile",
+  "score_pooling_across_instances": false,
+  "n_predictions": 586,
+  "n_distinct_test_images": 293,
+  "instances": [
+    {
+      "instance": "cae-bottle",
+      "model_family": "cae",
+      "category": "bottle",
+      "source_experiment": "cae-bottle/EXP-002",
+      "n_images": 83,
+      "n_normal": 20,
+      "n_anomalous": 63,
+      "image_auroc": 0.8611111111111112,
+      "precision": 1.0,
+      "recall": 0.5873015873015873,
+      "f1": 0.74,
+      "tp": 37,
+      "tn": 20,
+      "fp": 0,
+      "fn": 26,
+      "threshold": 0.01955269752070307,
+      "threshold_hex": "0x1.4059f51999997p-6",
+      "pixel_auroc": 0.8143878685772936,
+      "latency_mean_ms": 19.601136457828055,
+      "latency_median_ms": 19.591279999986,
+      "latency_p95_ms": 19.669385799994643,
+      "latency_min_ms": 19.41471200001388,
+      "latency_max_ms": 19.785044999991896,
+      "source_metrics": "experiments/benchmark/kaggle-002/cae-bottle/metrics.json",
+      "source_metrics_sha256": "2f117ddfc001e580b1058822d6a1ab83a63977f2c0a815c7877fe8ed4db1cf7e",
+      "source_manifest_sha256": "9393551e7c116dabcdaa539b669bb15debbd2e05529b1169bedf92d3c9b104ef"
+    },
+    {
+      "instance": "cae-hazelnut",
+      "model_family": "cae",
+      "category": "hazelnut",
+      "source_experiment": "cae-hazelnut/EXP-001",
+      "n_images": 110,
+      "n_normal": 40,
+      "n_anomalous": 70,
+      "image_auroc": 0.9757142857142858,
+      "precision": 1.0,
+      "recall": 0.7428571428571429,
+      "f1": 0.8524590163934426,
+      "tp": 52,
+      "tn": 40,
+      "fp": 0,
+      "fn": 18,
+      "threshold": 0.008434063522145145,
+      "threshold_hex": "0x1.145e0d7fffffcp-7",
+      "pixel_auroc": 0.9814179040347814,
+      "latency_mean_ms": 19.590365454546994,
+      "latency_median_ms": 19.592533000036383,
+      "latency_p95_ms": 19.652353400022093,
+      "latency_min_ms": 18.966942000020026,
+      "latency_max_ms": 19.69398899996122,
+      "source_metrics": "experiments/benchmark/kaggle-002/cae-hazelnut/metrics.json",
+      "source_metrics_sha256": "948641bcabfef5760bb7a9aa6f03d5eb9ee02369724fcb4b0ccac76eaa8b9492",
+      "source_manifest_sha256": "3cb839efbd128a0881a394f60b277c0662c7b8b8815b67f15d723b1bbca1d5d5"
+    },
+    {
+      "instance": "cae-transistor",
+      "model_family": "cae",
+      "category": "transistor",
+      "source_experiment": "cae-transistor/EXP-001",
+      "n_images": 100,
+      "n_normal": 60,
+      "n_anomalous": 40,
+      "image_auroc": 0.5858333333333333,
+      "precision": 1.0,
+      "recall": 0.15,
+      "f1": 0.2608695652173913,
+      "tp": 6,
+      "tn": 60,
+      "fp": 0,
+      "fn": 34,
+      "threshold": 0.027364758774638176,
+      "threshold_hex": "0x1.c0581e0000000p-6",
+      "pixel_auroc": 0.6360072524763124,
+      "latency_mean_ms": 19.517059250003967,
+      "latency_median_ms": 19.508428999984062,
+      "latency_p95_ms": 19.60183719999975,
+      "latency_min_ms": 19.419652999999926,
+      "latency_max_ms": 19.735506000017722,
+      "source_metrics": "experiments/benchmark/kaggle-001/cae-transistor/metrics.json",
+      "source_metrics_sha256": "c6b8a9ff01f98783ce70857e01d9420660a0da31a0dc7b4ae77f61ba6f9b44b7",
+      "source_manifest_sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+    },
+    {
+      "instance": "patchcore-bottle",
+      "model_family": "patchcore",
+      "category": "bottle",
+      "source_experiment": "patchcore-bottle/EXP-002",
+      "n_images": 83,
+      "n_normal": 20,
+      "n_anomalous": 63,
+      "image_auroc": 1.0,
+      "precision": 0.984375,
+      "recall": 1.0,
+      "f1": 0.9921259842519685,
+      "tp": 63,
+      "tn": 19,
+      "fp": 1,
+      "fn": 0,
+      "threshold": 31.620044136047362,
+      "threshold_hex": "0x1.f9ebb36666666p+4",
+      "pixel_auroc": 0.984774441492949,
+      "latency_mean_ms": 27.72071383132851,
+      "latency_median_ms": 27.954975000056947,
+      "latency_p95_ms": 28.193014400005723,
+      "latency_min_ms": 26.098402000002352,
+      "latency_max_ms": 29.213484000024437,
+      "source_metrics": "experiments/benchmark/kaggle-001/patchcore-bottle/metrics.json",
+      "source_metrics_sha256": "2b6f198c1de9420d76a9ed58fcf9fff81ba492523bedd1599037f8ac242ccab6",
+      "source_manifest_sha256": "009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e"
+    },
+    {
+      "instance": "patchcore-hazelnut",
+      "model_family": "patchcore",
+      "category": "hazelnut",
+      "source_experiment": "patchcore-hazelnut/EXP-002",
+      "n_images": 110,
+      "n_normal": 40,
+      "n_anomalous": 70,
+      "image_auroc": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "tp": 70,
+      "tn": 40,
+      "fp": 0,
+      "fn": 0,
+      "threshold": 48.83736801147461,
+      "threshold_hex": "0x1.86b2ee0000000p+5",
+      "pixel_auroc": 0.9864602602530212,
+      "latency_mean_ms": 28.647118600001292,
+      "latency_median_ms": 28.96271050002497,
+      "latency_p95_ms": 30.54435630001535,
+      "latency_min_ms": 26.122250999947028,
+      "latency_max_ms": 31.610918000069432,
+      "source_metrics": "experiments/benchmark/kaggle-002/patchcore-hazelnut/metrics.json",
+      "source_metrics_sha256": "f095850d26d7ad55c92e00c9d6fadae74b3d496cca932ca45318d696ccd52d55",
+      "source_manifest_sha256": "575384adb3edb7b8bd40156c951625ed0c67c9a0474e2bc91367b6b3637af56a"
+    },
+    {
+      "instance": "patchcore-transistor",
+      "model_family": "patchcore",
+      "category": "transistor",
+      "source_experiment": "patchcore-transistor/EXP-001",
+      "n_images": 100,
+      "n_normal": 60,
+      "n_anomalous": 40,
+      "image_auroc": 0.9908333333333335,
+      "precision": 0.8666666666666667,
+      "recall": 0.975,
+      "f1": 0.9176470588235294,
+      "tp": 39,
+      "tn": 54,
+      "fp": 6,
+      "fn": 1,
+      "threshold": 40.95855598449707,
+      "threshold_hex": "0x1.47ab1f6666666p+5",
+      "pixel_auroc": 0.958983424799342,
+      "latency_mean_ms": 28.111121619990627,
+      "latency_median_ms": 28.137104500046917,
+      "latency_p95_ms": 28.42988250012013,
+      "latency_min_ms": 24.521893999917665,
+      "latency_max_ms": 29.284434999908626,
+      "source_metrics": "experiments/benchmark/kaggle-002/patchcore-transistor/metrics.json",
+      "source_metrics_sha256": "b7baa965b60d8e30698e593dd2c84c63da0a6402a75a8d9848c81d16d3f548c9",
+      "source_manifest_sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+    }
+  ],
+  "macro_by_family": [
+    {
+      "model_family": "cae",
+      "categories": [
+        "bottle",
+        "hazelnut",
+        "transistor"
+      ],
+      "category_count": 3,
+      "image_count": 293,
+      "metrics": {
+        "image_auroc": {
+          "value": 0.8075529100529101,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "pixel_auroc": {
+          "value": 0.8106043416961292,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "precision": {
+          "value": 1.0,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "recall": {
+          "value": 0.49338624338624343,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "f1": {
+          "value": 0.6177761938702779,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "latency_mean_ms": {
+          "value": 19.569520387459672,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        }
+      }
+    },
+    {
+      "model_family": "patchcore",
+      "categories": [
+        "bottle",
+        "hazelnut",
+        "transistor"
+      ],
+      "category_count": 3,
+      "image_count": 293,
+      "metrics": {
+        "image_auroc": {
+          "value": 0.9969444444444445,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "pixel_auroc": {
+          "value": 0.976739375515104,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "precision": {
+          "value": 0.9503472222222222,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "recall": {
+          "value": 0.9916666666666667,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "f1": {
+          "value": 0.9699243476918326,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        },
+        "latency_mean_ms": {
+          "value": 28.159651350440143,
+          "defined_categories": 3,
+          "undefined_categories": 0
+        }
+      }
+    }
+  ]
+}

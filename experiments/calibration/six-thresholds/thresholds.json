@@ -1,0 +1,66 @@
+{
+  "decision_rule": "score > threshold",
+  "schema_version": "1.0",
+  "thresholds": [
+    {
+      "calibration_integrity_sha256": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459",
+      "category": "bottle",
+      "checkpoint_sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+      "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+      "model_family": "cae",
+      "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+      "threshold": 0.01955269752070307,
+      "threshold_hex": "0x1.4059f51999997p-6"
+    },
+    {
+      "calibration_integrity_sha256": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a",
+      "category": "hazelnut",
+      "checkpoint_sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+      "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+      "model_family": "cae",
+      "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+      "threshold": 0.008434063522145145,
+      "threshold_hex": "0x1.145e0d7fffffcp-7"
+    },
+    {
+      "calibration_integrity_sha256": "2c2f141fa59427dbaba280cd953e5eb139bfd687e5cc02e33aa8029a9f7820b4",
+      "category": "transistor",
+      "checkpoint_sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+      "manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+      "model_family": "cae",
+      "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+      "threshold": 0.027364758774638176,
+      "threshold_hex": "0x1.c0581e0000000p-6"
+    },
+    {
+      "calibration_integrity_sha256": "1c39c5452c294170ec9020138c0bf79a70c4b971f7fb0153cf2ef1d2e36f7596",
+      "category": "bottle",
+      "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+      "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+      "model_family": "patchcore",
+      "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+      "threshold": 31.620044136047362,
+      "threshold_hex": "0x1.f9ebb36666666p+4"
+    },
+    {
+      "calibration_integrity_sha256": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76",
+      "category": "hazelnut",
+      "checkpoint_sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+      "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+      "model_family": "patchcore",
+      "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+      "threshold": 48.83736801147461,
+      "threshold_hex": "0x1.86b2ee0000000p+5"
+    },
+    {
+      "calibration_integrity_sha256": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e",
+      "category": "transistor",
+      "checkpoint_sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+      "manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+      "model_family": "patchcore",
+      "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+      "threshold": 40.95855598449707,
+      "threshold_hex": "0x1.47ab1f6666666p+5"
+    }
+  ]
+}

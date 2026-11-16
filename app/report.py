@@ -20,8 +20,8 @@ from src.inference.inference_contract import InferenceResult
 REPORT_SCHEMA_VERSION = "1.0"
 APPLICATION = "IndustrialDefect AI"
 
-# Règle appliquée par run_inference (US-06-01 / US-06-03).
-DECISION_RULE = "suspect si score >= seuil ; non calibrée si seuil absent"
+# Règle appliquée par run_inference, alignée sur la calibration US-05-02 (IDL-96).
+DECISION_RULE = "suspect si score > seuil (égalité = normal) ; non calibrée si seuil absent"
 
 PREPROCESSING = {
     "cae": "RGB, redimensionnement 256 x 256, valeurs dans [0, 1] (MVTecTransform, profil cae)",

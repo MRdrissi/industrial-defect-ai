@@ -1,0 +1,230 @@
+{
+  "schema_version": "1.0",
+  "selection_policy": "Existing baseline references; no Test-based model selection. CAE Bottle EXP-002 (128 latent), not the EXP-003 capacity study.",
+  "protocol": "experiments/configs/evaluation_protocol.json",
+  "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+  "instances": [
+    {
+      "id": "cae-bottle",
+      "model_family": "cae",
+      "category": "bottle",
+      "source_experiment": "cae-bottle/EXP-002",
+      "source_registry": "experiments/runs/cae-bottle/EXP-002.json",
+      "checkpoint_sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+      "checkpoint_filename": "bottle_best.pth",
+      "checkpoint_source_path": "cae_bottle_EXP-002_uurtonr7/bottle_best.pth",
+      "kaggle_url": "https://www.kaggle.com/code/mouadfekkak/06-cae-bottle-training/output?scriptVersionId=368423258",
+      "model_config": "experiments/configs/cae_baseline.json",
+      "manifest": "docs/data/us-02-03/bottle_manifest.csv",
+      "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+      "expected_validation_count": 42,
+      "score_definition": {
+        "method": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
+        "smoothing_sigma": 4.0,
+        "kernel_size": 33
+      },
+      "preprocessing": {
+        "profile": "cae",
+        "size": [
+          256,
+          256
+        ]
+      },
+      "checkpoint_format": "existing_inference_api",
+      "model_config_canonical_sha256": "27a64f2268ee7b2592f5ffa75d71cb9f06313efafaa7e9efee86aefb63226217",
+      "source_registry_canonical_sha256": "ba2714857a7cdeeed58994aba76492bf6aae58095fb6ddead59b7a553151618f"
+    },
+    {
+      "id": "cae-hazelnut",
+      "model_family": "cae",
+      "category": "hazelnut",
+      "source_experiment": "cae-hazelnut/EXP-001",
+      "source_registry": "experiments/runs/cae-hazelnut/EXP-001.json",
+      "checkpoint_sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+      "checkpoint_filename": "best_model.pt",
+      "checkpoint_source_path": "cae/hazelnut/hazelnut-baseline-001/best_model.pt",
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-cae-hazelnut-training",
+      "model_config": "experiments/configs/cae_baseline.json",
+      "manifest": "docs/data/us-02-03/hazelnut_manifest.csv",
+      "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+      "expected_validation_count": 78,
+      "score_definition": {
+        "method": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
+        "smoothing_sigma": 4.0,
+        "kernel_size": 33
+      },
+      "preprocessing": {
+        "profile": "cae",
+        "size": [
+          256,
+          256
+        ]
+      },
+      "checkpoint_format": "existing_inference_api",
+      "model_config_canonical_sha256": "27a64f2268ee7b2592f5ffa75d71cb9f06313efafaa7e9efee86aefb63226217",
+      "source_registry_canonical_sha256": "e7b56e3bfd51c347607da7fb788a257e8d05cdb05a41e025053d8430c7a7b4ea"
+    },
+    {
+      "id": "cae-transistor",
+      "model_family": "cae",
+      "category": "transistor",
+      "source_experiment": "cae-transistor/EXP-001",
+      "source_registry": "experiments/runs/cae-transistor/EXP-001.json",
+      "checkpoint_sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+      "checkpoint_filename": "best_model.pt",
+      "checkpoint_source_path": "Kaggle Output 06-cae-train (Version #1) : cae/transistor/best_model.pt",
+      "kaggle_url": "https://www.kaggle.com/code/zakariaelbergui/06-cae-train?scriptVersionId=368211534",
+      "model_config": "experiments/configs/cae_baseline.json",
+      "manifest": "docs/data/us-02-03/transistor_manifest.csv",
+      "manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+      "expected_validation_count": 43,
+      "score_definition": {
+        "method": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
+        "smoothing_sigma": 4.0,
+        "kernel_size": 33
+      },
+      "preprocessing": {
+        "profile": "cae",
+        "size": [
+          256,
+          256
+        ]
+      },
+      "checkpoint_format": "existing_inference_api",
+      "checkpoint_hash_source": "docs/data/us-03-05/inference_report.json",
+      "model_config_canonical_sha256": "27a64f2268ee7b2592f5ffa75d71cb9f06313efafaa7e9efee86aefb63226217",
+      "source_registry_canonical_sha256": "041d896b072bdaa3f20ad8bf9d3158c90c40dce802e918602a4540b5ad7e3d14"
+    },
+    {
+      "id": "patchcore-bottle",
+      "model_family": "patchcore",
+      "category": "bottle",
+      "source_experiment": "patchcore-bottle/EXP-002",
+      "source_registry": "experiments/runs/patchcore-bottle/EXP-002.json",
+      "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+      "checkpoint_filename": "patchcore_model.pt",
+      "checkpoint_source_path": "patchcore/bottle/EXP-002/patchcore_model.pt",
+      "kaggle_url": "https://www.kaggle.com/code/mouadfekkak/14-patchcore-bottle-memory-bank?scriptVersionId=369295449",
+      "model_config": "experiments/configs/patchcore_bottle.json",
+      "manifest": "docs/data/us-02-03/bottle_manifest.csv",
+      "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+      "expected_validation_count": 42,
+      "score_definition": {
+        "method": "native_pred_score"
+      },
+      "preprocessing": {
+        "profile": "patchcore",
+        "size": [
+          256,
+          256
+        ],
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "checkpoint_format": "existing_inference_api",
+      "anomalib_version": "2.7.0",
+      "memory_bank_shape": [
+        1710,
+        1536
+      ],
+      "model_config_canonical_sha256": "e6f3acfd8aec542f5685eef40ad85e6494dd7643c01d1955eac95dbf7626e7e2",
+      "source_registry_canonical_sha256": "2724208e62ee52534dba29380a291b342127b41da1b23432570d228ed47d0fe0"
+    },
+    {
+      "id": "patchcore-hazelnut",
+      "model_family": "patchcore",
+      "category": "hazelnut",
+      "source_experiment": "patchcore-hazelnut/EXP-002",
+      "source_registry": "experiments/runs/patchcore-hazelnut/EXP-002.json",
+      "checkpoint_sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+      "checkpoint_filename": "patchcore_model.pt",
+      "checkpoint_source_path": "/kaggle/working/patchcore/hazelnut/EXP-002/patchcore_model.pt",
+      "kaggle_url": "https://www.kaggle.com/code/marwanedrissi/patchcore-hazelnut-memory-bank-exp002",
+      "model_config": "experiments/configs/patchcore_hazelnut_exp002.json",
+      "manifest": "docs/data/us-02-03/hazelnut_manifest.csv",
+      "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+      "expected_validation_count": 78,
+      "score_definition": {
+        "method": "native_pred_score"
+      },
+      "preprocessing": {
+        "profile": "patchcore",
+        "size": [
+          256,
+          256
+        ],
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "checkpoint_format": "hazelnut_exp002",
+      "anomalib_version": "2.7.0",
+      "memory_bank_shape": [
+        3205,
+        1536
+      ],
+      "memory_bank_sha256": "2b7cc437fbff34fe137be8b5c19836ae93b92615108d38f7daaa9022e63d9bec",
+      "model_config_canonical_sha256": "982c6a12bd70208bfa8d1e1e952670f25e80f07aa1f37481e2368144e1bf3746",
+      "source_registry_canonical_sha256": "cc2d7a3ccc21e1f719a36e7cbf6aafed4bbea603eb726916aafa71723e7497bb"
+    },
+    {
+      "id": "patchcore-transistor",
+      "model_family": "patchcore",
+      "category": "transistor",
+      "source_experiment": "patchcore-transistor/EXP-001",
+      "source_registry": "experiments/runs/patchcore-transistor/EXP-001.json",
+      "checkpoint_sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+      "checkpoint_filename": "patchcore_model.pt",
+      "checkpoint_source_path": "patchcore/transistor/EXP-001/patchcore_model.pt",
+      "kaggle_url": "https://www.kaggle.com/code/zakariaelbergui/14-patchcore-transistor-memory-bank?scriptVersionId=369642459",
+      "model_config": "experiments/configs/patchcore_transistor.json",
+      "manifest": "docs/data/us-02-03/transistor_manifest.csv",
+      "manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+      "expected_validation_count": 43,
+      "score_definition": {
+        "method": "native_pred_score"
+      },
+      "preprocessing": {
+        "profile": "patchcore",
+        "size": [
+          256,
+          256
+        ],
+        "mean": [
+          0.485,
+          0.456,
+          0.406
+        ],
+        "std": [
+          0.229,
+          0.224,
+          0.225
+        ]
+      },
+      "checkpoint_format": "existing_inference_api",
+      "anomalib_version": "2.7.0",
+      "memory_bank_shape": [
+        1740,
+        1536
+      ],
+      "model_config_canonical_sha256": "687c4aee8ad6c9b02aa0352798635f41e7ed79e63dc36b7478b8b6c4b40feeed",
+      "source_registry_canonical_sha256": "f802fe42296c2802011bd1ab0df6022919c7173fd3b02172507eaaca6063d632"
+    }
+  ],
+  "json_fingerprint_encoding": "UTF-8 JSON sorted keys, indent=2, ensure_ascii=False, allow_nan=False, LF with final newline; BOM stripped before parsing"
+}

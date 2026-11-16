@@ -1,0 +1,426 @@
+{
+  "artifacts": [
+    {
+      "file": "artifacts/00000.npz",
+      "image_path": "bottle/test/broken_large/000.png",
+      "sha256": "c71ed0be2f14255cd6066dd74cc7f515fcd259155359467248b3e30f7d556ded"
+    },
+    {
+      "file": "artifacts/00001.npz",
+      "image_path": "bottle/test/broken_large/001.png",
+      "sha256": "c32488164699e00334a071612a3d3932df05e9d0795aca2c3b98a227a0613467"
+    },
+    {
+      "file": "artifacts/00002.npz",
+      "image_path": "bottle/test/broken_large/002.png",
+      "sha256": "790614ae5cdefcdc74d0c817f70891970224e0ac40805038b6ebad63ce98b49c"
+    },
+    {
+      "file": "artifacts/00003.npz",
+      "image_path": "bottle/test/broken_large/003.png",
+      "sha256": "c33e6269d534999ed0412abc760a191db7687f0962dd9625be41a1e4f5bd773a"
+    },
+    {
+      "file": "artifacts/00004.npz",
+      "image_path": "bottle/test/broken_large/004.png",
+      "sha256": "9aad41b69029bc561e62ba10cc2e1cc4fbc6cff204700400abcde899de41ae11"
+    },
+    {
+      "file": "artifacts/00005.npz",
+      "image_path": "bottle/test/broken_large/005.png",
+      "sha256": "7a6e98b38b68576b2baab1dfc2cd307523e5cf82e3f98151c945edc6a9402b08"
+    },
+    {
+      "file": "artifacts/00006.npz",
+      "image_path": "bottle/test/broken_large/006.png",
+      "sha256": "8a803abcc0169f7d2d32b0cf55484584917557a179c5a7dce1a1471846b8aff5"
+    },
+    {
+      "file": "artifacts/00007.npz",
+      "image_path": "bottle/test/broken_large/007.png",
+      "sha256": "e9b24bff00ac137a1c29a89ce09f33b4ab5e18353f0ec001db7d6fbc73cc9db5"
+    },
+    {
+      "file": "artifacts/00008.npz",
+      "image_path": "bottle/test/broken_large/008.png",
+      "sha256": "6ed8171cc5a198a614349ddc5ee3ff46eb5d57872f37ad4c90a07e15da456d62"
+    },
+    {
+      "file": "artifacts/00009.npz",
+      "image_path": "bottle/test/broken_large/009.png",
+      "sha256": "fd777ef7364fa143106bc9a53ab22315583ef78867b1911ffeac144b4874e9dc"
+    },
+    {
+      "file": "artifacts/00010.npz",
+      "image_path": "bottle/test/broken_large/010.png",
+      "sha256": "38d2100d8927b11bcb8285a702035c4a529776d6b10b50a0feddc2784ea0a491"
+    },
+    {
+      "file": "artifacts/00011.npz",
+      "image_path": "bottle/test/broken_large/011.png",
+      "sha256": "c2f6107afb41d3e1a59715df4b58e9b9b6e6d4bc4b5fdb273d86de2acb3883f0"
+    },
+    {
+      "file": "artifacts/00012.npz",
+      "image_path": "bottle/test/broken_large/012.png",
+      "sha256": "1986ed526da5442b8ec360d99ec82f87ce7758c4de2c0532192069a5bb31772d"
+    },
+    {
+      "file": "artifacts/00013.npz",
+      "image_path": "bottle/test/broken_large/013.png",
+      "sha256": "09d76f7a84cbbeb20c2591486c6595eee89bbb1059702d7a90506cb76b4053b6"
+    },
+    {
+      "file": "artifacts/00014.npz",
+      "image_path": "bottle/test/broken_large/014.png",
+      "sha256": "812832a961c9ad1bb5b983f967f5a770e5b7dc0c84d56555da5ee7f5b1e509d1"
+    },
+    {
+      "file": "artifacts/00015.npz",
+      "image_path": "bottle/test/broken_large/015.png",
+      "sha256": "eb4d079bf8b4fc1ea8b151653b48314bf199c6655ac4781b3601ed30ba8159bc"
+    },
+    {
+      "file": "artifacts/00016.npz",
+      "image_path": "bottle/test/broken_large/016.png",
+      "sha256": "34aab5eee73bf8adc6b6608c81a3e5c657c41cfd9f5e0e968140d67dc945ff9f"
+    },
+    {
+      "file": "artifacts/00017.npz",
+      "image_path": "bottle/test/broken_large/017.png",
+      "sha256": "c4ff00c9df1b6405b79ff0d7e67c85767d8bffe567b6274cb9aa6c50527b3a00"
+    },
+    {
+      "file": "artifacts/00018.npz",
+      "image_path": "bottle/test/broken_large/018.png",
+      "sha256": "41d189a40582f8194122002fc015ed529e5cfcd37a2a951606d4fa932b72baae"
+    },
+    {
+      "file": "artifacts/00019.npz",
+      "image_path": "bottle/test/broken_large/019.png",
+      "sha256": "67008666f8167497f80a44511515b1b60831abada9ae6e9b136c35901b829ef8"
+    },
+    {
+      "file": "artifacts/00020.npz",
+      "image_path": "bottle/test/broken_small/000.png",
+      "sha256": "948622c60608006926560aa574b96aba794190322df7700584c063ef93fe1584"
+    },
+    {
+      "file": "artifacts/00021.npz",
+      "image_path": "bottle/test/broken_small/001.png",
+      "sha256": "a7ea95168cc7d78609746c5c6578a8eb3e7d6d3e1c5ca0acb99c8a8367bf534d"
+    },
+    {
+      "file": "artifacts/00022.npz",
+      "image_path": "bottle/test/broken_small/002.png",
+      "sha256": "80c58355f9b073da168242cf0d41e2cb91b4064c3f61d64c2083054f6c0a69b6"
+    },
+    {
+      "file": "artifacts/00023.npz",
+      "image_path": "bottle/test/broken_small/003.png",
+      "sha256": "25865ed7a4a2606855892b0dd64abb95414b6ae766b2018db67ea418d57e0209"
+    },
+    {
+      "file": "artifacts/00024.npz",
+      "image_path": "bottle/test/broken_small/004.png",
+      "sha256": "f74791bd092564fbd7c266c96fa87331e79fbe19175a1fd8ea1ac922479bea98"
+    },
+    {
+      "file": "artifacts/00025.npz",
+      "image_path": "bottle/test/broken_small/005.png",
+      "sha256": "3702ae5e4207cd2b43de239fa77b5fc1735de77873b8e594227f908e5887266e"
+    },
+    {
+      "file": "artifacts/00026.npz",
+      "image_path": "bottle/test/broken_small/006.png",
+      "sha256": "c8692e1bb9c15a207845188d14ae1853ec88b89f6bbbaf22bd7380720e8744b4"
+    },
+    {
+      "file": "artifacts/00027.npz",
+      "image_path": "bottle/test/broken_small/007.png",
+      "sha256": "7f8c0474aeeb986ce659f08dc704405e3de7f5a71c6cda0b12371d94e16e32ac"
+    },
+    {
+      "file": "artifacts/00028.npz",
+      "image_path": "bottle/test/broken_small/008.png",
+      "sha256": "819a2d409dc26ea47acea3332dc65f8050dfafc525c0dceb20ac868bfec66771"
+    },
+    {
+      "file": "artifacts/00029.npz",
+      "image_path": "bottle/test/broken_small/009.png",
+      "sha256": "08499caa1e42ff759c796568cd0d975a5aada55b554c3fa12466df93facfe5c1"
+    },
+    {
+      "file": "artifacts/00030.npz",
+      "image_path": "bottle/test/broken_small/010.png",
+      "sha256": "aa9085688b40e895cfb7abb2d7d56742ac1d6dc98f07472584e5b8c39f602202"
+    },
+    {
+      "file": "artifacts/00031.npz",
+      "image_path": "bottle/test/broken_small/011.png",
+      "sha256": "8d085c71ba6adb585fa7869a863896b824e7afdff1a231c14c2dfd89d22597e7"
+    },
+    {
+      "file": "artifacts/00032.npz",
+      "image_path": "bottle/test/broken_small/012.png",
+      "sha256": "1ba04cf2ae566d53b46eaaeffdc66b00d0e05e27ceb0c9ea741c9a3a2f67afdc"
+    },
+    {
+      "file": "artifacts/00033.npz",
+      "image_path": "bottle/test/broken_small/013.png",
+      "sha256": "2ee7cff476fd27fe7ce81668a1d094201fff979302996611308b7f261473d577"
+    },
+    {
+      "file": "artifacts/00034.npz",
+      "image_path": "bottle/test/broken_small/014.png",
+      "sha256": "01000b89391bb48877f255c7bbd17a6880b539b93f34975cb08ae36d5690bc35"
+    },
+    {
+      "file": "artifacts/00035.npz",
+      "image_path": "bottle/test/broken_small/015.png",
+      "sha256": "8057f2b19085919f756c88553a468ba9efe0d478e5a419603af301db76ef66bc"
+    },
+    {
+      "file": "artifacts/00036.npz",
+      "image_path": "bottle/test/broken_small/016.png",
+      "sha256": "b620efe2c77c472ef99a0dae8eeb22eebf8b1265697564ca2ea49ab049d01503"
+    },
+    {
+      "file": "artifacts/00037.npz",
+      "image_path": "bottle/test/broken_small/017.png",
+      "sha256": "b2f0c7e11242815681ec20768f4f368160aa146187601129f2b108ea44e4dc93"
+    },
+    {
+      "file": "artifacts/00038.npz",
+      "image_path": "bottle/test/broken_small/018.png",
+      "sha256": "f1936f6d2af1edafc17bfbb317cafa80c60047f22181d84254cde0fb85a36bb6"
+    },
+    {
+      "file": "artifacts/00039.npz",
+      "image_path": "bottle/test/broken_small/019.png",
+      "sha256": "b4207f98a9c041bf9a53b93ca47b4bfe22f5c67cdd1d9b93b760a7a6f526d5c7"
+    },
+    {
+      "file": "artifacts/00040.npz",
+      "image_path": "bottle/test/broken_small/020.png",
+      "sha256": "1a408573e3dda02e2e821e36921d64b10c354296ad0171e97a1e3ba42bd8951d"
+    },
+    {
+      "file": "artifacts/00041.npz",
+      "image_path": "bottle/test/broken_small/021.png",
+      "sha256": "9acac76283c49fc73dc8449a7829a2f9c8f29a2842568157fa38b29d544ecb5d"
+    },
+    {
+      "file": "artifacts/00042.npz",
+      "image_path": "bottle/test/contamination/000.png",
+      "sha256": "6c6558e2759c1e4aed42c10c295ecbf3f3248b9682f74d7b6bfbe676336ac099"
+    },
+    {
+      "file": "artifacts/00043.npz",
+      "image_path": "bottle/test/contamination/001.png",
+      "sha256": "5d469e590ce6c900e3a963e98c38a6ab6a066c6a61cbf31d2fd4e29376de28bd"
+    },
+    {
+      "file": "artifacts/00044.npz",
+      "image_path": "bottle/test/contamination/002.png",
+      "sha256": "88472b72d9483d4bd27a758dec10eb813550b6111a10237df6a3d99fce897548"
+    },
+    {
+      "file": "artifacts/00045.npz",
+      "image_path": "bottle/test/contamination/003.png",
+      "sha256": "902c5915d85e435e6754952927f0810ead7dede54dccdd416e3b3f155e08b935"
+    },
+    {
+      "file": "artifacts/00046.npz",
+      "image_path": "bottle/test/contamination/004.png",
+      "sha256": "7c2cbd86f32b56487fff913ff10d1f1cc0f47959a7e93d2138fcf2d63ab3f13c"
+    },
+    {
+      "file": "artifacts/00047.npz",
+      "image_path": "bottle/test/contamination/005.png",
+      "sha256": "9cefcb64dfe92d8b542fc72757b865f1ac5c9edce1837e2d216abc0e8ee47c2d"
+    },
+    {
+      "file": "artifacts/00048.npz",
+      "image_path": "bottle/test/contamination/006.png",
+      "sha256": "da3f639737461ba5726fbc4d7a21ba55e624c94c04177ae9f1d52f1fdd4327d0"
+    },
+    {
+      "file": "artifacts/00049.npz",
+      "image_path": "bottle/test/contamination/007.png",
+      "sha256": "5db46332966cf5e45059bd05ae1c460bcb39c80283bff4270014577e0fa4d8e4"
+    },
+    {
+      "file": "artifacts/00050.npz",
+      "image_path": "bottle/test/contamination/008.png",
+      "sha256": "53a0aac9453b4a84862f72c2036533e2006f9ecbefc49c7dcd3c8762680bb4ce"
+    },
+    {
+      "file": "artifacts/00051.npz",
+      "image_path": "bottle/test/contamination/009.png",
+      "sha256": "33b3a33cb7c0da7047b099a1221a464f0c15226e1accad4a647f271a337c6543"
+    },
+    {
+      "file": "artifacts/00052.npz",
+      "image_path": "bottle/test/contamination/010.png",
+      "sha256": "71d1b07825f7a98fda97af7dfb9ceb02819b93d09d96ff3188bce2227077d2a1"
+    },
+    {
+      "file": "artifacts/00053.npz",
+      "image_path": "bottle/test/contamination/011.png",
+      "sha256": "5dfe5aa7395b44f3bf509dc4faf031141d8c7d62fd2006025a5426cf8b3b4470"
+    },
+    {
+      "file": "artifacts/00054.npz",
+      "image_path": "bottle/test/contamination/012.png",
+      "sha256": "0bd8c29d4066ea433ba6d01721f5d6243e87ebcd703c4bb1e5270e451a3fb800"
+    },
+    {
+      "file": "artifacts/00055.npz",
+      "image_path": "bottle/test/contamination/013.png",
+      "sha256": "a2af5f64847a2bd1e4e0dafb25eca0ea9cf22c37e70343f4cb402d263356d316"
+    },
+    {
+      "file": "artifacts/00056.npz",
+      "image_path": "bottle/test/contamination/014.png",
+      "sha256": "6a1af691dd00cca863fb3525389254d6dee89c8c62ccc6ae95042f779788b89a"
+    },
+    {
+      "file": "artifacts/00057.npz",
+      "image_path": "bottle/test/contamination/015.png",
+      "sha256": "ff59cd455cd915073572def1c0ba2dc6dea1cb49878aaa07c5d38a8774b39791"
+    },
+    {
+      "file": "artifacts/00058.npz",
+      "image_path": "bottle/test/contamination/016.png",
+      "sha256": "6ffd45c192197476d2925ddca04e064c54ef4a9d9ac82e25bc27bf0fdd855ca8"
+    },
+    {
+      "file": "artifacts/00059.npz",
+      "image_path": "bottle/test/contamination/017.png",
+      "sha256": "e089a7d11fa1b0facdd99116c01bf67cdfc34c909ffb91aedd1a3d62b6e6aa9d"
+    },
+    {
+      "file": "artifacts/00060.npz",
+      "image_path": "bottle/test/contamination/018.png",
+      "sha256": "c6b7a8d173c2ab42d894d2c0ecaf6d14eeaafa35c78236041cce594bab68498c"
+    },
+    {
+      "file": "artifacts/00061.npz",
+      "image_path": "bottle/test/contamination/019.png",
+      "sha256": "f754fd460dab81428911399e766b8e22294a82f1db854273874654e5496cd2e5"
+    },
+    {
+      "file": "artifacts/00062.npz",
+      "image_path": "bottle/test/contamination/020.png",
+      "sha256": "8a5b9c59b9aea3f91fd9660bf1bd2581428f70344b4db5b09b03dc872dd0b154"
+    },
+    {
+      "file": "artifacts/00063.npz",
+      "image_path": "bottle/test/good/000.png",
+      "sha256": "0bb246caa5e11e5515d5e14e6d9263a037e0044a47cf35fcc10681da344f927b"
+    },
+    {
+      "file": "artifacts/00064.npz",
+      "image_path": "bottle/test/good/001.png",
+      "sha256": "fb41a4b63410ba581d8393531f78e9d51a403f82f1e4bd514687f06f2aef9f57"
+    },
+    {
+      "file": "artifacts/00065.npz",
+      "image_path": "bottle/test/good/002.png",
+      "sha256": "a4ac6504a4decd8a13012e310d79733ffff1a9acd0b2178b0a7bad9c41e9ca52"
+    },
+    {
+      "file": "artifacts/00066.npz",
+      "image_path": "bottle/test/good/003.png",
+      "sha256": "0de1c5e2240eefb5d892cfea0696446839bd8f09df44be60f056cdc3fadc34a3"
+    },
+    {
+      "file": "artifacts/00067.npz",
+      "image_path": "bottle/test/good/004.png",
+      "sha256": "aead8a2fe5b5009bfe3dc880da60b5f6e8ba2b0022e8379104c28e818fda3d14"
+    },
+    {
+      "file": "artifacts/00068.npz",
+      "image_path": "bottle/test/good/005.png",
+      "sha256": "7a85437614d8f5ce0ba0d9b7987b8edbe99f56219b864d5e76e371d7b123f57e"
+    },
+    {
+      "file": "artifacts/00069.npz",
+      "image_path": "bottle/test/good/006.png",
+      "sha256": "c7189dee043dea09ffaba1b2228ea123b30ecb29fd69bb41a0fcc974379ec271"
+    },
+    {
+      "file": "artifacts/00070.npz",
+      "image_path": "bottle/test/good/007.png",
+      "sha256": "a69ef6d9901e3a46c4ed80d568c371c6ba2188016210afcbe0b5d5d20e164627"
+    },
+    {
+      "file": "artifacts/00071.npz",
+      "image_path": "bottle/test/good/008.png",
+      "sha256": "9b1797dae9a62a7b1adb80acc9b539df1a98e9dd32088114e3668fb5759394f8"
+    },
+    {
+      "file": "artifacts/00072.npz",
+      "image_path": "bottle/test/good/009.png",
+      "sha256": "4e44ea1b7eb892b5caee30199d6169f9774418ad6aa982f3cce0e8a3ba44360c"
+    },
+    {
+      "file": "artifacts/00073.npz",
+      "image_path": "bottle/test/good/010.png",
+      "sha256": "89e4e638f31c6b276d8c61ac66b027feacc842530a2d8d68f861500e5d3e262e"
+    },
+    {
+      "file": "artifacts/00074.npz",
+      "image_path": "bottle/test/good/011.png",
+      "sha256": "59bd55c53246d902af2ae33dd6f3d75041a96b5f5d4390a5c26e7dec4396981d"
+    },
+    {
+      "file": "artifacts/00075.npz",
+      "image_path": "bottle/test/good/012.png",
+      "sha256": "55d3d50449add65ec343416a22f140958a53b449db7c38fb5da1ea690d6077d0"
+    },
+    {
+      "file": "artifacts/00076.npz",
+      "image_path": "bottle/test/good/013.png",
+      "sha256": "5a02551518176888a8f057b14053e5f4b5d396fb5f431e2dd49d516e66ece6e9"
+    },
+    {
+      "file": "artifacts/00077.npz",
+      "image_path": "bottle/test/good/014.png",
+      "sha256": "ca6ab7febe51c7d046faace24220d802259f1993a68c36a569aa06d672134917"
+    },
+    {
+      "file": "artifacts/00078.npz",
+      "image_path": "bottle/test/good/015.png",
+      "sha256": "f8f222e6b4b58c9e54c39f4f9cdf4ba3b3a4153d7462e260f3df56bf119fea16"
+    },
+    {
+      "file": "artifacts/00079.npz",
+      "image_path": "bottle/test/good/016.png",
+      "sha256": "a9b4556395945d07233265587aae277d70eeeb81a107726387d0f54329362c8f"
+    },
+    {
+      "file": "artifacts/00080.npz",
+      "image_path": "bottle/test/good/017.png",
+      "sha256": "3f20731e57d5de13972143dbded15ba8d73cc99cb116b17f660221b8d4bcd3a8"
+    },
+    {
+      "file": "artifacts/00081.npz",
+      "image_path": "bottle/test/good/018.png",
+      "sha256": "81ed8fae49d5e45b0881efa03dccfd42949ec86dbab6468285d1244df24d1f53"
+    },
+    {
+      "file": "artifacts/00082.npz",
+      "image_path": "bottle/test/good/019.png",
+      "sha256": "6c543d2ec486cc7750a87b3ce932bd1e75d4d25f93dfc7d9a8b1932ab2bc35c8"
+    }
+  ],
+  "files": {
+    "metrics.json": "2b6f198c1de9420d76a9ed58fcf9fff81ba492523bedd1599037f8ac242ccab6",
+    "predictions.csv": "e994eb753c7e9fe0d81cfe2b3f52e3f1b4b0a2b0286199ff5d8e426264de9c10"
+  },
+  "n_images": 83,
+  "run_id": "patchcore-bottle",
+  "schema_version": "1.0"
+}

@@ -5,57 +5,99 @@
       "method": "cae",
       "version": "exp-002",
       "backend": "cae",
-      "threshold": null,
+      "threshold": 0.01955269752070307,
       "artifact_path": "artifacts/cae/bottle/EXP-002/cae_model.pt",
       "config_path": "experiments/configs/cae_baseline.json",
-      "sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8"
+      "sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+      "threshold_source": {
+        "registry": "experiments/calibration/six-thresholds/thresholds.json (epic/05-evaluation-benchmark, US-05-02)",
+        "registry_sha256": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+        "decision_rule": "score > threshold",
+        "threshold_hex": "0x1.4059f51999997p-6",
+        "calibration_integrity_sha256": "b3b5b96e36cecc248c85f8a81b23b0c66769d77f870c52af777a35fd04b4b459"
+      }
     },
     {
       "category": "hazelnut",
       "method": "cae",
       "version": "exp-001",
       "backend": "cae",
-      "threshold": null,
+      "threshold": 0.008434063522145145,
       "artifact_path": "artifacts/cae/hazelnut/EXP-001/cae_model.pt",
       "config_path": "experiments/configs/cae_baseline.json",
-      "sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811"
+      "sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+      "threshold_source": {
+        "registry": "experiments/calibration/six-thresholds/thresholds.json (epic/05-evaluation-benchmark, US-05-02)",
+        "registry_sha256": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+        "decision_rule": "score > threshold",
+        "threshold_hex": "0x1.145e0d7fffffcp-7",
+        "calibration_integrity_sha256": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a"
+      }
     },
     {
       "category": "transistor",
       "method": "cae",
       "version": "exp-001",
       "backend": "cae",
-      "threshold": null,
+      "threshold": 0.027364758774638176,
       "artifact_path": "artifacts/cae/transistor/EXP-001/cae_model.pt",
       "config_path": "experiments/configs/cae_baseline.json",
-      "sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d"
+      "sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+      "threshold_source": {
+        "registry": "experiments/calibration/six-thresholds/thresholds.json (epic/05-evaluation-benchmark, US-05-02)",
+        "registry_sha256": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+        "decision_rule": "score > threshold",
+        "threshold_hex": "0x1.c0581e0000000p-6",
+        "calibration_integrity_sha256": "2c2f141fa59427dbaba280cd953e5eb139bfd687e5cc02e33aa8029a9f7820b4"
+      }
     },
     {
       "category": "bottle",
       "method": "patchcore",
       "version": "exp-002",
       "backend": "patchcore",
-      "threshold": null,
+      "threshold": 31.620044136047362,
       "artifact_path": "artifacts/patchcore/bottle/EXP-002/patchcore_model.pt",
-      "sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde"
+      "sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+      "threshold_source": {
+        "registry": "experiments/calibration/six-thresholds/thresholds.json (epic/05-evaluation-benchmark, US-05-02)",
+        "registry_sha256": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+        "decision_rule": "score > threshold",
+        "threshold_hex": "0x1.f9ebb36666666p+4",
+        "calibration_integrity_sha256": "1c39c5452c294170ec9020138c0bf79a70c4b971f7fb0153cf2ef1d2e36f7596"
+      }
     },
     {
       "category": "hazelnut",
       "method": "patchcore",
       "version": "exp-002",
       "backend": "patchcore",
-      "threshold": null,
+      "threshold": 48.83736801147461,
       "artifact_path": "artifacts/patchcore/hazelnut/EXP-002/patchcore_model.pt",
-      "sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93"
+      "sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+      "threshold_source": {
+        "registry": "experiments/calibration/six-thresholds/thresholds.json (epic/05-evaluation-benchmark, US-05-02)",
+        "registry_sha256": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+        "decision_rule": "score > threshold",
+        "threshold_hex": "0x1.86b2ee0000000p+5",
+        "calibration_integrity_sha256": "787db120462857d7593aeeffd3ad418de07b157c0d830853e4f1197768916e76"
+      }
     },
     {
       "category": "transistor",
       "method": "patchcore",
       "version": "exp-001",
       "backend": "patchcore",
-      "threshold": null,
+      "threshold": 40.95855598449707,
       "artifact_path": "artifacts/patchcore/transistor/EXP-001/patchcore_model.pt",
-      "sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191"
+      "sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+      "threshold_source": {
+        "registry": "experiments/calibration/six-thresholds/thresholds.json (epic/05-evaluation-benchmark, US-05-02)",
+        "registry_sha256": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+        "decision_rule": "score > threshold",
+        "threshold_hex": "0x1.47ab1f6666666p+5",
+        "calibration_integrity_sha256": "8e3bbf94a7d5e28d190a1ca679f3563f136642a7251d95df495e4a8db076d99e"
+      }
     }
   ]
 }
