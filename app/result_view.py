@@ -63,7 +63,8 @@ def display_result(
     """Affiche uniquement la synthèse de l'inspection."""
 
     display_summary_title("Résultat de l'inspection", RESULT_TITLE_SIZE_PX)
-    display_metrics(result)
+    with st.container(key="result_cards"):
+        display_result_card(result)
     if report is not None:
         display_report_actions(report_to_json(report), report_filename(report), details_page)
 
@@ -76,6 +77,13 @@ def display_summary_title(title: str, size_px: int) -> None:
         <style>
             .st-key-inspection_result_title h3 {{
                 font-size: {size_px}px;
+            }}
+            .st-key-result_cards [data-testid="stMetricValue"],
+            .st-key-result_cards [data-testid="stMetricValue"] * {{
+                white-space: normal;
+                overflow-wrap: anywhere;
+                text-overflow: clip;
+                overflow: visible;
             }}
             .st-key-download_report button,
             .st-key-view_details button,
@@ -95,35 +103,36 @@ def display_summary_title(title: str, size_px: int) -> None:
         st.subheader(title, anchor=False)
 
 
-def display_metrics(result: InferenceResult) -> None:
-    """Quatre indicateurs alignés, sans calcul ni comparaison des scores."""
+def display_result_card(result: InferenceResult, title: str | None = None, compact=False) -> None:
+    """Même carte dans les deux modes, avec deux métriques par ligne en comparaison."""
+    with st.container(border=True, key=f"result_card_{result.method}"):
+        if title is not None:
+            st.markdown(f"**{title}**")
+        display_metrics(result, compact=compact)
 
-    score_col, threshold_col, latency_col, verdict_col = st.columns(4)
 
-    with score_col:
-        st.metric("Score brut", f"{result.score:.4f}")
+def display_metrics(result: InferenceResult, compact=False) -> None:
+    """Indicateurs alignés, sans calcul ni comparaison des scores."""
+    if result.threshold is None or result.decision == "non_calibree":
+        verdict = ":gray-badge[NON CALIBRÉ]"
+    elif result.decision == "normal":
+        verdict = ":green-badge[NORMAL]"
+    elif result.decision == "suspect":
+        verdict = ":red-badge[SUSPECT]"
+    else:
+        verdict = decision_label(result)
 
-    with threshold_col:
-        st.metric(
-            "Seuil",
-            "Non calibré"
-            if result.threshold is None
-            else f"{result.threshold:.4f}",
-        )
-
-    with latency_col:
-        st.metric("Latence", f"{result.latency_ms:.1f} ms")
-
-    with verdict_col:
-        if result.threshold is None or result.decision == "non_calibree":
-            verdict = ":gray-badge[NON CALIBRÉ]"
-        elif result.decision == "normal":
-            verdict = ":green-badge[NORMAL]"
-        elif result.decision == "suspect":
-            verdict = ":red-badge[SUSPECT]"
-        else:
-            verdict = decision_label(result)
-        st.metric("Verdict", verdict)
+    metrics = [
+        ("Score brut", f"{result.score:.4f}"),
+        ("Seuil", "Non calibré" if result.threshold is None else f"{result.threshold:.4f}"),
+        ("Latence", f"{result.latency_ms:.1f} ms"),
+        ("Verdict", verdict),
+    ]
+    columns_per_row = 2 if compact else 4
+    for start in range(0, len(metrics), columns_per_row):
+        columns = st.columns(columns_per_row)
+        for column, (label, value) in zip(columns, metrics[start:start + columns_per_row]):
+            column.metric(label, value)
 
 
 def display_report_actions(data: bytes, filename: str, details_page=None) -> None:
@@ -294,10 +303,12 @@ def display_inspection_details(home_page) -> None:
     display_technical_details(result)
 
 
-def display_technical_details(result: InferenceResult, title="Détails techniques") -> None:
+def display_technical_details(
+    result: InferenceResult, title="Détails techniques", compact=False,
+) -> None:
     """Champs et badge partagés entre inspection et comparaison."""
     heading_col, verdict_col = st.columns(
-        [4, 1],
+        [1, 1] if compact else [4, 1],
         vertical_alignment="center",
     )
 

@@ -8,7 +8,7 @@ from app.comparison_report import comparison_report_filename, comparison_report_
 from app.overlay import make_overlay
 from app.result_view import (
     display_details_header,
-    display_metrics,
+    display_result_card,
     display_report_actions,
     display_summary_title,
     display_technical_details,
@@ -26,10 +26,10 @@ def display_comparison(
 ) -> None:
     """Synthèse compacte ; chaque score reste associé au seuil de son modèle."""
     display_summary_title("Résultat de la comparaison", COMPARISON_RESULT_TITLE_SIZE_PX)
-    for column, method in zip(st.columns(2), METHODS):
-        with column:
-            st.markdown(f"**{METHOD_LABELS[method]}**")
-            display_metrics(comparison[method])
+    with st.container(key="result_cards"):
+        for column, method in zip(st.columns(2), METHODS):
+            with column:
+                display_result_card(comparison[method], METHOD_LABELS[method], compact=True)
     if report is not None:
         display_report_actions(
             comparison_report_to_json(report), comparison_report_filename(report), details_page,
@@ -79,5 +79,6 @@ def display_comparison_details(home_page) -> None:
         show_comparison_anomaly_maps(comparison, stored["image"])
     for column, method in zip(st.columns(2), METHODS):
         with column:
-            display_technical_details(comparison[method], METHOD_LABELS[method])
+            with st.container(border=True, key=f"comparison_details_{method}"):
+                display_technical_details(comparison[method], METHOD_LABELS[method], compact=True)
     st.caption(SCORE_WARNING)
