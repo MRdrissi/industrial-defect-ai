@@ -1,0 +1,80 @@
+{
+  "archive": {
+    "filename": "us-05-02-calibration-final-two.zip",
+    "retrieval": "User download; original ZIP retained in Downloads.",
+    "sha256": "ec02a6554a1813a021e13fd6f66f0e8272937a676f4e17e6f174aedda42e03ab",
+    "size_bytes": 5092
+  },
+  "bundle_integrity_sha256": {
+    "cae-transistor": "2c2f141fa59427dbaba280cd953e5eb139bfd687e5cc02e33aa8029a9f7820b4",
+    "patchcore-bottle": "1c39c5452c294170ec9020138c0bf79a70c4b971f7fb0153cf2ef1d2e36f7596"
+  },
+  "calibrated_instances": [
+    "cae-transistor",
+    "patchcore-bottle"
+  ],
+  "checkpoint_sources": [
+    {
+      "calibration_input": "marwanedrissi/industrialdefect-us0502-missing-checkpoints",
+      "checkpoint_sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+      "instance": "cae-transistor",
+      "local_restoration_performed": false,
+      "local_sha256_verified": true,
+      "original_source_url": "https://www.kaggle.com/code/zakariaelbergui/06-cae-train?scriptVersionId=368211534",
+      "source_experiment": "cae-transistor/EXP-001"
+    },
+    {
+      "calibration_input": "marwanedrissi/industrialdefect-us0502-missing-checkpoints",
+      "checkpoint_sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+      "instance": "patchcore-bottle",
+      "local_restoration_performed": false,
+      "local_sha256_verified": true,
+      "original_source_url": "https://www.kaggle.com/code/mouadfekkak/14-patchcore-bottle-memory-bank?scriptVersionId=369295449",
+      "source_experiment": "patchcore-bottle/EXP-002"
+    }
+  ],
+  "evidence_directory": "experiments/calibration/kaggle-002",
+  "executed_at_utc": "2026-11-15T15:46:48.337004+00:00",
+  "files_sha256": {
+    "cae-transistor/calibration.json": "bf21056143bae9a362ae550551b3e3c958128af779b1c75a56fec7f1e23e186c",
+    "cae-transistor/integrity.json": "2c2f141fa59427dbaba280cd953e5eb139bfd687e5cc02e33aa8029a9f7820b4",
+    "cae-transistor/validation_scores.csv": "a16bfebf17806a612f47e09eb54e6ab1b6f129702f8293efa1c0ef466d9d1b87",
+    "patchcore-bottle/calibration.json": "15c1e53d614ccaba76910eb59850528fca9b5af6016693bd3a875947a032c05a",
+    "patchcore-bottle/integrity.json": "1c39c5452c294170ec9020138c0bf79a70c4b971f7fb0153cf2ef1d2e36f7596",
+    "patchcore-bottle/validation_scores.csv": "4d83777c599fe7893c09b0285224ffb4f9caa968327d8bb68bac016f4ac32efd",
+    "session.json": "279c756fa68e2e3c52e15c0f049d52d531006125c1551cc6290093dc16169895"
+  },
+  "kaggle": {
+    "archive_path": "/kaggle/working/us-05-02-calibration-final-two.zip",
+    "notebook_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-validation-calibration-final-t?scriptVersionId=369945024",
+    "output_directory": "/kaggle/working/calibration-us0502",
+    "script_version_id": 369945024,
+    "url_source": "User-provided version URL; page unavailable to the web reader during local integration."
+  },
+  "run_id": "kaggle-002",
+  "schema_version": "1.0",
+  "scientific_code_commit": "c708de9ce2b682ab8cea00eabd5d3e8c7b2a0ae6",
+  "session_sha256": "279c756fa68e2e3c52e15c0f049d52d531006125c1551cc6290093dc16169895",
+  "status": "final_2_of_2",
+  "verification": {
+    "archive_crc": "passed",
+    "archived_bytes": "identical to ZIP members",
+    "exact_allowlist_entries": 7,
+    "new_inference": false,
+    "notes": [
+      "Integration metadata kept outside the seven original files.",
+      "Arithmetic verification of stored scores does not refit or overwrite thresholds.",
+      "Execution notebook is not included in this archive.",
+      "Hashes establish integrity relative to reviewed anchors, not cryptographic execution authenticity."
+    ],
+    "path_traversal_duplicates_symlinks_unexpected_entries": "rejected",
+    "protocol_manifest_catalog_configuration_checkpoint_fingerprints": "verified",
+    "saved_scores_audit": "finite, unique, exact normal logical Validation coverage; q=0.95 method=linear matches threshold.hex",
+    "session_and_integrity_anchors": "exact match to supplied Kaggle execution anchors",
+    "threshold_recalibration": false,
+    "validation_counts": {
+      "cae-transistor": 43,
+      "patchcore-bottle": 42
+    }
+  }
+}

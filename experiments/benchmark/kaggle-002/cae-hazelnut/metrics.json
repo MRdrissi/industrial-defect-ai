@@ -1,0 +1,90 @@
+{
+  "latency_summary": {
+    "max_ms": 19.69398899996122,
+    "mean_ms": 19.590365454546994,
+    "median_ms": 19.592533000036383,
+    "min_ms": 18.966942000020026,
+    "p95_ms": 19.652353400022093,
+    "unit": "ms"
+  },
+  "metrics": {
+    "image": {
+      "f1": 0.8524590163934426,
+      "fn": 18,
+      "fp": 0,
+      "image_auroc": 0.9757142857142858,
+      "n_anomalous": 70,
+      "n_images": 110,
+      "n_normal": 40,
+      "precision": 1.0,
+      "recall": 0.7428571428571429,
+      "threshold": 0.008434063522145145,
+      "tn": 40,
+      "tp": 52
+    },
+    "latency": {
+      "max_ms": 19.69398899996122,
+      "mean_ms": 19.590365454546994,
+      "median_ms": 19.592533000036383,
+      "min_ms": 18.966942000020026,
+      "p95_ms": 19.652353400022093,
+      "unit": "ms"
+    },
+    "n_images": 110,
+    "pixel": {
+      "pixel_auroc": 0.9814179040347814
+    }
+  },
+  "n_images": 110,
+  "run": {
+    "batch_size": 1,
+    "calibration_integrity_sha256": "bc5f999100f1d6c94e1b7a3513bfe22c37148c49870e527678e267dac5487e1a",
+    "catalog_sha256": "b3aa8340bf0e5f07009a48562393aaf708ac49fc8edabd630bd820448a6239dc",
+    "category": "hazelnut",
+    "checkpoint_sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+    "dataset_manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+    "dependencies": {
+      "Pillow": "13.0.0",
+      "torchvision": "0.26.0+cu130"
+    },
+    "device": "cuda:0",
+    "git_commit": "0acbf26880b755373f2e61236d009ed16f04658c",
+    "hardware": "Tesla T4",
+    "latency_detail": "Device forward and raw score/map calculation; excludes IO, preprocessing, input/output transfers and evaluation resizing.",
+    "latency_scope": "model_inference_only",
+    "model_config_canonical_sha256": "27a64f2268ee7b2592f5ffa75d71cb9f06313efafaa7e9efee86aefb63226217",
+    "model_family": "cae",
+    "numpy_version": "2.1.3",
+    "preprocessing": {
+      "profile": "cae",
+      "size": [
+        256,
+        256
+      ]
+    },
+    "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+    "python_version": "3.13.16",
+    "run_id": "cae-hazelnut",
+    "score_definition": {
+      "kernel_size": 33,
+      "method": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
+      "smoothing_sigma": 4.0
+    },
+    "seed": 42,
+    "source_experiment": "cae-hazelnut/EXP-001",
+    "source_registry_canonical_sha256": "e7b56e3bfd51c347607da7fb788a257e8d05cdb05a41e025053d8430c7a7b4ea",
+    "split": "test",
+    "synchronize_cuda": true,
+    "target_size_hw": [
+      256,
+      256
+    ],
+    "test_paths_sha256": "271eb9dd9d0d0a735e18776964ad8b748bec415f6eba5f6191d4fe36aa893785",
+    "threshold": 0.008434063522145145,
+    "threshold_hex": "0x1.145e0d7fffffcp-7",
+    "threshold_registry_integrity_sha256": "41dd9d26e68840ca5d104062605d967e72a2d3907937e8ed6745743034c96b6a",
+    "torch_version": "2.11.0+cu130",
+    "warmup_runs_per_model": 3
+  },
+  "schema_version": "1.0"
+}

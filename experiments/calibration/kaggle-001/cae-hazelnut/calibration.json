@@ -1,0 +1,70 @@
+{
+  "distribution": {
+    "maximum": 0.010843412950634956,
+    "mean": 0.003399339079176291,
+    "median": 0.002875218284316361,
+    "minimum": 0.0008283036295324564,
+    "quantiles": {
+      "0.0": 0.0008283036295324564,
+      "0.05": 0.0014378832012880594,
+      "0.25": 0.0020835406612604856,
+      "0.5": 0.002875218284316361,
+      "0.75": 0.0037325076409615576,
+      "0.95": 0.008434063522145145,
+      "1.0": 0.010843412950634956
+    },
+    "std": 0.0020850777750999663,
+    "std_ddof": 0
+  },
+  "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+  "n_images": 78,
+  "policy": {
+    "decision_rule": "score > threshold",
+    "dtype": "float64",
+    "label": 0,
+    "method": "linear",
+    "quantile": 0.95,
+    "split": "val"
+  },
+  "protocol_sha256": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+  "provenance": {
+    "batch_size": 1,
+    "catalog_sha256": "b3aa8340bf0e5f07009a48562393aaf708ac49fc8edabd630bd820448a6239dc",
+    "category": "hazelnut",
+    "checkpoint_sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+    "dependencies": {
+      "Pillow": "13.0.0",
+      "torchvision": "0.26.0+cu130"
+    },
+    "device": "cuda:0",
+    "git_commit": "c708de9ce2b682ab8cea00eabd5d3e8c7b2a0ae6",
+    "hardware": "Tesla T4",
+    "model_config_canonical_sha256": "27a64f2268ee7b2592f5ffa75d71cb9f06313efafaa7e9efee86aefb63226217",
+    "model_config_sha256": "350f6e3ba4e94f6b377d8566a0fb332c93da30ad0030e07abb6e677da72448e7",
+    "model_family": "cae",
+    "numpy_version": "2.1.3",
+    "preprocessing": {
+      "profile": "cae",
+      "size": [
+        256,
+        256
+      ]
+    },
+    "python_version": "3.13.16",
+    "run_id": "cae-hazelnut",
+    "score_definition": {
+      "kernel_size": 33,
+      "method": "max_gaussian_smoothed_channel_mean_squared_reconstruction_error",
+      "smoothing_sigma": 4.0
+    },
+    "seed": 42,
+    "source_experiment": "cae-hazelnut/EXP-001",
+    "split": "val",
+    "torch_version": "2.11.0+cu130"
+  },
+  "schema_version": "1.0",
+  "status": "calibrated",
+  "threshold": 0.008434063522145145,
+  "threshold_hex": "0x1.145e0d7fffffcp-7",
+  "validation_paths_sha256": "eda3d02fe0ca520119360ee599fa958cac344408247f5ffcd38160f548b01911"
+}

@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at_utc_date": "2026-11-16",
+  "dataset": {
+    "owner": "ipythonx",
+    "slug": "mvtec-ad",
+    "id": 1946896,
+    "version": 2,
+    "version_created_at": "2022-02-20T21:04:17.163Z",
+    "url": "https://www.kaggle.com/datasets/ipythonx/mvtec-ad/versions/2",
+    "original_source": "https://www.mvtec.com/research-teaching/datasets/mvtec-ad",
+    "license": "CC BY-NC-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  "retrieval": "Public per-file HTTPS download; no credentials required; only selected original RGBs and their GT masks. Kaggle single-PNG ZIP wrappers unwrapped in memory without changing PNG bytes.",
+  "local_search": "No matching original test/ground_truth paths found in C:/Projects, Documents, Downloads, candidate archives or the Kaggle cache inspected before download",
+  "files": {
+    "bottle/ground_truth/broken_large/002_mask.png": {
+      "sha256": "9ebd1eb07373c7e60515c82d92fea198acd86418ee6ef31140327d3b78cd5ef3",
+      "size_bytes": 4405,
+      "width": 900,
+      "height": 900,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "b5eeaa455826ba5c9b52929a471cbce2aee695c5b6449865b55a04d66ae9fc0d",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/bottle%2Fground_truth%2Fbroken_large%2F002_mask.png?datasetVersionNumber=2"
+    },
+    "bottle/ground_truth/broken_small/015_mask.png": {
+      "sha256": "e9b59d2678fcb0a171b93bfcdb8d47732ec455c6d5f96a25897c27fdefdb2336",
+      "size_bytes": 2992,
+      "width": 900,
+      "height": 900,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "0fd2afcd25668030e0686a87cf8eef9a5b6fc6e9c624c8c5361723b13fefd48a",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/bottle%2Fground_truth%2Fbroken_small%2F015_mask.png?datasetVersionNumber=2"
+    },
+    "bottle/ground_truth/contamination/016_mask.png": {
+      "sha256": "a39ba576e8b8823171f223f97c256a82d08cdfeb0ac2a708b97ddd19dd804397",
+      "size_bytes": 3474,
+      "width": 900,
+      "height": 900,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "6067f296fe9709ed8bbcf6a94d1a1f37d9d7669b90e90727aa1d32ecf399f0f0",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/bottle%2Fground_truth%2Fcontamination%2F016_mask.png?datasetVersionNumber=2"
+    },
+    "bottle/test/broken_large/002.png": {
+      "sha256": "249813c6bccb58b9de711a6b7248f4fd8ba4136364cfad2e0577769db91353c2",
+      "size_bytes": 515614,
+      "width": 900,
+      "height": 900,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "1adacf2ac3cf4ca7a90d7b0b3ae3b54bc9c63be24bf29d789baf8f43f39907be",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/bottle%2Ftest%2Fbroken_large%2F002.png?datasetVersionNumber=2"
+    },
+    "bottle/test/broken_small/015.png": {
+      "sha256": "ef423951e8f0bed66ab053c28ad709e68ef24af62b4650254c3d39aaa2bb48da",
+      "size_bytes": 532917,
+      "width": 900,
+      "height": 900,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "fa7a3e8a69a42ff60342b65b85048c6cdcca2b5f515d3b47c5c1b2766218d303",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/bottle%2Ftest%2Fbroken_small%2F015.png?datasetVersionNumber=2"
+    },
+    "bottle/test/contamination/016.png": {
+      "sha256": "9693bc441d758ca05db5602c66243681697a4d273a9468508f4a9a9b3205c0c1",
+      "size_bytes": 545626,
+      "width": 900,
+      "height": 900,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "6991a91d75bd981bbd12f91135968d37caca9bd791efbd5a594dc246abe5c29a",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/bottle%2Ftest%2Fcontamination%2F016.png?datasetVersionNumber=2"
+    },
+    "bottle/test/good/001.png": {
+      "sha256": "a45aba86ef3e1ef8dbd95ca56abeb63f576fcd2bbd040ba748a1410bb70d6d78",
+      "size_bytes": 532508,
+      "width": 900,
+      "height": 900,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "9fcc1132d4260c5b5714d0db31eeef5e37750e2c896637ae97411afb3a2505b0",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/bottle%2Ftest%2Fgood%2F001.png?datasetVersionNumber=2"
+    },
+    "hazelnut/ground_truth/crack/002_mask.png": {
+      "sha256": "1680655403c8336e65e65ec7f03ffc49f2a0690386a11873662836365490cd26",
+      "size_bytes": 4153,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "dd69d616f30d71dda95092e2cee7bcf6be29590cf9b3c69e6057d4c3e51e9ddd",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/hazelnut%2Fground_truth%2Fcrack%2F002_mask.png?datasetVersionNumber=2"
+    },
+    "hazelnut/ground_truth/cut/001_mask.png": {
+      "sha256": "5a63e80062824c31b8d446c71b03323686c8730c6629f888af22342883f31f47",
+      "size_bytes": 3821,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "744ceeb200003db6e74670ae7f5afd4781d257b34fe86a6631e84d6b2e5e5e5d",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/hazelnut%2Fground_truth%2Fcut%2F001_mask.png?datasetVersionNumber=2"
+    },
+    "hazelnut/ground_truth/hole/001_mask.png": {
+      "sha256": "08bfd26ceebe16308e9997fb7aa3dbc41718403f5aa32adac432680668b0424f",
+      "size_bytes": 2781,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "fd93ef3cb2780d856f2abedfb035caac442e5976ca588049fe279f7890bf6704",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/hazelnut%2Fground_truth%2Fhole%2F001_mask.png?datasetVersionNumber=2"
+    },
+    "hazelnut/test/crack/002.png": {
+      "sha256": "c4cd667138b269fabe65fa39a6d68a85bfdf49f8a2c77f6f03c883cdc015dad4",
+      "size_bytes": 1271095,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "f7bc3f58d1db0911c8b5711f1659bad5da96e9db64a8a8f65461953e70991193",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/hazelnut%2Ftest%2Fcrack%2F002.png?datasetVersionNumber=2"
+    },
+    "hazelnut/test/cut/001.png": {
+      "sha256": "f287622343bc86f5a02a683c570489324954f2a8378831dc2db7f4f9cd21370a",
+      "size_bytes": 1258998,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "06e6360c4a5b0ad31b3e872af7daa439d4b37b649acee17362206eaa0017408c",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/hazelnut%2Ftest%2Fcut%2F001.png?datasetVersionNumber=2"
+    },
+    "hazelnut/test/hole/001.png": {
+      "sha256": "c3aa706e84d7b0b894755b106c3b9a04f18c48daa0819cf616ade2c1b969252e",
+      "size_bytes": 1244059,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "ffeb0b5f2f4824081a8c83331094e7c437e95832561d8484e724b1ded527b4c6",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/hazelnut%2Ftest%2Fhole%2F001.png?datasetVersionNumber=2"
+    },
+    "transistor/ground_truth/bent_lead/008_mask.png": {
+      "sha256": "4e3ec4c0d173a513f44b578e81c5878fbd9cfc84f86a1af735fc1febcbfe6853",
+      "size_bytes": 3505,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "695a2af1a44340a7aadfb776971e719ac848b0ae47c1222a78911708a5be862d",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Fground_truth%2Fbent_lead%2F008_mask.png?datasetVersionNumber=2"
+    },
+    "transistor/ground_truth/cut_lead/005_mask.png": {
+      "sha256": "a5feb9bf2bc47ae7f573735da3495f0f86ee99abef47d26cc31c7167aeac3354",
+      "size_bytes": 3004,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "5245656e66ee50b74b93b69561419fef5730bfb6436663a5617d8c49ed822192",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Fground_truth%2Fcut_lead%2F005_mask.png?datasetVersionNumber=2"
+    },
+    "transistor/ground_truth/damaged_case/007_mask.png": {
+      "sha256": "1cdfec2476eff243d6ccd8b460ceb26cedd83b05204944fb5a29d523498346f7",
+      "size_bytes": 2916,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "13cadcd110678303e68273b90a4384af1ff1ab334cce7ef0095e6ed437fdc6d7",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Fground_truth%2Fdamaged_case%2F007_mask.png?datasetVersionNumber=2"
+    },
+    "transistor/ground_truth/misplaced/000_mask.png": {
+      "sha256": "8c9e4bfbe4b9636f5280c9c0f369061d835aa4081c75cdd6cb5efeee9538408d",
+      "size_bytes": 4735,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "844daf74fcb43917771e88f98d86653858b16285daa62660688e2cc917faf6bb",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Fground_truth%2Fmisplaced%2F000_mask.png?datasetVersionNumber=2"
+    },
+    "transistor/ground_truth/misplaced/002_mask.png": {
+      "sha256": "d18f54400c28b0572bedfc54b24ab4f83c73ff6e5502322f27b752261059d625",
+      "size_bytes": 4410,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "L",
+      "decoded_mode": "L",
+      "decoded_sha256": "92b02ac3d6303c0e7e6a01f50df85123fcacf94badb47bc1331e01054a066b68",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Fground_truth%2Fmisplaced%2F002_mask.png?datasetVersionNumber=2"
+    },
+    "transistor/test/bent_lead/008.png": {
+      "sha256": "a6f2ea8f091943a856bdd48282f4d2b095b25d3b28b9b890ac6572903fda9343",
+      "size_bytes": 1304636,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "393947b3ca4ac2d1a6ec88a374458a8bac5d83cb73b2b0423c55b23b643efe00",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Ftest%2Fbent_lead%2F008.png?datasetVersionNumber=2"
+    },
+    "transistor/test/cut_lead/005.png": {
+      "sha256": "37d6d29ececc6e1c497d3e67a625c318a2024a0a865aa29df44028d528f35395",
+      "size_bytes": 1287313,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "40dbce7a872dfd843acf7c834b6289deb623fe9b228279175470d34fa864f13d",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Ftest%2Fcut_lead%2F005.png?datasetVersionNumber=2"
+    },
+    "transistor/test/damaged_case/007.png": {
+      "sha256": "a6f5a7c2c97b3c88378d391229a18ca8de82bb263b01b0901a89eb193779e287",
+      "size_bytes": 1294864,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "da47fd55722e1056bff6ebb6ad607603bfb4f81b50b2e1dc6b0f3898cf99b4cd",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Ftest%2Fdamaged_case%2F007.png?datasetVersionNumber=2"
+    },
+    "transistor/test/good/037.png": {
+      "sha256": "0ea54e13b6968daca380521809d401223da988fb3107575ca2d9aa402431d9e9",
+      "size_bytes": 1290723,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "7502d832ceb3f2677a667e2c9e779ece4b394207dd77352c5ccd6a4116fae9c9",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Ftest%2Fgood%2F037.png?datasetVersionNumber=2"
+    },
+    "transistor/test/misplaced/000.png": {
+      "sha256": "9ff15394285b7c54e7c7c05f668bdf5ba63a8f60fa2703b3234a918114527d10",
+      "size_bytes": 1303753,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "38ac2d5f6247df0cbddf15f6af2f6d85b3b73e4e8449bed72fd6e89393614922",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Ftest%2Fmisplaced%2F000.png?datasetVersionNumber=2"
+    },
+    "transistor/test/misplaced/002.png": {
+      "sha256": "39aa3785ed25512eec3392723c28015392857cce9e5298ca2474ad998ac540c5",
+      "size_bytes": 1311805,
+      "width": 1024,
+      "height": 1024,
+      "original_mode": "RGB",
+      "decoded_mode": "RGB",
+      "decoded_sha256": "26fe7099c74904d400a03931e003fd93c90d1959541afe969a2bc37e216f735c",
+      "url": "https://www.kaggle.com/api/v1/datasets/download/ipythonx/mvtec-ad/transistor%2Ftest%2Fmisplaced%2F002.png?datasetVersionNumber=2"
+    }
+  },
+  "file_count": 24,
+  "total_bytes": 13734107,
+  "verification": "Canonical frozen Test paths and category; decoded RGB; source masks transformed by historical >127/nearest pipeline exactly equal both archived masks",
+  "historical_rgb_hash_limitation": "US-05-03 did not record original RGB checksums. These new source hashes pin retrieved version-2 bytes; historical input byte identity is not independently provable from the benchmark exports.",
+  "raw_files_in_git": false
+}

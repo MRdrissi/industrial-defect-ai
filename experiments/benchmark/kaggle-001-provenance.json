@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "status": "partial_2_of_6",
+  "instances": [
+    "cae-transistor",
+    "patchcore-bottle"
+  ],
+  "scientific_code_commit": "0acbf26880b755373f2e61236d009ed16f04658c",
+  "verified_at_utc_date": "2026-11-15",
+  "kaggle": {
+    "notebook_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-test-benchmark-001/output?scriptVersionId=370020172",
+    "script_version_id": 370020172,
+    "output_directory": "/kaggle/working/benchmark-us0503",
+    "retrieval": "Download output from the authenticated browser page pinned to scriptVersionId=370020172; both export manifests match execution-time anchors."
+  },
+  "archive": {
+    "filename": "us0503-kaggle-370020172.zip",
+    "size_bytes": 93019917,
+    "sha256": "3f847e7bcbda2816ebb5ef4f41cd52a6720bd758b877a4a8f6f753d9ff7fcd45",
+    "total_members": 439,
+    "selected_members": 189,
+    "selected_size_bytes": 48280156
+  },
+  "files": {
+    "cae-transistor/manifest.json": {
+      "size_bytes": 19016,
+      "sha256": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19"
+    },
+    "cae-transistor/metrics.json": {
+      "size_bytes": 2983,
+      "sha256": "c6b8a9ff01f98783ce70857e01d9420660a0da31a0dc7b4ae77f61ba6f9b44b7"
+    },
+    "cae-transistor/predictions.csv": {
+      "size_bytes": 16205,
+      "sha256": "7323d82cc76eec12b3e4b49361b3136555300b09fadc1ad418252d6a8522bdbd"
+    },
+    "patchcore-bottle/manifest.json": {
+      "size_bytes": 15845,
+      "sha256": "009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e"
+    },
+    "patchcore-bottle/metrics.json": {
+      "size_bytes": 3091,
+      "sha256": "2b6f198c1de9420d76a9ed58fcf9fff81ba492523bedd1599037f8ac242ccab6"
+    },
+    "patchcore-bottle/predictions.csv": {
+      "size_bytes": 13256,
+      "sha256": "e994eb753c7e9fe0d81cfe2b3f52e3f1b4b0a2b0286199ff5d8e426264de9c10"
+    }
+  },
+  "export_manifest_sha256": {
+    "cae-transistor": "b46e66ff9f11f6af17ae0d453490217bca537e7a1f020348d2fa3a0060f89e19",
+    "patchcore-bottle": "009e3c2153d6c5f8a98ede447e0bb215d4cbf4820ff6ac1e377f63df59dee56e"
+  },
+  "storage": {
+    "small_originals": "experiments/benchmark/kaggle-001",
+    "original_bytes_preserved": true,
+    "npz_versioned_in_git": false,
+    "npz_location": "Versioned Kaggle outputs; also retained in the downloaded ZIP outside the repository.",
+    "excluded_from_git": [
+      "NPZ",
+      "downloaded ZIP",
+      "Kaggle repository clone",
+      "datasets",
+      "checkpoints",
+      "caches"
+    ]
+  },
+  "verification": {
+    "npz_counts": {
+      "cae-transistor": 100,
+      "patchcore-bottle": 83
+    },
+    "npz_inventory": {
+      "cae-transistor": {
+        "count": 100,
+        "size_bytes": 26985219
+      },
+      "patchcore-bottle": {
+        "count": 83,
+        "size_bytes": 21224541
+      }
+    },
+    "missing_files": [],
+    "selected_zip_crc": "passed for all 189 selected members",
+    "export_anchors_and_small_file_hashes": "passed",
+    "npz_hashes_and_csv_manifest_paths": "passed for 100 + 83 files",
+    "npz_content": "allow_pickle=False; exact mask/anomaly_map keys; shapes 256x256; uint8 binary masks; finite floating maps; empty normal masks and nonempty anomalous masks",
+    "archive_path_safety": "no duplicate names, absolute/traversal/backslash/drive paths or symlinks",
+    "logical_test_coverage": "exact image paths and labels from the frozen category manifests",
+    "frozen_thresholds_and_protocol": "exact hex values and catalog/configuration/registry/calibration/protocol fingerprints match repository",
+    "metrics_recomputed": false,
+    "new_inference": false,
+    "threshold_recalibration": false,
+    "notes": [
+      "The earlier UI empty-folder indication is resolved by the downloaded saved bytes, not by active-session counts.",
+      "Only the two benchmark directories were read for scientific evidence; the bundled repository clone is not extracted or integrated.",
+      "Checkpoint identities are checked against the pinned catalog and reports; checkpoint bytes are not re-downloaded or restored in this integration.",
+      "Pixel-AUROC and all other reported metrics are preserved without recomputation. NPZ arrays are audited for integrity and structure only.",
+      "Hashes prove integrity relative to reviewed anchors, not cryptographic execution authenticity."
+    ]
+  }
+}

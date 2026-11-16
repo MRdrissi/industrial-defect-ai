@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.0",
+  "status": "remaining_4_of_6",
+  "instances": [
+    "cae-bottle",
+    "cae-hazelnut",
+    "patchcore-hazelnut",
+    "patchcore-transistor"
+  ],
+  "scientific_code_commit": "0acbf26880b755373f2e61236d009ed16f04658c",
+  "verified_at_utc_date": "2026-11-15",
+  "kaggle": {
+    "notebook_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-test-benchmark-002-v1/notebook?scriptVersionId=370053025",
+    "output_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-test-benchmark-002-v1/output?scriptVersionId=370053025",
+    "script_version_id": 370053025,
+    "output_directory": "/kaggle/working/benchmark-us0503-remaining",
+    "retrieval": "Original saved-output ZIP downloaded by the user from the stated version; supplied archive and four execution-time manifest SHA-256 anchors verified locally.",
+    "remote_revalidation": "Direct web retrieval unavailable during this audit; saved-file presence is established from the original downloaded ZIP, not an active-session listing."
+  },
+  "archive": {
+    "filename": "results_remainig.zip",
+    "original_local_path": "C:\\Users\\marwa\\Downloads\\results_remainig.zip",
+    "size_bytes": 153887769,
+    "sha256": "85d9ff82c22126c181431dda845efeea56578ca66809d53e60b5ed61da4fe879",
+    "total_members": 665,
+    "selected_members": 415,
+    "selected_size_bytes": 105564844
+  },
+  "files": {
+    "cae-bottle/manifest.json": {
+      "size_bytes": 15839,
+      "sha256": "9393551e7c116dabcdaa539b669bb15debbd2e05529b1169bedf92d3c9b104ef"
+    },
+    "cae-bottle/metrics.json": {
+      "size_bytes": 2961,
+      "sha256": "2f117ddfc001e580b1058822d6a1ab83a63977f2c0a815c7877fe8ed4db1cf7e"
+    },
+    "cae-bottle/predictions.csv": {
+      "size_bytes": 13461,
+      "sha256": "6366490c1bc88bff1b9523aa18ab21e0b9a2062f5a47de7cc3392c0c3ea4ec2b"
+    },
+    "cae-hazelnut/manifest.json": {
+      "size_bytes": 20442,
+      "sha256": "3cb839efbd128a0881a394f60b277c0662c7b8b8815b67f15d723b1bbca1d5d5"
+    },
+    "cae-hazelnut/metrics.json": {
+      "size_bytes": 2992,
+      "sha256": "948641bcabfef5760bb7a9aa6f03d5eb9ee02369724fcb4b0ccac76eaa8b9492"
+    },
+    "cae-hazelnut/predictions.csv": {
+      "size_bytes": 17422,
+      "sha256": "e8a2cbd76c94ab98a51ef22d2d3b987303eaceeff26544f4e8feeddac9172138"
+    },
+    "patchcore-hazelnut/manifest.json": {
+      "size_bytes": 20448,
+      "sha256": "575384adb3edb7b8bd40156c951625ed0c67c9a0474e2bc91367b6b3637af56a"
+    },
+    "patchcore-hazelnut/metrics.json": {
+      "size_bytes": 3077,
+      "sha256": "f095850d26d7ad55c92e00c9d6fadae74b3d496cca932ca45318d696ccd52d55"
+    },
+    "patchcore-hazelnut/predictions.csv": {
+      "size_bytes": 17117,
+      "sha256": "7670ef95199d11d125df5aeec5f6fa12775ea501c0e2ffe6de5414aec84b667f"
+    },
+    "patchcore-transistor/manifest.json": {
+      "size_bytes": 19022,
+      "sha256": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+    },
+    "patchcore-transistor/metrics.json": {
+      "size_bytes": 3131,
+      "sha256": "b7baa965b60d8e30698e593dd2c84c63da0a6402a75a8d9848c81d16d3f548c9"
+    },
+    "patchcore-transistor/predictions.csv": {
+      "size_bytes": 15963,
+      "sha256": "ca3ac66b140a3db5f708351026dc47b2abc3c100e031b91d134e6231fdb7a489"
+    }
+  },
+  "export_manifest_sha256": {
+    "cae-bottle": "9393551e7c116dabcdaa539b669bb15debbd2e05529b1169bedf92d3c9b104ef",
+    "cae-hazelnut": "3cb839efbd128a0881a394f60b277c0662c7b8b8815b67f15d723b1bbca1d5d5",
+    "patchcore-hazelnut": "575384adb3edb7b8bd40156c951625ed0c67c9a0474e2bc91367b6b3637af56a",
+    "patchcore-transistor": "6d97d78c4bb7cf25d706c67f041782611f41a18bdf47e3fb957ef08340abd565"
+  },
+  "storage": {
+    "small_originals": "experiments/benchmark/kaggle-002",
+    "original_bytes_preserved": true,
+    "npz_versioned_in_git": false,
+    "npz_location": "Versioned Kaggle outputs and the original ZIP retained at archive.original_local_path outside Git.",
+    "excluded_from_git": [
+      "NPZ",
+      "downloaded ZIP",
+      "Kaggle repository clone",
+      "datasets",
+      "checkpoints",
+      "caches"
+    ]
+  },
+  "verification": {
+    "npz_counts": {
+      "cae-bottle": 83,
+      "cae-hazelnut": 110,
+      "patchcore-hazelnut": 110,
+      "patchcore-transistor": 100
+    },
+    "missing_files": [],
+    "all_zip_crc": "passed for all 665 members",
+    "export_anchors_and_small_file_hashes": "passed",
+    "npz_hashes_and_csv_manifest_paths": "passed for all 403 files",
+    "npz_content": "allow_pickle=False; exact mask/anomaly_map keys; 256x256; uint8 binary masks; finite float64 maps; zero normal masks and nonempty anomalous masks",
+    "archive_path_safety": "no duplicates, absolute/traversal/backslash/drive/noncanonical paths or symlinks",
+    "logical_test_coverage": "exact ordered image paths and labels from frozen manifests; no train/val overlap",
+    "frozen_thresholds_and_protocol": "exact threshold hex and catalog/configuration/registry/calibration/protocol fingerprints match repository",
+    "stored_metrics_modified": false,
+    "pixel_auroc_recomputed": false,
+    "image_and_latency_consistency": "independent arithmetic from saved CSV scores, labels and latencies; no inference",
+    "new_inference": false,
+    "threshold_recalibration": false,
+    "notes": [
+      "415 selected files = 12 light CSV/JSON originals + 403 NPZ; bundled code is not extracted or executed.",
+      "The user-associated saved version contains the expected outputs in its downloaded archive; no authenticated live Kaggle recheck is claimed.",
+      "Checkpoint identities match pinned catalog/registry metadata; checkpoint bytes are not re-downloaded or restored.",
+      "Raw MVTec masks are not re-read in this audit; exported masks are structurally checked and compared byte for byte between families for all 293 image paths using both archives.",
+      "Hashes prove integrity relative to reviewed anchors, not cryptographic execution authenticity."
+    ],
+    "npz_inventory": {
+      "cae-bottle": {
+        "count": 83,
+        "size_bytes": 23635870
+      },
+      "cae-hazelnut": {
+        "count": 110,
+        "size_bytes": 29439231
+      },
+      "patchcore-hazelnut": {
+        "count": 110,
+        "size_bytes": 27606061
+      },
+      "patchcore-transistor": {
+        "count": 100,
+        "size_bytes": 24731807
+      }
+    }
+  }
+}
