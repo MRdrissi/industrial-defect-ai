@@ -1,13 +1,15 @@
 """Application web IndustrialDefect AI — US-06-02."""
 
 from hashlib import sha256
+import json
 from pathlib import Path
 from typing import cast
 
 import streamlit as st
 
 from app.comparison import METHODS, available_versions, run_comparison
-from app.comparison_view import display_comparison
+from app.comparison_report import build_comparison_report
+from app.comparison_view import display_comparison, display_comparison_details
 from app.image_preview import image_preview_button
 from app.image_utils import MAX_FILE_SIZE, decode_image, image_to_tensor
 from app.report import build_report
@@ -42,10 +44,11 @@ INFERENCE_ERRORS = (
 
 def clear_last_inspection():
     uploaded = st.session_state.get("inspection_image")
-    inspection = st.session_state.get("last_inspection")
     image_digest = sha256(uploaded.getvalue()).hexdigest() if uploaded else None
-    if inspection is not None and inspection.get("image_digest") != image_digest:
-        st.session_state.pop("last_inspection", None)
+    for key in ("last_inspection", "last_comparison"):
+        inspection = st.session_state.get(key)
+        if inspection is not None and inspection.get("image_digest") != image_digest:
+            st.session_state.pop(key, None)
 
 
 def render_image_uploader():
@@ -222,6 +225,13 @@ def main():
             name: available[name][0]
             for name in METHODS
         }
+        # Le registre fait partie de l'identité : seuil, checkpoint et configuration.
+        comparison_selection = (
+            category,
+            tuple((name, compare_versions[name], json.dumps(
+                get_model(registry, category, name, compare_versions[name]), sort_keys=True,
+            )) for name in METHODS),
+        )
 
     else:
         # 4. Utiliser l'unique version disponible
@@ -234,6 +244,9 @@ def main():
             st.error("Une seule version par catégorie et méthode est attendue.")
             st.stop()
         version = versions[0]
+
+    selection = comparison_selection if compare_mode else (category, method, version)
+    state_key = "last_comparison" if compare_mode else "last_inspection"
 
     # 5. Importer et valider l'image avant d'autoriser l'analyse
     image = None
@@ -261,12 +274,11 @@ def main():
                     with st.container(key="preview_control", width="content"):
                         image_preview_button(image, uploaded.name)
 
-        inspection = st.session_state.get("last_inspection")
+        inspection = st.session_state.get(state_key)
         already_analyzed = (
-            not compare_mode
-            and inspection is not None
+            inspection is not None
             and inspection.get("image_digest") == image_digest
-            and inspection["selection"] == (category, method, version)
+            and inspection["selection"] == selection
         )
         with analyze_column.container(horizontal=True, horizontal_alignment="right"):
             analyze_clicked = st.button(
@@ -289,13 +301,23 @@ def main():
                     category,
                     compare_versions,
                     registry,
+                    infer=run_inference,
+                )
+                report = build_comparison_report(
+                    comparison, registry, uploaded.getvalue(), uploaded.name, image.size,
                 )
             except INFERENCE_ERRORS as exc:
                 st.error(f"Erreur d'inférence : {exc}")
                 return
 
-            display_comparison(comparison, image)
-            return
+            st.session_state["last_comparison"] = {
+                "result": comparison,
+                "image": image.copy(),
+                "report": report,
+                "selection": selection,
+                "image_digest": image_digest,
+            }
+            st.rerun()
 
         try:
             request = InferenceRequest(
@@ -333,26 +355,28 @@ def main():
 
     return {
         "compare_mode": compare_mode,
-        "selection": None if compare_mode else (category, method, version),
+        "selection": selection,
         "image_digest": image_digest,
     }
 
 
 def show_inspection_summary():
     """Affiche la synthèse de la page Analyse sans relancer l'inférence."""
-    if inspection_context is None or inspection_context["compare_mode"]:
+    if inspection_context is None:
         return
-    inspection = st.session_state.get("last_inspection")
+    compare_mode = inspection_context["compare_mode"]
+    inspection = st.session_state.get("last_comparison" if compare_mode else "last_inspection")
     if (
         inspection is not None
         and inspection.get("image_digest") == inspection_context["image_digest"]
         and inspection["selection"] == inspection_context["selection"]
     ):
-        display_result(
+        display = display_comparison if compare_mode else display_result
+        display(
             inspection["result"],
             inspection["image"],
             inspection["report"],
-            details_page,
+            comparison_details_page if compare_mode else details_page,
         )
 
 
@@ -375,8 +399,14 @@ if __name__ == "__main__":
         url_path="details",
     )
 
+    comparison_details_page = st.Page(
+        lambda: display_comparison_details(home_page),
+        title="Détails de la comparaison",
+        url_path="comparison-details",
+    )
+
     selected_page = st.navigation(
-        [home_page, details_page],
+        [home_page, details_page, comparison_details_page],
         position="hidden",
     )
     # Les contrôles restent dans le cadre commun, au même emplacement DOM.

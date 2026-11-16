@@ -62,11 +62,20 @@ def display_result(
 ) -> None:
     """Affiche uniquement la synthèse de l'inspection."""
 
+    display_summary_title("Résultat de l'inspection", RESULT_TITLE_SIZE_PX)
+    display_metrics(result)
+    if report is not None:
+        display_report_actions(report_to_json(report), report_filename(report), details_page)
+
+
+def display_summary_title(title: str, size_px: int) -> None:
+    """Titre et styles d'actions communs aux deux modes."""
+
     st.html(
         f"""
         <style>
             .st-key-inspection_result_title h3 {{
-                font-size: {RESULT_TITLE_SIZE_PX}px;
+                font-size: {size_px}px;
             }}
             .st-key-download_report button,
             .st-key-view_details button,
@@ -83,7 +92,11 @@ def display_result(
         """
     )
     with st.container(key="inspection_result_title"):
-        st.subheader("Résultat de l'inspection", anchor=False)
+        st.subheader(title, anchor=False)
+
+
+def display_metrics(result: InferenceResult) -> None:
+    """Quatre indicateurs alignés, sans calcul ni comparaison des scores."""
 
     score_col, threshold_col, latency_col, verdict_col = st.columns(4)
 
@@ -112,23 +125,23 @@ def display_result(
             verdict = decision_label(result)
         st.metric("Verdict", verdict)
 
-    if report is not None:
-        with st.container(horizontal=True, horizontal_alignment="right", vertical_alignment="center"):
-            st.download_button(
-                "Télécharger le rapport",
-                data=report_to_json(report),
-                file_name=report_filename(report),
-                mime="application/json",
-                on_click="ignore",
-                key="download_report",
-                width="content",
-            )
 
-            with st.container(key="view_details", width="content"):
-                if details_page is not None:
-                    st.page_link(details_page, label="Voir détails", width="content")
-                else:
-                    st.button("Voir détails", disabled=True, width="content")
+def display_report_actions(data: bytes, filename: str, details_page=None) -> None:
+    with st.container(horizontal=True, horizontal_alignment="right", vertical_alignment="center"):
+        st.download_button(
+            "Télécharger le rapport",
+            data=data,
+            file_name=filename,
+            mime="application/json",
+            on_click="ignore",
+            key="download_report",
+            width="content",
+        )
+        with st.container(key="view_details", width="content"):
+            if details_page is not None:
+                st.page_link(details_page, label="Voir détails", width="content")
+            else:
+                st.button("Voir détails", disabled=True, width="content")
 
 
 @st.dialog("Heatmap superposée", width="medium", dismissible=True)
@@ -158,8 +171,8 @@ def show_anomaly_map(overlay: Image.Image) -> None:
         st.image(overlay, width="stretch")
 
 
-def display_inspection_details(home_page) -> None:
-    """Page dédiée aux détails d'une inspection."""
+def display_details_header(home_page, title: str, size_px: int, action_label: str) -> bool:
+    """En-tête partagé : retour par lien, titre et action de la modale."""
 
     st.html(
         f"""
@@ -176,7 +189,7 @@ def display_inspection_details(home_page) -> None:
             }}
 
             .st-key-details_header h1 {{
-                font-size: {DETAILS_TITLE_SIZE_PX}px !important;
+                font-size: {size_px}px !important;
                 line-height: 1.2;
                 padding: 0.25rem 0;
                 margin: 0;
@@ -225,17 +238,6 @@ def display_inspection_details(home_page) -> None:
         """
     )
 
-    # 1. Récupérer l'inspection
-    inspection = st.session_state.get("last_inspection")
-
-    if inspection is None:
-        st.info("Aucune inspection disponible.")
-        return
-
-    result = inspection["result"]
-    image = inspection["image"]
-
-    # 2. En-tête : retour + titre à gauche, heatmap à droite
     with st.container(key="details_header"):
         title_col, action_col = st.columns(
             [4, 2],
@@ -254,37 +256,53 @@ def display_inspection_details(home_page) -> None:
                 with st.container(key="details_back", width="content"):
                     st.page_link(home_page, label=_BACK_LABEL, width="content")
 
-                st.title("Détails de l'inspection", anchor=False)
+                st.title(title, anchor=False)
 
         with action_col:
             with st.container(
                     horizontal=True,
                     horizontal_alignment="right",
             ):
-                if st.button(
-                        "Voir carte d'anomalie",
+                return st.button(
+                        action_label,
                         key="view_anomaly_map",
                         type="secondary",
                         width="content",
-                ):
-                    _, overlay, _ = make_overlay(
-                        image,
-                        result.anomaly_map,
-                        result.threshold,
-                    )
-                    show_anomaly_map(overlay)
+                )
+
+
+def display_inspection_details(home_page) -> None:
+    """Page dédiée aux détails d'une inspection."""
+    inspection = st.session_state.get("last_inspection")
+    if inspection is None:
+        st.info("Aucune inspection disponible.")
+        st.page_link(home_page, label=_BACK_LABEL, width="content")
+        return
+
+    result = inspection["result"]
+    if display_details_header(
+        home_page, "Détails de l'inspection", DETAILS_TITLE_SIZE_PX, "Voir carte d'anomalie"
+    ):
+        _, overlay, _ = make_overlay(
+            inspection["image"], result.anomaly_map, result.threshold,
+        )
+        show_anomaly_map(overlay)
 
     st.caption(model_label(result))
 
 
-    # 3. Détails techniques avec verdict à droite
+    display_technical_details(result)
+
+
+def display_technical_details(result: InferenceResult, title="Détails techniques") -> None:
+    """Champs et badge partagés entre inspection et comparaison."""
     heading_col, verdict_col = st.columns(
         [4, 1],
         vertical_alignment="center",
     )
 
     with heading_col:
-        st.subheader("Détails techniques")
+        st.subheader(title, anchor=False)
 
     with verdict_col:
         with st.container(

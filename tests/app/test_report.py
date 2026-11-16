@@ -125,15 +125,17 @@ def test_incomplete_report_is_not_serialized():
         report_to_json({"image": {}})
 
 
-def test_download_button_is_offered_after_analysis():
-    at = AppTest.from_file(str(APP)).run()
+def test_download_button_is_offered_after_analysis(inference_app):
+    at, calls = inference_app
     at.file_uploader[0].upload("normal.png", make_png(), "image/png").run()
-    at.button[0].click().run()
+    at.button(key="analyze_image").click().run()
 
     assert not at.exception
     assert len(at.download_button) == 1
-    assert at.download_button[0].label == "Télécharger le rapport JSON"
-    assert any("Rapport du" in caption.value for caption in at.caption)
+    assert at.download_button[0].label == "Télécharger le rapport"
+    assert len(calls) == 1
+    report = at.session_state["last_inspection"]["report"]
+    assert json.loads(report_to_json(report))["model"]["method"] == "cae"
 
 
 def test_no_download_button_before_analysis():

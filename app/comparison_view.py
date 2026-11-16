@@ -1,80 +1,85 @@
-"""Affichage du comparatif CAE / PatchCore — US-06-05 (IDL-79).
-
-Les deux résultats sont présentés côte à côte (heatmap, décision, seuil).
-Les scores bruts sont affichés en texte, chacun avec son propre seuil et ce
-qu'il mesure, sans indicateur numérique côte à côte qui inviterait à les
-comparer directement (critère 3).
-"""
+"""Synthèse et détails de comparaison, avec les composants de l'inspection."""
 
 import streamlit as st
 from PIL import Image
 
-from app.comparison import (
-    DECISION_LABELS,
-    METHOD_LABELS,
-    METHODS,
-    SCORE_MEANINGS,
-    SCORE_WARNING,
-    ComparisonResult,
-    decisions_summary,
-)
+from app.comparison import METHODS, METHOD_LABELS, SCORE_WARNING, ComparisonResult
+from app.comparison_report import comparison_report_filename, comparison_report_to_json
 from app.overlay import make_overlay
-from src.inference.inference_contract import InferenceResult
+from app.result_view import (
+    display_details_header,
+    display_metrics,
+    display_report_actions,
+    display_summary_title,
+    display_technical_details,
+)
+
+COMPARISON_RESULT_TITLE_SIZE_PX = 24
+COMPARISON_DETAILS_TITLE_SIZE_PX = 30
 
 
-def _threshold_text(result: InferenceResult) -> str:
-    return "non calibré" if result.threshold is None else f"{result.threshold:.4f}"
-
-
-def _decision_box(result: InferenceResult) -> None:
-    label = DECISION_LABELS.get(result.decision, result.decision.upper())
-    if result.decision == "normal":
-        st.success(f"Décision : {label}")
-    elif result.decision == "suspect":
-        st.warning(f"Décision : {label}")
-    else:
-        st.info(f"Décision : {label} (seuil absent)")
-
-
-def _method_column(result: InferenceResult, image: Image.Image) -> None:
-    method = result.method
-    mode = "simulation" if result.simulated else "modèle réel"
-    st.markdown(f"#### {METHOD_LABELS[method]}")
-    st.caption(f"Version {result.version} ({mode})")
-
-    _decision_box(result)
-
-    _, overlay, _ = make_overlay(image, result.anomaly_map, result.threshold)
-    st.image(overlay, caption=f"Heatmap {METHOD_LABELS[method]}", width="stretch")
-
-    st.caption(
-        f"Score brut : {result.score:.4f} · seuil {METHOD_LABELS[method]} : "
-        f"{_threshold_text(result)}"
-    )
-    st.caption(f"Ce score mesure : {SCORE_MEANINGS[method]}.")
-
-
-def display_comparison(comparison: ComparisonResult, image: Image.Image) -> None:
-    """Affiche CAE et PatchCore côte à côte pour la même image."""
-
-    st.subheader("Comparaison CAE / PatchCore")
-    st.caption(
-        f"Même image ({image.width} x {image.height} px) analysée par les deux méthodes · "
-        f"catégorie {comparison.category.capitalize()}"
-    )
-
-    st.markdown(f"**{decisions_summary(comparison)}**")
-
-    columns = st.columns(2)
-    for column, method in zip(columns, METHODS):
+def display_comparison(
+    comparison: ComparisonResult,
+    image: Image.Image | None = None,
+    report: dict | None = None,
+    details_page=None,
+) -> None:
+    """Synthèse compacte ; chaque score reste associé au seuil de son modèle."""
+    display_summary_title("Résultat de la comparaison", COMPARISON_RESULT_TITLE_SIZE_PX)
+    for column, method in zip(st.columns(2), METHODS):
         with column:
-            _method_column(comparison[method], image)
+            st.markdown(f"**{METHOD_LABELS[method]}**")
+            display_metrics(comparison[method])
+    if report is not None:
+        display_report_actions(
+            comparison_report_to_json(report), comparison_report_filename(report), details_page,
+        )
 
-    st.info(SCORE_WARNING)
-    st.caption(
-        "Couleurs : relatives au seuil de chaque méthode s'il existe, "
-        "sinon relatives à l'image. Les deux heatmaps n'ont pas la même échelle."
-    )
 
-    with st.expander("Détails techniques"):
-        st.json({method: comparison[method].to_dict() for method in METHODS})
+@st.dialog("Cartes d'anomalie superposées", width="large", dismissible=True)
+def show_comparison_anomaly_maps(comparison: ComparisonResult, image: Image.Image) -> None:
+    st.html("""
+        <style>
+            .st-key-comparison_anomaly_modal [data-testid="stImage"] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .st-key-comparison_anomaly_modal img {
+                width: auto;
+                max-width: 100%;
+                max-height: min(520px, 55dvh);
+                object-fit: contain;
+            }
+        </style>
+    """)
+    with st.container(key="comparison_anomaly_modal"):
+        for column, method in zip(st.columns(2), METHODS):
+            with column:
+                st.markdown(f"**{METHOD_LABELS[method]}**")
+                result = comparison[method]
+                _, overlay, scale = make_overlay(image, result.anomaly_map, result.threshold)
+                st.image(overlay, width="stretch")
+                st.caption(
+                    "Couleurs relatives au seuil de ce modèle."
+                    if scale == "threshold"
+                    else "Couleurs relatives à cette image : seuil non calibré."
+                )
+
+
+def display_comparison_details(home_page) -> None:
+    stored = st.session_state.get("last_comparison")
+    if stored is None:
+        st.info("Aucune comparaison disponible.")
+        st.page_link(home_page, label="Retour à l'analyse", width="content")
+        return
+    comparison = stored["result"]
+    if display_details_header(
+        home_page, "Détails de la comparaison", COMPARISON_DETAILS_TITLE_SIZE_PX,
+        "Voir cartes d'anomalie",
+    ):
+        show_comparison_anomaly_maps(comparison, stored["image"])
+    for column, method in zip(st.columns(2), METHODS):
+        with column:
+            display_technical_details(comparison[method], METHOD_LABELS[method])
+    st.caption(SCORE_WARNING)

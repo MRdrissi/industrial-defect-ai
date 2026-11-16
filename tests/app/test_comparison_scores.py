@@ -110,15 +110,12 @@ def _realistic_disagreement_screen():
 
 def test_screen_pairs_each_score_with_its_own_threshold():
     at = AppTest.from_function(_realistic_disagreement_screen).run()
-    captions = [element.value for element in at.caption]
-    cae_line = next(text for text in captions if text.startswith("Score brut : 0.0300"))
-    patchcore_line = next(text for text in captions if text.startswith("Score brut : 39.0000"))
-
     assert not at.exception
-    assert "seuil CAE : 0.0274" in cae_line and "PatchCore" not in cae_line
-    assert "seuil PatchCore : 40.9586" in patchcore_line and "CAE" not in patchcore_line
-
-    assert len(at.warning) == 1 and "SUSPECT" in at.warning[0].value   # CAE
-    assert len(at.success) == 1 and "NORMAL" in at.success[0].value    # PatchCore
-    assert "CAE → SUSPECT, PatchCore → NORMAL" in " ".join(m.value for m in at.markdown)
-    assert any("pas comparables" in info.value for info in at.info)
+    assert [metric.value for metric in at.metric] == [
+        "0.0300", "0.0274", "5.0 ms", ":red-badge[SUSPECT]",
+        "39.0000", "40.9586", "5.0 ms", ":green-badge[NORMAL]",
+    ]
+    panels = [column for column in at.columns if len(column.metric) == 4]
+    assert len(panels) == 2
+    assert panels[0].markdown[0].value == "**CAE**"
+    assert panels[1].markdown[0].value == "**PatchCore**"
