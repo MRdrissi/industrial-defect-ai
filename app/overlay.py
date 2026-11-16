@@ -6,11 +6,9 @@ Fonctions pures (NumPy + Pillow), testables sans Streamlit ni modèle :
    Les modèles réels produisent une carte 256 x 256 alors que les images
    MVTec font 900 x 900 (bottle) ou 1024 x 1024 (hazelnut, transistor) ;
    sans ce redimensionnement, la zone chaude serait décalée.
-2. ``scale_for_display`` : ramène la carte dans [0, 1].
-   - seuil calibré : échelle commune (0,5 = valeur du seuil), les couleurs ont
-     le même sens d'une image à l'autre (``scale_to_threshold``) ;
-   - seuil absent (modèle réel non calibré) : échelle relative à l'image
-     (minimum → 0, maximum → 1, ``scale_relative``).
+2. ``scale_for_display`` : ramène la carte dans [0, 1], indépendamment du seuil,
+   avec une échelle relative à chaque image
+   (minimum → 0, maximum → 1, ``scale_relative``).
 3. ``colorize``      : transforme la carte [0, 1] en couleurs (bleu → rouge).
 4. ``blend``         : pose la heatmap colorée sur l'image avec une opacité.
 
@@ -79,11 +77,11 @@ def scale_relative(anomaly_map) -> np.ndarray:
     return (array - low) / (high - low)
 
 
-def scale_for_display(anomaly_map, threshold: float | None) -> tuple[np.ndarray, str]:
-    """Choisit l'échelle de couleurs : ``"threshold"`` si un seuil existe, sinon ``"relative"``."""
-    if threshold is None:
-        return scale_relative(anomaly_map), "relative"
-    return scale_to_threshold(anomaly_map, threshold), "threshold"
+def scale_for_display(
+    anomaly_map,
+    threshold: float | None = None,
+) -> tuple[np.ndarray, str]:
+    return scale_relative(anomaly_map), "relative"
 
 
 def colorize(scaled_map: np.ndarray) -> np.ndarray:

@@ -133,11 +133,9 @@ def test_modal_overlays_use_separate_maps_and_scales(inference_app, monkeypatch,
         assert anomaly_map is stored["result"][method].anomaly_map
         assert threshold == stored["result"][method].threshold
     captions = " ".join(c.value for c in app.caption)
+    assert captions.count("Couleurs relatives à chaque image, indépendamment du seuil.") == 2
     if uncalibrated:
-        assert "seuil non calibré" in captions
         assert "NON CALIBRÉ" in " ".join(m.value for m in app.markdown)
-    else:
-        assert captions.count("Couleurs relatives au seuil de ce modèle.") == 2
     assert len(calls) == 2
     follow_link(app)
     assert len(app.metric) == 8

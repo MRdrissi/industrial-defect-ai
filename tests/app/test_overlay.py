@@ -51,7 +51,7 @@ def test_overlay_has_image_size_for_each_category(category, side):
     image = Image.new("RGB", (side, side), (120, 120, 120))
     heatmap, overlay, scale = make_overlay(image, hot_spot_map(128, 128), threshold=0.5)
 
-    assert scale == "threshold"
+    assert scale == "relative"
     assert heatmap.shape == (side, side, 3)
     assert overlay.shape == (side, side, 3)
     assert overlay.dtype == np.uint8
@@ -80,16 +80,39 @@ def test_threshold_is_the_middle_of_the_color_scale():
     assert scaled.tolist() == [[0.0, 0.25, 0.5, 1.0]]
 
 
-def test_missing_threshold_uses_relative_scale():
-    # Modèle réel sans seuil calibré (US-06-03) : couleurs relatives à l'image
-    scaled, scale = scale_for_display(np.array([[2.0, 4.0, 6.0]]), threshold=None)
+@pytest.mark.parametrize("threshold", [None, 0.02, 0.5, 40.0])
+def test_display_scale_is_relative_regardless_of_threshold(threshold):
+    scaled, scale = scale_for_display(np.array([[2.0, 4.0, 6.0]]), threshold=threshold)
     assert scale == "relative"
     assert scaled.tolist() == [[0.0, 0.5, 1.0]]
 
     image = Image.new("RGB", (900, 900))
-    _, overlay, scale = make_overlay(image, hot_spot_map(64, 192), threshold=None)
+    _, overlay, scale = make_overlay(image, hot_spot_map(64, 192), threshold=threshold)
     assert scale == "relative"
     assert overlay.shape == (900, 900, 3)
+
+
+def test_display_scale_accepts_omitted_threshold():
+    scaled, scale = scale_for_display(np.array([[2.0, 4.0, 6.0]]))
+    assert scale == "relative"
+    assert scaled.tolist() == [[0.0, 0.5, 1.0]]
+
+
+@pytest.mark.parametrize("threshold", [0.02, 0.5, 40.0])
+@pytest.mark.parametrize("flat", [False, True])
+def test_heatmap_and_overlay_are_identical_with_or_without_threshold(threshold, flat):
+    image = Image.new("RGB", (80, 60), (120, 120, 120))
+    anomaly_map = np.full((8, 8), 3.0) if flat else hot_spot_map(2, 6, sigma=1, size=8)
+    original_map = anomaly_map.copy()
+    original_image = image.tobytes()
+    heatmap, overlay, scale = make_overlay(image, anomaly_map, threshold)
+    reference_heatmap, reference_overlay, reference_scale = make_overlay(image, anomaly_map, None)
+
+    assert scale == reference_scale == "relative"
+    np.testing.assert_array_equal(heatmap, reference_heatmap)
+    np.testing.assert_array_equal(overlay, reference_overlay)
+    np.testing.assert_array_equal(anomaly_map, original_map)
+    assert image.tobytes() == original_image
 
 
 def test_flat_map_does_not_divide_by_zero():

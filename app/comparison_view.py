@@ -58,12 +58,10 @@ def show_comparison_anomaly_maps(comparison: ComparisonResult, image: Image.Imag
             with column:
                 st.markdown(f"**{METHOD_LABELS[method]}**")
                 result = comparison[method]
-                _, overlay, scale = make_overlay(image, result.anomaly_map, result.threshold)
+                _, overlay, _ = make_overlay(image, result.anomaly_map, result.threshold)
                 st.image(overlay, width="stretch")
                 st.caption(
-                    "Couleurs relatives au seuil de ce modèle."
-                    if scale == "threshold"
-                    else "Couleurs relatives à cette image : seuil non calibré."
+                    "Couleurs relatives à chaque image, indépendamment du seuil."
                 )
 
 
