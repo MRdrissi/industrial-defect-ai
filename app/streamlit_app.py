@@ -1,6 +1,7 @@
 """Application web IndustrialDefect AI — US-06-02."""
 
 from hashlib import sha256
+from contextlib import contextmanager
 import json
 from pathlib import Path
 from typing import cast
@@ -40,6 +41,34 @@ INFERENCE_ERRORS = (
     ImportError,
     RuntimeError,
 )
+
+
+@contextmanager
+def analysis_button_loader():
+    """Anime le bouton uniquement pendant l'inférence, même si elle échoue."""
+    indicator = st.empty()
+    indicator.html("""
+        <style>
+            @keyframes analysis-button-spin {
+                to { transform: rotate(360deg); }
+            }
+            .st-key-analyze_image button {
+                pointer-events: none;
+            }
+            .st-key-analyze_image button::before {
+                visibility: visible !important;
+                animation: analysis-button-spin 0.75s linear infinite;
+            }
+        </style>
+        <span role="status" aria-live="polite"
+              style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">
+            Analyse en cours
+        </span>
+    """)
+    try:
+        yield
+    finally:
+        indicator.empty()
 
 
 def clear_last_inspection():
@@ -137,7 +166,24 @@ def main():
                 opacity: 1;
             }}
             .st-key-analyze_image button {{
-                padding-inline: 1rem !important;
+                padding-inline: 1.25rem !important;
+                gap: 0.75rem;
+            }}
+            .st-key-analyze_image button::before,
+            .st-key-analyze_image button::after {{
+                content: "";
+                display: inline-block;
+                flex-shrink: 0;
+                box-sizing: border-box;
+                width: 0.85rem;
+                height: 0.85rem;
+                border: 2px solid transparent;
+                border-radius: 50%;
+                visibility: hidden;
+            }}
+            .st-key-analyze_image button::before {{
+                border-color: currentColor;
+                border-right-color: transparent;
             }}
             .st-key-view_details button,
             .st-key-view_details a {{
@@ -296,16 +342,17 @@ def main():
     if analyze_clicked and image is not None:
         if compare_mode:
             try:
-                comparison = run_comparison(
-                    image_to_tensor(image),
-                    category,
-                    compare_versions,
-                    registry,
-                    infer=run_inference,
-                )
-                report = build_comparison_report(
-                    comparison, registry, uploaded.getvalue(), uploaded.name, image.size,
-                )
+                with analysis_button_loader():
+                    comparison = run_comparison(
+                        image_to_tensor(image),
+                        category,
+                        compare_versions,
+                        registry,
+                        infer=run_inference,
+                    )
+                    report = build_comparison_report(
+                        comparison, registry, uploaded.getvalue(), uploaded.name, image.size,
+                    )
             except INFERENCE_ERRORS as exc:
                 st.error(f"Erreur d'inférence : {exc}")
                 return
@@ -320,14 +367,15 @@ def main():
             st.rerun()
 
         try:
-            request = InferenceRequest(
-                category=category,
-                method=method,
-                version=version,
-                image=image_to_tensor(image),
-            )
+            with analysis_button_loader():
+                request = InferenceRequest(
+                    category=category,
+                    method=method,
+                    version=version,
+                    image=image_to_tensor(image),
+                )
 
-            result = run_inference(request, registry)
+                result = run_inference(request, registry)
 
         except INFERENCE_ERRORS as exc:
             st.error(f"Erreur d'inférence : {exc}")
