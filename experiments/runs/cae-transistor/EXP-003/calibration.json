@@ -1,0 +1,19 @@
+{
+  "experiment_id": "EXP-003",
+  "variant": "A",
+  "n_val_normals": 43,
+  "policy": {
+    "split": "val",
+    "quantile": 0.95,
+    "method": "linear",
+    "decision_rule": "score > threshold"
+  },
+  "threshold": 0.018426468782126903,
+  "threshold_hex": "0x1.2de6363333333p-6",
+  "val_score_stats": {
+    "min": 0.007555819116532803,
+    "median": 0.012616858817636967,
+    "max": 0.023201581090688705
+  },
+  "checkpoint_sha256": "b7c06c22b1f53878a91f62eddf2cfb7f3311f785a98119b21266b722207da132"
+}
