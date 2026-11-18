@@ -1,0 +1,3 @@
+# Validated Windows / Python 3.12 CPU runtime (includes CAE and PatchCore).
+# Install the pinned CPU torch/torchvision wheels first; see the runbook.
+-r requirements-lock-windows-cpu.txt

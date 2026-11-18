@@ -1,0 +1,27 @@
+{
+  "category": "hazelnut",
+  "run_id": "hazelnut-baseline-001",
+  "status": "passed",
+  "device": "cpu",
+  "training_commit": "742b8346e664b4efc50410b3707bdb2db6908c1f",
+  "manifest_sha256": "8f0e0d5b5bb767cd2d2e6f8a0ab10f65a959a97a38bb14bc5d9aae1d30c81fb6",
+  "checkpoint": {
+    "source_path": "/kaggle/input/notebooks/marwanedrissi/industrialdefect-ai-cae-hazelnut-training/cae/hazelnut/hazelnut-baseline-001/best_model.pt",
+    "sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+    "epoch": 147
+  },
+  "validation": {
+    "images": 78,
+    "original_mse": 0.00020595180364743544,
+    "restored_mse": 0.00020595182242811235,
+    "absolute_difference": 1.8780676910553143e-11,
+    "relative_difference": 9.118966951463746e-08,
+    "tolerance": 2.0595180364743545e-07,
+    "passed": true
+  },
+  "environment": {
+    "python": "3.13.18",
+    "pytorch": "2.11.0+cpu"
+  },
+  "retrained": false
+}

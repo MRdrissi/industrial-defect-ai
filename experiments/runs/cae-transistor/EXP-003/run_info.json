@@ -1,0 +1,141 @@
+{
+  "experiment_id": "EXP-003",
+  "category": "transistor",
+  "executed_at_utc": "2026-11-17T00:42:09+00:00",
+  "code": {
+    "repo": "https://github.com/MRdrissi/industrial-defect-ai.git",
+    "branch": "develop",
+    "git_commit": "0e102a07e220724f7fb7d82fd9efa94e3cad52b2",
+    "notebook": "notebooks/06-cae-transistor-exp003.ipynb"
+  },
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13.16",
+    "torch_version": "2.11.0+cu130",
+    "gpu": "Tesla T4",
+    "os": "Linux-6.18.55+-x86_64-with-glibc2.39"
+  },
+  "data": {
+    "dataset": "MVTec AD",
+    "dataset_version": "ipythonx/mvtec-ad, Version 2",
+    "split_manifest": "docs/data/us-02-03/transistor_manifest.csv",
+    "manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+    "train_images": 170,
+    "val_images": 43,
+    "test_images": 100,
+    "test_used_for_selection": false
+  },
+  "experiment": {
+    "experiment_id": "EXP-003",
+    "category": "transistor",
+    "based_on": "EXP-002 (Mouad) : experiments/configs/cae_transistor_exp002.json",
+    "model_config": "experiments/configs/cae_baseline.json",
+    "manifest": "docs/data/us-02-03/transistor_manifest.csv",
+    "dataset_source": "ipythonx/mvtec-ad",
+    "training": {
+      "max_epochs": 300,
+      "batch_size": 16,
+      "learning_rate": 0.001,
+      "seed": 42,
+      "num_workers": 2,
+      "optimizer": "Adam",
+      "lr_scheduler": {
+        "type": "ReduceLROnPlateau",
+        "mode": "min",
+        "factor": 0.5,
+        "patience": 12,
+        "threshold": 1e-06,
+        "min_lr": 1e-05
+      },
+      "early_stopping": {
+        "monitor": "val_objective",
+        "patience": 40,
+        "min_delta": 1e-06
+      },
+      "data_augmentation": null
+    },
+    "variants": {
+      "A": {
+        "loss": "MSE",
+        "ssim_weight": 0.0
+      },
+      "B": {
+        "loss": "MSE + 0.5 * (1 - SSIM)",
+        "ssim_weight": 0.5,
+        "ssim": {
+          "window": 11,
+          "sigma": 1.5,
+          "data_range": 1.0
+        }
+      }
+    },
+    "selection": {
+      "split": "val",
+      "criterion": "AUROC normales val vs défauts synthétiques (score CAEInference)",
+      "tie_break": "plus faible MSE de validation",
+      "eval_every_epochs": 5,
+      "synthetic_seed": 2026,
+      "synthetic_types": [
+        "cutpaste",
+        "noise",
+        "erase"
+      ]
+    },
+    "scoring": {
+      "anomaly_map": "MSE par pixel, moyenne des 3 canaux",
+      "smoothing_sigma": 4.0,
+      "score_method": "max"
+    },
+    "calibration": {
+      "split": "val",
+      "quantile": 0.95,
+      "method": "linear",
+      "decision_rule": "score > threshold"
+    },
+    "test_used_for": "évaluation finale unique (aucun réglage)"
+  },
+  "variants": {
+    "A": {
+      "variant": "A",
+      "loss": "MSE",
+      "epochs_run": 300,
+      "stop_reason": "max_epochs",
+      "best_epoch": 240,
+      "best_val_synthetic_auroc": 0.693347755543537,
+      "val_mse_at_best": 0.00041605306851547644,
+      "min_val_mse": 0.00037829158015462546,
+      "training_time_min": 35.2,
+      "checkpoint": "variant_A/best_model.pt"
+    },
+    "B": {
+      "variant": "B",
+      "loss": "MSE + 0.5 * (1 - SSIM)",
+      "epochs_run": 300,
+      "stop_reason": "max_epochs",
+      "best_epoch": 275,
+      "best_val_synthetic_auroc": 0.686046511627907,
+      "val_mse_at_best": 0.0003769012583625438,
+      "min_val_mse": 0.0003318128360132145,
+      "training_time_min": 35.3,
+      "checkpoint": "variant_B/best_model.pt"
+    }
+  },
+  "chosen_variant": "A",
+  "final_checkpoint": {
+    "file": "cae_model.pt",
+    "sha256": "b7c06c22b1f53878a91f62eddf2cfb7f3311f785a98119b21266b722207da132",
+    "format": "state_dict"
+  },
+  "threshold": 0.018426468782126903,
+  "test_metrics": {
+    "image_auroc": 0.6120833333333333,
+    "precision": 0.9,
+    "recall": 0.225,
+    "f1": 0.36,
+    "pixel_auroc": 0.6635937877211253,
+    "tp": 9,
+    "tn": 59,
+    "fp": 1,
+    "fn": 31
+  }
+}

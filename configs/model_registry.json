@@ -1,0 +1,52 @@
+{
+  "models": [
+    {
+      "category": "bottle",
+      "method": "cae",
+      "version": "demo-v1",
+      "backend": "fake",
+      "threshold": 0.2,
+      "artifact_path": null
+    },
+    {
+      "category": "bottle",
+      "method": "patchcore",
+      "version": "demo-v1",
+      "backend": "fake",
+      "threshold": 0.2,
+      "artifact_path": null
+    },
+    {
+      "category": "hazelnut",
+      "method": "cae",
+      "version": "demo-v1",
+      "backend": "fake",
+      "threshold": 0.2,
+      "artifact_path": null
+    },
+    {
+      "category": "hazelnut",
+      "method": "patchcore",
+      "version": "demo-v1",
+      "backend": "fake",
+      "threshold": 0.2,
+      "artifact_path": null
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "demo-v1",
+      "backend": "fake",
+      "threshold": 0.2,
+      "artifact_path": null
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "demo-v1",
+      "backend": "fake",
+      "threshold": 0.2,
+      "artifact_path": null
+    }
+  ]
+}

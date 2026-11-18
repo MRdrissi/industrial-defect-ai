@@ -1,0 +1,42 @@
+﻿{
+  "experiment_id": null,
+  "model": null,
+  "dataset": "MVTec AD",
+  "category": "bottle",
+
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": null,
+    "torch_version": null,
+    "gpu": null
+  },
+
+  "training": {
+    "epochs": null,
+    "batch_size": null,
+    "learning_rate": null,
+    "image_size": null,
+    "seed": 42
+  },
+
+  "reproducibility": {
+    "git_commit": null,
+    "dataset_version": null,
+    "split_manifest": null
+  },
+
+  "metrics": {
+    "image_auroc": null,
+    "precision": null,
+    "recall": null,
+    "f1_score": null,
+    "pixel_auroc": null
+  },
+
+  "artifacts": {
+    "model_path": null,
+    "kaggle_version_url": null
+  },
+
+  "notes": null
+}

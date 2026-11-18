@@ -1,0 +1,34 @@
+{
+  "experiment_name": "cae_hazelnut_baseline_v1",
+  "category": "hazelnut",
+
+  "architecture_config": "experiments/configs/cae_baseline.json",
+
+  "dataset": {
+    "manifest": "docs/data/us-02-03/hazelnut_manifest.csv",
+    "train_split": "train",
+    "validation_split": "val"
+  },
+
+  "training": {
+    "seed": 42,
+    "batch_size": 16,
+    "num_workers": 2,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss": "MSELoss",
+    "max_epochs": 150,
+
+    "early_stopping": {
+      "enabled": true,
+      "patience": 20,
+      "min_delta": 0.000001
+    }
+  },
+
+  "checkpoint": {
+    "monitor": "val_mse",
+    "mode": "min",
+    "save_best_only": true
+  }
+}

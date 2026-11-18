@@ -1,0 +1,500 @@
+{
+  "schema_version": "1.0",
+  "pixel_threshold": null,
+  "cases": [
+    {
+      "case_id": "case-01",
+      "image_path": "bottle/test/broken_large/002.png",
+      "aligned_rgb_sha256": "a92487af6f52f06a003a9ddd8299f7a66b3a8e1c64221b754d2ea1b01235bd75",
+      "aligned_mask_sha256": "b60a83e8bd51348249d6eea9e3bd62f266de62b33b3546ae1dec43fefb0e641d",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-01.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 10184,
+          "positive_fraction": 0.1553955078125,
+          "map_min": 3.1599002928150988e-12,
+          "map_max": 0.013612207025289536,
+          "argmax_yx": [
+            171,
+            53
+          ],
+          "argmax_in_gt": false,
+          "mean_inside_gt": 0.0007858446098138987,
+          "mean_outside_gt": 0.00028888433715207264
+        },
+        "patchcore": {
+          "positive_pixels": 10184,
+          "positive_fraction": 0.1553955078125,
+          "map_min": 2.759195566177368,
+          "map_max": 61.4190673828125,
+          "argmax_yx": [
+            92,
+            192
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 52.359273512346576,
+          "mean_outside_gt": 25.26982916321071
+        }
+      }
+    },
+    {
+      "case_id": "case-02",
+      "image_path": "bottle/test/broken_small/015.png",
+      "aligned_rgb_sha256": "1f946baca9e5529df724f1c074c4b79b283632f09741891499a1eb3f797105a4",
+      "aligned_mask_sha256": "5b95a9d47e1481a42f4258f512a023b7e2b9d8035169890e653345bb12f7fb8d",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-02.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 1089,
+          "positive_fraction": 0.0166168212890625,
+          "map_min": 3.68851867452169e-12,
+          "map_max": 0.013488664291799068,
+          "argmax_yx": [
+            80,
+            192
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 0.002483160885146997,
+          "mean_outside_gt": 0.00039935601995879825
+        },
+        "patchcore": {
+          "positive_pixels": 1089,
+          "positive_fraction": 0.0166168212890625,
+          "map_min": 2.3313727378845215,
+          "map_max": 57.20823669433594,
+          "argmax_yx": [
+            82,
+            175
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 51.61952230139978,
+          "mean_outside_gt": 22.51927432671051
+        }
+      }
+    },
+    {
+      "case_id": "case-03",
+      "image_path": "bottle/test/contamination/016.png",
+      "aligned_rgb_sha256": "b6b9a3a4560b616cee97a0304662751997871ebcfd093be5b8e51f311b9dcd22",
+      "aligned_mask_sha256": "54e639a1f53e5dd050f90434462b92dbb726b79cba19c0fe448da8246c718400",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-03.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 9892,
+          "positive_fraction": 0.15093994140625,
+          "map_min": 2.2538455476950325e-12,
+          "map_max": 0.010389972478151321,
+          "argmax_yx": [
+            175,
+            56
+          ],
+          "argmax_in_gt": false,
+          "mean_inside_gt": 0.0019365069986443026,
+          "mean_outside_gt": 0.0005688525356069615
+        },
+        "patchcore": {
+          "positive_pixels": 9892,
+          "positive_fraction": 0.15093994140625,
+          "map_min": 3.937309980392456,
+          "map_max": 42.98001480102539,
+          "argmax_yx": [
+            120,
+            95
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 36.88291359641896,
+          "mean_outside_gt": 20.424826271703985
+        }
+      }
+    },
+    {
+      "case_id": "case-04",
+      "image_path": "bottle/test/good/001.png",
+      "aligned_rgb_sha256": "d96efcfdf318d6a82843475aff2ce5cd0a26885f8b5036558ee786a90ab75fcb",
+      "aligned_mask_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-04.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 0,
+          "positive_fraction": 0.0,
+          "map_min": 3.1811144430432536e-12,
+          "map_max": 0.008587692864239216,
+          "argmax_yx": [
+            176,
+            57
+          ],
+          "argmax_in_gt": null,
+          "mean_inside_gt": null,
+          "mean_outside_gt": 0.00033363265552844554
+        },
+        "patchcore": {
+          "positive_pixels": 0,
+          "positive_fraction": 0.0,
+          "map_min": 3.637209177017212,
+          "map_max": 30.823715209960938,
+          "argmax_yx": [
+            188,
+            169
+          ],
+          "argmax_in_gt": null,
+          "mean_inside_gt": null,
+          "mean_outside_gt": 19.466762430693052
+        }
+      }
+    },
+    {
+      "case_id": "case-05",
+      "image_path": "hazelnut/test/crack/002.png",
+      "aligned_rgb_sha256": "1bf588994c5bb2badc46f377bee1933322b55b63fcab2fc82c1975d2a886c523",
+      "aligned_mask_sha256": "5e7170163f40db8d1f9bd86217f95bffdbf5c74c2677c394b25f12155247d93b",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-05.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 828,
+          "positive_fraction": 0.01263427734375,
+          "map_min": 9.364436664327513e-06,
+          "map_max": 0.005071320105344057,
+          "argmax_yx": [
+            169,
+            143
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 0.0018630801149051195,
+          "mean_outside_gt": 0.00026335333480740947
+        },
+        "patchcore": {
+          "positive_pixels": 828,
+          "positive_fraction": 0.01263427734375,
+          "map_min": 15.815764427185059,
+          "map_max": 54.23936462402344,
+          "argmax_yx": [
+            176,
+            146
+          ],
+          "argmax_in_gt": false,
+          "mean_inside_gt": 47.83628437945232,
+          "mean_outside_gt": 31.230519089068295
+        }
+      }
+    },
+    {
+      "case_id": "case-06",
+      "image_path": "hazelnut/test/cut/001.png",
+      "aligned_rgb_sha256": "a6a3979fd4bd76ed554e317f28dd896ccce719f5253f1356f23ef60e66bb3ce7",
+      "aligned_mask_sha256": "ca1325adc6ea7d7a34c7df8aefda053338d78c97840f09667de54fbbc0042be8",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-06.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 1017,
+          "positive_fraction": 0.0155181884765625,
+          "map_min": 9.218949344358407e-06,
+          "map_max": 0.005549188237637281,
+          "argmax_yx": [
+            93,
+            162
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 0.0030365145261350914,
+          "mean_outside_gt": 0.0002841051219539505
+        },
+        "patchcore": {
+          "positive_pixels": 1017,
+          "positive_fraction": 0.0155181884765625,
+          "map_min": 16.6146240234375,
+          "map_max": 52.91099166870117,
+          "argmax_yx": [
+            148,
+            148
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 47.07528651264682,
+          "mean_outside_gt": 30.55728129293765
+        }
+      }
+    },
+    {
+      "case_id": "case-07",
+      "image_path": "hazelnut/test/hole/001.png",
+      "aligned_rgb_sha256": "4c0a0c876dadf6c02b422052abbf7f0dc71f94003c21d88a30f227286d01fb93",
+      "aligned_mask_sha256": "1582dae1abd6fbef1167a2bff22b71ccd9a2a27d5e81be9a9c33135e95b58f44",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-07.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 264,
+          "positive_fraction": 0.0040283203125,
+          "map_min": 9.981184120988473e-06,
+          "map_max": 0.00574300205335021,
+          "argmax_yx": [
+            140,
+            129
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 0.0034339033906386853,
+          "mean_outside_gt": 0.00017574001222909482
+        },
+        "patchcore": {
+          "positive_pixels": 264,
+          "positive_fraction": 0.0040283203125,
+          "map_min": 14.619041442871094,
+          "map_max": 65.94062805175781,
+          "argmax_yx": [
+            139,
+            131
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 62.673718293507896,
+          "mean_outside_gt": 29.607159072547176
+        }
+      }
+    },
+    {
+      "case_id": "case-08",
+      "image_path": "transistor/test/bent_lead/008.png",
+      "aligned_rgb_sha256": "e475a60b42cacff03dc0de2c3a3ecec33a5c0a29dc0c8eb619bcad0336f09cc6",
+      "aligned_mask_sha256": "0c8e1c273b75cd879ba231249ae81f5b59d165f8d5259f6cbbc0bc38161f3f4f",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-08.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 2395,
+          "positive_fraction": 0.0365447998046875,
+          "map_min": 1.1561681276361924e-05,
+          "map_max": 0.020198862999677658,
+          "argmax_yx": [
+            208,
+            96
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 0.0021319279622094315,
+          "mean_outside_gt": 0.0005360458071164494
+        },
+        "patchcore": {
+          "positive_pixels": 2395,
+          "positive_fraction": 0.0365447998046875,
+          "map_min": 20.617273330688477,
+          "map_max": 47.858604431152344,
+          "argmax_yx": [
+            171,
+            127
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 42.19575139087526,
+          "mean_outside_gt": 31.37938946891153
+        }
+      }
+    },
+    {
+      "case_id": "case-09",
+      "image_path": "transistor/test/cut_lead/005.png",
+      "aligned_rgb_sha256": "9bbe390b665ba5ebd24c7990757b32bce42234360cac8fa1b9565bc54f034d3b",
+      "aligned_mask_sha256": "1ac837fc2fe1c4e651586b960b80218b57bd76b3a5725e3193e6a77980d4ca13",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-09.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 741,
+          "positive_fraction": 0.0113067626953125,
+          "map_min": 2.1780348106403835e-05,
+          "map_max": 0.015413018874824047,
+          "argmax_yx": [
+            179,
+            173
+          ],
+          "argmax_in_gt": false,
+          "mean_inside_gt": 0.0013880956064603025,
+          "mean_outside_gt": 0.0004981782946358086
+        },
+        "patchcore": {
+          "positive_pixels": 741,
+          "positive_fraction": 0.0113067626953125,
+          "map_min": 14.36721420288086,
+          "map_max": 52.302162170410156,
+          "argmax_yx": [
+            187,
+            174
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 41.37859965335985,
+          "mean_outside_gt": 30.750313968188934
+        }
+      }
+    },
+    {
+      "case_id": "case-10",
+      "image_path": "transistor/test/damaged_case/007.png",
+      "aligned_rgb_sha256": "91f803210528ad63625522d2328772a65fcbc8de722215e1cba017d8a8ece223",
+      "aligned_mask_sha256": "bb887f0f402ba4ab028958afef903ca43b6cc0e3e5f96749b1baa288262848a0",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-10.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 843,
+          "positive_fraction": 0.0128631591796875,
+          "map_min": 2.277646490256302e-05,
+          "map_max": 0.017898226156830788,
+          "argmax_yx": [
+            171,
+            127
+          ],
+          "argmax_in_gt": false,
+          "mean_inside_gt": 0.0011530781582955985,
+          "mean_outside_gt": 0.0005714966251347943
+        },
+        "patchcore": {
+          "positive_pixels": 843,
+          "positive_fraction": 0.0128631591796875,
+          "map_min": 16.235319137573242,
+          "map_max": 47.337181091308594,
+          "argmax_yx": [
+            115,
+            138
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 43.15015197337593,
+          "mean_outside_gt": 30.218970604963577
+        }
+      }
+    },
+    {
+      "case_id": "case-11",
+      "image_path": "transistor/test/good/037.png",
+      "aligned_rgb_sha256": "7e8f7046fc15d1c479d2b3bc610dd6b6777204ea1c496e4de2d623294096e963",
+      "aligned_mask_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-11.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 0,
+          "positive_fraction": 0.0,
+          "map_min": 2.3430571673088707e-05,
+          "map_max": 0.01793922483921051,
+          "argmax_yx": [
+            173,
+            172
+          ],
+          "argmax_in_gt": null,
+          "mean_inside_gt": null,
+          "mean_outside_gt": 0.0006324806055811316
+        },
+        "patchcore": {
+          "positive_pixels": 0,
+          "positive_fraction": 0.0,
+          "map_min": 17.752798080444336,
+          "map_max": 39.73857879638672,
+          "argmax_yx": [
+            141,
+            198
+          ],
+          "argmax_in_gt": null,
+          "mean_inside_gt": null,
+          "mean_outside_gt": 30.94112721871352
+        }
+      }
+    },
+    {
+      "case_id": "case-12",
+      "image_path": "transistor/test/misplaced/000.png",
+      "aligned_rgb_sha256": "e5614244823ebf0e6e4130456f1a66b7c3c16806b5cf8527e3f5ec30977fb882",
+      "aligned_mask_sha256": "e99c2c146d0e1ffadb32792bdf66786acb95dbf7d44b7ca7a8a0f2f332717cc9",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-12.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 26443,
+          "positive_fraction": 0.4034881591796875,
+          "map_min": 2.131129804183729e-05,
+          "map_max": 0.02009531669318676,
+          "argmax_yx": [
+            173,
+            154
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 0.0010486492083837335,
+          "mean_outside_gt": 0.0003163043719698124
+        },
+        "patchcore": {
+          "positive_pixels": 26443,
+          "positive_fraction": 0.4034881591796875,
+          "map_min": 16.75760841369629,
+          "map_max": 42.91230773925781,
+          "argmax_yx": [
+            204,
+            131
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 36.420189258041816,
+          "mean_outside_gt": 31.754275549834283
+        }
+      }
+    },
+    {
+      "case_id": "case-13",
+      "image_path": "transistor/test/misplaced/002.png",
+      "aligned_rgb_sha256": "66abfc3d108ab3381fce696416317043abd777d0c24aac3ea099043cdc67990a",
+      "aligned_mask_sha256": "fe70871e3a1002aa49c60930829b14b9cf7c130e2d4d3e4e673a44224850c6d2",
+      "source_masks_equal_both_exports": true,
+      "figures": [
+        "figures/case-13.png"
+      ],
+      "models": {
+        "cae": {
+          "positive_pixels": 24885,
+          "positive_fraction": 0.3797149658203125,
+          "map_min": 4.5675187720917165e-05,
+          "map_max": 0.0034424730110913515,
+          "argmax_yx": [
+            91,
+            24
+          ],
+          "argmax_in_gt": false,
+          "mean_inside_gt": 0.0003351815004210863,
+          "mean_outside_gt": 0.0002736267728050987
+        },
+        "patchcore": {
+          "positive_pixels": 24885,
+          "positive_fraction": 0.3797149658203125,
+          "map_min": 20.075603485107422,
+          "map_max": 39.06058883666992,
+          "argmax_yx": [
+            124,
+            139
+          ],
+          "argmax_in_gt": true,
+          "mean_inside_gt": 34.65774583852935,
+          "mean_outside_gt": 31.215845638229258
+        }
+      }
+    }
+  ]
+}

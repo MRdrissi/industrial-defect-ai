@@ -1,0 +1,743 @@
+{
+  "commit": "ecc3d9369ff1ab316d67e5144048862fbe750b2c",
+  "python": "3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]",
+  "torch_threads": 4,
+  "artifacts": [
+    {
+      "instance": "cae-bottle",
+      "path": "artifacts/cae/bottle/EXP-002/cae_model.pt",
+      "sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+      "bytes": 3429323,
+      "threshold": 0.01955269752070307
+    },
+    {
+      "instance": "cae-hazelnut",
+      "path": "artifacts/cae/hazelnut/EXP-001/cae_model.pt",
+      "sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+      "bytes": 3429237,
+      "threshold": 0.008434063522145145
+    },
+    {
+      "instance": "cae-transistor",
+      "path": "artifacts/cae/transistor/EXP-001/cae_model.pt",
+      "sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+      "bytes": 3428853,
+      "threshold": 0.027364758774638176
+    },
+    {
+      "instance": "patchcore-bottle",
+      "path": "artifacts/patchcore/bottle/EXP-002/patchcore_model.pt",
+      "sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+      "bytes": 110208199,
+      "threshold": 31.620044136047362,
+      "memory_bank_shape": [
+        1710,
+        1536
+      ],
+      "memory_bank_sha256": "be28dc2a4775507ba5a46a201d34b7e5d0a5a1f1a1258092d8fa91228f3656a2"
+    },
+    {
+      "instance": "patchcore-hazelnut",
+      "path": "artifacts/patchcore/hazelnut/EXP-002/patchcore_model.pt",
+      "sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+      "bytes": 119394375,
+      "threshold": 48.83736801147461,
+      "memory_bank_shape": [
+        3205,
+        1536
+      ],
+      "memory_bank_sha256": "2b7cc437fbff34fe137be8b5c19836ae93b92615108d38f7daaa9022e63d9bec"
+    },
+    {
+      "instance": "patchcore-transistor",
+      "path": "artifacts/patchcore/transistor/EXP-001/patchcore_model.pt",
+      "sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+      "bytes": 110392519,
+      "threshold": 40.95855598449707,
+      "memory_bank_shape": [
+        1740,
+        1536
+      ],
+      "memory_bank_sha256": "71a3406efc8fd24a1060c0163a87516e98a67ef638b19e82a891120167402355"
+    }
+  ],
+  "predictions": [
+    {
+      "category": "bottle",
+      "method": "cae",
+      "version": "exp-002",
+      "score": 0.013612210750579834,
+      "threshold": 0.01955269752070307,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 87.51649997429922,
+      "simulated": false,
+      "instance": "cae-bottle",
+      "image_path": "bottle/test/broken_large/002.png",
+      "image_sha256": "249813c6bccb58b9de711a6b7248f4fd8ba4136364cfad2e0577769db91353c2",
+      "archived_score": 0.013612207025289536,
+      "score_abs_error": 3.725290298461914e-09,
+      "map_sha256": "813cbafaa157213fec9ce6a77997db1a66dd8b53582b294a09e9105370b27cf5"
+    },
+    {
+      "category": "bottle",
+      "method": "cae",
+      "version": "exp-002",
+      "score": 0.013488666154444218,
+      "threshold": 0.01955269752070307,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 43.41429995838553,
+      "simulated": false,
+      "instance": "cae-bottle",
+      "image_path": "bottle/test/broken_small/015.png",
+      "image_sha256": "ef423951e8f0bed66ab053c28ad709e68ef24af62b4650254c3d39aaa2bb48da",
+      "archived_score": 0.013488664291799068,
+      "score_abs_error": 1.862645149230957e-09,
+      "map_sha256": "aa631b7dbf53cc675c5a69c0f3d97ecd064f2ec72bc9deb519ffaf8d638c5680"
+    },
+    {
+      "category": "bottle",
+      "method": "cae",
+      "version": "exp-002",
+      "score": 0.010389978997409344,
+      "threshold": 0.01955269752070307,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 66.87879998935387,
+      "simulated": false,
+      "instance": "cae-bottle",
+      "image_path": "bottle/test/contamination/016.png",
+      "image_sha256": "9693bc441d758ca05db5602c66243681697a4d273a9468508f4a9a9b3205c0c1",
+      "archived_score": 0.010389972478151321,
+      "score_abs_error": 6.51925802230835e-09,
+      "map_sha256": "bd6bcace512e47af1b053eab7a5a03ec5e04880258d0b34b5bc326d66de7ea52"
+    },
+    {
+      "category": "bottle",
+      "method": "cae",
+      "version": "exp-002",
+      "score": 0.00858769379556179,
+      "threshold": 0.01955269752070307,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 55.30229996656999,
+      "simulated": false,
+      "instance": "cae-bottle",
+      "image_path": "bottle/test/good/001.png",
+      "image_sha256": "a45aba86ef3e1ef8dbd95ca56abeb63f576fcd2bbd040ba748a1410bb70d6d78",
+      "archived_score": 0.008587692864239216,
+      "score_abs_error": 9.313225746154785e-10,
+      "map_sha256": "20e51bbc3b9439753f65482b9ba143c5d88d487b9acc23993dc2c2834e507542"
+    },
+    {
+      "category": "hazelnut",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.005071321502327919,
+      "threshold": 0.008434063522145145,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 74.41910001216456,
+      "simulated": false,
+      "instance": "cae-hazelnut",
+      "image_path": "hazelnut/test/crack/002.png",
+      "image_sha256": "c4cd667138b269fabe65fa39a6d68a85bfdf49f8a2c77f6f03c883cdc015dad4",
+      "archived_score": 0.005071320105344057,
+      "score_abs_error": 1.3969838619232178e-09,
+      "map_sha256": "11b5f5113b384c8a2bd0ee822eec545d0cceb7cb69f9699a581478e397aa1c4a"
+    },
+    {
+      "category": "hazelnut",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.005549189634621143,
+      "threshold": 0.008434063522145145,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 54.738699982408434,
+      "simulated": false,
+      "instance": "cae-hazelnut",
+      "image_path": "hazelnut/test/cut/001.png",
+      "image_sha256": "f287622343bc86f5a02a683c570489324954f2a8378831dc2db7f4f9cd21370a",
+      "archived_score": 0.005549188237637281,
+      "score_abs_error": 1.3969838619232178e-09,
+      "map_sha256": "424c4c4154f04c0d423b5da00afcaacb2b4e7f3a137557d067fcf062b36d3a62"
+    },
+    {
+      "category": "hazelnut",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.005742999725043774,
+      "threshold": 0.008434063522145145,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 66.65370002156124,
+      "simulated": false,
+      "instance": "cae-hazelnut",
+      "image_path": "hazelnut/test/hole/001.png",
+      "image_sha256": "c3aa706e84d7b0b894755b106c3b9a04f18c48daa0819cf616ade2c1b969252e",
+      "archived_score": 0.00574300205335021,
+      "score_abs_error": 2.3283064365386963e-09,
+      "map_sha256": "973437ec582a0817427bde237de5e13e6ec8b4e4fa90a82e2ca07342372933ea"
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.020198862999677658,
+      "threshold": 0.027364758774638176,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 67.92960001621395,
+      "simulated": false,
+      "instance": "cae-transistor",
+      "image_path": "transistor/test/bent_lead/008.png",
+      "image_sha256": "a6f2ea8f091943a856bdd48282f4d2b095b25d3b28b9b890ac6572903fda9343",
+      "archived_score": 0.020198862999677658,
+      "score_abs_error": 0.0,
+      "map_sha256": "966c4794636524991e37a4c1b1eb546391cec52b4c2425dc48576d58300997fd"
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.015412994660437107,
+      "threshold": 0.027364758774638176,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 61.58390000928193,
+      "simulated": false,
+      "instance": "cae-transistor",
+      "image_path": "transistor/test/cut_lead/005.png",
+      "image_sha256": "37d6d29ececc6e1c497d3e67a625c318a2024a0a865aa29df44028d528f35395",
+      "archived_score": 0.015413018874824047,
+      "score_abs_error": 2.421438694000244e-08,
+      "map_sha256": "28c13ac12e16d8999fc756d0e6fbb80d173fdff27c8a81b6f3a671274750f1b4"
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.017898228019475937,
+      "threshold": 0.027364758774638176,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 71.36280002305284,
+      "simulated": false,
+      "instance": "cae-transistor",
+      "image_path": "transistor/test/damaged_case/007.png",
+      "image_sha256": "a6f5a7c2c97b3c88378d391229a18ca8de82bb263b01b0901a89eb193779e287",
+      "archived_score": 0.017898226156830788,
+      "score_abs_error": 1.862645149230957e-09,
+      "map_sha256": "8666f07711b2da46c46e22c44fd0e057cdafd52dfc2b96f2dd6147e0c43d9c96"
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.017939230427145958,
+      "threshold": 0.027364758774638176,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 79.2160999844782,
+      "simulated": false,
+      "instance": "cae-transistor",
+      "image_path": "transistor/test/good/037.png",
+      "image_sha256": "0ea54e13b6968daca380521809d401223da988fb3107575ca2d9aa402431d9e9",
+      "archived_score": 0.01793922483921051,
+      "score_abs_error": 5.587935447692871e-09,
+      "map_sha256": "b023b0deab91d3e0daf40167d71f80279730d867c451a72786fb2410fe98a59a"
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.02009531669318676,
+      "threshold": 0.027364758774638176,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 71.47770002484322,
+      "simulated": false,
+      "instance": "cae-transistor",
+      "image_path": "transistor/test/misplaced/000.png",
+      "image_sha256": "9ff15394285b7c54e7c7c05f668bdf5ba63a8f60fa2703b3234a918114527d10",
+      "archived_score": 0.02009531669318676,
+      "score_abs_error": 0.0,
+      "map_sha256": "a95ac8268916e69a5ad36d06967179ab55edeff9d8c9e921e65aff42f6523256"
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "version": "exp-001",
+      "score": 0.003442472778260708,
+      "threshold": 0.027364758774638176,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 75.32829995034263,
+      "simulated": false,
+      "instance": "cae-transistor",
+      "image_path": "transistor/test/misplaced/002.png",
+      "image_sha256": "39aa3785ed25512eec3392723c28015392857cce9e5298ca2474ad998ac540c5",
+      "archived_score": 0.0034424730110913515,
+      "score_abs_error": 2.3283064365386963e-10,
+      "map_sha256": "a1396a5c3a8dbc9f654890e36ac6bf70d85352f7801a92c64db0f922e60fc4e4"
+    },
+    {
+      "category": "bottle",
+      "method": "patchcore",
+      "version": "exp-002",
+      "score": 61.95683670043945,
+      "threshold": 31.620044136047362,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 480.8468999690376,
+      "simulated": false,
+      "instance": "patchcore-bottle",
+      "image_path": "bottle/test/broken_large/002.png",
+      "image_sha256": "249813c6bccb58b9de711a6b7248f4fd8ba4136364cfad2e0577769db91353c2",
+      "archived_score": 61.95682144165039,
+      "score_abs_error": 1.52587890625e-05,
+      "map_sha256": "2cd778bb9754a8553286c2062af86ca1899f8b4ee69fe610172ace3970434da0"
+    },
+    {
+      "category": "bottle",
+      "method": "patchcore",
+      "version": "exp-002",
+      "score": 58.337493896484375,
+      "threshold": 31.620044136047362,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 341.4257999975234,
+      "simulated": false,
+      "instance": "patchcore-bottle",
+      "image_path": "bottle/test/broken_small/015.png",
+      "image_sha256": "ef423951e8f0bed66ab053c28ad709e68ef24af62b4650254c3d39aaa2bb48da",
+      "archived_score": 58.33750915527344,
+      "score_abs_error": 1.52587890625e-05,
+      "map_sha256": "bd8ebca5b403516e20c0bb27f789a18cbdcb3ffe7329726cac00f3e1b2f35529"
+    },
+    {
+      "category": "bottle",
+      "method": "patchcore",
+      "version": "exp-002",
+      "score": 43.8165283203125,
+      "threshold": 31.620044136047362,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 334.43739998620003,
+      "simulated": false,
+      "instance": "patchcore-bottle",
+      "image_path": "bottle/test/contamination/016.png",
+      "image_sha256": "9693bc441d758ca05db5602c66243681697a4d273a9468508f4a9a9b3205c0c1",
+      "archived_score": 43.81656265258789,
+      "score_abs_error": 3.4332275390625e-05,
+      "map_sha256": "dcf7563c6d7a526cd2ffd4ad561d1477b4bccaf73b23a8771b0b740bbd44248e"
+    },
+    {
+      "category": "bottle",
+      "method": "patchcore",
+      "version": "exp-002",
+      "score": 32.88840866088867,
+      "threshold": 31.620044136047362,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 394.04599997214973,
+      "simulated": false,
+      "instance": "patchcore-bottle",
+      "image_path": "bottle/test/good/001.png",
+      "image_sha256": "a45aba86ef3e1ef8dbd95ca56abeb63f576fcd2bbd040ba748a1410bb70d6d78",
+      "archived_score": 32.88839340209961,
+      "score_abs_error": 1.52587890625e-05,
+      "map_sha256": "01c69da4a815c212b93992a2fe1a2d32581db78a4ba79ec690b9248c2a022102"
+    },
+    {
+      "category": "hazelnut",
+      "method": "patchcore",
+      "version": "exp-002",
+      "score": 55.07896423339844,
+      "threshold": 48.83736801147461,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 450.4519000183791,
+      "simulated": false,
+      "instance": "patchcore-hazelnut",
+      "image_path": "hazelnut/test/crack/002.png",
+      "image_sha256": "c4cd667138b269fabe65fa39a6d68a85bfdf49f8a2c77f6f03c883cdc015dad4",
+      "archived_score": 55.078956604003906,
+      "score_abs_error": 7.62939453125e-06,
+      "map_sha256": "d18c1df8535cde01f6691321978fc33d12fa3759bdf75dd7625e30f6348fadac"
+    },
+    {
+      "category": "hazelnut",
+      "method": "patchcore",
+      "version": "exp-002",
+      "score": 54.28778076171875,
+      "threshold": 48.83736801147461,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 443.79240000853315,
+      "simulated": false,
+      "instance": "patchcore-hazelnut",
+      "image_path": "hazelnut/test/cut/001.png",
+      "image_sha256": "f287622343bc86f5a02a683c570489324954f2a8378831dc2db7f4f9cd21370a",
+      "archived_score": 54.287757873535156,
+      "score_abs_error": 2.288818359375e-05,
+      "map_sha256": "562ed226518ac104dd4a37b4a8acf035b161bab46d16189d05f78399a99475e4"
+    },
+    {
+      "category": "hazelnut",
+      "method": "patchcore",
+      "version": "exp-002",
+      "score": 69.4689712524414,
+      "threshold": 48.83736801147461,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 382.06920004449785,
+      "simulated": false,
+      "instance": "patchcore-hazelnut",
+      "image_path": "hazelnut/test/hole/001.png",
+      "image_sha256": "c3aa706e84d7b0b894755b106c3b9a04f18c48daa0819cf616ade2c1b969252e",
+      "archived_score": 69.46898651123047,
+      "score_abs_error": 1.52587890625e-05,
+      "map_sha256": "5848e3981e0ea0155101b9fb79ddbd186e5d4d5945afb1ba0a4515440f358a34"
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "exp-001",
+      "score": 49.99473571777344,
+      "threshold": 40.95855598449707,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 377.1359999664128,
+      "simulated": false,
+      "instance": "patchcore-transistor",
+      "image_path": "transistor/test/bent_lead/008.png",
+      "image_sha256": "a6f2ea8f091943a856bdd48282f4d2b095b25d3b28b9b890ac6572903fda9343",
+      "archived_score": 49.99467849731445,
+      "score_abs_error": 5.7220458984375e-05,
+      "map_sha256": "c517027f54b2ae12bf101c3b7f4e25ca946440968c48d41af205f6c30314bd0d"
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "exp-001",
+      "score": 55.37345504760742,
+      "threshold": 40.95855598449707,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 365.88559998199344,
+      "simulated": false,
+      "instance": "patchcore-transistor",
+      "image_path": "transistor/test/cut_lead/005.png",
+      "image_sha256": "37d6d29ececc6e1c497d3e67a625c318a2024a0a865aa29df44028d528f35395",
+      "archived_score": 55.37349319458008,
+      "score_abs_error": 3.814697265625e-05,
+      "map_sha256": "80e05301099ef8409cadb5e6c62536b40f4c03f524716c645bb07f45d52f497b"
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "exp-001",
+      "score": 49.657867431640625,
+      "threshold": 40.95855598449707,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 357.80380002688617,
+      "simulated": false,
+      "instance": "patchcore-transistor",
+      "image_path": "transistor/test/damaged_case/007.png",
+      "image_sha256": "a6f5a7c2c97b3c88378d391229a18ca8de82bb263b01b0901a89eb193779e287",
+      "archived_score": 49.65786361694336,
+      "score_abs_error": 3.814697265625e-06,
+      "map_sha256": "38d67fdefbda030c8db347e268644ad2bed155d2826935eb53d3f2dc48cb4054"
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "exp-001",
+      "score": 41.957374572753906,
+      "threshold": 40.95855598449707,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 363.2995000225492,
+      "simulated": false,
+      "instance": "patchcore-transistor",
+      "image_path": "transistor/test/good/037.png",
+      "image_sha256": "0ea54e13b6968daca380521809d401223da988fb3107575ca2d9aa402431d9e9",
+      "archived_score": 41.95735168457031,
+      "score_abs_error": 2.288818359375e-05,
+      "map_sha256": "7e9c5d557cf7d4eaa0bd94f843b83f82f8fc158103a7146bfbe845ee43bd6c23"
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "exp-001",
+      "score": 44.220340728759766,
+      "threshold": 40.95855598449707,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "suspect",
+      "latency_ms": 353.92229998251423,
+      "simulated": false,
+      "instance": "patchcore-transistor",
+      "image_path": "transistor/test/misplaced/000.png",
+      "image_sha256": "9ff15394285b7c54e7c7c05f668bdf5ba63a8f60fa2703b3234a918114527d10",
+      "archived_score": 44.22036361694336,
+      "score_abs_error": 2.288818359375e-05,
+      "map_sha256": "28850eed473525c5e6a37f0d81b4e3810e86b4670c50afaace2d82d02d5160ac"
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "version": "exp-001",
+      "score": 39.884281158447266,
+      "threshold": 40.95855598449707,
+      "anomaly_map_shape": [
+        256,
+        256
+      ],
+      "decision": "normal",
+      "latency_ms": 386.03120000334457,
+      "simulated": false,
+      "instance": "patchcore-transistor",
+      "image_path": "transistor/test/misplaced/002.png",
+      "image_sha256": "39aa3785ed25512eec3392723c28015392857cce9e5298ca2474ad998ac540c5",
+      "archived_score": 39.88422393798828,
+      "score_abs_error": 5.7220458984375e-05,
+      "map_sha256": "5772b5ada8f88eb34ccdfe15fbf5fef851acbc694f39cecd5ef5c74ea26c6be8"
+    }
+  ],
+  "ui": [
+    {
+      "category": "bottle",
+      "method": "cae",
+      "status": "passed",
+      "metrics": [
+        "0.0136",
+        "0.0196",
+        "250.7 ms",
+        ":green-badge[NORMAL]"
+      ]
+    },
+    {
+      "category": "bottle",
+      "method": "patchcore",
+      "status": "passed",
+      "metrics": [
+        "61.9568",
+        "31.6200",
+        "4485.8 ms",
+        ":red-badge[SUSPECT]"
+      ]
+    },
+    {
+      "category": "bottle",
+      "method": "both",
+      "status": "passed",
+      "metrics": [
+        "0.0136",
+        "0.0196",
+        "112.1 ms",
+        ":green-badge[NORMAL]",
+        "61.9568",
+        "31.6200",
+        "3708.1 ms",
+        ":red-badge[SUSPECT]"
+      ]
+    },
+    {
+      "category": "hazelnut",
+      "method": "cae",
+      "status": "passed",
+      "metrics": [
+        "0.0051",
+        "0.0084",
+        "107.6 ms",
+        ":green-badge[NORMAL]"
+      ]
+    },
+    {
+      "category": "hazelnut",
+      "method": "patchcore",
+      "status": "passed",
+      "metrics": [
+        "55.0790",
+        "48.8374",
+        "4443.9 ms",
+        ":red-badge[SUSPECT]"
+      ]
+    },
+    {
+      "category": "hazelnut",
+      "method": "both",
+      "status": "passed",
+      "metrics": [
+        "0.0051",
+        "0.0084",
+        "145.4 ms",
+        ":green-badge[NORMAL]",
+        "55.0790",
+        "48.8374",
+        "4482.7 ms",
+        ":red-badge[SUSPECT]"
+      ]
+    },
+    {
+      "category": "transistor",
+      "method": "cae",
+      "status": "passed",
+      "metrics": [
+        "0.0202",
+        "0.0274",
+        "105.5 ms",
+        ":green-badge[NORMAL]"
+      ]
+    },
+    {
+      "category": "transistor",
+      "method": "patchcore",
+      "status": "passed",
+      "metrics": [
+        "49.9947",
+        "40.9586",
+        "3019.1 ms",
+        ":red-badge[SUSPECT]"
+      ]
+    },
+    {
+      "category": "transistor",
+      "method": "both",
+      "status": "passed",
+      "metrics": [
+        "0.0202",
+        "0.0274",
+        "80.1 ms",
+        ":green-badge[NORMAL]",
+        "49.9947",
+        "40.9586",
+        "2761.9 ms",
+        ":red-badge[SUSPECT]"
+      ]
+    }
+  ],
+  "errors": [],
+  "dependencies": {
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu",
+    "anomalib": "2.7.0",
+    "timm": "1.0.31",
+    "streamlit": "1.67.0",
+    "numpy": "2.5.4",
+    "pillow": "13.0.0"
+  },
+  "source_files_sha256": {
+    "src/data/dataloaders.py": "71f8242694eb23e7f966ac183fe24145f5b333bf735f8a3e412ac832520e0e5a",
+    "src/data/mvtec_dataset.py": "5db99a31a05d17728034bb5d1fb023b11e0eefdcdd247cdc2fbba2acaa70d61b",
+    "src/data/split_dataset.py": "df8fd21831b985d26c7beba1552bd82ac976c37ace53eaa066673b4e158d2c14",
+    "src/data/transforms.py": "49fff365749c881a7049d116714d45ae2c065e0f3407d331f783b6522c1e35b5",
+    "src/evaluation/benchmark.py": "5d3decb8bedd26c541ec93937976797998e613a695c6fb7248805694f28cc73a",
+    "src/evaluation/calibration.py": "1f988a70ea36a6aec4585db43612aafca3c844a5faa9b758263ee0c8e022058c",
+    "src/evaluation/exporters.py": "8d7bc24993cc7de8e414ba56bfe2a9d6d006607fa83f9e682ce89b954333f9d3",
+    "src/evaluation/latency.py": "3e9861d84cae674c790c1ed39d7418b1b83953515202613117fa6f88829b2bad",
+    "src/evaluation/masks.py": "fa2faa0327e057e3c1823eb592bef24b79d76aaa63277e3ae5fc5218186d1e52",
+    "src/evaluation/metrics.py": "b23d4ec40b96a7218d383d2f5818774cce75a1aa01b16f1049303a42aef84755",
+    "src/evaluation/run_benchmark.py": "3069926c947c586baffd609623f43b3afa3163637924e8d9d1f32e8986bc089f",
+    "src/evaluation/run_calibration.py": "cf9151ae72f0cf83e9a50c268016869c632617561f9a38729d9d41048b94cee2",
+    "src/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/inference/cae_inference.py": "ec3a324fead3719d4b5501f574ec754c4899db58653adc9153d1de3bfc662850",
+    "src/inference/inference_contract.py": "7e682a10e3abc33d3c3d3a183256563f2afc97414510bb5b6e1c91151e1670d6",
+    "src/inference/model_loader.py": "794feb0a1aaa709cbacb85018194cfc7e3b9463407d4d40fb45495c80d690f39",
+    "src/inference/model_registry.py": "d82b0e274508d074db17b6b193e13d04db40147f993fcd5ea595cb8a77c3df22",
+    "src/inference/patchcore_inference.py": "9979ca26bf2364ce7459d65e6a79612ed68a79890555e885eb7a6cd27dbce974",
+    "src/models/convolutional_autoencoder.py": "b05c1acb9ebf097a26f6d73f9d736145d8941110a8a376e4220fad2914d44c2b",
+    "app/comparison.py": "40af56d9d8debd05634985ae9c45148f4c5511639be5379e4f0c96e6ae95d0c1",
+    "app/comparison_report.py": "e03dbcf3c8aad7205b81dbee58ec81731ad3d67ee676d20d47ed2bfbf360880d",
+    "app/comparison_view.py": "49636a0ed909bddc4af252eafc7635b42a7cc62990930e8d14bfe5ccc6242bad",
+    "app/image_preview.py": "997e6c7bb81f0b49ade345f20c9bfb8fbef3a3747aec00597c7317eecbe1ed78",
+    "app/image_utils.py": "06f1e8f0e0fdc8ed44983ca74d522433ce3d886ef4ce86feae1d1f8ef9bfade2",
+    "app/overlay.py": "c85668d3653d04b343273a76a949b9e941c612f2f5f3b8406114e0f018e4e110",
+    "app/report.py": "cf7e2e414f61259234c41142b1d2ec48d4840ef9ed8293984b90fdebaeae88df",
+    "app/result_view.py": "b23048230f55fe60d23dab7b6c269af833849ea24954dc32529f919c064bd36c",
+    "app/streamlit_app.py": "05a25058903e969dca13995ad6f1f84095bbf7ed4977a6ab626194bc8471345e",
+    "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "threshold_registry_sha256": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+  "expected_predictions": 26,
+  "passed": true
+}

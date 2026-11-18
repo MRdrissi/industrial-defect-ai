@@ -1,0 +1,399 @@
+{
+  "user_story": "US-03-05",
+  "subtask": "ST-03-05-02 (IDL-36)",
+  "checked_at_utc": "2026-11-11T23:02:28+00:00",
+  "code": {
+    "repo": "https://github.com/MRdrissi/industrial-defect-ai.git",
+    "git_ref": "feature/us-03-05-cae-inference",
+    "git_commit": "f12105d7c66a557db1ca2ccb57c28d524d42d64e"
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "device": "cuda"
+  },
+  "inference_config": {
+    "smoothing_sigma": 4.0,
+    "score_method": "max",
+    "calibrated": false
+  },
+  "protocol": "validation uniquement (images normales) + défauts synthétiques ; split test non utilisé",
+  "synthetic_defect": {
+    "type": "carré de bruit uniforme",
+    "size_px": 32,
+    "seed": 42
+  },
+  "retrained": false,
+  "categories": {
+    "bottle": {
+      "loading": {
+        "experiment": "cae-bottle/EXP-002",
+        "checkpoint": "notebooks/mouadfekkak/06-cae-bottle-training/cae_bottle_EXP-002_uurtonr7/bottle_best.pth",
+        "checkpoint_format": "dict + model_state_dict",
+        "sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+        "sha256_matches_run": true,
+        "model_name": "cae_baseline_v1",
+        "parameters": 855619,
+        "state_dict_tensors": 16
+      },
+      "validation": {
+        "val_images": 42,
+        "expected_val_mse": 0.0003680491354316473,
+        "recomputed_val_mse": 0.00036804910840666186,
+        "relative_gap": 7.342765635871857e-08,
+        "passed": true,
+        "val_score_max": {
+          "mean": 0.010554092115766946,
+          "std": 0.005571390801208117,
+          "min": 0.003952087834477425,
+          "max": 0.034765537828207016
+        }
+      },
+      "synthetic": {
+        "images": 6,
+        "score_increases": 6,
+        "peak_on_defect": 6,
+        "median_ratio": 10.68258438774168,
+        "details": [
+          {
+            "image_path": "bottle/train/good/002.png",
+            "patch_top_left": [
+              72,
+              138
+            ],
+            "score_normal": 0.01030403096228838,
+            "score_defect": 0.1098632737994194,
+            "ratio": 10.662164564674438,
+            "peak": [
+              94,
+              154
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "bottle/train/good/037.png",
+            "patch_top_left": [
+              119,
+              135
+            ],
+            "score_normal": 0.005732677411288023,
+            "score_defect": 0.10445035248994827,
+            "ratio": 18.220169215221947,
+            "peak": [
+              137,
+              150
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "bottle/train/good/069.png",
+            "patch_top_left": [
+              73,
+              147
+            ],
+            "score_normal": 0.00972680188715458,
+            "score_defect": 0.10410600155591965,
+            "ratio": 10.703004210808924,
+            "peak": [
+              83,
+              157
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "bottle/train/good/123.png",
+            "patch_top_left": [
+              105,
+              93
+            ],
+            "score_normal": 0.015013941563665867,
+            "score_defect": 0.10631801933050156,
+            "ratio": 7.081286341742128,
+            "peak": [
+              127,
+              107
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "bottle/train/good/169.png",
+            "patch_top_left": [
+              134,
+              152
+            ],
+            "score_normal": 0.00886518508195877,
+            "score_defect": 0.10635758191347122,
+            "ratio": 11.99722069310384,
+            "peak": [
+              157,
+              161
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "bottle/train/good/208.png",
+            "patch_top_left": [
+              130,
+              144
+            ],
+            "score_normal": 0.013354254886507988,
+            "score_defect": 0.10193610936403275,
+            "ratio": 7.6332307740374485,
+            "peak": [
+              149,
+              155
+            ],
+            "peak_on_defect": true
+          }
+        ]
+      }
+    },
+    "hazelnut": {
+      "loading": {
+        "experiment": "cae-hazelnut/EXP-001",
+        "checkpoint": "notebooks/marwanedrissi/industrialdefect-ai-cae-hazelnut-training/cae/hazelnut/hazelnut-baseline-001/best_model.pt",
+        "checkpoint_format": "dict + model_state_dict",
+        "sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+        "sha256_matches_run": true,
+        "model_name": "cae_baseline_v1",
+        "parameters": 855619,
+        "state_dict_tensors": 16
+      },
+      "validation": {
+        "val_images": 78,
+        "expected_val_mse": 0.00020595180364743544,
+        "recomputed_val_mse": 0.00020595179273349902,
+        "relative_gap": 5.299267220770971e-08,
+        "passed": true,
+        "val_score_max": {
+          "mean": 0.0033993390657437537,
+          "std": 0.002085077521187818,
+          "min": 0.0008283035131171346,
+          "max": 0.010843411087989807
+        }
+      },
+      "synthetic": {
+        "images": 6,
+        "score_increases": 6,
+        "peak_on_defect": 6,
+        "median_ratio": 44.33704725277917,
+        "details": [
+          {
+            "image_path": "hazelnut/train/good/002.png",
+            "patch_top_left": [
+              71,
+              96
+            ],
+            "score_normal": 0.0015682476805523038,
+            "score_defect": 0.09729595482349396,
+            "ratio": 62.04119159878392,
+            "peak": [
+              91,
+              104
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "hazelnut/train/good/077.png",
+            "patch_top_left": [
+              95,
+              150
+            ],
+            "score_normal": 0.0013857224257662892,
+            "score_defect": 0.09799373894929886,
+            "ratio": 70.71671579184367,
+            "peak": [
+              103,
+              171
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "hazelnut/train/good/154.png",
+            "patch_top_left": [
+              111,
+              159
+            ],
+            "score_normal": 0.0027587558142840862,
+            "score_defect": 0.09502892941236496,
+            "ratio": 34.44629963997939,
+            "peak": [
+              133,
+              167
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "hazelnut/train/good/237.png",
+            "patch_top_left": [
+              141,
+              144
+            ],
+            "score_normal": 0.0018733592005446553,
+            "score_defect": 0.09611370414495468,
+            "ratio": 51.3055393311709,
+            "peak": [
+              165,
+              153
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "hazelnut/train/good/288.png",
+            "patch_top_left": [
+              74,
+              148
+            ],
+            "score_normal": 0.008313409984111786,
+            "score_defect": 0.10070239007472992,
+            "ratio": 12.113247183428676,
+            "peak": [
+              96,
+              170
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "hazelnut/train/good/382.png",
+            "patch_top_left": [
+              159,
+              149
+            ],
+            "score_normal": 0.0027503164019435644,
+            "score_defect": 0.10277535021305084,
+            "ratio": 37.368555174387446,
+            "peak": [
+              168,
+              166
+            ],
+            "peak_on_defect": true
+          }
+        ]
+      }
+    },
+    "transistor": {
+      "loading": {
+        "experiment": "cae-transistor/EXP-001",
+        "checkpoint": "notebooks/zakariaelbergui/06-cae-train/cae/transistor/best_model.pt",
+        "checkpoint_format": "poids seuls",
+        "sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+        "sha256_matches_run": null,
+        "model_name": "cae_baseline_v1",
+        "parameters": 855619,
+        "state_dict_tensors": 16
+      },
+      "validation": {
+        "val_images": 43,
+        "expected_val_mse": 0.0006124484934844077,
+        "recomputed_val_mse": 0.0006124485192040718,
+        "relative_gap": 4.1994819826946254e-08,
+        "passed": true,
+        "val_score_max": {
+          "mean": 0.01799270969837211,
+          "std": 0.004901377121711535,
+          "min": 0.01059696264564991,
+          "max": 0.028552228584885597
+        }
+      },
+      "synthetic": {
+        "images": 6,
+        "score_increases": 6,
+        "peak_on_defect": 6,
+        "median_ratio": 6.839153174397448,
+        "details": [
+          {
+            "image_path": "transistor/train/good/002.png",
+            "patch_top_left": [
+              115,
+              143
+            ],
+            "score_normal": 0.016441257670521736,
+            "score_defect": 0.10882130265235901,
+            "ratio": 6.618794305953222,
+            "peak": [
+              134,
+              151
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "transistor/train/good/042.png",
+            "patch_top_left": [
+              155,
+              113
+            ],
+            "score_normal": 0.019171178340911865,
+            "score_defect": 0.10292777419090271,
+            "ratio": 5.368880950382261,
+            "peak": [
+              162,
+              118
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "transistor/train/good/073.png",
+            "patch_top_left": [
+              77,
+              91
+            ],
+            "score_normal": 0.013972217217087746,
+            "score_defect": 0.09954644739627838,
+            "ratio": 7.124599184912116,
+            "peak": [
+              99,
+              107
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "transistor/train/good/122.png",
+            "patch_top_left": [
+              90,
+              120
+            ],
+            "score_normal": 0.010596961714327335,
+            "score_defect": 0.09847621619701385,
+            "ratio": 9.292872698017938,
+            "peak": [
+              105,
+              132
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "transistor/train/good/160.png",
+            "patch_top_left": [
+              115,
+              118
+            ],
+            "score_normal": 0.018036656081676483,
+            "score_defect": 0.10237335413694382,
+            "ratio": 5.675849984241001,
+            "peak": [
+              125,
+              130
+            ],
+            "peak_on_defect": true
+          },
+          {
+            "image_path": "transistor/train/good/206.png",
+            "patch_top_left": [
+              158,
+              105
+            ],
+            "score_normal": 0.014343894086778164,
+            "score_defect": 0.10126089304685593,
+            "ratio": 7.059512042841674,
+            "peak": [
+              173,
+              125
+            ],
+            "peak_on_defect": true
+          }
+        ]
+      }
+    }
+  },
+  "status": "OK"
+}

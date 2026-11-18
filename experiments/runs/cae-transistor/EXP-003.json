@@ -1,0 +1,159 @@
+{
+  "experiment_id": "EXP-003",
+  "model": "cae_baseline_v1",
+  "dataset": "MVTec AD",
+  "category": "transistor",
+  "status": "expérience complémentaire post-benchmark (ne remplace pas EXP-001 dans le benchmark officiel US-05-03)",
+  "motivation": "US-05-03 : CAE Transistor EXP-001 recall 0,15 et Image-AUROC 0,586. Vérifier si un entraînement plus long et mieux réglé (EXP-002 de Mouad) ou une perte structurelle (SSIM) améliore la détection.",
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13.16",
+    "torch_version": "2.11.0+cu130",
+    "gpu": "Tesla T4 (x2)",
+    "os": "Linux-6.18.55+-x86_64-with-glibc2.39"
+  },
+  "reproducibility": {
+    "repo": "https://github.com/MRdrissi/industrial-defect-ai.git",
+    "branch": "develop",
+    "git_commit": "0e102a07e220724f7fb7d82fd9efa94e3cad52b2",
+    "notebook": "notebooks/06-cae-transistor-exp003.ipynb",
+    "kaggle_version_url": "https://www.kaggle.com/code/zakariaelbergui/06-cae-transistor-exp003-ipynb?scriptVersionId=370459123",
+    "experiment_config": "experiments/configs/cae_transistor_exp003.json",
+    "model_config": "experiments/configs/cae_baseline.json",
+    "dataset_source": "ipythonx/mvtec-ad",
+    "dataset_version": "2",
+    "split_manifest": "docs/data/us-02-03/transistor_manifest.csv",
+    "split_manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+    "executed_at_utc": "2026-11-17T00:42:09+00:00",
+    "runtime": "1 h 11 min 44 s (GPU T4 x2)"
+  },
+  "data": {
+    "train_images": 170,
+    "val_images": 43,
+    "test_images": 100,
+    "test_used_for_selection": false
+  },
+  "training": {
+    "max_epochs": 300,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "seed": 42,
+    "num_workers": 2,
+    "optimizer": "Adam",
+    "lr_scheduler": {
+      "type": "ReduceLROnPlateau",
+      "mode": "min",
+      "factor": 0.5,
+      "patience": 12,
+      "threshold": 1e-06,
+      "min_lr": 1e-05
+    },
+    "early_stopping": {
+      "monitor": "val_objective",
+      "patience": 40,
+      "min_delta": 1e-06
+    },
+    "data_augmentation": null
+  },
+  "variants": {
+    "A": {
+      "loss": "MSE",
+      "epochs_run": 300,
+      "stop_reason": "max_epochs",
+      "best_epoch": 240,
+      "best_val_synthetic_auroc": 0.693347755543537,
+      "val_mse_at_best": 0.00041605306851547644,
+      "min_val_mse": 0.00037829158015462546,
+      "training_time_min": 35.2
+    },
+    "B": {
+      "loss": "MSE + 0.5 * (1 - SSIM)",
+      "epochs_run": 300,
+      "stop_reason": "max_epochs",
+      "best_epoch": 275,
+      "best_val_synthetic_auroc": 0.686046511627907,
+      "val_mse_at_best": 0.0003769012583625438,
+      "min_val_mse": 0.0003318128360132145,
+      "training_time_min": 35.3
+    }
+  },
+  "selection": {
+    "split": "val",
+    "criterion": "AUROC normales val vs défauts synthétiques (score CAEInference)",
+    "tie_break": "plus faible MSE de validation",
+    "eval_every_epochs": 5,
+    "synthetic_seed": 2026,
+    "synthetic_types": [
+      "cutpaste",
+      "noise",
+      "erase"
+    ],
+    "chosen_variant": "A",
+    "reason": "AUROC synthétique de validation la plus haute (0,6933 contre 0,6860)"
+  },
+  "calibration": {
+    "split": "val",
+    "quantile": 0.95,
+    "method": "linear",
+    "decision_rule": "score > threshold",
+    "n_val_normals": 43,
+    "threshold": 0.018426468782126903
+  },
+  "checkpoint": {
+    "file": "cae_model.pt (variante A, époque 240, poids seuls / state_dict)",
+    "sha256": "b7c06c22b1f53878a91f62eddf2cfb7f3311f785a98119b21266b722207da132",
+    "location": "Kaggle Output (version 370459123) : cae/transistor/EXP-003/cae_model.pt — hors Git",
+    "app_compatible": true
+  },
+  "metrics": {
+    "image_auroc": 0.6120833333333333,
+    "precision": 0.9,
+    "recall": 0.225,
+    "f1_score": 0.36,
+    "pixel_auroc": 0.6635937877211253,
+    "tp": 9,
+    "tn": 59,
+    "fp": 1,
+    "fn": 31
+  },
+  "per_defect_type_detected": {
+    "bent_lead": "3/10",
+    "cut_lead": "1/10",
+    "damaged_case": "0/10",
+    "misplaced": "5/10",
+    "good_false_alarms": "1/60"
+  },
+  "comparison_exp001": {
+    "source": "experiments/benchmark/comparison.csv + kaggle-001/cae-transistor/predictions.csv (seuil 0.027364758774638176)",
+    "image_auroc": 0.5858333333333333,
+    "precision": 1.0,
+    "recall": 0.15,
+    "f1_score": 0.2608695652173913,
+    "pixel_auroc": 0.6360072524763124,
+    "tp": 6,
+    "fp": 0,
+    "per_defect_type_detected": {
+      "bent_lead": "3/10",
+      "cut_lead": "1/10",
+      "damaged_case": "0/10",
+      "misplaced": "2/10"
+    }
+  },
+  "artifacts": {
+    "folder": "experiments/runs/cae-transistor/EXP-003/",
+    "files": [
+      "calibration.json",
+      "run_info.json",
+      "test_metrics.json",
+      "test_predictions.csv",
+      "validation_scores.csv",
+      "variant_A/history.csv",
+      "variant_B/history.csv",
+      "figures/exp001_vs_exp003.png",
+      "figures/training_curves.png",
+      "figures/test_examples.png",
+      "figures/synthetic_validation_examples.png"
+    ]
+  },
+  "notes": "Gain modeste et localisé : +3 défauts détectés, tous sur misplaced (2/10 -> 5/10) ; bent_lead, cut_lead et damaged_case inchangés. Le SSIM (variante B) n'a pas été retenu sur la validation. Les deux variantes ont atteint 300 époques sans early stopping. Décidée après US-05-03 : le benchmark officiel garde EXP-001 ; EXP-003 est rapportée à côté. Une seule exécution, petits effectifs (40 défauts)."
+}

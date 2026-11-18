@@ -18,8 +18,8 @@ env/
 .ipynb_checkpoints/
 
 # Datasets (non versionnés)
-data/
-datasets/
+/data/
+/datasets/
 
 # Modèles et checkpoints
 checkpoints/

@@ -1,0 +1,65 @@
+{
+  "experiment_id": "EXP-001",
+  "category": "hazelnut",
+  "status": "archived_with_protocol_limitation",
+  "configuration_role": "Retrospective description; not consumed by the original notebook.",
+  "dataset": "ipythonx/mvtec-ad",
+  "dataset_version": "v2 (3209332)",
+  "manifest": "docs/data/us-02-03/hazelnut_manifest.csv",
+  "transform": {
+    "profile": "patchcore",
+    "size": [
+      256,
+      256
+    ],
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "model": {
+    "backbone": "wide_resnet50_2",
+    "pre_trained": true,
+    "frozen": true,
+    "layers": [
+      "layer2",
+      "layer3"
+    ],
+    "num_neighbors": 1
+  },
+  "memory_bank": {
+    "split": "train",
+    "sample_count": 313,
+    "sampling": "all",
+    "seed": 42,
+    "projection_seed": 42,
+    "batch_size": 2,
+    "num_workers": 0,
+    "coreset": "KCenterGreedy",
+    "sampling_ratio": 0.01,
+    "projection_epsilon": 0.9,
+    "feature_pooling_applied": false
+  },
+  "inference": {
+    "split": "val",
+    "expected_samples": 78,
+    "image_path": "hazelnut/train/good/002.png",
+    "dtype": "float32",
+    "feature_pooling_applied": true
+  },
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "anomalib": "2.7.0",
+    "timm": "1.0.30",
+    "lightning": "2.6.6"
+  },
+  "limitation": "Bank features omit Anomalib feature_pooler; inference applies it. Do not use EXP-001 for US-05-02 calibration or comparative detection claims."
+}

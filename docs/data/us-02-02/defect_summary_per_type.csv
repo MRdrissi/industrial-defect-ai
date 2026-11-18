@@ -1,0 +1,12 @@
+catégorie,défaut,nb_images,surface_min_pct,surface_med_pct,surface_max_pct,régions_max,petit_côté_min_256px
+bottle,broken_large,20,4.09,11.87,27.42,2,59.2
+bottle,broken_small,22,0.88,2.44,8.06,3,27.3
+bottle,contamination,21,0.58,7.25,16.53,2,10.5
+hazelnut,crack,18,1.28,4.7,27.66,4,40.0
+hazelnut,cut,17,0.4,0.79,2.02,4,10.5
+hazelnut,hole,18,0.23,1.24,2.93,3,13.5
+hazelnut,print,17,1.52,2.44,4.83,15,31.8
+transistor,bent_lead,10,0.22,1.03,3.65,2,11.2
+transistor,cut_lead,10,1.02,1.48,3.58,2,23.2
+transistor,damaged_case,10,0.63,2.31,5.35,2,22.0
+transistor,misplaced,10,37.73,40.45,49.32,1,138.8

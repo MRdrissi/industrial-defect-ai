@@ -1,0 +1,99 @@
+{
+  "experiment_id": "EXP-001",
+  "run_id": "patchcore-transistor-exp001",
+  "user_story": "US-04-03",
+  "model": "PatchCore",
+  "dataset": "MVTec AD",
+  "category": "transistor",
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13",
+    "torch": "2.11.0+cu130",
+    "torchvision": "0.26.0+cu130",
+    "anomalib": "2.7.0",
+    "timm": "1.0.30",
+    "lightning": "2.6.6",
+    "gpu": "Tesla T4 (accelerateur GPU T4 x2)",
+    "cuda_runtime": "13.0"
+  },
+  "training": {
+    "epochs": null,
+    "learning_rate": null,
+    "batch_size": 2,
+    "image_size": [
+      256,
+      256
+    ],
+    "seed": 42,
+    "train_images": 170,
+    "validation_images": 43,
+    "backbone": "wide_resnet50_2",
+    "pre_trained": true,
+    "frozen": true,
+    "trainable_parameters": 0,
+    "layers": [
+      "layer2",
+      "layer3"
+    ],
+    "num_neighbors": 1,
+    "coreset": "KCenterGreedy",
+    "coreset_ratio": 0.01
+  },
+  "reproducibility": {
+    "git_commit": "76589696aabc801f346a0759f5d4cd04efcd0d70",
+    "git_tag": "exp/patchcore-transistor-exp001",
+    "dataset_version": "ipythonx/mvtec-ad v2 (3209332)",
+    "split_manifest": "docs/data/us-02-03/transistor_manifest.csv",
+    "config": "experiments/configs/patchcore_transistor.json",
+    "notebook": "notebooks/14-patchcore-transistor-memory-bank.ipynb",
+    "restore_notebook": "notebooks/15-patchcore-transistor-restore-check.ipynb",
+    "manifest_sha256": "eff9f514691610284c902020e62931189ffae80d20fabff1f4a6ab702d8ef728",
+    "config_sha256": "76880ff8ae69b874540a16ccbf93320c9d313e0e6e3b8c9013aee1b0a7a14c81"
+  },
+  "metrics": {
+    "embedding_shape": [
+      174080,
+      1536
+    ],
+    "memory_bank_shape": [
+      1740,
+      1536
+    ],
+    "validation_image": "transistor/train/good/002.png",
+    "raw_score": 40.13337707519531,
+    "anomaly_map_shape": [
+      1,
+      1,
+      256,
+      256
+    ],
+    "image_auroc": null,
+    "pixel_auroc": null,
+    "precision": null,
+    "recall": null,
+    "f1_score": null
+  },
+  "artifacts": {
+    "model_path": "patchcore/transistor/EXP-001/patchcore_model.pt",
+    "checkpoint_sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+    "kaggle_version_url": "https://www.kaggle.com/code/zakariaelbergui/14-patchcore-transistor-memory-bank?scriptVersionId=369642459",
+    "memory_bank_report": "docs/data/us-04-03/memory_bank_report.json",
+    "restore_report": "docs/data/us-04-03/restore_report.json",
+    "reference_prediction": "docs/data/us-04-03/reference_prediction.npz",
+    "anomaly_visualization": "docs/data/us-04-03/anomaly_visualization.png",
+    "restore_kaggle_version_url": "https://www.kaggle.com/code/zakariaelbergui/15-patchcore-transistor-restore-check?scriptVersionId=369649621"
+  },
+  "restoration": {
+    "restoration_device": "cpu",
+    "restoration_status": "PASS",
+    "python_version": "3.13.18",
+    "torch": "2.11.0+cpu",
+    "cpu_restored_score": 40.13338851928711,
+    "score_absolute_difference": 1.1444091796875e-05,
+    "map_max_absolute_difference": 0.0001506805419921875,
+    "map_max_error_relative_to_range": 6.788357571493435e-06,
+    "memory_bank_recomputed": false,
+    "strict_state_dict_loading": true
+  },
+  "notes": "Memory Bank construite sur les 170 images normales Train Transistor. Score brut non calibre. Des versions Kaggle precedentes ont ete annulees (file d'attente GPU) ; la version 369642459 est la version de reference. Une execution interactive anterieure a donne un score de 40.2355 (ecart de 0.25 %) : le non-determinisme GPU de l'extraction peut modifier legerement la selection KCenterGreedy. Le split Test reste reserve a l'evaluation finale."
+}

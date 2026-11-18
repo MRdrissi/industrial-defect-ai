@@ -1,0 +1,63 @@
+{
+  "experiment_id": "EXP-003",
+  "variant": "A",
+  "category": "transistor",
+  "threshold": 0.018426468782126903,
+  "checkpoint_sha256": "b7c06c22b1f53878a91f62eddf2cfb7f3311f785a98119b21266b722207da132",
+  "test": {
+    "n_images": 100,
+    "n_normal": 60,
+    "n_anomalous": 40,
+    "image_auroc": 0.6120833333333333,
+    "threshold": 0.018426468782126903,
+    "precision": 0.9,
+    "recall": 0.225,
+    "f1": 0.36,
+    "tp": 9,
+    "tn": 59,
+    "fp": 1,
+    "fn": 31,
+    "pixel_auroc": 0.6635937877211253,
+    "per_defect_type": {
+      "bent_lead": {
+        "n": 10,
+        "detectes": 3,
+        "recall": 0.3
+      },
+      "cut_lead": {
+        "n": 10,
+        "detectes": 1,
+        "recall": 0.1
+      },
+      "damaged_case": {
+        "n": 10,
+        "detectes": 0,
+        "recall": 0.0
+      },
+      "good": {
+        "n": 60,
+        "fausses_alertes": 1
+      },
+      "misplaced": {
+        "n": 10,
+        "detectes": 5,
+        "recall": 0.5
+      }
+    }
+  },
+  "exp001_reference": {
+    "source": "experiments/benchmark/comparison.csv (cae-transistor, kaggle-001)",
+    "checkpoint_sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+    "threshold": 0.027364758774638176,
+    "image_auroc": 0.5858333333333333,
+    "precision": 1.0,
+    "recall": 0.15,
+    "f1": 0.2608695652173913,
+    "pixel_auroc": 0.6360072524763124,
+    "tp": 6,
+    "tn": 60,
+    "fp": 0,
+    "fn": 34
+  },
+  "exp001_reevaluated": null
+}

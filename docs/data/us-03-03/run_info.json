@@ -1,0 +1,56 @@
+{
+  "category": "transistor",
+  "executed_at_utc": "2026-11-10T22:24:55+00:00",
+  "code": {
+    "repo": "https://github.com/MRdrissi/industrial-defect-ai.git",
+    "branch": "epic/03-convolutional-autoencoder",
+    "git_commit": "6a353b3a3a3aa7a4adfa69a6db120d5bec95d73b",
+    "training_loop": "notebooks/06-cae-train.ipynb (cellule Entraînement)"
+  },
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13.16",
+    "torch_version": "2.11.0+cu130",
+    "torchvision_version": "0.26.0+cu130",
+    "gpu": "Tesla T4 (x2)",
+    "os": "Linux-6.18.55+-x86_64-with-glibc2.39"
+  },
+  "data": {
+    "dataset": "MVTec AD",
+    "dataset_version": "ipythonx/mvtec-ad, Version 2",
+    "split_manifest": "docs/data/us-02-03/transistor_manifest.csv",
+    "train_images": 170,
+    "val_images": 43,
+    "test_used": false
+  },
+  "model": {
+    "name": "cae_baseline_v1",
+    "config_file": "experiments/configs/cae_baseline.json",
+    "trainable_parameters": 855619
+  },
+  "training": {
+    "epochs": 100,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "loss": "MSELoss",
+    "image_size": [
+      256,
+      256
+    ],
+    "seed": 42,
+    "num_workers": 2
+  },
+  "results": {
+    "best_epoch": 98,
+    "best_val_loss": 0.0006124484934844077,
+    "final_train_loss": 0.0006062185877988882,
+    "final_val_loss": 0.0006462368981501218,
+    "training_time_min": 12.0
+  },
+  "artifacts": {
+    "checkpoint": "cae/transistor/best_model.pt",
+    "history": "cae/transistor/history.csv",
+    "loss_curves": "cae/transistor/loss_curves.png"
+  }
+}

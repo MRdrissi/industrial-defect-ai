@@ -1,0 +1,92 @@
+{
+  "experiment_id": "EXP-002",
+  "model": "ConvolutionalAutoencoder V1",
+  "dataset": "MVTec AD",
+  "category": "bottle",
+  "environment": {
+    "platform": "Kaggle",
+    "python_version": "3.13.16",
+    "torch_version": "2.11.0+cu130",
+    "gpu": "Tesla T4",
+    "torchvision_version": "0.26.0+cu130",
+    "numpy_version": "2.1.3",
+    "pillow_version": "13.0.0",
+    "matplotlib_version": "3.10.0",
+    "cuda_version": "13.0",
+    "cudnn_version": 92700
+  },
+  "training": {
+    "epochs": 500,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "image_size": [
+      256,
+      256
+    ],
+    "seed": 42,
+    "max_epochs": 500,
+    "optimizer": "Adam",
+    "loss": "MSELoss",
+    "train_images": 167,
+    "val_images": 42,
+    "architecture": {
+      "input_channels": 3,
+      "image_size": [
+        256,
+        256
+      ],
+      "encoder_channels": [
+        32,
+        64,
+        128
+      ],
+      "latent_channels": 128,
+      "seed": 42
+    },
+    "early_stopping": {
+      "monitor": "val_mse",
+      "mode": "min",
+      "patience": 40,
+      "min_delta": 1e-06,
+      "restore_best_weights": true
+    },
+    "stop_reason": "max_epochs"
+  },
+  "reproducibility": {
+    "git_commit": "52d4bbd839191e74d296892411062bc701da4aba",
+    "dataset_version": "2",
+    "split_manifest": "docs/data/us-02-03/bottle_manifest.csv",
+    "git_branch": "feature/us-03-02-cae-bottle",
+    "dataset_source": "ipythonx/mvtec-ad",
+    "split_manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+    "model_config": "experiments/configs/cae_baseline.json",
+    "model_config_sha256": "350f6e3ba4e94f6b377d8566a0fb332c93da30ad0030e07abb6e677da72448e7",
+    "experiment_config": "experiments/configs/cae_bottle_exp002.json",
+    "experiment_config_sha256": "23ef10595ca6d57da4c0a260e4f46baef7e6b6a6c3e8d09455dccac249c98214",
+    "notebook": "notebooks/06-cae-bottle-training.ipynb",
+    "notebook_sha256": "703a328615d6cf42d07f766d5d4798acb1f500e6e4bbadd8f7f6a16d6361d864"
+  },
+  "metrics": {
+    "image_auroc": null,
+    "precision": null,
+    "recall": null,
+    "f1_score": null,
+    "pixel_auroc": null,
+    "best_epoch": 495,
+    "best_val_mse": 0.0003680491354316473,
+    "restored_val_mse": 0.0003680491354316473,
+    "train_mse_at_best_epoch": 0.00037026609409834723,
+    "final_train_mse": 0.00036306516528770906,
+    "final_val_mse": 0.0003724777059341293,
+    "total_training_seconds": 4194.052979837996
+  },
+  "artifacts": {
+    "model_path": "cae_bottle_EXP-002_uurtonr7/bottle_best.pth",
+    "kaggle_version_url": "https://www.kaggle.com/code/mouadfekkak/06-cae-bottle-training/output?scriptVersionId=368423258",
+    "model_sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+    "history_path": "cae_bottle_EXP-002_uurtonr7/history.json",
+    "history_csv_path": "cae_bottle_EXP-002_uurtonr7/history.csv",
+    "loss_curve_path": "cae_bottle_EXP-002_uurtonr7/loss_curves.png"
+  },
+  "notes": "CAE Bottle trained on 167 normal images and validated on 42 disjoint normal images. Early Stopping monitors Validation MSE. The best checkpoint was selected without using the official test split. Kaggle version URL must be completed after Save & Run All."
+}

@@ -1,0 +1,40 @@
+# Preserve canonical LF endings for versioned MVTec manifests
+docs/data/us-02-03/*_manifest.csv text eol=lf
+# Preserve original Kaggle evidence hashes on Windows
+docs/data/us-04-04/*.json text eol=lf
+docs/data/us-04-04/*.npz binary
+
+# Preserve original EXP-002 evidence bytes across platforms
+docs/data/us-04-04/EXP-002/*.json text eol=lf
+docs/data/us-04-04/EXP-002/*.npz binary
+
+# Preserve PatchCore Transistor EXP-001 evidence bytes across platforms
+docs/data/us-04-03/*.json text eol=lf
+docs/data/us-04-03/*.npz binary
+
+# Freeze calibration protocol/catalog bytes across platforms
+experiments/configs/evaluation_protocol.json text eol=lf
+experiments/configs/calibration_instances.json text eol=lf
+
+# Preserve original US-05-02 calibration evidence bytes on every platform
+experiments/calibration/kaggle-001/** -text
+experiments/calibration/kaggle-002/** -text
+experiments/calibration/six-thresholds/** -text
+
+# Preserve original US-05-03 Kaggle CSV/JSON bytes across platforms
+experiments/benchmark/kaggle-001/** -text
+
+experiments/benchmark/kaggle-002/** -text
+experiments/benchmark/comparison.csv text eol=lf
+experiments/benchmark/summary.json text eol=lf
+
+# Preserve reproducible US-05-04 evidence and generated figures
+docs/data/us-05-04/*.json text eol=lf
+docs/data/us-05-04/*.csv text eol=lf
+docs/data/us-05-04/figures/*.png binary
+
+# Keep release audit evidence bytes stable across checkouts.
+docs/release/2026-11-18/** -text
+app/requirements*.txt text eol=lf
+scripts/restore_app_artifacts.py text eol=lf
+scripts/validate_app_release.py text eol=lf

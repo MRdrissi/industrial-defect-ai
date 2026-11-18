@@ -1,0 +1,70 @@
+{
+  "_note": "Configuration exacte exécutée (dictionnaire EXPERIMENT du notebook, recopiée de run_info.json). Le notebook la définit en ligne ; ce fichier sert de référence lisible.",
+  "experiment_id": "EXP-003",
+  "category": "transistor",
+  "based_on": "EXP-002 (Mouad) : experiments/configs/cae_transistor_exp002.json",
+  "model_config": "experiments/configs/cae_baseline.json",
+  "manifest": "docs/data/us-02-03/transistor_manifest.csv",
+  "dataset_source": "ipythonx/mvtec-ad",
+  "training": {
+    "max_epochs": 300,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "seed": 42,
+    "num_workers": 2,
+    "optimizer": "Adam",
+    "lr_scheduler": {
+      "type": "ReduceLROnPlateau",
+      "mode": "min",
+      "factor": 0.5,
+      "patience": 12,
+      "threshold": 1e-06,
+      "min_lr": 1e-05
+    },
+    "early_stopping": {
+      "monitor": "val_objective",
+      "patience": 40,
+      "min_delta": 1e-06
+    },
+    "data_augmentation": null
+  },
+  "variants": {
+    "A": {
+      "loss": "MSE",
+      "ssim_weight": 0.0
+    },
+    "B": {
+      "loss": "MSE + 0.5 * (1 - SSIM)",
+      "ssim_weight": 0.5,
+      "ssim": {
+        "window": 11,
+        "sigma": 1.5,
+        "data_range": 1.0
+      }
+    }
+  },
+  "selection": {
+    "split": "val",
+    "criterion": "AUROC normales val vs défauts synthétiques (score CAEInference)",
+    "tie_break": "plus faible MSE de validation",
+    "eval_every_epochs": 5,
+    "synthetic_seed": 2026,
+    "synthetic_types": [
+      "cutpaste",
+      "noise",
+      "erase"
+    ]
+  },
+  "scoring": {
+    "anomaly_map": "MSE par pixel, moyenne des 3 canaux",
+    "smoothing_sigma": 4.0,
+    "score_method": "max"
+  },
+  "calibration": {
+    "split": "val",
+    "quantile": 0.95,
+    "method": "linear",
+    "decision_rule": "score > threshold"
+  },
+  "test_used_for": "évaluation finale unique (aucun réglage)"
+}

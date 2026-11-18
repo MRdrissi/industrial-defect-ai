@@ -1,0 +1,98 @@
+{
+ "experiment_id": "EXP-001",
+ "model": "PatchCore",
+ "dataset": "MVTec AD",
+ "category": "bottle",
+ "environment": {
+  "platform": "Kaggle",
+  "python_version": "3.13.16",
+  "torch": "2.11.0+cu130",
+  "torchvision": "0.26.0+cu130",
+  "anomalib": "2.7.0",
+  "timm": "1.0.30",
+  "lightning": "2.6.6",
+  "gpu": "Tesla T4",
+  "cuda_runtime": "13.0"
+ },
+ "training": {
+  "epochs": null,
+  "batch_size": 2,
+  "learning_rate": null,
+  "image_size": [
+   256,
+   256
+  ],
+  "seed": 42,
+  "available_train_images": 167,
+  "selected_image_count": 8,
+  "coreset_ratio": 0.1
+ },
+ "reproducibility": {
+  "git_commit": "0a6f5fac7b47fcaa797d65774e7442ed0201de1f",
+  "dataset_version": "ipythonx/mvtec-ad v2 (3209332)",
+  "split_manifest": "docs/data/us-02-03/bottle_manifest.csv",
+  "git_commit_scope": "Code du pipeline de données cloné sur Kaggle",
+  "manifest_sha256": "32b3c0998b3ebb1305aef61d7153bb80dc14b9c9ab4975241435dd7c8b322064",
+  "config": "experiments/configs/patchcore_bottle_smoke.json"
+ },
+ "metrics": {
+  "image_auroc": null,
+  "precision": null,
+  "recall": null,
+  "f1_score": null,
+  "pixel_auroc": null,
+  "validation_image": "bottle/train/good/002.png",
+  "raw_score": 30.64944839477539,
+  "embedding_shape": [
+   8192,
+   1536
+  ],
+  "memory_bank_shape": [
+   819,
+   1536
+  ],
+  "anomaly_map_shape": [
+   1,
+   1,
+   256,
+   256
+  ]
+ },
+ "artifacts": {
+  "model_path": "patchcore/bottle/smoke-001/patchcore_model.pt",
+  "kaggle_version_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-patchcore-bottle-smoke?scriptVersionId=368924991",
+  "checkpoint_sha256": "37e3d731aca54d2f0272b79082d21eeafebc96faeda91d19a72a84353451a9fa",
+  "restore_kaggle_version_url": "https://www.kaggle.com/code/marwanedrissi/industrialdefect-ai-patchcore-bottle-restore-check?scriptVersionId=368927596",
+  "smoke_report": "docs/data/us-04-01/smoke_report.json",
+  "restore_report": "docs/data/us-04-01/restore_report.json",
+  "anomaly_visualization": "docs/data/us-04-01/anomaly_visualization.png",
+  "reference_prediction": "docs/data/us-04-01/reference_prediction.npz",
+  "patchcore_install_plan": "docs/data/us-04-01/patchcore_install_plan.json"
+ },
+ "notes": "Smoke test technique sur huit normales et une image de validation. Score brut. Le checkpoint contient le backbone et la banque mémoire.",
+ "run_id": "patchcore-bottle-smoke-001",
+ "kaggle_versions": [
+  {
+   "role": "smoke",
+   "version": 3,
+   "script_version_id": 368924991,
+   "executed_export_sha256": "6d4ee7a70e167300e8f61fee2d6cc7c053cbcf9f523f2eac758c8fd37dbda82b"
+  },
+  {
+   "role": "restore",
+   "version": 1,
+   "script_version_id": 368927596,
+   "executed_export_sha256": "3cce74771f0027fec67ad50e3ed750499e8d0a9e569e76d81faca2f3d2edd1d9"
+  }
+ ],
+ "restoration": {
+  "restoration_device": "cpu",
+  "restored_score": 30.64940071105957,
+  "score_absolute_difference": 4.76837158203125e-05,
+  "map_max_absolute_difference": 0.00045299530029296875,
+  "map_max_error_relative_to_range": 1.644988830698996e-05,
+  "strict_state_dict_loading": true,
+  "memory_bank_recomputed": false,
+  "restoration_status": "PASS"
+ }
+}
