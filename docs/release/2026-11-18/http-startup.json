@@ -1,0 +1,10 @@
+{
+  "port": 5225,
+  "passed": true,
+  "health_status": 200,
+  "health_body": "ok",
+  "page_status": 200,
+  "contains_html": true,
+  "command": "python -m streamlit run app/streamlit_app.py --server.headless=true --server.address=127.0.0.1 --browser.gatherUsageStats=false",
+  "process_stopped_after_test": true
+}

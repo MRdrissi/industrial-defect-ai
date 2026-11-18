@@ -1,0 +1,10 @@
+{
+  "configs/real_model_registry.json": "122ab72df39d9f5c4db2a904c929f938e21bd3bdf5098ffd5945ec823ef49279",
+  "experiments/configs/cae_baseline.json": "519dd190a57e84499aeb01624f3535b05fa29467efca16bd8162953b94c17bf1",
+  "experiments/configs/calibration_instances.json": "b3aa8340bf0e5f07009a48562393aaf708ac49fc8edabd630bd820448a6239dc",
+  "experiments/configs/evaluation_protocol.json": "6b66ee7b9f51780ceb1e3e89723bb92f4ffdac8502f73031f45052f9ccd39854",
+  "experiments/calibration/six-thresholds/thresholds.json": "f3128a255482f55cb416312780bc4832f4bfe24b017c9a2036089128ade68b54",
+  "app/requirements-lock-windows-cpu.txt": "4d3d05e66c627e39d96ff8427a233fc743374eb561c92b324cb3b1084ba9397a",
+  "scripts/restore_app_artifacts.py": "79a0f03b1c0b3e93a701b5d21e66c675beffa0e823d615417766742ef8535502",
+  "scripts/validate_app_release.py": "1c8cea88e8dd5db41958a90eafd210a4a986be85ca90ffb5064ac8fcaa80f365"
+}

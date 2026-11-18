@@ -115,7 +115,7 @@ flowchart LR
     G --> H[Statut + score + heatmap + rapport]
 ```
 
-**Choix technologiques prévus :** Python, PyTorch, Anomalib (pour PatchCore si sa compatibilité est confirmée), OpenCV/Pillow, scikit-learn, Matplotlib et Streamlit. Les versions et dépendances du **pipeline final** restent à fixer après tests ; **aucun `requirements.txt` complet validé n'est encore publié**.
+**Exécution locale validée :** Python 3.12, PyTorch CPU, Anomalib 2.7 et Streamlit. Les dépendances Windows CPU sont figées dans `app/requirements-lock-windows-cpu.txt`. Suivre le [guide de lancement et de restauration](docs/RUNNING_DEFECTVISION.md) : les six checkpoints, exclus de Git, doivent être restaurés et vérifiés avant l'inférence. Le [rapport de validation](docs/release/2026-11-18/REPORT.md) distingue les tests du code, les inférences réelles et la qualité scientifique des modèles.
 
 ## 7. Infrastructure et répartition des rôles
 
