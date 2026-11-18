@@ -1,0 +1,27 @@
+{
+  "rules/branches/main": {
+    "http_status": 200,
+    "data": []
+  },
+  "rules/branches/develop": {
+    "http_status": 200,
+    "data": []
+  },
+  "rulesets": {
+    "http_status": 200,
+    "data": []
+  },
+  "main_protected": false,
+  "main_sha": "059e15616e7917ddf6c58f63caa5e5704d85495c",
+  "develop_sha": "ecc3d9369ff1ab316d67e5144048862fbe750b2c",
+  "status_count": 0,
+  "check_run_count": 0,
+  "action_run_count": 0,
+  "secrets_scan": {
+    "files_scanned": 329,
+    "scope": "tracked and intended new files; heuristic, not exhaustive",
+    "findings": []
+  },
+  "original_notebook_sha256": "4af5f92be60ccf2065dbed0f338c35ac455910833cb47f7eb09fa2016414618f",
+  "note": "Read-only pre-promotion snapshot; recheck remote heads and rules before merge. No GitHub protection or CI is configured. Local validation is the release gate."
+}

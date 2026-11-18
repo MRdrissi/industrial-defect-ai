@@ -32,3 +32,9 @@ experiments/benchmark/summary.json text eol=lf
 docs/data/us-05-04/*.json text eol=lf
 docs/data/us-05-04/*.csv text eol=lf
 docs/data/us-05-04/figures/*.png binary
+
+# Keep release audit evidence bytes stable across checkouts.
+docs/release/2026-11-18/** -text
+app/requirements*.txt text eol=lf
+scripts/restore_app_artifacts.py text eol=lf
+scripts/validate_app_release.py text eol=lf

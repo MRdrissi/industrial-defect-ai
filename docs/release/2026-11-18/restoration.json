@@ -1,0 +1,62 @@
+[
+  {
+    "instance": "cae-bottle",
+    "version": "exp-002",
+    "path": "artifacts/cae/bottle/EXP-002/cae_model.pt",
+    "sha256": "12501c4d125e8dd0e6512062f4cc76cfa4287770974bd170af7e3a9528fa88e8",
+    "status": "restored_verified",
+    "source": "us0503-remaining-checkpoints.zip",
+    "member": "cae/bottle/bottle_best.pth",
+    "bytes": 3429323
+  },
+  {
+    "instance": "cae-hazelnut",
+    "version": "exp-001",
+    "path": "artifacts/cae/hazelnut/EXP-001/cae_model.pt",
+    "sha256": "34ab16490dc5e75003971a54e53bbda61b2f6be9428f63ace322b06c64d7e811",
+    "status": "restored_verified",
+    "source": "us0503-remaining-checkpoints.zip",
+    "member": "cae/hazelnut/best_model.pt",
+    "bytes": 3429237
+  },
+  {
+    "instance": "cae-transistor",
+    "version": "exp-001",
+    "path": "artifacts/cae/transistor/EXP-001/cae_model.pt",
+    "sha256": "7849dab459cf2ae0c2a6dd764a2864998a298a6ad0e5498d6ee5882326cc0a2d",
+    "status": "restored_verified",
+    "source": "best_model.pt",
+    "member": null,
+    "bytes": 3428853
+  },
+  {
+    "instance": "patchcore-bottle",
+    "version": "exp-002",
+    "path": "artifacts/patchcore/bottle/EXP-002/patchcore_model.pt",
+    "sha256": "dcf0f8df3dc9b4be9ee1bcb897d3ec6f24a3191240dcfd4e68afd598acd77cde",
+    "status": "restored_verified",
+    "source": "patchcore_model.pt",
+    "member": null,
+    "bytes": 110208199
+  },
+  {
+    "instance": "patchcore-hazelnut",
+    "version": "exp-002",
+    "path": "artifacts/patchcore/hazelnut/EXP-002/patchcore_model.pt",
+    "sha256": "7b4c3784434d69724e8e7fb74d587e4c8a059faa24819dd556c224d03e580a93",
+    "status": "restored_verified",
+    "source": "us0503-remaining-checkpoints.zip",
+    "member": "patchcore/hazelnut/EXP-002/patchcore_model.pt",
+    "bytes": 119394375
+  },
+  {
+    "instance": "patchcore-transistor",
+    "version": "exp-001",
+    "path": "artifacts/patchcore/transistor/EXP-001/patchcore_model.pt",
+    "sha256": "7917810678f656324236a0df6db639d7de93176a7a8ae9ef06e72f3bf0a57191",
+    "status": "restored_verified",
+    "source": "us0503-remaining-checkpoints.zip",
+    "member": "patchcore/transistor/EXP-001/patchcore_model.pt",
+    "bytes": 110392519
+  }
+]
